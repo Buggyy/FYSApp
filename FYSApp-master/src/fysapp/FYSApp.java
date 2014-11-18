@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 /**
- * @version Lars suckt kenkerballs.
+ * @version 1
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern 
  * Doel: Het maken van een kofferapplicatie
