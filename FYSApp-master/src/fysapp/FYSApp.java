@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fysapp;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,7 +13,7 @@ public class FYSApp extends JFrame {
         initializeEvents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    
+    //Fuck your mothers DEES IS EEN FAG Amrit == Amrish
     private void initializeGui() {
         if (initialized)
             return;
