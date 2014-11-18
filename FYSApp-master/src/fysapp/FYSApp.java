@@ -4,17 +4,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-// lars is een retard. en chris houdt van pik.
 
 package fysapp;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import lars.is.een.fagit;
 
 /**
- *
+ * @version
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern 
  */
