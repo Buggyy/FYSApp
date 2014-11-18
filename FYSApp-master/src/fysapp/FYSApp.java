@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-// lars is fagit
+// lars is een retard.
 =======
 >>>>>>> origin/master
 package fysapp;
