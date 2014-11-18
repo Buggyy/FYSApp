@@ -15,6 +15,7 @@ import javax.swing.event.*;
  * @version
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern 
+ * Doel: helemaal NIKS
  */
 
 // Ik vind helemaal mooi.
