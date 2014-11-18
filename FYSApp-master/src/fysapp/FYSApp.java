@@ -7,7 +7,7 @@ import javax.swing.event.*;
 /**
  *
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern
+ * marijnbakker, danielstern 
  */
 
 public class FYSApp extends JFrame {
