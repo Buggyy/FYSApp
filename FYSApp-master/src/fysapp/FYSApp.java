@@ -13,7 +13,7 @@ public class FYSApp extends JFrame {
         initializeEvents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    //halloooooooooooooooooooooooooooooo TEST LEZEN JULLIE DIT??????????!!!!!!!!!!!!
+    //hallooooooooooooooooooIIIIoooooooooooo TEST LEZEN JULLIE DIT??????????!!!!!!!!!!!!
     private void initializeGui() {
         if (initialized)
             return;
