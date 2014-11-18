@@ -17,6 +17,7 @@ import javax.swing.event.*;
  * marijnbakker, danielstern 
  */
 
+// Ik vind helemaal mooi.
 public class FYSApp extends JFrame {
     private boolean initialized = false;
     private Actions actions = new Actions();
