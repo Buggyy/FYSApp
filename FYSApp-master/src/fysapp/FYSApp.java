@@ -19,7 +19,7 @@ public class FYSApp extends JFrame {
         initializeEvents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    //Fuck your mothers DEES IS EEN FAG Amrit == Amrish
+    //FuckYourSexyApp
     private void initializeGui() {
         if (initialized)
             return;
