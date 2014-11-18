@@ -4,6 +4,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+/**
+ *
+ * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
+ * marijnbakker, danielstern
+ */
+
 public class FYSApp extends JFrame {
     private boolean initialized = false;
     private Actions actions = new Actions();
