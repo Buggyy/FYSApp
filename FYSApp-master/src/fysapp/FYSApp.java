@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 /**
- * @version
+ * @version 1
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern 
  * Doel: helemaal NIKS
