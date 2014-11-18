@@ -15,10 +15,10 @@ import javax.swing.event.*;
  * @version 1
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern 
- * Doel: helemaal NIKS
+ * Doel: Het maken van een kofferapplicatie
  */
 
-// Ik vind helemaal mooi.
+// Ik vind helemaal mooi
 public class FYSApp extends JFrame {
     private boolean initialized = false;
     private Actions actions = new Actions();
