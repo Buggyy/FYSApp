@@ -15,7 +15,7 @@ import javax.swing.event.*;
  * @version 1
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern 
- * Doel: Het maken van een kofferapplicatie
+ * Doel: Het maken van een kofferapplicatie.
  */
 
 // Ik vind helemaal mooi
