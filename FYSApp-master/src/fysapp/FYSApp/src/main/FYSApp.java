@@ -1,24 +1,29 @@
-<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-// lars is een retard.
-=======
->>>>>>> origin/master
-package fysapp;
+
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// KANKER GIT
+package main;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import lars.is.een.fagit;
-
-/**
- *
- * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern 
- */
 
 public class FYSApp extends JFrame {
     private boolean initialized = false;
@@ -29,7 +34,7 @@ public class FYSApp extends JFrame {
         initializeEvents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    //FuckYourSexyApp
+    
     private void initializeGui() {
         if (initialized)
             return;
