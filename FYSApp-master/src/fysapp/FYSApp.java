@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+// lars is fagit
 package fysapp;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import lars.is.een.fagit;
 
 public class FYSApp extends JFrame {
     private boolean initialized = false;
