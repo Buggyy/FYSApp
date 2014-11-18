@@ -5,9 +5,12 @@
  */
 
 // Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
-// Dit is niet mijn winkel vriend
-// Dit is niet mijn winkel vriend
-// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
+// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend// Dit is niet mijn winkel vriend
 
 package main;
 import java.awt.*;
