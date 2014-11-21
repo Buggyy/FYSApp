@@ -78,7 +78,7 @@ public class AdministratorMain extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // knop die naar users paneel gaat
+        // knop die naar users paneel gaat 
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
