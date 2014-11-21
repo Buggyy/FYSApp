@@ -59,6 +59,7 @@ public class FYSApp extends JFrame {
 
     
 	public static void main(String[] args) {
+            
         new FYSApp().setVisible(true);
 	}
 }
