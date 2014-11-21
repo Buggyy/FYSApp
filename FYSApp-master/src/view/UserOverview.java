@@ -38,9 +38,17 @@ public class UserOverview extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Username", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Username", "Password", "Role", "Airport", "Date DD/MM/YY"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
