@@ -32,9 +32,9 @@ public class LoginScreen extends JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setMaximumSize(new java.awt.Dimension(1024, 800));
-        setMinimumSize(new java.awt.Dimension(1024, 800));
-        setPreferredSize(new java.awt.Dimension(1024, 800));
+        setMaximumSize(new java.awt.Dimension(1024, 600));
+        setMinimumSize(new java.awt.Dimension(1024, 600));
+        setPreferredSize(new java.awt.Dimension(1024, 600));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -61,6 +61,11 @@ public class LoginScreen extends JPanel {
 
         jButton2.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
         jButton2.setText("I can't login");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,6 +139,10 @@ public class LoginScreen extends JPanel {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        FYSApp.getInstance().showPanel(new CantLogin1());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private String determineUser(){
         return "Employee";
