@@ -7,12 +7,12 @@ import view.employee.EmployeeFront;
  *
  * @author Daniel Stern IS 106
  */
-public class CantLogin1 extends JPanel {
+public class CantLogin extends JPanel {
 
     /**
      * Creates new form LoginScreen
      */
-    public CantLogin1() {
+    public CantLogin() {
         initComponents();
     }
 
