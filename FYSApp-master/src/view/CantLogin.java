@@ -47,6 +47,7 @@ public class CantLogin extends JPanel {
         jLabel1.setText("I can't login!");
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
