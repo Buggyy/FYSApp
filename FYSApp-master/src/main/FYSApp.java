@@ -13,7 +13,7 @@ import javax.swing.UIManager;
 
 /**
  * @version 1
- * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
+ * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen, 
  * marijnbakker, danielstern 
  * Doel: Het maken van een kofferapplicatie.
  */
@@ -98,16 +98,16 @@ public final class FYSApp {
     }
         
     public static void main(String args[]) {
-        final FYSApp applicatie = FYSApp.getInstance();
+        final FYSApp application = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    applicatie.initialize();
-                    applicatie.startup();
+                    application.initialize();
+                    application.startup();
                 } catch (Exception e) {
-                    System.out.println("Application" + applicatie.getClass().getName() + "failed to launch");
+                    System.out.println("Application" + application.getClass().getName() + "failed to launch");
                 }
             }
         });
