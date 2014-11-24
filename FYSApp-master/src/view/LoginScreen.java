@@ -51,11 +51,13 @@ public class LoginScreen extends JPanel {
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setText("Username");
         jTextField1.setToolTipText("Fill in your Username");
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordField1.setText("Password");
         jPasswordField1.setToolTipText("Fill in your password");
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
