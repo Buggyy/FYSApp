@@ -2,7 +2,9 @@ package view;
 
 import javax.swing.JPanel;
 import main.FYSApp;
+import view.admin.AdminFront;
 import view.employee.EmployeeFront;
+import view.manager.ManagerFront;
 /**
  *
  * @author Daniel Stern IS 106
@@ -128,10 +130,10 @@ public class LoginScreen extends JPanel {
                 FYSApp.getInstance().showPanel(new EmployeeFront());
                 break;
             case "Admin":
-//                TestApp.getInstance().showPanel(new AdminFront());
+                FYSApp.getInstance().showPanel(new AdminFront());
                 break;
             case "Manager":
-//                TestApp.getInstance().showPanel(new ManagerFront());
+                FYSApp.getInstance().showPanel(new ManagerFront());
                 break;
         }
         
