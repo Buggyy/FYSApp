@@ -2,7 +2,7 @@
 package model;
 
 /**
- *@author Daniel Stern IS 106
+ *@author Stefan Lobato, Daniel Stern IS106
  * 
  */
 public class Users {
