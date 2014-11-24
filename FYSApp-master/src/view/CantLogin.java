@@ -37,12 +37,15 @@ public class CantLogin extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("I can't login");
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,8 +53,10 @@ public class CantLogin extends JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Please contact the administrator at:");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("admin@localnetwork.com");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -64,15 +69,13 @@ public class CantLogin extends JPanel {
                 .addGap(49, 49, 49))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,11 +83,11 @@ public class CantLogin extends JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addComponent(jButton3)
                 .addGap(26, 26, 26))
         );
@@ -93,7 +96,7 @@ public class CantLogin extends JPanel {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1030, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

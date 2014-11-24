@@ -43,7 +43,7 @@ public class LoginScreen extends JPanel {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Login");
 
@@ -63,6 +63,7 @@ public class LoginScreen extends JPanel {
         });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -113,11 +114,11 @@ public class LoginScreen extends JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel1);
-        jPanel1.setBounds(306, 172, 372, 193);
+        jPanel1.setBounds(306, 172, 372, 195);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
