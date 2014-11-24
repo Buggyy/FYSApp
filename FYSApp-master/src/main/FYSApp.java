@@ -18,7 +18,6 @@ import javax.swing.UIManager;
  * Doel: Het maken van een kofferapplicatie.
  */
 
-// blablabla
 public final class FYSApp {
 
     /**
