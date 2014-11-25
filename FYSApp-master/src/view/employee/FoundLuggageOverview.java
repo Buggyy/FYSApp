@@ -68,7 +68,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         jButton6.setText("Delete");
         add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 385, -1, -1));
 
-        jButton2.setText("< -back");
+        jButton2.setText("<- back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -76,13 +76,13 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 436, -1, -1));
 
-        jButton4.setText("Add user");
+        jButton4.setText("Register Found Luggage");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 385, -1, -1));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 150, -1));
 
         jButton5.setText("Edit");
         add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 385, -1, -1));
@@ -104,11 +104,14 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 66, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Found luggage");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 58, 216, 33));
+        jLabel1.setText("Found Luggage");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 216, 33));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
+        jLabel2.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel2.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel2.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,7 +120,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

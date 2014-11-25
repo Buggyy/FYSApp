@@ -31,10 +31,10 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -80,21 +80,13 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         jButton6.setText("Delete");
         add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 385, -1, -1));
 
-        jButton2.setText("< -back");
+        jButton2.setText("<- back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 436, -1, -1));
-
-        jButton4.setText("Add user");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 385, -1, -1));
 
         jButton5.setText("Edit");
         add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 385, -1, -1));
@@ -103,8 +95,16 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 137, 46, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Lost luggage");
+        jLabel1.setText("Lost Luggage");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 66, 216, 33));
+
+        jButton4.setText("Register Lost Luggage");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 385, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -115,13 +115,13 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         FYSApp.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        FYSApp.getInstance().showPanel(new RegisterLostLuggage());
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
