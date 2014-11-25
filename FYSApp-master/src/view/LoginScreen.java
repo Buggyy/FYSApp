@@ -179,7 +179,7 @@ public class LoginScreen extends JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private String determineUser(){
-        return "Admin";
+        return "Employee";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
