@@ -57,6 +57,7 @@ public final class FYSApp {
         mainWindow = new JFrame(NAME);
         mainWindow.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         mainWindow.setResizable(false);
+        mainWindow.setLocationRelativeTo(null);
 
         //windowlistener om de applicatie te sluiten
         mainWindow.addWindowListener(new WindowAdapter() {
