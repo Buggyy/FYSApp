@@ -12,12 +12,12 @@ package view.admin;
  * Doel: Het maken van een kofferapplicatie.
  */
 
-public class AdminOverview extends javax.swing.JPanel {
+public class AdminLuggage extends javax.swing.JPanel {
 
     /**
      * Creates new form UserOverview
      */
-    public AdminOverview() {
+    public AdminLuggage() {
         initComponents();
     }
 

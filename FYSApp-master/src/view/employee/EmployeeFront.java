@@ -44,7 +44,7 @@ public class EmployeeFront extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 170, 130));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 170, 130));
 
         jButton2.setText("Lost");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
