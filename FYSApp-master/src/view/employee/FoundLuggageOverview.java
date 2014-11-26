@@ -82,7 +82,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 150, -1));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 170, -1));
 
         jButton5.setText("Edit");
         add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 385, -1, -1));
