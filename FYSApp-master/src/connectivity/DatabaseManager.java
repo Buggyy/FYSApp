@@ -28,7 +28,8 @@ public class DatabaseManager {
             String url = "jdbc:mysql://127.0.0.1:3306";
             String user = "root", pass = "";
 
-            /**
+            /** 
+             * 
              * Open connection with parameters from above :D
              */
             Connection conn = DriverManager.getConnection(url, user, pass);
