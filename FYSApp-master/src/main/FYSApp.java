@@ -70,7 +70,7 @@ public final class FYSApp {
         });
         
         mainWindow.getContentPane().setLayout(new BorderLayout());
-        // Hier stop ik. lal.
+        // Hier stop ik.
         showPanel(new view.LoginScreen());
 
         mainWindow.setVisible(true);
