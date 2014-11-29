@@ -1,6 +1,6 @@
 package main;
 
-import connectivity.Dbmanager;
+import connectivity.DatabaseManager;
 import connectivity.QueryManager;
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import view.*;
 
 /**
  * @version 1
@@ -69,6 +70,7 @@ public final class FYSApp {
         });
         
         mainWindow.getContentPane().setLayout(new BorderLayout());
+        // Hier stop ik. lal.
         showPanel(new view.LoginScreen());
 
         mainWindow.setVisible(true);

@@ -1,32 +1,45 @@
 package connectivity;
 
 import java.sql.*;
+import javax.swing.*;
 
+/*
+ *   @author Stefan Lobato
+ *   Goal: In this file we will store all the Database Methods and functions
+ */
+public class DatabaseManager {
 
-
-public class Dbmanager {
     public static final String JDBC_EXCEPTION = "JDBC Exception: ";
     public static final String SQL_EXCEPTION = "SQL Exception: ";
 
-    public Connection connection;
+    Connection conn = null;
 
     /**
      * Open database connection
      */
-    public void openConnection() {
+    public static Connection openConnection() {
         try {
+            // This is for people (like us) use a mysql database
+            // If you use sqlite then change this line to idk.
             Class.forName("com.mysql.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost/outfit4you";
+            // Right click on your database in workbench and copy the settings
+            // to here to connect
+            String url = "jdbc:mysql://127.0.0.1:3306";
             String user = "root", pass = "";
 
-            /** Open connection */
-            connection = DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException e) {
-            System.err.println(JDBC_EXCEPTION + e);
-        } catch (java.sql.SQLException e) {
-            System.err.println(SQL_EXCEPTION + e);
+            /**
+             * Open connection with parameters from above :D
+             */
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            JOptionPane.showMessageDialog(null, "Connection Established");
+            return conn;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
         }
+
     }
 
     /**
@@ -34,7 +47,7 @@ public class Dbmanager {
      */
     public void closeConnection() {
         try {
-            connection.close();
+            conn.close();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -42,11 +55,12 @@ public class Dbmanager {
 
     /**
      * Executes a query without result.
+     *
      * @param query, the SQl query
      */
     public void executeQuery(String query) {
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = conn.createStatement();
             statement.executeQuery(query);
         } catch (java.sql.SQLException e) {
             System.err.println(SQL_EXCEPTION + e);
@@ -55,27 +69,29 @@ public class Dbmanager {
 
     /**
      * Executes a query with result.
+     *
      * @param query, the SQL query
      */
     public ResultSet doQuery(String query) {
         ResultSet result = null;
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = conn.createStatement();
             result = statement.executeQuery(query);
         } catch (java.sql.SQLException e) {
             System.err.println(SQL_EXCEPTION + e);
         }
         return result;
     }
-    
+
     /**
      * Executes a query with result.
+     *
      * @param query, the SQL query
      */
     public ResultSet insertQuery(String query) {
         ResultSet result = null;
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = conn.createStatement();
             statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
             result = statement.getGeneratedKeys();
         } catch (java.sql.SQLException e) {
