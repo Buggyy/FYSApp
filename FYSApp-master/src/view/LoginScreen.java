@@ -4,6 +4,12 @@ import connectivity.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+import java.awt.AWTEvent;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 import main.FYSApp;
 import view.admin.AdminFront;
@@ -29,6 +35,10 @@ public class LoginScreen extends javax.swing.JFrame {
         //  Open the connection by calling the openConnection method from
         // DatabaseManager.java
         conn = DatabaseManager.openConnection();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width / 2 - getWidth() / 2,
+                size.height / 2 - getHeight() / 2);
     }
 
     /**
@@ -51,7 +61,7 @@ public class LoginScreen extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
-        setLayout(null);
+        getContentPane().setLayout(null);
 
         pnl_login.setBackground(new java.awt.Color(255, 255, 255));
         pnl_login.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ZoekJeKoffer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 24))); // NOI18N
@@ -143,7 +153,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(pnl_login);
+        getContentPane().add(pnl_login);
         pnl_login.setBounds(306, 172, 370, 207);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
@@ -154,7 +164,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel2.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel2.setOpaque(true);
         jLabel2.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel2);
+        getContentPane().add(jLabel2);
         jLabel2.setBounds(0, -100, 1030, 800);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,24 +173,26 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_passwordActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        String sql = "select * from user where username=? and password=?";
+        String sql = "SELECT * FROM user WHERE username=? and password=?";
 
         try {
             pst = conn.prepareStatement(sql);
-            //  Retreive information from user input
             pst.setString(1, txt_username.getText());
-            pst.setString(1, txt_password.getText());
-
+            pst.setString(2, txt_password.getText());
             rs = pst.executeQuery();
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Username and Password is correct");
-                ManagerFront s = new ManagerFront();
-                s.setVisible(true);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Username and Password is not correct");
-            }
             
+            
+            //  Down here we need to check the user on its role..
+            if (rs.next()) {
+                 FYSApp.getInstance().showPanel(new EmployeeFront());
+                dispose();
+            } //            else if(rs.next()){
+            //            new about().setVisible(true);
+            //                dispose();
+            //            }
+            else {
+                JOptionPane.showMessageDialog(null, "Please try again");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

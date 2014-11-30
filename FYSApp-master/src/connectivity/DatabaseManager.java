@@ -19,23 +19,9 @@ public class DatabaseManager {
      */
     public static Connection openConnection() {
         try {
-            // This is for people (like us) use a mysql database
-            // If you use sqlite then change this line to idk.
             Class.forName("com.mysql.jdbc.Driver");
-
-            // Right click on your database in workbench and copy the settings
-            // to here to connect
-            String url = "jdbc:mysql://127.0.0.1:3306";
-            String user = "root", pass = "";
-
-            /** 
-             * 
-             * Open connection with parameters from above :D
-             */
-            Connection conn = DriverManager.getConnection(url, user, pass);
-            JOptionPane.showMessageDialog(null, "Connection Established");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoekjekoffer", "root", "");
             return conn;
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             return null;

@@ -124,7 +124,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+         new LoginScreen().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

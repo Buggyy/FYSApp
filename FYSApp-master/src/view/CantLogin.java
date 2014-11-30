@@ -106,7 +106,7 @@ public class CantLogin extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+         new LoginScreen().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private String determineUser(){

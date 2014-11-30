@@ -11,10 +11,8 @@ import view.LoginScreen;
 /**
  * @version 1
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern 
- * Doel: Het maken van een kofferapplicatie.
+ * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
  */
-
 public class AdminLuggageFound extends javax.swing.JPanel {
 
     /**
@@ -142,7 +140,8 @@ public class AdminLuggageFound extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        FYSApp.getInstance().showPanel(new LoginScreen());
+
+        new LoginScreen().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

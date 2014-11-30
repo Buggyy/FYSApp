@@ -14,11 +14,9 @@ import view.*;
 
 /**
  * @version 1
- * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen, 
- * marijnbakker, danielstern 
- * Doel: Het maken van een kofferapplicatie.
+ * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
+ * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
  */
-
 public final class FYSApp {
 
     /**
@@ -36,8 +34,10 @@ public final class FYSApp {
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
 
     private JFrame mainWindow;
-    
-    /** singleton of the application */
+
+    /**
+     * singleton of the application
+     */
     private static FYSApp instance = new FYSApp();
 
     private FYSApp() {
@@ -50,9 +50,9 @@ public final class FYSApp {
         } catch (Exception e) {
             System.err.println("Error setting LookAndFeelClassName: " + e);
         }
-       
+
     }
-    
+
     //Start de mainwindow. 
     public void startup() {
         mainWindow = new JFrame(NAME);
@@ -68,14 +68,13 @@ public final class FYSApp {
                 shutdown();
             }
         });
-        
+
         mainWindow.getContentPane().setLayout(new BorderLayout());
-        // Hier stop ik.
-        showPanel(new view.LoginScreen());
+        new LoginScreen().setVisible(true);
 
         mainWindow.setVisible(true);
     }
-    
+
     public void showPanel(JPanel panel) {
         mainWindow.getContentPane().removeAll();
         mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
@@ -88,19 +87,19 @@ public final class FYSApp {
         mainWindow.setVisible(false);
         shutdown();
     }
-    
+
     //Database shutdown moet hierin nog toegevoegd worden
     private void shutdown() {
         mainWindow.dispose();
     }
-    
+
     /**
      * @return the instance of this class
      */
     public static FYSApp getInstance() {
         return instance;
     }
-        
+
     public static void main(String args[]) {
         final FYSApp application = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
