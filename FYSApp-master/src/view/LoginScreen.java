@@ -184,7 +184,7 @@ public class LoginScreen extends javax.swing.JFrame {
             // Select the role
             pst = conn.prepareStatement(sql_role);
             pst.setString(1, txt_username.getText());
-            ResultSet rs = pst.executeQuery();
+            rs = pst.executeQuery();
 
             //  Down here we need to check the user on its role..
             if (rs.next()) {

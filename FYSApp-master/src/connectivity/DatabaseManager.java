@@ -20,7 +20,7 @@ public class DatabaseManager {
     public static Connection openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoekjekoffer", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoekjekoffer", "root", "Kuiken123");
             return conn;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
