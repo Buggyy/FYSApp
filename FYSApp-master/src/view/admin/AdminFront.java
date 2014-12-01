@@ -1,7 +1,7 @@
 package view.admin;
 
 import main.FYSApp;
-import view.LoginScreen1;
+import view.LoginScreen;
 
 /**
  *
@@ -76,7 +76,7 @@ public class AdminFront extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         new LoginScreen1().setVisible(true);
+         new LoginScreen().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
