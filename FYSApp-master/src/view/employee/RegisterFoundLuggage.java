@@ -178,7 +178,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_submit_found_luggageActionPerformed
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
-        new LoginScreen().setVisible(true);
+        FYSApp.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
