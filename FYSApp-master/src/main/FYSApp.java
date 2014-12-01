@@ -62,7 +62,7 @@ public final class FYSApp {
         //windowlistener om de applicatie te sluiten
         mainWindow.addWindowListener(new WindowAdapter() {
 
-            @Override
+            //@Override
             public void windowClosing(WindowEvent event) {
                 shutdown();
             }
