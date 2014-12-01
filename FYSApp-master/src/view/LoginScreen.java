@@ -200,7 +200,7 @@ public class LoginScreen extends javax.swing.JPanel {
                 if (role.equals("manager")) {
                     main.FYSApp.getInstance().showPanel(new ManagerFront());
                     
-                } else if (role.equals("medewerker")) {
+                } else if (role.equals("employee")) {
                     main.FYSApp.getInstance().showPanel(new EmployeeFront());
                     
                 } else if (role.equals("admin")) {
