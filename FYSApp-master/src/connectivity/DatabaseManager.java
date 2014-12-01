@@ -26,7 +26,6 @@ public class DatabaseManager {
             JOptionPane.showMessageDialog(null, e);
             return null;
         }
-
     }
 
     /**
