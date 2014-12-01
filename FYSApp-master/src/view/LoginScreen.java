@@ -4,10 +4,6 @@ import connectivity.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-import java.awt.AWTEvent;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -203,21 +199,6 @@ public class LoginScreen extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-
-        // First testing with 1 user
-        //        String viewUser = determineUser();
-        //
-        //        switch(viewUser){
-            //            case "Employee":
-            //                FYSApp.getInstance().showPanel(new EmployeeFront());
-            //                break;
-            //            case "Admin":
-            //                FYSApp.getInstance().showPanel(new AdminFront());
-            //                break;
-            //            case "Manager":
-            //                FYSApp.getInstance().showPanel(new ManagerFront());
-            //                break;
-            //        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
