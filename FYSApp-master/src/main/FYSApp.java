@@ -17,6 +17,17 @@ import javax.swing.UIManager;
  */
 public final class FYSApp {
 
+    /*
+    *   Styling Conventions:
+    *   Properties of:
+        - Textbox: Calibri 12px plain
+        - Textbox Labels: Calibri 18px plain
+        - Frame title Labels: Calibri 24px bold
+        - Buttons: Calibri 14px plain (UPPERCASE, except for logout/login screen)
+                   Dimensions:(X = 530px, Y = 400px)
+                   GEEN BORDERS
+    */
+   
     /**
      * Define frame width, height and name
      */

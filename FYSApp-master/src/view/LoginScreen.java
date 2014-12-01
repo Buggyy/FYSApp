@@ -57,8 +57,8 @@ public class LoginScreen extends javax.swing.JPanel {
         txt_password = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnl_login.setBackground(new java.awt.Color(255, 255, 255));
@@ -75,7 +75,7 @@ public class LoginScreen extends javax.swing.JPanel {
         });
 
         btn_login.setBackground(new java.awt.Color(255, 255, 255));
-        btn_login.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        btn_login.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn_login.setText("Login");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +93,7 @@ public class LoginScreen extends javax.swing.JPanel {
         });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Dialog", 3, 11)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
         jButton2.setText("I can't login");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,16 +157,6 @@ public class LoginScreen extends javax.swing.JPanel {
         );
 
         add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setAlignmentY(0.0F);
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel2.setMaximumSize(new java.awt.Dimension(1024, 600));
-        jLabel2.setMinimumSize(new java.awt.Dimension(1024, 600));
-        jLabel2.setOpaque(true);
-        jLabel2.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, 1030, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
@@ -243,7 +233,6 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnl_login;
     private javax.swing.JPasswordField txt_password;
