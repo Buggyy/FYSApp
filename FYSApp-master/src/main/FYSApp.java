@@ -62,14 +62,14 @@ public final class FYSApp {
         //windowlistener om de applicatie te sluiten
         mainWindow.addWindowListener(new WindowAdapter() {
 
-            //@Override
+            @Override
             public void windowClosing(WindowEvent event) {
                 shutdown();
             }
         });
 
         mainWindow.getContentPane().setLayout(new BorderLayout());
-        new LoginScreen().setVisible(true);
+        showPanel(new view.LoginScreen());
 
         //mainWindow.setVisible(true); geeft witte scherm wtf
     }
