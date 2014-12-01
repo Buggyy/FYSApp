@@ -196,13 +196,13 @@ public class LoginScreen extends javax.swing.JFrame {
             // process no role case first - it deals with the null role problem
                 }
                 if (role.equals("manager")) {
-                    FYSApp.getInstance().showPanel(new ManagerFront());
+                    main.FYSApp.getInstance().showPanel(new ManagerFront());
                     dispose();
                 } else if (role.equals("medewerker")) {
-                    FYSApp.getInstance().showPanel(new EmployeeFront());
+                    main.FYSApp.getInstance().showPanel(new EmployeeFront());
                     dispose();
                 } else if (role.equals("admin")) {
-                    FYSApp.getInstance().showPanel(new AdminFront());
+                    main.FYSApp.getInstance().showPanel(new AdminFront());
                     dispose();
                 }
             } else {
