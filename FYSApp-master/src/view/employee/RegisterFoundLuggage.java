@@ -6,7 +6,7 @@
 package view.employee;
 
 import main.FYSApp;
-import view.LoginScreen;
+import view.LoginScreen1;
 
 /**
  *
@@ -115,7 +115,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new LoginScreen().setVisible(true);
+        new LoginScreen1().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

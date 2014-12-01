@@ -1,6 +1,7 @@
 package main;
 
 import connectivity.DatabaseManager;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -9,12 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import view.*;
 
 /**
- * @version 1
- * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
+ *
+ * @author Daniel Stern IS 106
  */
 public final class FYSApp {
 
@@ -49,17 +48,16 @@ public final class FYSApp {
         } catch (Exception e) {
             System.err.println("Error setting LookAndFeelClassName: " + e);
         }
-
     }
 
-    //Start de mainwindow. 
+    //Start de mainwindow. en include 
     public void startup() {
         mainWindow = new JFrame(NAME);
         mainWindow.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         mainWindow.setResizable(false);
         mainWindow.setLocationRelativeTo(null);
 
-        //windowlistener om de applicatie te sluiten
+        //method shutdown om applicatie te sluiten.
         mainWindow.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -71,7 +69,7 @@ public final class FYSApp {
         mainWindow.getContentPane().setLayout(new BorderLayout());
         showPanel(new view.LoginScreen());
 
-        //mainWindow.setVisible(true); geeft witte scherm wtf
+        mainWindow.setVisible(true);
     }
 
     public void showPanel(JPanel panel) {
@@ -81,7 +79,6 @@ public final class FYSApp {
         mainWindow.getContentPane().repaint();
     }
 
-    //method om de main window te sluiten
     public void exit() {
         mainWindow.setVisible(false);
         shutdown();
@@ -100,16 +97,16 @@ public final class FYSApp {
     }
 
     public static void main(String args[]) {
-        final FYSApp application = FYSApp.getInstance();
+        final FYSApp applicatie = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    application.initialize();
-                    application.startup();
+                    applicatie.initialize();
+                    applicatie.startup();
                 } catch (Exception e) {
-                    System.out.println("Application" + application.getClass().getName() + "failed to launch");
+                    System.out.println("Application" + applicatie.getClass().getName() + "failed to launch");
                 }
             }
         });
