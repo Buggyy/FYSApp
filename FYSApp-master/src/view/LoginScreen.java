@@ -152,7 +152,7 @@ public class LoginScreen extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnl_login);
-        pnl_login.setBounds(306, 172, 370, 207);
+        pnl_login.setBounds(306, 172, 370, 210);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -173,12 +173,10 @@ public class LoginScreen extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String sql = "SELECT * FROM user WHERE username=? and password=?";
         String sql_role = "SELECT role FROM user WHERE username=?";
-        
+
         try {
             //  Select the user
             pst = conn.prepareStatement(sql);
-            
-            
             pst.setString(1, txt_username.getText());
             pst.setString(2, txt_password.getText());
             rs = pst.executeQuery();
@@ -186,20 +184,28 @@ public class LoginScreen extends javax.swing.JFrame {
             // Select the role
             pst = conn.prepareStatement(sql_role);
             pst.setString(1, txt_username.getText());
-            rs = pst.executeQuery();
-            
+            ResultSet rs = pst.executeQuery();
+
             //  Down here we need to check the user on its role..
-            if (rs.next() ) {
-                FYSApp.getInstance().showPanel(new EmployeeFront());
-                dispose();
-            } else if (rs.next()) {
-                FYSApp.getInstance().showPanel(new ManagerFront());
-                dispose();
-            }  else if (rs.next()) {
-                FYSApp.getInstance().showPanel(new AdminFront());
-                dispose();
-            }
-                    else {
+            if (rs.next()) {
+                
+                String role = rs.getString("role");
+                
+
+                if (role == null || role.isEmpty()) {
+            // process no role case first - it deals with the null role problem
+                }
+                if (role.equals("manager")) {
+                    FYSApp.getInstance().showPanel(new ManagerFront());
+                    dispose();
+                } else if (role.equals("medewerker")) {
+                    FYSApp.getInstance().showPanel(new EmployeeFront());
+                    dispose();
+                } else if (role.equals("admin")) {
+                    FYSApp.getInstance().showPanel(new AdminFront());
+                    dispose();
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Please try again");
             }
         } catch (Exception e) {
