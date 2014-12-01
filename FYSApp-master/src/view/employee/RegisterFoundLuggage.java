@@ -182,7 +182,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_btn_backActionPerformed
 
 
