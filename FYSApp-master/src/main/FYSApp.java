@@ -62,7 +62,7 @@ public final class FYSApp {
         //windowlistener om de applicatie te sluiten
         mainWindow.addWindowListener(new WindowAdapter() {
 
-            //@Override
+            @Override
             public void windowClosing(WindowEvent event) {
                 shutdown();
             }
@@ -71,7 +71,7 @@ public final class FYSApp {
         mainWindow.getContentPane().setLayout(new BorderLayout());
         new LoginScreen().setVisible(true);
 
-        //mainWindow.setVisible(true); Dit gaf een wit scherm wtf
+        //mainWindow.setVisible(true); geeft witte scherm wtf
     }
 
     public void showPanel(JPanel panel) {
