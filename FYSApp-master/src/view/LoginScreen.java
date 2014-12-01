@@ -67,7 +67,6 @@ public class LoginScreen extends javax.swing.JFrame {
         pnl_login.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ZoekJeKoffer", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 24))); // NOI18N
         pnl_login.setMaximumSize(new java.awt.Dimension(1024, 600));
 
-        txt_username.setText("Username");
         txt_username.setToolTipText("Fill in your Username");
         txt_username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_username.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -86,7 +85,6 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
 
-        txt_password.setText("Password");
         txt_password.setToolTipText("Fill in your password");
         txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_password.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -174,23 +172,34 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String sql = "SELECT * FROM user WHERE username=? and password=?";
-
+        String sql_role = "SELECT role FROM user WHERE username=?";
+        
         try {
+            //  Select the user
             pst = conn.prepareStatement(sql);
+            
+            
             pst.setString(1, txt_username.getText());
             pst.setString(2, txt_password.getText());
             rs = pst.executeQuery();
-            
+
+            // Select the role
+            pst = conn.prepareStatement(sql_role);
+            pst.setString(1, txt_username.getText());
+            rs = pst.executeQuery();
             
             //  Down here we need to check the user on its role..
-            if (rs.next()) {
-                 FYSApp.getInstance().showPanel(new EmployeeFront());
+            if (rs.next() ) {
+                FYSApp.getInstance().showPanel(new EmployeeFront());
                 dispose();
-            } //            else if(rs.next()){
-            //            new about().setVisible(true);
-            //                dispose();
-            //            }
-            else {
+            } else if (rs.next()) {
+                FYSApp.getInstance().showPanel(new ManagerFront());
+                dispose();
+            }  else if (rs.next()) {
+                FYSApp.getInstance().showPanel(new AdminFront());
+                dispose();
+            }
+                    else {
                 JOptionPane.showMessageDialog(null, "Please try again");
             }
         } catch (Exception e) {
