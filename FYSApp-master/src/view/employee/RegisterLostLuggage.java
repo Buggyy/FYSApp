@@ -6,7 +6,7 @@
 package view.employee;
 
 import main.FYSApp;
-import view.LoginScreen1;
+import view.LoginScreen;
 
 /**
  *

@@ -1,7 +1,7 @@
 package view.admin;
 
 import main.FYSApp;
-import view.LoginScreen1;
+import view.LoginScreen;
 
 /**
  *
