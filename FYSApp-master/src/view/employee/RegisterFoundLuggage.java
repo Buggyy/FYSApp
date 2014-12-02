@@ -5,6 +5,17 @@
  */
 package view.employee;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -19,6 +30,11 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
      */
     public RegisterFoundLuggage() {
         initComponents();
+        
+        final String JDBC_DRIVER="com.mysql.jdbc.Driver";
+        final String DB_URL = "jdbc:mysql://localhost:3306/zoekjekoffer";
+        final String USER="root";
+        final String PASS="qwallie1";
     }
 
     /**
@@ -44,6 +60,8 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         btn_back = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -66,7 +84,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        panel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 190, -1));
+        panel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 190, -1));
 
         jTextField2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +92,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
                 jTextField2ActionPerformed(evt);
             }
         });
-        panel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 50, -1));
+        panel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 50, -1));
 
         jTextField3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -108,11 +126,15 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("KG");
-        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
+        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
 
         btn_submit_found_luggage.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn_submit_found_luggage.setText("SUBMIT");
-        btn_submit_found_luggage.setEnabled(false);
+        btn_submit_found_luggage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_submit_found_luggageMouseClicked(evt);
+            }
+        });
         btn_submit_found_luggage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_submit_found_luggageActionPerformed(evt);
@@ -144,6 +166,18 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        panel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 100, -1));
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Luggage ID");
+        panel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
@@ -179,7 +213,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void btn_submit_found_luggageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_found_luggageActionPerformed
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_btn_submit_found_luggageActionPerformed
 
     private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
@@ -190,6 +224,52 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         FYSApp.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_btn_backActionPerformed
 
+    private void btn_submit_found_luggageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submit_found_luggageMouseClicked
+        updateSQL();
+        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+    }//GEN-LAST:event_btn_submit_found_luggageMouseClicked
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    public void updateSQL(){
+        //Date date = new Date();
+        //String dateString = date.toLocaleString();
+        //java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+
+    try
+        
+    {
+        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+        String sql="INSERT INTO luggage (luggageid,status,weight,brand,description) VALUES (?,'found',?,?,?)";
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = DatabaseManager.openConnection();
+        Statement statement = connection.createStatement();
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, jTextField4.getText());
+        preparedStatement.setString(2, jTextField2.getText());
+        preparedStatement.setString(3, jTextField1.getText());
+        preparedStatement.setString(4, jTextField3.getText());
+        //preparedStatement.setTimestamp(3, date);
+        preparedStatement.executeUpdate();
+        
+        //Statement statement = connection.createStatement();
+
+        //statement.executeUpdate(sql);
+
+        //ResultSet resultSet = statement.executeQuery("SELECT Name FROM ComputerStatus");
+        
+        connection.close();
+      
+
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+        
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
@@ -203,9 +283,11 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }

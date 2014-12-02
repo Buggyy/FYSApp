@@ -37,6 +37,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -161,6 +162,9 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
 
+        jLabel4.setForeground(new java.awt.Color(51, 255, 255));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 300, 30));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -213,6 +217,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
