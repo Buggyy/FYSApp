@@ -179,7 +179,7 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 650));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 650));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 650));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 610));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

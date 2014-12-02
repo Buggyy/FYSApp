@@ -74,7 +74,7 @@ public class AdminFront extends javax.swing.JPanel {
         jLabel1.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 610));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1020, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

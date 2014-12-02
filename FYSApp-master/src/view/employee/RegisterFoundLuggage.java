@@ -134,7 +134,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
                 btn_backActionPerformed(evt);
             }
         });
-        panel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 533, 100, 50));
+        panel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));

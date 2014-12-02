@@ -51,7 +51,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 533, 100, 50));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
         jButton2.setText("LOST");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +59,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 100, 50));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
 
         jButton3.setText("Logout");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
