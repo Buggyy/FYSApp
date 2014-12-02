@@ -31,6 +31,9 @@ public class AdminFront extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 255));
+        setMaximumSize(new java.awt.Dimension(1024, 650));
+        setMinimumSize(new java.awt.Dimension(1024, 650));
+        setPreferredSize(new java.awt.Dimension(1024, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton4.setText("Logout");
@@ -39,12 +42,12 @@ public class AdminFront extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 90, 30));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, 90, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("User");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 50, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 50, 30));
 
         jButton6.setText("OVERVIEW");
         jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -53,7 +56,7 @@ public class AdminFront extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 230, 50));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 230, 50));
 
         jButton7.setText("DELETED");
         jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -63,7 +66,7 @@ public class AdminFront extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 230, 50));
+        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 230, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
