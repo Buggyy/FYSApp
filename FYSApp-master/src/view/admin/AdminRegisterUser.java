@@ -5,6 +5,9 @@
  */
 package view.admin;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
@@ -222,7 +225,13 @@ public class AdminRegisterUser extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        FYSApp.getInstance().showPanel(new AdminUsers());
+        try {
+            FYSApp.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -1,5 +1,8 @@
 package view.admin;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -99,7 +102,13 @@ public class AdminFront extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        FYSApp.getInstance().showPanel(new AdminUsers());
+        try {
+            FYSApp.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
