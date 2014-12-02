@@ -32,7 +32,7 @@ public final class FYSApp {
      * Define frame width, height and name
      */
     public static final int FRAME_WIDTH = 1024;
-    public static final int FRAME_HEIGHT = 650;
+    public static final int FRAME_HEIGHT = 600;
     public static final String NAME = "Zoek juh köffer";
     /**
      * static fonts which are used within the application

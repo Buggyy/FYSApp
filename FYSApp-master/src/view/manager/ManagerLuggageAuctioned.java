@@ -57,7 +57,7 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
                 jButton10ActionPerformed(evt);
             }
         });
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 533, 100, 50));
+        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 100, 50));
 
         jButton3.setText("Logout");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +75,7 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 100, 50));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
 
         jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jButton4.setText("AUCTIONED");
