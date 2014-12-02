@@ -108,8 +108,8 @@ public class LostLuggageOverview extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Lost Luggage Overview");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 260, 33));
+        jLabel2.setText("Lost Luggage Overview - Employee");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 360, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
