@@ -84,7 +84,13 @@ public class EmployeeFront extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        try {
+            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

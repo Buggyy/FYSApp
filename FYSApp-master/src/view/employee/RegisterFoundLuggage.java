@@ -15,6 +15,8 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.FYSApp;
 import view.LoginScreen;
@@ -25,16 +27,16 @@ import view.LoginScreen;
  */
 public class RegisterFoundLuggage extends javax.swing.JPanel {
 
+    //ResultSet rs = null;
+    //PreparedStatement pst = null;
     /**
      * Creates new form AddUser
      */
     public RegisterFoundLuggage() {
         initComponents();
+        // Always declare first. (nullpointerexception H8 guys)
+        Connection conn = null;
         
-        final String JDBC_DRIVER="com.mysql.jdbc.Driver";
-        final String DB_URL = "jdbc:mysql://localhost:3306/zoekjekoffer";
-        final String USER="root";
-        final String PASS="qwallie1";
     }
 
     /**
@@ -60,8 +62,6 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         btn_back = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -167,18 +167,6 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        panel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 100, -1));
-
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Luggage ID");
-        panel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
         panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
@@ -221,55 +209,36 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        try {
+            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_submit_found_luggageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submit_found_luggageMouseClicked
-        updateSQL();
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        // Get de input van de user in de textfields en stopt dit
+        // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
+        // methode zodat de koffer geregistreerd wordt. :D
+        
+        String getText1 = jTextField2.getText(); // weight
+        String getText2 = jTextField1.getText(); // brand
+        String getText3 = jTextField3.getText(); // description
+        String status = "'found'";
+        
+        model.Luggage.addLuggage(getText1,getText2,getText3,status);
+        
+        try {
+            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_submit_found_luggageMouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    public void updateSQL(){
-        //Date date = new Date();
-        //String dateString = date.toLocaleString();
-        //java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-
-    try
-        
-    {
-        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-        String sql="INSERT INTO luggage (luggageid,status,weight,brand,description) VALUES (?,'found',?,?,?)";
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DatabaseManager.openConnection();
-        Statement statement = connection.createStatement();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, jTextField4.getText());
-        preparedStatement.setString(2, jTextField2.getText());
-        preparedStatement.setString(3, jTextField1.getText());
-        preparedStatement.setString(4, jTextField3.getText());
-        //preparedStatement.setTimestamp(3, date);
-        preparedStatement.executeUpdate();
-        
-        //Statement statement = connection.createStatement();
-
-        //statement.executeUpdate(sql);
-
-        //ResultSet resultSet = statement.executeQuery("SELECT Name FROM ComputerStatus");
-        
-        connection.close();
-      
-
-    }
-    catch (Exception e)
-    {
-        e.printStackTrace();
-        
-    }
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
@@ -283,11 +252,9 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }

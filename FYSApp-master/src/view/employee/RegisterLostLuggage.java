@@ -5,6 +5,13 @@
  */
 package view.employee;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -127,7 +134,6 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
         jButton6.setText("SUBMIT");
-        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -300,7 +306,24 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+
+        // Get de input van de user in de textfields en stopt dit
+        // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
+        // methode zodat de koffer geregistreerd wordt. :D
+        String getText1 = jTextField8.getText(); // weight
+        String getText2 = jTextField1.getText(); // brand
+        String getText3 = jTextField9.getText(); // description
+        String status = "'lost'";
+        
+        model.Luggage.addLuggage(getText1,getText2,getText3,status);
+        
+        try {
+            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -344,10 +367,16 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField15ActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        try {
+            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_backActionPerformed
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private java.awt.Canvas canvas1;
