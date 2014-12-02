@@ -215,6 +215,9 @@ public class AdminRegisterUser extends javax.swing.JPanel {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
+        jLabel4.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel4.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel4.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
 

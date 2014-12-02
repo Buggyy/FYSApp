@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.employee;
+package view.admin;
 
 import main.FYSApp;
 import view.LoginScreen;
+import view.employee.FoundLuggageOverview;
 
 /**
  *
- * @author Team 1 IS106
+ * @author Lars
  */
-public class RegisterFoundLuggage extends javax.swing.JPanel {
+public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
 
     /**
-     * Creates new form AddUser
+     * Creates new form AdminRegisterFoundLuggage
      */
-    public RegisterFoundLuggage() {
+    public AdminRegisterFoundLuggage() {
         initComponents();
     }
 
@@ -30,6 +31,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         panel1 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -46,9 +48,10 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(1024, 600));
-        setMinimumSize(new java.awt.Dimension(1024, 600));
-        setPreferredSize(new java.awt.Dimension(1024, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1024, 600));
 
         panel1.setBackground(new java.awt.Color(255, 102, 102));
         panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -57,8 +60,8 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Register Found Luggage - Employee");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 380, 40));
+        jLabel2.setText("Register Found Luggage - Admin");
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 340, 40));
 
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -147,28 +150,25 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel7.setText("jLabel7");
-        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
+        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_clearActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -177,6 +177,10 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     private void btn_submit_found_luggageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_found_luggageActionPerformed
         // TODO add your handling code here:
@@ -187,7 +191,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_logoutActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        FYSApp.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_btn_backActionPerformed
 
 
@@ -203,6 +207,7 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

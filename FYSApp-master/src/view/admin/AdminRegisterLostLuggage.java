@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.employee;
+package view.admin;
 
 import main.FYSApp;
 import view.LoginScreen;
 
 /**
  *
- * @author Gebruiker
+ * @author Lars
  */
-public class RegisterLostLuggage extends javax.swing.JPanel {
+public class AdminRegisterLostLuggage extends javax.swing.JPanel {
 
     /**
-     * Creates new form RegisterLostLuggage
+     * Creates new form AdminRegisterLuggage
      */
-    public RegisterLostLuggage() {
+    public AdminRegisterLostLuggage() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        canvas1 = new java.awt.Canvas();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -65,15 +65,17 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
         btn_back = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 102, 102));
-        setMaximumSize(new java.awt.Dimension(1024, 600));
-        setMinimumSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Contact details");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 230, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 230, 30));
 
         jButton4.setText("Logout");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -81,17 +83,17 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Register Lost Luggage - Employee");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 360, 30));
+        jLabel3.setText("Register Lost Luggage - Admin");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 310, 30));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Brand");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +101,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, -1));
 
         jTextField8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -107,24 +109,24 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField8ActionPerformed(evt);
             }
         });
-        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("KG");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
             }
         });
-        add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 340, 190));
+        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 340, 190));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Description");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
         jButton6.setText("SUBMIT");
         jButton6.setEnabled(false);
@@ -133,7 +135,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 130, 60));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 130, 60));
 
         jButton8.setText("CLEAR");
         jButton8.setEnabled(false);
@@ -142,12 +144,12 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jButton8ActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 130, 60));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 130, 60));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Firstname");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
 
         jTextField5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +157,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField5ActionPerformed(evt);
             }
         });
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 190, -1));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 190, -1));
 
         jTextField6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -163,12 +165,12 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField6ActionPerformed(evt);
             }
         });
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 190, -1));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Middlename");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
 
         jTextField7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -176,12 +178,12 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField7ActionPerformed(evt);
             }
         });
-        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 190, -1));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 190, -1));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Lastname");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
 
         jTextField10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
@@ -189,17 +191,17 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField10ActionPerformed(evt);
             }
         });
-        add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 190, -1));
+        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 190, -1));
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Phonenumber");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Email");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, -1, -1));
 
         jTextField11.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +209,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField11ActionPerformed(evt);
             }
         });
-        add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 190, -1));
+        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 190, -1));
 
         jTextField12.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
@@ -215,17 +217,17 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField12ActionPerformed(evt);
             }
         });
-        add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 190, 20));
+        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 190, 20));
 
         jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Address");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, -1, 20));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, -1, 20));
 
         jLabel13.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("City");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, 20));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, 20));
 
         jTextField13.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField13.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +235,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField13ActionPerformed(evt);
             }
         });
-        add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 190, 20));
+        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 190, 20));
 
         jTextField14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
@@ -241,17 +243,17 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField14ActionPerformed(evt);
             }
         });
-        add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 130, 20));
+        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 130, 20));
 
         jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("State");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, 20));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, 20));
 
         jLabel15.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Zipcode");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, -1, 20));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, -1, 20));
 
         jTextField15.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField15.addActionListener(new java.awt.event.ActionListener() {
@@ -259,16 +261,16 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField15ActionPerformed(evt);
             }
         });
-        add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 190, 20));
+        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 190, 20));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Weight");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
         btn_back.setText("BACK");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -276,11 +278,13 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 btn_backActionPerformed(evt);
             }
         });
-        add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel17.setText("jLabel17");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -344,13 +348,12 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField15ActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        FYSApp.getInstance().showPanel(new AdminLuggageLost());
     }//GEN-LAST:event_btn_backActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
-    private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
@@ -371,6 +374,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;

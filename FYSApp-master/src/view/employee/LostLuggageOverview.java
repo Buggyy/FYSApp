@@ -39,7 +39,7 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 102, 102));
+        setBackground(new java.awt.Color(0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setName(""); // NOI18N
@@ -70,7 +70,7 @@ public class LostLuggageOverview extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 480, 80, 40));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 80, 40));
 
         jButton2.setText("FOUND");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class LostLuggageOverview extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 80, 40));
 
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField1.setText("Enter keywords");
@@ -164,7 +164,10 @@ public class LostLuggageOverview extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

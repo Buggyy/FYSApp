@@ -132,8 +132,8 @@ public class AdminUsers extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Users Overview");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 170, 33));
+        jLabel2.setText("Users Overview- Admin");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 270, 33));
 
         jButton4.setText("REGISTER NEW USER");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +145,9 @@ public class AdminUsers extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
 
