@@ -3,9 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view.admin;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -18,8 +25,42 @@ public class AdminUsers extends javax.swing.JPanel {
     /**
      * Creates new form AdminUsers
      */
-    public AdminUsers() {
+    public AdminUsers() throws ClassNotFoundException, SQLException {
         initComponents();
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
+
+        Statement state = con.createStatement();
+
+        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.owner;");
+
+        ResultSetMetaData rsmetadata = rs.getMetaData();
+
+        int columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        userTable.setModel(dtm);
     }
 
     /**
@@ -37,7 +78,7 @@ public class AdminUsers extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        userTable = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -88,8 +129,8 @@ public class AdminUsers extends javax.swing.JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
-        jTable2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        userTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -108,7 +149,7 @@ public class AdminUsers extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(userTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 590, 340));
 
@@ -132,8 +173,8 @@ public class AdminUsers extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Users Overview");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 170, 33));
+        jLabel2.setText("Users Overview- Admin");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 270, 33));
 
         jButton4.setText("REGISTER NEW USER");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -145,11 +186,14 @@ public class AdminUsers extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       FYSApp.getInstance().showPanel(new AdminFront());
+        FYSApp.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -188,7 +232,7 @@ public class AdminUsers extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 }

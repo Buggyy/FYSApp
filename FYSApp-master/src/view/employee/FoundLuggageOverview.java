@@ -71,12 +71,12 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Found Luggage Overview");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 260, 33));
+        jLabel2.setText("Found Luggage Overview - Employee");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 410, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
 
         jButton1.setText("SEARCH");
         jButton1.setEnabled(false);
@@ -85,7 +85,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 100, 40));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 100, 40));
 
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField1.setText("Enter keywords");
@@ -94,7 +94,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 150, -1));
+        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 150, -1));
 
         jButton4.setText("REGISTER FOUND LUGGAGE");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 80, 40));
 
         jButton6.setText("DELETE");
         jButton6.setEnabled(false);
@@ -120,7 +120,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 480, 80, 40));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
 
         jTable2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -159,10 +159,13 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
     }// </editor-fold>//GEN-END:initComponents
 

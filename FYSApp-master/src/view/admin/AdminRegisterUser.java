@@ -5,6 +5,9 @@
  */
 package view.admin;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
@@ -215,11 +218,20 @@ public class AdminRegisterUser extends javax.swing.JPanel {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
+        jLabel4.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel4.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel4.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        FYSApp.getInstance().showPanel(new AdminUsers());
+        try {
+            FYSApp.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
