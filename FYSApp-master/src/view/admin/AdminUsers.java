@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package view.admin;
 
 import java.sql.Connection;
@@ -28,15 +27,11 @@ public class AdminUsers extends javax.swing.JPanel {
      */
     public AdminUsers() throws ClassNotFoundException, SQLException {
         initComponents();
-//        Class.forName("com.mysql.jdbc");
-//
-//        //  Connect to an MySQL Database, run query, get result set
-//        String url = "jdbc:mysql://localhost:3306;databaseName=DBSJ;user=root;password=neee";
+
         Class.forName("com.mysql.jdbc.Driver");
-        
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
-//
-        
+
+        Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
+
         Statement state = con.createStatement();
 
         ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.owner;");
@@ -64,10 +59,9 @@ public class AdminUsers extends javax.swing.JPanel {
             }
             dtm.addRow(data_rows);
         }
-        
+
         userTable.setModel(dtm);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,7 +193,7 @@ public class AdminUsers extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       FYSApp.getInstance().showPanel(new AdminFront());
+        FYSApp.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
