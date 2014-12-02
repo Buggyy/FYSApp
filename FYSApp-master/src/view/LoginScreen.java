@@ -216,7 +216,7 @@ public class LoginScreen extends javax.swing.JPanel {
                     
                 }
             } else {
-                jLabel1.setText("Please try again");
+                jLabel1.setText("Wrong Username/Password - Please try again");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
