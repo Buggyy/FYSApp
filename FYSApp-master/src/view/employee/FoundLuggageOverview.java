@@ -1,5 +1,15 @@
 package view.employee;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -12,8 +22,41 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     /**
      * Creates new form FoundLuggageOverview
      */
-    public FoundLuggageOverview() {
+    public FoundLuggageOverview() throws ClassNotFoundException, SQLException {
         initComponents();
+        Class.forName("com.mysql.jdbc.Driver");
+
+        Connection con = DatabaseManager.openConnection();
+
+        Statement state = con.createStatement();
+
+        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.luggage WHERE status = 'found';");
+
+        ResultSetMetaData rsmetadata = rs.getMetaData();
+
+        int columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        found_luggage_overview.setModel(dtm);
     }
 
     /**
@@ -36,7 +79,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        found_luggage_overview = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -122,8 +165,8 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         });
         add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
 
-        jTable2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        found_luggage_overview.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        found_luggage_overview.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -157,7 +200,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(found_luggage_overview);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
 
@@ -174,7 +217,13 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        try {
+            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -203,6 +252,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable found_luggage_overview;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -214,7 +264,6 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

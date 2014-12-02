@@ -6,6 +6,9 @@
 
 package view.employee;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JMenuBar;
 import main.FYSApp;
 import view.LoginScreen;
@@ -86,7 +89,13 @@ public class EmployeeFront extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        try {
+            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
