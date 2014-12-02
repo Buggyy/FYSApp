@@ -5,6 +5,7 @@
  */
 package view.admin;
 
+import connectivity.DatabaseManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -30,7 +31,7 @@ public class AdminUsers extends javax.swing.JPanel {
 
         Class.forName("com.mysql.jdbc.Driver");
 
-        Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
+        Connection con = DatabaseManager.openConnection();
 
         Statement state = con.createStatement();
 
