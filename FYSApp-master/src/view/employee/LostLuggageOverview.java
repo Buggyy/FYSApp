@@ -1,5 +1,13 @@
 package view.employee;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -12,8 +20,42 @@ public class LostLuggageOverview extends javax.swing.JPanel {
     /**
      * Creates new form LostLuggageOverview
      */
-    public LostLuggageOverview() {
+    public LostLuggageOverview() throws ClassNotFoundException, SQLException {
         initComponents();
+        
+        Class.forName("com.mysql.jdbc.Driver");
+
+        Connection con = DatabaseManager.openConnection();
+
+        Statement state = con.createStatement();
+
+        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.luggage WHERE status = 'lost';");
+
+        ResultSetMetaData rsmetadata = rs.getMetaData();
+
+        int columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        lost_luggage_overview.setModel(dtm);
     }
 
     /**
@@ -35,7 +77,7 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        lost_luggage_overview = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -115,8 +157,8 @@ public class LostLuggageOverview extends javax.swing.JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
-        jTable2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        lost_luggage_overview.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lost_luggage_overview.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -150,7 +192,7 @@ public class LostLuggageOverview extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(lost_luggage_overview);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 590, 340));
 
@@ -215,7 +257,7 @@ public class LostLuggageOverview extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable lost_luggage_overview;
     // End of variables declaration//GEN-END:variables
 }
