@@ -53,7 +53,7 @@ public class LoginScreen extends javax.swing.JPanel {
         txt_password = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -158,12 +158,9 @@ public class LoginScreen extends javax.swing.JPanel {
 
         add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setMaximumSize(new java.awt.Dimension(1024, 600));
-        jLabel2.setMinimumSize(new java.awt.Dimension(1024, 600));
-        jLabel2.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1070, 650));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1020, 650));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
@@ -225,7 +222,7 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnl_login;
     private javax.swing.JPasswordField txt_password;
