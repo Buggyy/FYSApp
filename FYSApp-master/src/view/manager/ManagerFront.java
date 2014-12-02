@@ -1,6 +1,7 @@
 package view.manager;
 
 import main.FYSApp;
+import view.LoginScreen;
 
 /**
  *
@@ -28,6 +29,7 @@ public class ManagerFront extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 153, 0));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -66,6 +68,14 @@ public class ManagerFront extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Luggage");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 80, 30));
+
+        jButton4.setText("Logout");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -81,10 +91,15 @@ public class ManagerFront extends javax.swing.JPanel {
         FYSApp.getInstance().showPanel(new ManagerLuggageFound());
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        FYSApp.getInstance().showPanel(new LoginScreen());
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
