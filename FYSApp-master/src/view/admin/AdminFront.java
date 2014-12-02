@@ -29,11 +29,12 @@ public class AdminFront extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
-        setMaximumSize(new java.awt.Dimension(1024, 650));
-        setMinimumSize(new java.awt.Dimension(1024, 650));
-        setPreferredSize(new java.awt.Dimension(1024, 650));
+        setMaximumSize(new java.awt.Dimension(1024, 600));
+        setMinimumSize(new java.awt.Dimension(1024, 600));
+        setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton4.setText("Logout");
@@ -67,6 +68,13 @@ public class AdminFront extends javax.swing.JPanel {
             }
         });
         add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 230, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1024, 600));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -86,6 +94,7 @@ public class AdminFront extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
