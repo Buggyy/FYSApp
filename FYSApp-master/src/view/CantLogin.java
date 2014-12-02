@@ -41,6 +41,7 @@ public class CantLogin extends JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1024, 600));
         jPanel1.setPreferredSize(new java.awt.Dimension(368, 193));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -83,7 +84,7 @@ public class CantLogin extends JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -92,11 +93,12 @@ public class CantLogin extends JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 172, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 172, 370, 190));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         jLabel4.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel4.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel4.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
     }// </editor-fold>//GEN-END:initComponents
