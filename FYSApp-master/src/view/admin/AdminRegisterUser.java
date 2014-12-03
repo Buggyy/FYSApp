@@ -40,11 +40,6 @@ public class AdminRegisterUser extends javax.swing.JPanel {
             jComboBox2.addItem(fgt.get(i));
         }
         
-        String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-        //System.out.println(date);
-        // Add Airports to the second combobox.
-        // Moet nog worden gedaan.
-        
     }
 
     /**

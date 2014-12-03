@@ -223,12 +223,12 @@ public class RegisterFoundLuggage extends javax.swing.JPanel {
         // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
         // methode zodat de koffer geregistreerd wordt. :D
         
-        String getText1 = jTextField2.getText(); // weight
-        String getText2 = jTextField1.getText(); // brand
-        String getText3 = jTextField3.getText(); // description
-        String status = "'found'";
+        String weight = jTextField2.getText(); // weight
+        String brand = jTextField1.getText(); // brand
+        String description = jTextField3.getText(); // description
+        String status = "found";
         
-        model.Luggage.addLuggage(getText1,getText2,getText3,status);
+        model.Luggage.addLuggage(weight,brand,description,status,"");
         
         try {
             FYSApp.getInstance().showPanel(new FoundLuggageOverview());

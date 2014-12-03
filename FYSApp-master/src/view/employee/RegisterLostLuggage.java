@@ -70,6 +70,8 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_back = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField16 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -221,12 +223,12 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField12ActionPerformed(evt);
             }
         });
-        add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 190, 20));
+        add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 190, 20));
 
         jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Address");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, -1, 20));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, -1, 20));
 
         jLabel13.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,7 +241,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField13ActionPerformed(evt);
             }
         });
-        add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 190, 20));
+        add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 190, 20));
 
         jTextField14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField14.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +249,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField14ActionPerformed(evt);
             }
         });
-        add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 130, 20));
+        add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, 130, 20));
 
         jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,7 +267,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
                 jTextField15ActionPerformed(evt);
             }
         });
-        add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 190, 20));
+        add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 190, 20));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -283,6 +285,19 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
             }
         });
         add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+
+        jLabel18.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Country ");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, 20));
+
+        jTextField16.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField16ActionPerformed(evt);
+            }
+        });
+        add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 350, 190, 20));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel17.setText("jLabel17");
@@ -310,12 +325,26 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
         // Get de input van de user in de textfields en stopt dit
         // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
         // methode zodat de koffer geregistreerd wordt. :D
-        String getText1 = jTextField8.getText(); // weight
-        String getText2 = jTextField1.getText(); // brand
-        String getText3 = jTextField9.getText(); // description
-        String status = "'lost'";
+        String weight = jTextField8.getText(); // weight
+        String brand = jTextField1.getText(); // brand
+        String description = jTextField9.getText(); // description
+        String status = "lost";
+        String ownerid = (model.Owner.getOwnerid() +1) + "";
         
-        model.Luggage.addLuggage(getText1,getText2,getText3,status);
+        String firstName = jTextField5.getText(); // First Name
+        String middleName = jTextField6.getText(); // Middle Name
+        String lastName = jTextField7.getText(); // Last Name
+        String phone = jTextField10.getText(); // Phone number
+        String email = jTextField11.getText(); // Email
+        String country = jTextField16.getText(); // Country
+        String adress = jTextField13.getText(); // Adress
+        String city = jTextField12.getText(); // City
+        String state = jTextField15.getText(); // State
+        String zipCode = jTextField14.getText(); // Zip Code
+
+        model.Owner.addOwner(ownerid,firstName,middleName,lastName,phone,email,country,adress,city,state,zipCode);
+        
+        model.Luggage.addLuggage(weight,brand,description,status,ownerid);
         
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
@@ -376,6 +405,10 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_backActionPerformed
 
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
@@ -392,6 +425,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -407,6 +441,7 @@ public class RegisterLostLuggage extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

@@ -26,9 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class User {
     
         //System.out.println(date);
-    public static void addUser(String getInput1,String getInput2,
-            String getInput3,String getInput4,String getInput5,String getInput6,
-            String getInput7, String getInput8){
+    public static void addUser(String userName,String password,String role,String firstName,String middleName,String lastName,String email,String airport){
         // Method om een user toe te voegen aan de database.
         String date = main.FYSApp.getDate();
         int userid = getUserid() + 1;
@@ -39,15 +37,15 @@ public class User {
         Connection connection = DatabaseManager.openConnection();
         Statement statement = connection.createStatement();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, getInput1); // Username
-        preparedStatement.setString(2, getInput2); // Password
-        preparedStatement.setString(3, getInput3); // Role
-        preparedStatement.setString(4, getInput4); // First name
-        preparedStatement.setString(5, getInput5); // Middle name
-        preparedStatement.setString(6, getInput6); // Last name
-        preparedStatement.setString(7, getInput7); // Email
+        preparedStatement.setString(1, userName); // Username
+        preparedStatement.setString(2, password); // Password
+        preparedStatement.setString(3, role); // Role
+        preparedStatement.setString(4, firstName); // First name
+        preparedStatement.setString(5, middleName); // Middle name
+        preparedStatement.setString(6, lastName); // Last name
+        preparedStatement.setString(7, email); // Email
         preparedStatement.setString(8, date); // Created at
-        preparedStatement.setString(9, getInput8); // Airport
+        preparedStatement.setString(9, airport); // Airport
         preparedStatement.executeUpdate();
         
         //Statement statement = connection.createStatement();
