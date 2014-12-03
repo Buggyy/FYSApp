@@ -88,7 +88,7 @@ public class User {
     ///////////////////////////////////////////////////////////////////////////
     public static void addUser(String getInput1,String getInput2,
             String getInput3,String getInput4,String getInput5,String getInput6,
-            String getInput7){
+            String getInput7, String getInput8){
         // Timestamp moet nog mee worden gegeven, iemand kan dit fixen.
         
         //Date date = new Date();
@@ -109,7 +109,7 @@ public class User {
         preparedStatement.setString(5, getInput5); // Middle name
         preparedStatement.setString(6, getInput6); // Last name
         preparedStatement.setString(7, getInput7); // Email
-        //preparedStatement.setString(8, getInput8); // Airport
+        preparedStatement.setString(8, getInput8); // Airport
         preparedStatement.executeUpdate();
         
         //Statement statement = connection.createStatement();

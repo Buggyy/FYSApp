@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
+import view.employee.FoundLuggageOverview;
 
 /**
  * @version 1
@@ -30,6 +31,7 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         jComboBox1.addItem("employee");
         jComboBox1.addItem("manager");
         jComboBox1.addItem("admin");
+        jComboBox2.addItem("Schiphol");
         
         // Add Airports to the second combobox.
         // Moet nog worden gedaan.
@@ -224,7 +226,7 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "employee", "manager", "admin"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -264,14 +266,37 @@ public class AdminRegisterUser extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // Niks aan doen, ty x marijn.
+        
+        //String passwordMatch;
+        String pass = jTextField16.getText();
+        String passConfirm = jTextField17.getText();
+        String passMatch = "";
+        if (pass.equals(passConfirm)){
+            passMatch = pass;
+    } else {
+            //while (pass.compareTo(passConfirm) != 0){
+                //hier komt jlabel
+            //}
+        }
+        
+        
         String getText1 = jTextField8.getText(); // Username
-        String getText2 = jTextField6.getText(); // Password <<<<<
-        String getText3 = String.valueOf(jComboBox1.getSelectedItem()); // Role
+        String getText3 = String.valueOf(jComboBox1.getSelectedItem());// Role
         String getText4 = jTextField5.getText(); // First name
         String getText5 = jTextField6.getText(); // Middle name
         String getText6 = jTextField7.getText(); // Last name
         String getText7 = jTextField11.getText(); // Email
+        String getText8 = String.valueOf(jComboBox2.getSelectedItem());// Airport
         
+        model.User.addUser(getText1,pass,getText3,getText4,getText5,getText6,getText7,getText8);
+        
+        try {
+            FYSApp.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

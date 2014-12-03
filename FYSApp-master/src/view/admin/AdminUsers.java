@@ -35,7 +35,7 @@ public class AdminUsers extends javax.swing.JPanel {
 
         Statement state = con.createStatement();
 
-        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.owner;");
+        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.user;");
 
         ResultSetMetaData rsmetadata = rs.getMetaData();
 
