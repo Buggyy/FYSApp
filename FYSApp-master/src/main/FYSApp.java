@@ -6,6 +6,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -98,6 +100,11 @@ public final class FYSApp {
     //Database shutdown moet hierin nog toegevoegd worden
     private void shutdown() {
         mainWindow.dispose();
+    }
+    
+    public static String getDate(){
+        String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        return date;
     }
 
     /**
