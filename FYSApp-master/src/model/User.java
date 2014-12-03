@@ -10,32 +10,32 @@ import connectivity.DatabaseManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Rafael
+ * @author Marijn
  */
 public class User {
     
-        //System.out.println(date);
     public static void addUser(String userName,String password,String role,String firstName,String middleName,String lastName,String email,String airport){
         // Method om een user toe te voegen aan de database.
+        // Hij get de date en userid hier.
         String date = main.FYSApp.getDate();
         int userid = getUserid() + 1;
 
     try {
+        
+        // Query aanmaken, daarna connection maken.
+        // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
+        // en voert hij de query uit met de benodigde variabelen.
+        // Hij zet deze op de juiste plaats in de database.
+        
         String sql="INSERT INTO user (userid,username,password,role,firstname,middlename,lastname,email,created,airportname) VALUES ("+userid+",?,?,?,?,?,?,?,?,?)";
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DatabaseManager.openConnection();
-        Statement statement = connection.createStatement();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, userName); // Username
         preparedStatement.setString(2, password); // Password
@@ -48,12 +48,7 @@ public class User {
         preparedStatement.setString(9, airport); // Airport
         preparedStatement.executeUpdate();
         
-        //Statement statement = connection.createStatement();
-
-        //statement.executeUpdate(sql);
-
-        //ResultSet resultSet = statement.executeQuery("SELECT Name FROM ComputerStatus");
-        
+        // De connectie closen lol.
         connection.close();
       
 
@@ -65,19 +60,16 @@ public class User {
     }
 
 }
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
     public static int getUserid() {
-        // Method die zorgt dat de luggageID wordt gegenereerd.
+        // Method die zorgt dat de userID wordt gegenereerd.
 
         int userid = 0;
         try {
+            
+            // Query aanmaken, daarna connection maken.
+            // Daarna bereid ie de query voor, haalt hij de laatste userid 
+            // uit de database en returnt het.
+            
             String sql = "SELECT userid FROM user ORDER BY userid DESC LIMIT 0 , 1";
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DatabaseManager.openConnection();
@@ -85,6 +77,7 @@ public class User {
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
 
+            // While loop die zorgt dat de hoogste userid word gepakt.
             while (rs.next()) {
 
                 userid = rs.getInt(1);
@@ -99,18 +92,22 @@ public class User {
     ///////////////////////////////////////////////////////////////////////////
 
     public static ArrayList<String> getAirports() {
-        // Method die zorgt dat de luggageID wordt gegenereerd.
+        // Method die zorgt dat er een arraylist komt met alle airports erin.
 
         List<String> airports = new ArrayList<>();
 
         try {
+            // Query aanmaken, daarna connection maken.
+            // Daarna bereid ie de query voor, haalt de airports
+            // uit de database en returnt het.
             String sql = "SELECT airportname FROM zoekjekoffer.airport";
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DatabaseManager.openConnection();
-            Statement statement = connection.createStatement();
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-
+            
+            // While loop die zorgt dat alle airports uit de database 
+            // worden gehaald.
             while (rs.next()) {
                 airports.add(rs.getString("airportname"));
             }
