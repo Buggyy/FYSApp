@@ -5,19 +5,10 @@
  */
 package view.employee;
 
-import connectivity.DatabaseManager;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -27,8 +18,6 @@ import view.LoginScreen;
  */
 public class RegisterFoundLuggage extends javax.swing.JPanel {
 
-    //ResultSet rs = null;
-    //PreparedStatement pst = null;
     /**
      * Creates new form AddUser
      */

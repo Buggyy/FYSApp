@@ -28,7 +28,6 @@ public class Owner {
             // uit de database en returnt het.
             
             String sql = "SELECT ownerid FROM owner ORDER BY ownerid DESC LIMIT 0 , 1";
-            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DatabaseManager.openConnection();
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
@@ -58,7 +57,6 @@ public class Owner {
         // Hij zet deze op de juiste plaats in de database.
         
         String sql="INSERT INTO owner (ownerid,firstname,middlename,lastname,country,phonenumber,email,address,city,state,zipcode) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DatabaseManager.openConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, ownerId); // Userid

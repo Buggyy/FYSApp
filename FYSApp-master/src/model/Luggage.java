@@ -22,7 +22,6 @@ public class Luggage {
         // uit de database en returnt het.
         
         String sql = "SELECT luggageid FROM luggage ORDER BY luggageid DESC LIMIT 0 , 1";
-        Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DatabaseManager.openConnection();
         PreparedStatement pst = connection.prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
@@ -56,7 +55,6 @@ public class Luggage {
         // Hij zet deze op de juiste plaats in de database.
         
         String sql="INSERT INTO luggage (luggageid,status,created,weight,brand,description,ownerid) VALUES (?,?,?,?,?,?,?)";
-        Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DatabaseManager.openConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, luggageid);

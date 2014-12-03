@@ -10,7 +10,6 @@ import connectivity.DatabaseManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,8 +33,8 @@ public class User {
         // Hij zet deze op de juiste plaats in de database.
         
         String sql="INSERT INTO user (userid,username,password,role,firstname,middlename,lastname,email,created,airportname) VALUES ("+userid+",?,?,?,?,?,?,?,?,?)";
-        Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DatabaseManager.openConnection();
+        
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, userName); // Username
         preparedStatement.setString(2, password); // Password
@@ -71,9 +70,7 @@ public class User {
             // uit de database en returnt het.
             
             String sql = "SELECT userid FROM user ORDER BY userid DESC LIMIT 0 , 1";
-            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DatabaseManager.openConnection();
-            Statement statement = connection.createStatement();
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
 
@@ -101,7 +98,6 @@ public class User {
             // Daarna bereid ie de query voor, haalt de airports
             // uit de database en returnt het.
             String sql = "SELECT airportname FROM zoekjekoffer.airport";
-            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DatabaseManager.openConnection();
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
