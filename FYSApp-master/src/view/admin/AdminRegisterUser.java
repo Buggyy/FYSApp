@@ -18,12 +18,22 @@ import view.employee.EmployeeFront;
  * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
  */
 public class AdminRegisterUser extends javax.swing.JPanel {
+    
 
     /**
      * Creates new form UserOverview
      */
     public AdminRegisterUser() {
         initComponents();
+
+        // Add roles to the combobox.
+        jComboBox1.addItem("employee");
+        jComboBox1.addItem("manager");
+        jComboBox1.addItem("admin");
+        
+        // Add Airports to the second combobox.
+        // Moet nog worden gedaan.
+        
     }
 
     /**
@@ -58,6 +68,8 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
@@ -95,7 +107,6 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, 30));
 
         jButton6.setText("SUBMIT");
-        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -213,8 +224,21 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "employee", "manager", "admin"}));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 190, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 190, -1));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Airport");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 80, 20));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -239,7 +263,15 @@ public class AdminRegisterUser extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // Niks aan doen, ty x marijn.
+        String getText1 = jTextField8.getText(); // Username
+        String getText2 = jTextField6.getText(); // Password <<<<<
+        String getText3 = String.valueOf(jComboBox1.getSelectedItem()); // Role
+        String getText4 = jTextField5.getText(); // First name
+        String getText5 = jTextField6.getText(); // Middle name
+        String getText6 = jTextField7.getText(); // Last name
+        String getText7 = jTextField11.getText(); // Email
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -274,13 +306,22 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField17ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        //COMBOBOX NIGA
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
+
+    public String getSelectedCombo(){
+        return "noob";
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
@@ -290,6 +331,7 @@ public class AdminRegisterUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
