@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view.employee;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -17,7 +12,7 @@ import view.LoginScreen;
  *
  * @author Gebruiker
  */
-public class EmployeeFront extends javax.swing.JPanel {
+public class EmployeeFront extends JPanel {
 
     /**
      * Creates new form EmployeeFront
@@ -35,9 +30,9 @@ public class EmployeeFront extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        foundJButton = new javax.swing.JButton();
+        lostJButton = new javax.swing.JButton();
+        logoutJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -45,33 +40,33 @@ public class EmployeeFront extends javax.swing.JPanel {
         setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("FOUND");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        foundJButton.setBackground(new java.awt.Color(255, 255, 255));
+        foundJButton.setText("FOUND");
+        foundJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                foundJButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 170, 130));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 170, 130));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("LOST");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        lostJButton.setBackground(new java.awt.Color(255, 255, 255));
+        lostJButton.setText("LOST");
+        lostJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                lostJButtonActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 170, 130));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 170, 130));
 
-        jButton3.setText("Logout");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                logoutJButtonActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -82,7 +77,7 @@ public class EmployeeFront extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
 
         try {
             FYSApp.getInstance().showPanel(new FoundLuggageOverview());
@@ -91,9 +86,9 @@ public class EmployeeFront extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_foundJButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
 
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
@@ -102,18 +97,18 @@ public class EmployeeFront extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_lostJButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton logoutJButton;
+    private javax.swing.JButton lostJButton;
     // End of variables declaration//GEN-END:variables
 }

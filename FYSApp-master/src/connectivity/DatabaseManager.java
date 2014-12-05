@@ -20,7 +20,7 @@ public class DatabaseManager {
     public static Connection openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
             return conn;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -44,6 +44,7 @@ public class DatabaseManager {
      *
      * @param query, the SQl query
      */
+    // Maak hier preparedstatement van.
     public void executeQuery(String query) {
         try {
             Statement statement = conn.createStatement();
@@ -58,6 +59,7 @@ public class DatabaseManager {
      *
      * @param query, the SQL query
      */
+    // Maak hier preparedstatement van.
     public ResultSet doQuery(String query) {
         ResultSet result = null;
         try {

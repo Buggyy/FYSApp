@@ -1,6 +1,7 @@
 package main;
 
 import connectivity.DatabaseManager;
+import connectivity.QueryManager;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -45,6 +46,8 @@ public final class FYSApp {
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
 
     private JFrame mainWindow;
+    private DatabaseManager manager = new DatabaseManager();
+    private QueryManager qm = new QueryManager(manager);
 
     /**
      * singleton of the application
@@ -112,6 +115,10 @@ public final class FYSApp {
      */
     public static FYSApp getInstance() {
         return instance;
+    }
+    
+    public QueryManager getQueryManager() {
+        return qm;
     }
 
     public static void main(String args[]) {

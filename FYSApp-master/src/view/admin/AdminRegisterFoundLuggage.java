@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.admin;
 
+import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.FoundLuggageOverview;
@@ -13,7 +9,7 @@ import view.employee.FoundLuggageOverview;
  *
  * @author Lars
  */
-public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
+public class AdminRegisterFoundLuggage extends JPanel {
 
     /**
      * Creates new form AdminRegisterFoundLuggage
@@ -34,16 +30,16 @@ public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         panel1 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        brandJTextField = new javax.swing.JTextField();
+        weightJTextField = new javax.swing.JTextField();
+        descriptionJTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        btn_clear = new javax.swing.JButton();
+        clearJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btn_submit_found_luggage = new javax.swing.JButton();
-        btn_logout = new javax.swing.JButton();
-        btn_back = new javax.swing.JButton();
+        submitJButton = new javax.swing.JButton();
+        logoutJButton = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -63,45 +59,45 @@ public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
         jLabel2.setText("Register Found Luggage - Admin");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 340, 40));
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        brandJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        brandJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                brandJTextFieldActionPerformed(evt);
             }
         });
-        panel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 190, -1));
+        panel1.add(brandJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 190, -1));
 
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        weightJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        weightJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                weightJTextFieldActionPerformed(evt);
             }
         });
-        panel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 50, -1));
+        panel1.add(weightJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 50, -1));
 
-        jTextField3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        descriptionJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        descriptionJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                descriptionJTextFieldActionPerformed(evt);
             }
         });
-        panel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 340, 170));
+        panel1.add(descriptionJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 340, 170));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Description");
         panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
 
-        btn_clear.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btn_clear.setText("CLEAR");
-        btn_clear.setEnabled(false);
-        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
-        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+        clearJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        clearJButton.setText("CLEAR");
+        clearJButton.setEnabled(false);
+        clearJButton.setMinimumSize(new java.awt.Dimension(70, 25));
+        clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clearActionPerformed(evt);
+                clearJButtonActionPerformed(evt);
             }
         });
-        panel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, 130, 60));
+        panel1.add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 460, 130, 60));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,31 +109,31 @@ public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
         jLabel5.setText("KG");
         panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
 
-        btn_submit_found_luggage.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btn_submit_found_luggage.setText("SUBMIT");
-        btn_submit_found_luggage.setEnabled(false);
-        btn_submit_found_luggage.addActionListener(new java.awt.event.ActionListener() {
+        submitJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        submitJButton.setText("SUBMIT");
+        submitJButton.setEnabled(false);
+        submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_submit_found_luggageActionPerformed(evt);
+                submitJButtonActionPerformed(evt);
             }
         });
-        panel1.add(btn_submit_found_luggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 130, 60));
+        panel1.add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 130, 60));
 
-        btn_logout.setText("Logout");
-        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_logoutActionPerformed(evt);
+                logoutJButtonActionPerformed(evt);
             }
         });
-        panel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
-        btn_back.setText("BACK");
-        btn_back.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setText("BACK");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_backActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
-        panel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,40 +162,40 @@ public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void brandJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_brandJTextFieldActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void weightJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_weightJTextFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void descriptionJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_descriptionJTextFieldActionPerformed
 
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_clearActionPerformed
+    }//GEN-LAST:event_clearJButtonActionPerformed
 
-    private void btn_submit_found_luggageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_found_luggageActionPerformed
+    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_submit_found_luggageActionPerformed
+    }//GEN-LAST:event_submitJButtonActionPerformed
 
-    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
-    }//GEN-LAST:event_btn_logoutActionPerformed
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminLuggageFound());
-    }//GEN-LAST:event_btn_backActionPerformed
+    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_back;
-    private javax.swing.JButton btn_clear;
-    private javax.swing.JButton btn_logout;
-    private javax.swing.JButton btn_submit_found_luggage;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JTextField brandJTextField;
+    private javax.swing.JButton clearJButton;
+    private javax.swing.JTextField descriptionJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -208,9 +204,9 @@ public class AdminRegisterFoundLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton logoutJButton;
     private java.awt.Panel panel1;
+    private javax.swing.JButton submitJButton;
+    private javax.swing.JTextField weightJTextField;
     // End of variables declaration//GEN-END:variables
 }

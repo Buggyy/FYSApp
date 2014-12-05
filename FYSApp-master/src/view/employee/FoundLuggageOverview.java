@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
@@ -17,7 +18,7 @@ import view.LoginScreen;
  *
  * @author Daniel Stern IS 106
  */
-public class FoundLuggageOverview extends javax.swing.JPanel {
+public class FoundLuggageOverview extends JPanel {
 
     /**
      * Creates new form FoundLuggageOverview
@@ -56,7 +57,7 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
             dtm.addRow(data_rows);
         }
 
-        found_luggage_overview.setModel(dtm);
+        foundLuggageTable.setModel(dtm);
     }
 
     /**
@@ -68,18 +69,19 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton7 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
+        lostJButton = new javax.swing.JButton();
+        logoutJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        searchJButton = new javax.swing.JButton();
+        searchJTextField = new javax.swing.JTextField();
+        registerJButton = new javax.swing.JButton();
+        editJButton = new javax.swing.JButton();
+        deleteJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        found_luggage_overview = new javax.swing.JTable();
+        foundLuggageTable = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -88,29 +90,29 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton7.setText("BACK");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setText("BACK");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
-        jButton2.setText("LOST");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        lostJButton.setText("LOST");
+        lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                lostJButtonActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
 
-        jButton3.setText("Logout");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                logoutJButtonActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,52 +123,52 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
 
-        jButton1.setText("SEARCH");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchJButton.setText("SEARCH");
+        searchJButton.setEnabled(false);
+        searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchJButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 100, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 100, 40));
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField1.setText("Enter keywords");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        searchJTextField.setText("Enter keywords");
+        searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 150, -1));
 
-        jButton4.setText("REGISTER FOUND LUGGAGE");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        registerJButton.setText("REGISTER FOUND LUGGAGE");
+        registerJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                registerJButtonActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 210, 40));
 
-        jButton5.setText("EDIT");
-        jButton5.setEnabled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        editJButton.setText("EDIT");
+        editJButton.setEnabled(false);
+        editJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                editJButtonActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 80, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 80, 40));
 
-        jButton6.setText("DELETE");
-        jButton6.setEnabled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        deleteJButton.setText("DELETE");
+        deleteJButton.setEnabled(false);
+        deleteJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                deleteJButtonActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
+        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
 
-        found_luggage_overview.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        found_luggage_overview.setModel(new javax.swing.table.DefaultTableModel(
+        foundLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        foundLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -200,9 +202,12 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(found_luggage_overview);
+        jScrollPane2.setViewportView(foundLuggageTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
+
+        jLabel4.setForeground(new java.awt.Color(51, 255, 255));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 300, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -212,11 +217,11 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         FYSApp.getInstance().showPanel(new EmployeeFront());
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException ex) {
@@ -224,46 +229,47 @@ public class FoundLuggageOverview extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_lostJButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchJButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchJTextFieldActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_registerJButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_editJButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_deleteJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable found_luggage_overview;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton deleteJButton;
+    private javax.swing.JButton editJButton;
+    private javax.swing.JTable foundLuggageTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton logoutJButton;
+    private javax.swing.JButton lostJButton;
+    private javax.swing.JButton registerJButton;
+    private javax.swing.JButton searchJButton;
+    private javax.swing.JTextField searchJTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.admin;
 
+import javax.swing.JPanel;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,9 +17,9 @@ import view.employee.FoundLuggageOverview;
  * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
  */
-public class AdminRegisterUser extends javax.swing.JPanel {
-    
 
+public class AdminRegisterUser extends JPanel {
+    
     /**
      * Creates new form UserOverview
      */
@@ -31,15 +27,14 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         initComponents();
 
         // Add roles to the combobox.
-        jComboBox1.addItem("employee");
-        jComboBox1.addItem("manager");
-        jComboBox1.addItem("admin");
+        roleJComboBox.addItem("employee");
+        roleJComboBox.addItem("manager");
+        roleJComboBox.addItem("admin");
         
         ArrayList<String> fgt = model.User.getAirports();
         for (int i = 0; i < fgt.size(); i++) {
-            jComboBox2.addItem(fgt.get(i));
+            airportJComboBox.addItem(fgt.get(i));
         }
-        
     }
 
     /**
@@ -51,28 +46,28 @@ public class AdminRegisterUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton10 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
+        logoutJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        submitJButton = new javax.swing.JButton();
+        clearJButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        firstNameJTextField = new javax.swing.JTextField();
+        middleNameJTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        lastNameJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        emailJTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        userNameJTextField = new javax.swing.JTextField();
+        passJTextField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        roleJComboBox = new javax.swing.JComboBox();
+        airportJComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -82,23 +77,23 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton10.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton10.setText("BACK");
-        jButton10.setBorder(null);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        backJButton.setText("BACK");
+        backJButton.setBorder(null);
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 100, 50));
 
-        jButton3.setText("Logout");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                logoutJButtonActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 90, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,56 +105,56 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         jLabel3.setText("Register new user");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, 30));
 
-        jButton6.setText("SUBMIT");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        submitJButton.setText("SUBMIT");
+        submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                submitJButtonActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 130, 60));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 130, 60));
 
-        jButton8.setText("CLEAR");
-        jButton8.setEnabled(false);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        clearJButton.setText("CLEAR");
+        clearJButton.setEnabled(false);
+        clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                clearJButtonActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 130, 60));
+        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 130, 60));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Firstname");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        firstNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        firstNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                firstNameJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 190, -1));
+        add(firstNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 190, -1));
 
-        jTextField6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        middleNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        middleNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                middleNameJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 190, -1));
+        add(middleNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Middlename");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
-        jTextField7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        lastNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lastNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                lastNameJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, -1));
+        add(lastNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 190, -1));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,13 +166,13 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         jLabel11.setText("Email");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
 
-        jTextField11.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        emailJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        emailJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                emailJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 190, -1));
+        add(emailJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 190, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -188,21 +183,21 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         jLabel16.setText("Username");
         add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        jTextField8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        userNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        userNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                userNameJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 190, -1));
+        add(userNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 190, -1));
 
-        jTextField16.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        passJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        passJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                passJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 190, -1));
+        add(passJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 190, -1));
 
         jLabel17.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,17 +209,17 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         jLabel19.setText("Role");
         add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        roleJComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
+        roleJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                roleJComboBoxActionPerformed(evt);
             }
         });
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 190, -1));
+        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 190, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 190, -1));
+        airportJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
+        add(airportJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 190, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,7 +234,7 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException ex) {
@@ -247,24 +242,25 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+        
         // Zorgt dat de method addUser wordt aangeroepen en zo een
         // nieuwe gebruiker wordt toegevoegd aan de database.
         
-        String userName = jTextField8.getText(); // Username
-        String pass = jTextField16.getText(); // Password
-        String role = String.valueOf(jComboBox1.getSelectedItem());// Role
-        String firstName = jTextField5.getText(); // First name
-        String middleName = jTextField6.getText(); // Middle name
-        String lastName = jTextField7.getText(); // Last name
-        String email = jTextField11.getText(); // Email
-        String airport = String.valueOf(jComboBox2.getSelectedItem());// Airport
+        String userName = userNameJTextField.getText(); // Username
+        String pass = passJTextField.getText(); // Password
+        String role = String.valueOf(roleJComboBox.getSelectedItem());// Role
+        String firstName = firstNameJTextField.getText(); // First name
+        String middleName = middleNameJTextField.getText(); // Middle name
+        String lastName = lastNameJTextField.getText(); // Last name
+        String email = emailJTextField.getText(); // Email
+        String airport = String.valueOf(airportJComboBox.getSelectedItem());// Airport
         
         model.User.addUser(userName,pass,role,firstName,middleName,lastName,email,airport);
         
@@ -275,52 +271,51 @@ public class AdminRegisterUser extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_submitJButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_clearJButtonActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void firstNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_firstNameJTextFieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void middleNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_middleNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_middleNameJTextFieldActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void lastNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_lastNameJTextFieldActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void emailJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_emailJTextFieldActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void userNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_userNameJTextFieldActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void passJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_passJTextFieldActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void roleJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleJComboBoxActionPerformed
         // TODO add your handling code here:
         //COMBOBOX NIGA
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_roleJComboBoxActionPerformed
 
 
     public String getSelectedCombo(){
         return "noob";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox airportJComboBox;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton clearJButton;
+    private javax.swing.JTextField emailJTextField;
+    private javax.swing.JTextField firstNameJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
@@ -333,11 +328,12 @@ public class AdminRegisterUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField lastNameJTextField;
+    private javax.swing.JButton logoutJButton;
+    private javax.swing.JTextField middleNameJTextField;
+    private javax.swing.JTextField passJTextField;
+    private javax.swing.JComboBox roleJComboBox;
+    private javax.swing.JButton submitJButton;
+    private javax.swing.JTextField userNameJTextField;
     // End of variables declaration//GEN-END:variables
 }

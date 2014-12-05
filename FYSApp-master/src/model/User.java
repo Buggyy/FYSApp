@@ -18,76 +18,22 @@ import java.util.List;
  * @author Marijn
  */
 public class User {
+
+    private String userName;
+    private String pass;
+    private String role;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String email;
+    private String airport;
+ 
     
-    public static void addUser(String userName,String password,String role,String firstName,String middleName,String lastName,String email,String airport){
-        // Method om een user toe te voegen aan de database.
-        // Hij get de date en userid hier.
-        String date = main.FYSApp.getDate();
-        int userid = getUserid() + 1;
-
-    try {
-        
-        // Query aanmaken, daarna connection maken.
-        // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
-        // en voert hij de query uit met de benodigde variabelen.
-        // Hij zet deze op de juiste plaats in de database.
-        
-        String sql="INSERT INTO user (userid,username,password,role,firstname,middlename,lastname,email,created,airportname) VALUES ("+userid+",?,?,?,?,?,?,?,?,?)";
-        Connection connection = DatabaseManager.openConnection();
-        
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, userName); // Username
-        preparedStatement.setString(2, password); // Password
-        preparedStatement.setString(3, role); // Role
-        preparedStatement.setString(4, firstName); // First name
-        preparedStatement.setString(5, middleName); // Middle name
-        preparedStatement.setString(6, lastName); // Last name
-        preparedStatement.setString(7, email); // Email
-        preparedStatement.setString(8, date); // Created at
-        preparedStatement.setString(9, airport); // Airport
-        preparedStatement.executeUpdate();
-        
-        // De connectie closen lol.
-        connection.close();
-      
-
-    }
-    catch (Exception e)
-    {
-        e.printStackTrace();
-        
-    }
-
+public static void addUser(String userName,String pass,String role,String firstName,String middleName,String lastName,String email,String airport){
+    
 }
-    public static int getUserid() {
-        // Method die zorgt dat de userID wordt gegenereerd.
 
-        int userid = 0;
-        try {
-            
-            // Query aanmaken, daarna connection maken.
-            // Daarna bereid ie de query voor, haalt hij de laatste userid 
-            // uit de database en returnt het.
-            
-            String sql = "SELECT userid FROM user ORDER BY userid DESC LIMIT 0 , 1";
-            Connection connection = DatabaseManager.openConnection();
-            PreparedStatement pst = connection.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-
-            // While loop die zorgt dat de hoogste userid word gepakt.
-            while (rs.next()) {
-
-                userid = rs.getInt(1);
-            }
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-        return userid;
-    }
     ///////////////////////////////////////////////////////////////////////////
-
     public static ArrayList<String> getAirports() {
         // Method die zorgt dat er een arraylist komt met alle airports erin.
 
@@ -97,11 +43,11 @@ public class User {
             // Query aanmaken, daarna connection maken.
             // Daarna bereid ie de query voor, haalt de airports
             // uit de database en returnt het.
-            String sql = "SELECT airportname FROM zoekjekoffer.airport";
+            String sql = "SELECT airportname FROM airport";
             Connection connection = DatabaseManager.openConnection();
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            
+
             // While loop die zorgt dat alle airports uit de database 
             // worden gehaald.
             while (rs.next()) {
@@ -113,11 +59,73 @@ public class User {
             e.printStackTrace();
 
         }
-        
+
         return (ArrayList<String>) airports;
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAirport() {
+        return airport;
+    }
+
+    public void setAirport(String airport) {
+        this.airport = airport;
+    }
+
 }

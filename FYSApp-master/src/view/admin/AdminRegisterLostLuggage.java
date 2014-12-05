@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view.admin;
 
+import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -12,7 +8,7 @@ import view.LoginScreen;
  *
  * @author Lars
  */
-public class AdminRegisterLostLuggage extends javax.swing.JPanel {
+public class AdminRegisterLostLuggage extends JPanel {
 
     /**
      * Creates new form AdminRegisterLuggage
@@ -32,37 +28,37 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        logoutJButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        brandJTextField = new javax.swing.JTextField();
+        weightJTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        descriptionJTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        submitJButton = new javax.swing.JButton();
+        clearJButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        firstNameJTextField = new javax.swing.JTextField();
+        middleNameJTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        lastNameJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        phoneNrJTextField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        emailJTextField = new javax.swing.JTextField();
+        cityJTextField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
+        addressJTextField = new javax.swing.JTextField();
+        zipcodeJTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        stateJTextField = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btn_back = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,13 +73,13 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         jLabel2.setText("Contact details");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 230, 30));
 
-        jButton4.setText("Logout");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                logoutJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,103 +91,103 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         jLabel4.setText("Brand");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        brandJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        brandJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                brandJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, -1));
+        jPanel1.add(brandJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 190, -1));
 
-        jTextField8.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        weightJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        weightJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                weightJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
+        jPanel1.add(weightJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("KG");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        descriptionJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                descriptionJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 340, 190));
+        jPanel1.add(descriptionJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 340, 190));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Description");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
-        jButton6.setText("SUBMIT");
-        jButton6.setEnabled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        submitJButton.setText("SUBMIT");
+        submitJButton.setEnabled(false);
+        submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                submitJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 130, 60));
+        jPanel1.add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 130, 60));
 
-        jButton8.setText("CLEAR");
-        jButton8.setEnabled(false);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        clearJButton.setText("CLEAR");
+        clearJButton.setEnabled(false);
+        clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                clearJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 130, 60));
+        jPanel1.add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 130, 60));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Firstname");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        firstNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        firstNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                firstNameJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 190, -1));
+        jPanel1.add(firstNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 190, -1));
 
-        jTextField6.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        middleNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        middleNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                middleNameJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 190, -1));
+        jPanel1.add(middleNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 190, -1));
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Middlename");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
 
-        jTextField7.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        lastNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lastNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                lastNameJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 190, -1));
+        jPanel1.add(lastNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 190, -1));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Lastname");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
 
-        jTextField10.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        phoneNrJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        phoneNrJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                phoneNrJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 190, -1));
+        jPanel1.add(phoneNrJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 190, -1));
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,21 +199,21 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         jLabel11.setText("Email");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, -1, -1));
 
-        jTextField11.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        emailJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        emailJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                emailJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 190, -1));
+        jPanel1.add(emailJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 190, -1));
 
-        jTextField12.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+        cityJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        cityJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
+                cityJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 190, 20));
+        jPanel1.add(cityJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 190, 20));
 
         jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,21 +225,21 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         jLabel13.setText("City");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, 20));
 
-        jTextField13.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        addressJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        addressJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                addressJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 190, 20));
+        jPanel1.add(addressJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 190, 20));
 
-        jTextField14.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        zipcodeJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        zipcodeJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                zipcodeJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 130, 20));
+        jPanel1.add(zipcodeJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, 130, 20));
 
         jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -255,13 +251,13 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         jLabel15.setText("Zipcode");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, -1, 20));
 
-        jTextField15.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        stateJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        stateJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                stateJTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 190, 20));
+        jPanel1.add(stateJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, 190, 20));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,13 +268,13 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
-        btn_back.setText("BACK");
-        btn_back.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setText("BACK");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_backActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel17.setText("jLabel17");
@@ -287,76 +283,80 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void brandJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_brandJTextFieldActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void weightJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_weightJTextFieldActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void descriptionJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_descriptionJTextFieldActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_submitJButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_clearJButtonActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void firstNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_firstNameJTextFieldActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void middleNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_middleNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_middleNameJTextFieldActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void lastNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_lastNameJTextFieldActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void phoneNrJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNrJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_phoneNrJTextFieldActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void emailJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_emailJTextFieldActionPerformed
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+    private void cityJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
+    }//GEN-LAST:event_cityJTextFieldActionPerformed
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void addressJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_addressJTextFieldActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void zipcodeJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipcodeJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_zipcodeJTextFieldActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void stateJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_stateJTextFieldActionPerformed
 
-    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminLuggageLost());
-    }//GEN-LAST:event_btn_backActionPerformed
+    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_back;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JTextField addressJTextField;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JTextField brandJTextField;
+    private javax.swing.JTextField cityJTextField;
+    private javax.swing.JButton clearJButton;
+    private javax.swing.JTextField descriptionJTextField;
+    private javax.swing.JTextField emailJTextField;
+    private javax.swing.JTextField firstNameJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -375,17 +375,13 @@ public class AdminRegisterLostLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField lastNameJTextField;
+    private javax.swing.JButton logoutJButton;
+    private javax.swing.JTextField middleNameJTextField;
+    private javax.swing.JTextField phoneNrJTextField;
+    private javax.swing.JTextField stateJTextField;
+    private javax.swing.JButton submitJButton;
+    private javax.swing.JTextField weightJTextField;
+    private javax.swing.JTextField zipcodeJTextField;
     // End of variables declaration//GEN-END:variables
 }

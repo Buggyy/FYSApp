@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view.manager;
 
+import javax.swing.JPanel;
 import view.admin.*;
 import main.FYSApp;
 import view.LoginScreen;
@@ -15,7 +10,7 @@ import view.employee.EmployeeFront;
  *
  * @author Gebruiker
  */
-public class ManagerLuggageAuctioned extends javax.swing.JPanel {
+public class ManagerLuggageAuctioned extends JPanel {
 
     /**
      * Creates new form AdminAuctionedLuggage
@@ -33,80 +28,80 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton10 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
+        logoutJButton = new javax.swing.JButton();
+        statisticsJButton = new javax.swing.JButton();
+        auctionedJButton = new javax.swing.JButton();
+        foundJButton = new javax.swing.JButton();
+        lostJButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        searchJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        auctionedJTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 0));
         setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton10.setText("BACK");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setText("BACK");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
-        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 100, 50));
 
-        jButton3.setText("Logout");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                logoutJButtonActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton2.setText("STATISTICS");
-        jButton2.setEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        statisticsJButton.setText("STATISTICS");
+        statisticsJButton.setEnabled(false);
+        statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                statisticsJButtonActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
+        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
 
-        jButton4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton4.setText("AUCTIONED");
-        jButton4.setBorder(null);
-        jButton4.setEnabled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        auctionedJButton.setText("AUCTIONED");
+        auctionedJButton.setBorder(null);
+        auctionedJButton.setEnabled(false);
+        auctionedJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                auctionedJButtonActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 50));
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 50));
 
-        jButton7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton7.setText("FOUND");
-        jButton7.setBorder(null);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        foundJButton.setText("FOUND");
+        foundJButton.setBorder(null);
+        foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                foundJButtonActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 50));
 
-        jButton8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton8.setText("LOST");
-        jButton8.setBorder(null);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lostJButton.setText("LOST");
+        lostJButton.setBorder(null);
+        lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                lostJButtonActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 50));
 
         jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         jTextField1.setText("Enter keywords");
@@ -117,14 +112,14 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
         });
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
 
-        jButton1.setText("SEARCH");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchJButton.setText("SEARCH");
+        searchJButton.setEnabled(false);
+        searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchJButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 100, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 100, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -135,8 +130,8 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
         jLabel2.setText("Auctioned Luggage Overview");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 300, 33));
 
-        jTable2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        auctionedJTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        auctionedJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -170,7 +165,7 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(auctionedJTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 590, 340));
 
@@ -182,53 +177,53 @@ public class ManagerLuggageAuctioned extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 620));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
        FYSApp.getInstance().showPanel(new ManagerFront());
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
         FYSApp.getInstance().showPanel(new EmployeeFront());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_statisticsJButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_auctionedJButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
         FYSApp.getInstance().showPanel(new ManagerLuggageFound());
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_foundJButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         // TODO add your handling code here:
         FYSApp.getInstance().showPanel(new ManagerLuggageLost());
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton auctionedJButton;
+    private javax.swing.JTable auctionedJTable;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton logoutJButton;
+    private javax.swing.JButton lostJButton;
+    private javax.swing.JButton searchJButton;
+    private javax.swing.JButton statisticsJButton;
     // End of variables declaration//GEN-END:variables
 }

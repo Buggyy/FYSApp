@@ -1,9 +1,14 @@
 package connectivity;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Client;
+import model.Luggage;
+import model.User;
 
 public class QueryManager {
 
@@ -13,92 +18,109 @@ public class QueryManager {
         this.dbmanager = dbmanager;
     }
 
-    public String getCategoryName(int categoryId) {
-        String categoryName = "";
+     // Method die Luggage aan de database toevoegd. 
+    public static void addLuggage(Luggage luggage, int id) {
+       
+        String date = main.FYSApp.getDate();
+
+        String airportName = getAirportById(id);
+
         try {
-            String sql = "SELECT naam FROM categorie WHERE categorie_id='" + categoryId + "'";
-            ResultSet result = dbmanager.doQuery(sql);
-            while (result.next()) {
-                categoryName = result.getString("naam");
-            }
-        } catch (SQLException e) {
-            System.out.println(DatabaseManager.SQL_EXCEPTION + e.getMessage());
+            // Query aanmaken, daarna connection maken. 
+            // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
+            // en voert hij de query uit met de benodigde variabelen.
+            // Hij zet deze op de juiste plaats in de database.
+            //Aan t einde moet de connection altijd weer gesloten worden.
+
+            String sql = "INSERT INTO luggage (status, created, "
+                    + "brand, weight, description, ownerid,"
+                    + "airportname) VALUES (?,?,?,?,?,?,?)";
+            Connection connection = DatabaseManager.openConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, luggage.getStatus());
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, luggage.getBrand());
+            preparedStatement.setString(4, luggage.getWeight());
+            preparedStatement.setString(5, luggage.getDescription());
+            preparedStatement.setInt(6, id);
+            preparedStatement.setString(7, airportName);
+            preparedStatement.executeUpdate();
+
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
-        return categoryName;
+
     }
 
-//    public List<Category> getCategories() {
-//        List<Category> categories = new ArrayList<Category>();
-//        try {
-//            String sql = "SELECT * FROM categorie ORDER BY naam ASC";
-//            ResultSet result = dbmanager.doQuery(sql);
-//            while (result.next()) {
-//                Category category = new Category(result.getInt("categorie_id"),
-//                        result.getString("naam"),
-//                        result.getString("omschrijving"));
-//                categories.add(category);
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(DatabaseManager.SQL_EXCEPTION + e.getMessage());
-//        }
-//        return categories;
-//    }
-//
-//    public Product getProduct(int productId) {
-//        Product product = new Product();
-//        try {
-//            String sql = "SELECT * FROM product WHERE product_id='" + productId + "'";
-//            ResultSet result = dbmanager.doQuery(sql);
-//            if (result.next()) {
-//                product = new Product(result.getInt("product_id"),
-//                        result.getInt("categorie_id"),
-//                        result.getString("naam"),
-//                        result.getString("omschrijving"),
-//                        result.getDouble("prijs"));
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(DatabaseManager.SQL_EXCEPTION + e.getMessage());
-//        }
-//        return product;
-//    }
-//
-//    public List<Product> getProducts(int categoryId) {
-//        List<Product> products = new ArrayList<Product>();
-//        try {
-//            String sql = "SELECT * FROM product WHERE categorie_id='" + categoryId + "' ORDER BY naam ASC";
-//            ResultSet result = dbmanager.doQuery(sql);
-//            while (result.next()) {
-//                products.add(new Product(result.getInt("product_id"),
-//                        result.getInt("categorie_id"),
-//                        result.getString("naam"),
-//                        result.getString("omschrijving"),
-//                        result.getDouble("prijs")));
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(DatabaseManager.SQL_EXCEPTION + e.getMessage());
-//        }
-//        return products;
-//    }
-//
-//    public void setOrder(model.Basket basket, String naam, String adres,
-//            String postcode, String woonplaats, String opmerking, String betaalmethode) {
-//        String SQL_order = "INSERT INTO `order` (naam, adres, postcode, woonplaats, opmerking, betaalmethode, datum)"
-//                + " VALUES('" + naam + "', '" + adres + "', '" + postcode + "', '"
-//                + woonplaats + "', '" + opmerking + "', '" + betaalmethode + "', CURDATE() )";
-//        int order_id = 0;
-//        try {
-//            ResultSet result = dbmanager.insertQuery(SQL_order);
-//            result.next();
-//            order_id = result.getInt(1);
-//        } catch (SQLException e) {
-//            System.out.println("connectivity.QueryManager.setOrder() Exception:" + e.getMessage());
-//        }
-//        List<Product> products = basket.getProducts();
-//        for (Product product : products) {
-//            int product_id = product.getProductId();
-//            int aantal = basket.getProductAmount(product);
-//            String SQL_orderProduct = "INSERT INTO orderregel (product_id,order_id,aantal) VALUES (" + product_id + "," + order_id + "," + aantal + ")";
-//            dbmanager.insertQuery(SQL_orderProduct);
-//        }
-//    }
+    // Method om een user toe te voegen aan de database.
+    public void addClient(Client client) {
+        
+        // Hij get de date en userid hier.
+        String date = main.FYSApp.getDate();
+
+        try {
+
+            // Query aanmaken, daarna connection maken.
+            // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
+            // en voert hij de query uit met de benodigde variabelen.
+            // Hij zet deze op de juiste plaats in de database.
+             //Aan t einde moet de connection altijd weer gesloten worden.
+            // Pas de query aan. Maak indien nodig een nieuwe tabel genaamd client of owner.
+            String sql = "INSERT INTO client (firstname,middlename,lastname, "
+                    + "country, phonenumber, email ,adress, city, state,"
+                    + "zipcode) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            Connection connection = DatabaseManager.openConnection();
+
+            // Gebruik de getters en setters van de user object
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, client.getFirstName());
+            preparedStatement.setString(2, client.getMiddleName());
+            preparedStatement.setString(3, client.getLastName());
+            preparedStatement.setString(4, client.getCountry());
+            preparedStatement.setString(5, client.getPhone());
+            preparedStatement.setString(6, client.getEmail());
+            preparedStatement.setString(7, client.getAdress());
+            preparedStatement.setString(8, client.getCity());
+            preparedStatement.setString(9, client.getState());
+            preparedStatement.setString(10, client.getZipCode());
+
+            preparedStatement.executeUpdate();
+
+            // De connectie closen
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public static String getAirportById(int id) {
+        String sql = "SELECT airportname WHERE userid = ?";
+
+        Connection connection = DatabaseManager.openConnection();
+
+        PreparedStatement preparedStatement;
+       
+        String airportName = "";
+        
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            airportName = rs.getString("airportname");
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return airportName;
+    }
 }
