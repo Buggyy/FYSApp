@@ -11,6 +11,7 @@ import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
 import view.employee.FoundLuggageOverview;
+import connectivity.QueryManager;
 
 /**
  * @version 1
@@ -31,7 +32,7 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("manager");
         roleJComboBox.addItem("admin");
         
-        ArrayList<String> fgt = model.User.getAirports();
+        ArrayList<String> fgt = connectivity.QueryManager.getAirports();
         for (int i = 0; i < fgt.size(); i++) {
             airportJComboBox.addItem(fgt.get(i));
         }

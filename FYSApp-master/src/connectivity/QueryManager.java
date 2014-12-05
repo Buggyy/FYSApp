@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Client;
@@ -149,4 +151,38 @@ public class QueryManager {
 
         return clientID;
     }
+    
+        public static ArrayList<String> getAirports() {
+        // Method die zorgt dat er een arraylist komt met alle airports erin.
+
+        List<String> airports = new ArrayList<>();
+
+        try {
+            // Query aanmaken, daarna connection maken.
+            // Daarna bereid ie de query voor, haalt de airports
+            // uit de database en returnt het.
+            String sql = "SELECT airportname FROM airport";
+            Connection connection = DatabaseManager.openConnection();
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            // While loop die zorgt dat alle airports uit de database 
+            // worden gehaald.
+            while (rs.next()) {
+                airports.add(rs.getString("airportname"));
+            }
+
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        return (ArrayList<String>) airports;
+
+    }
+        public static void addUser(String userName,String pass,String role,String firstName,String middleName,String lastName,String email,String airport){
+    
+}
+        
 }

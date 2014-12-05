@@ -28,42 +28,6 @@ public class User {
     private String email;
     private String airport;
  
-    
-public static void addUser(String userName,String pass,String role,String firstName,String middleName,String lastName,String email,String airport){
-    
-}
-
-    ///////////////////////////////////////////////////////////////////////////
-    public static ArrayList<String> getAirports() {
-        // Method die zorgt dat er een arraylist komt met alle airports erin.
-
-        List<String> airports = new ArrayList<>();
-
-        try {
-            // Query aanmaken, daarna connection maken.
-            // Daarna bereid ie de query voor, haalt de airports
-            // uit de database en returnt het.
-            String sql = "SELECT airportname FROM airport";
-            Connection connection = DatabaseManager.openConnection();
-            PreparedStatement pst = connection.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-
-            // While loop die zorgt dat alle airports uit de database 
-            // worden gehaald.
-            while (rs.next()) {
-                airports.add(rs.getString("airportname"));
-            }
-
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-
-        return (ArrayList<String>) airports;
-
-    }
-
     public String getUserName() {
         return userName;
     }
