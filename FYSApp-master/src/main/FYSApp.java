@@ -120,6 +120,10 @@ public final class FYSApp {
     public QueryManager getQueryManager() {
         return qm;
     }
+    
+    public DatabaseManager getDatabaseManager() {
+        return manager;
+    }
 
     public static void main(String args[]) {
         final FYSApp applicatie = FYSApp.getInstance();

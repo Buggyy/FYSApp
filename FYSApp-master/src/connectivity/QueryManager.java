@@ -8,19 +8,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Client;
 import model.Luggage;
-import model.User;
 
 public class QueryManager {
 
-    private final DatabaseManager dbmanager;
+    private DatabaseManager dbmanager;
+    private PreparedStatement preparedStatement;
 
     public QueryManager(DatabaseManager dbmanager) {
         this.dbmanager = dbmanager;
     }
 
-     // Method die Luggage aan de database toevoegd. 
-    public static void addLuggage(Luggage luggage, int id) {
-       
+    // Method die Luggage aan de database toevoegd. 
+    public void addLuggage(Luggage luggage, int id) {
+
         String date = main.FYSApp.getDate();
 
         String airportName = getAirportById(id);
@@ -35,8 +35,9 @@ public class QueryManager {
             String sql = "INSERT INTO luggage (status, created, "
                     + "brand, weight, description, ownerid,"
                     + "airportname) VALUES (?,?,?,?,?,?,?)";
-            Connection connection = DatabaseManager.openConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            dbmanager.openConnection();
+            preparedStatement = dbmanager.getConnection().prepareStatement(sql);
+            
             preparedStatement.setString(1, luggage.getStatus());
             preparedStatement.setString(2, date);
             preparedStatement.setString(3, luggage.getBrand());
@@ -46,18 +47,19 @@ public class QueryManager {
             preparedStatement.setString(7, airportName);
             preparedStatement.executeUpdate();
 
-            connection.close();
-
+            
         } catch (Exception e) {
             e.printStackTrace();
 
         }
 
+        dbmanager.closeConnection();
+        
     }
 
     // Method om een user toe te voegen aan de database.
     public void addClient(Client client) {
-        
+
         // Hij get de date en userid hier.
         String date = main.FYSApp.getDate();
 
@@ -67,15 +69,15 @@ public class QueryManager {
             // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
             // en voert hij de query uit met de benodigde variabelen.
             // Hij zet deze op de juiste plaats in de database.
-             //Aan t einde moet de connection altijd weer gesloten worden.
+            //Aan t einde moet de connection altijd weer gesloten worden.
             // Pas de query aan. Maak indien nodig een nieuwe tabel genaamd client of owner.
             String sql = "INSERT INTO client (firstname,middlename,lastname, "
                     + "country, phonenumber, email ,adress, city, state,"
                     + "zipcode) VALUES (?,?,?,?,?,?,?,?,?,?)";
-            Connection connection = DatabaseManager.openConnection();
+            dbmanager.openConnection();
 
             // Gebruik de getters en setters van de user object
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = dbmanager.getConnection().prepareStatement(sql);
 
             preparedStatement.setString(1, client.getFirstName());
             preparedStatement.setString(2, client.getMiddleName());
@@ -90,37 +92,61 @@ public class QueryManager {
 
             preparedStatement.executeUpdate();
 
-            // De connectie closen
-            connection.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
 
         }
 
+        dbmanager.closeConnection();
+        
     }
 
-    public static String getAirportById(int id) {
+    public String getAirportById(int id) {
         String sql = "SELECT airportname WHERE userid = ?";
 
-        Connection connection = DatabaseManager.openConnection();
+        dbmanager.openConnection();
 
-        PreparedStatement preparedStatement;
-       
         String airportName = "";
-        
+
         try {
-            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = dbmanager.getConnection().prepareStatement(sql);
 
             preparedStatement.setInt(1, id);
 
             ResultSet rs = preparedStatement.executeQuery();
-            
+
             airportName = rs.getString("airportname");
-            connection.close();
+            
         } catch (SQLException ex) {
             Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        dbmanager.closeConnection();
         
         return airportName;
+    }
+
+    public int getLastClientId() {
+        String sql = "SELECT ownerid FROM zoekjekoffer.client ORDER BY ownerid DESC LIMIT 1";
+
+        dbmanager.openConnection();
+
+        PreparedStatement preparedStatement;
+
+        int clientID = 0;
+
+        try {
+            preparedStatement = dbmanager.getConnection().prepareStatement(sql);
+
+            ResultSet rs = preparedStatement.executeQuery();
+            clientID = rs.getInt("ownerid");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbmanager.closeConnection();
+
+        return clientID;
     }
 }

@@ -12,19 +12,19 @@ public class DatabaseManager {
     public static final String JDBC_EXCEPTION = "JDBC Exception: ";
     public static final String SQL_EXCEPTION = "SQL Exception: ";
 
-    Connection conn = null;
+    private Connection conn = null;
 
     /**
      * Open database connection
      */
-    public static Connection openConnection() {
+    public void openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
-            return conn;
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-            return null;
+            
         }
     }
 
@@ -37,6 +37,10 @@ public class DatabaseManager {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+    
+    public Connection getConnection() {
+        return conn;
     }
 
     /**

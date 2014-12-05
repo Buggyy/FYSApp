@@ -345,10 +345,10 @@ public class RegisterLostLuggage extends JPanel {
         4. Voeg daarna de luggage object toe.
         */
         FYSApp.getInstance().getQueryManager().addClient(client);
-        //int id = FYSApp.getInstance().getQueryManager().getLastId();
+        int id = FYSApp.getInstance().getQueryManager().getLastClientId();
         // Pak de id van deze client
         // luggage.setId(de id van je query die je ophaalt.)
-        //FYSApp.getInstance().getQueryManager().addLuggage(luggage, id);
+        FYSApp.getInstance().getQueryManager().addLuggage(luggage, id);
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException ex) {

@@ -27,9 +27,9 @@ public class FoundLuggageOverview extends JPanel {
         initComponents();
         Class.forName("com.mysql.jdbc.Driver");
 
-        Connection con = DatabaseManager.openConnection();
+        DatabaseManager dbm = FYSApp.getInstance().getDatabaseManager();
 
-        Statement state = con.createStatement();
+        Statement state = dbm.getConnection().createStatement();
 
         ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.luggage WHERE status = 'found';");
 
