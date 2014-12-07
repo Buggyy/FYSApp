@@ -128,7 +128,7 @@ public class QueryManager {
 
     }
 
-    //Not sure wat deze doet en of ie nog nodig is?.
+   
     public int getClientd() {
         
         int ownerid = 0;
