@@ -15,6 +15,7 @@ import view.manager.ManagerFront;
  *
  * @author Team 1 IS106 ZoekJeKoffer
  */
+
 public class LoginScreen extends javax.swing.JPanel {
 
     // Always declare first. (nullpointerexception H8 guys)

@@ -107,8 +107,8 @@ public class QueryManager {
 
     }
 
-    //Deze werkt nog niet, snelle copy paste van andere class waar hij nie hoort.
-    public static int getOwnerid() {
+    //Not sure wat deze doet en of ie nog nodig is?.
+    public static int getClientd() {
         int ownerid = 0;
         // Method die zorgt dat de hoogste ownerID wordt gegenereerd.
 //
@@ -134,67 +134,6 @@ public class QueryManager {
 //
 //        }
         return ownerid;
-    }
-
-    
-    //Deze werkt nog niet, snelle copy paste van andere class waar hij nie hoort.
-    public static void addOwner() {
-//        // Method om een luggage owner toe te voegen aan de database.
-//
-//        try {
-//
-//        // Query aanmaken, daarna connection maken.
-//            // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
-//            // en voert hij de query uit met de benodigde variabelen.
-//            // Hij zet deze op de juiste plaats in de database.
-//            String sql = "INSERT INTO owner (ownerid,firstname,middlename,lastname,country,phonenumber,email,address,city,state,zipcode) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-//            dbManager.openConnection();
-//            PreparedStatement preparedStatement = d.prepareStatement(sql);
-//            preparedStatement.setString(1, ownerId); // Userid
-//            preparedStatement.setString(2, firstName); // First name
-//            preparedStatement.setString(3, middleName); // Middle name
-//            preparedStatement.setString(4, lastName); // Last name
-//            preparedStatement.setString(5, country); // Country
-//            preparedStatement.setString(6, phone); // Phone Number
-//            preparedStatement.setString(7, email); // Email
-//            preparedStatement.setString(8, address); // Adress
-//            preparedStatement.setString(9, city); // City
-//            preparedStatement.setString(10, state); // State
-//            preparedStatement.setString(11, zipCode); // Zip code
-//            preparedStatement.executeUpdate();
-//
-//            // Zorgt dat de connectie wordt geclosed.
-//            connection.close();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//
-//        }
-//    }
-//
-//    public String getAirportById(int id) {
-//        String sql = "SELECT airportname WHERE userid = ?";
-//
-//        dbManager.openConnection();
-//
-//        String airportName = "";
-//
-//        try {
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//
-//            pst.setInt(1, id);
-//
-//            ResultSet rs = pst.executeQuery();
-//
-//            airportName = rs.getString("airportname");
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        dbManager.closeConnection();
-//
-//        return airportName;
     }
 
     public int getLastClientId() {
