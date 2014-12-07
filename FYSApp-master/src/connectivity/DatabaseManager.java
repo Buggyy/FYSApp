@@ -4,7 +4,7 @@ import java.sql.*;
 import javax.swing.*;
 
 /*
- *   @author Stefan Lobato
+ *   @author Team 1 IS106 ZoekJeKoffer
  *   Goal: In this file we will store all the Database Methods and functions
  */
 public class DatabaseManager {
@@ -20,7 +20,7 @@ public class DatabaseManager {
     public void openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

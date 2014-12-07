@@ -2,20 +2,15 @@ package view.admin;
 
 import javax.swing.JPanel;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.FYSApp;
 import view.LoginScreen;
-import view.employee.EmployeeFront;
-import view.employee.FoundLuggageOverview;
-import connectivity.QueryManager;
+import model.User;
 
 /**
  * @version 1
- * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
+ * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
  */
 
@@ -27,15 +22,15 @@ public class AdminRegisterUser extends JPanel {
     public AdminRegisterUser() {
         initComponents();
 
-        // Add roles to the combobox.
-        roleJComboBox.addItem("employee");
-        roleJComboBox.addItem("manager");
-        roleJComboBox.addItem("admin");
-        
-        ArrayList<String> fgt = connectivity.QueryManager.getAirports();
-        for (int i = 0; i < fgt.size(); i++) {
-            airportJComboBox.addItem(fgt.get(i));
-        }
+//        // Add roles to the combobox.
+//        roleJComboBox.addItem("employee");
+//        roleJComboBox.addItem("manager");
+//        roleJComboBox.addItem("admin");
+//        
+//        ArrayList<String> fgt = connectivity.QueryManager.getAirports();
+//        for (int i = 0; i < fgt.size(); i++) {
+//            airportJComboBox.addItem(fgt.get(i));
+//        }
     }
 
     /**
@@ -107,6 +102,11 @@ public class AdminRegisterUser extends JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, 30));
 
         submitJButton.setText("SUBMIT");
+        submitJButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitJButtonMouseClicked(evt);
+            }
+        });
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
@@ -253,17 +253,18 @@ public class AdminRegisterUser extends JPanel {
         
         // Zorgt dat de method addUser wordt aangeroepen en zo een
         // nieuwe gebruiker wordt toegevoegd aan de database.
+       
+        String userName = userNameJTextField.getText(); 
+        String pass = passJTextField.getText(); 
+        String role = String.valueOf(roleJComboBox.getSelectedItem());
+        String firstName = firstNameJTextField.getText(); 
+        String middleName = middleNameJTextField.getText(); 
+        String lastName = lastNameJTextField.getText(); 
+        String email = emailJTextField.getText(); 
+        String airport = String.valueOf(airportJComboBox.getSelectedItem());
         
-        String userName = userNameJTextField.getText(); // Username
-        String pass = passJTextField.getText(); // Password
-        String role = String.valueOf(roleJComboBox.getSelectedItem());// Role
-        String firstName = firstNameJTextField.getText(); // First name
-        String middleName = middleNameJTextField.getText(); // Middle name
-        String lastName = lastNameJTextField.getText(); // Last name
-        String email = emailJTextField.getText(); // Email
-        String airport = String.valueOf(airportJComboBox.getSelectedItem());// Airport
-        
-        model.User.addUser(userName,pass,role,firstName,middleName,lastName,email,airport);
+         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
+        FYSApp.getQueryManager().addUser(user);
         
         try {
             FYSApp.getInstance().showPanel(new AdminUsers());
@@ -306,6 +307,10 @@ public class AdminRegisterUser extends JPanel {
         // TODO add your handling code here:
         //COMBOBOX NIGA
     }//GEN-LAST:event_roleJComboBoxActionPerformed
+
+    private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
+        
+    }//GEN-LAST:event_submitJButtonMouseClicked
 
 
     public String getSelectedCombo(){

@@ -3,14 +3,13 @@ package view.employee;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
 
 /**
  *
- * @author Gebruiker
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class EmployeeFront extends JPanel {
 
@@ -43,6 +42,11 @@ public class EmployeeFront extends JPanel {
         foundJButton.setBackground(new java.awt.Color(255, 255, 255));
         foundJButton.setText("FOUND");
         foundJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        foundJButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                foundJButtonMouseClicked(evt);
+            }
+        });
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foundJButtonActionPerformed(evt);
@@ -90,6 +94,7 @@ public class EmployeeFront extends JPanel {
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
 
+     
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException ex) {
@@ -97,11 +102,23 @@ public class EmployeeFront extends JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_logoutJButtonActionPerformed
+
+    private void foundJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foundJButtonMouseClicked
+         try {
+            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_foundJButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

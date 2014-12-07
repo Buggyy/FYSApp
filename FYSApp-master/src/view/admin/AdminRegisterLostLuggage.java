@@ -6,7 +6,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Lars
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class AdminRegisterLostLuggage extends JPanel {
 

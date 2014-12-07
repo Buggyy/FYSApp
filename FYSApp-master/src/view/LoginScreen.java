@@ -4,9 +4,8 @@ import connectivity.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.FYSApp;
 import view.admin.AdminFront;
 import view.employee.EmployeeFront;
@@ -14,11 +13,12 @@ import view.manager.ManagerFront;
 
 /**
  *
- * @author Daniel Stern IS 106
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class LoginScreen extends javax.swing.JPanel {
 
     // Always declare first. (nullpointerexception H8 guys)
+    DatabaseManager dbmanager;
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -30,7 +30,7 @@ public class LoginScreen extends javax.swing.JPanel {
         initComponents();
         //  Open the connection by calling the openConnection method from
         // DatabaseManager.java
-        conn = DatabaseManager.openConnection();
+//        conn = DatabaseManager.openConnection();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2,
@@ -186,6 +186,14 @@ public class LoginScreen extends javax.swing.JPanel {
         String sql_role = "SELECT role FROM user WHERE username=?";
 
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             //  Select the user
             pst = conn.prepareStatement(sql);
             pst.setString(1, userNameJTextField.getText());
@@ -207,13 +215,10 @@ public class LoginScreen extends javax.swing.JPanel {
                 }
                 if (role.equals("manager")) {
                     main.FYSApp.getInstance().showPanel(new ManagerFront());
-                    
                 } else if (role.equals("employee")) {
                     main.FYSApp.getInstance().showPanel(new EmployeeFront());
-                    
                 } else if (role.equals("admin")) {
                     main.FYSApp.getInstance().showPanel(new AdminFront());
-                    
                 }
             } else {
                 jLabel1.setText("Wrong Username/Password - Please try again");
@@ -221,6 +226,7 @@ public class LoginScreen extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+//        dbmanager.closeConnection();
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void passJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passJTextFieldActionPerformed

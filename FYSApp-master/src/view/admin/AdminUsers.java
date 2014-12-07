@@ -1,12 +1,8 @@
 package view.admin;
 
-import connectivity.DatabaseManager;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +11,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Gebruiker
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class AdminUsers extends JPanel {
 
@@ -25,13 +21,9 @@ public class AdminUsers extends JPanel {
     public AdminUsers() throws ClassNotFoundException, SQLException {
         initComponents();
 
-        Class.forName("com.mysql.jdbc.Driver");
-
-        Connection con = DatabaseManager.openConnection();
-
-        Statement state = con.createStatement();
-
-        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.user;");
+      
+        
+        ResultSet rs = FYSApp.getQueryManager().getAdminUsersOverview();
 
         ResultSetMetaData rsmetadata = rs.getMetaData();
 
@@ -58,6 +50,7 @@ public class AdminUsers extends JPanel {
         }
 
         userTable.setModel(dtm);
+        userTable.repaint();
     }
 
     /**

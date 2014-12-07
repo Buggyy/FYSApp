@@ -1,11 +1,9 @@
 package view.employee;
 
-import connectivity.DatabaseManager;
-import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,23 +14,20 @@ import view.LoginScreen;
 
 /**
  *
- * @author Daniel Stern IS 106
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class FoundLuggageOverview extends JPanel {
 
+  
+    
     /**
      * Creates new form FoundLuggageOverview
      */
     public FoundLuggageOverview() throws ClassNotFoundException, SQLException {
+        
         initComponents();
-        Class.forName("com.mysql.jdbc.Driver");
-
-        DatabaseManager dbm = FYSApp.getInstance().getDatabaseManager();
-
-        Statement state = dbm.getConnection().createStatement();
-
-        ResultSet rs = state.executeQuery("SELECT * FROM zoekjekoffer.luggage WHERE status = 'found';");
-
+        
+        ResultSet rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
         ResultSetMetaData rsmetadata = rs.getMetaData();
 
         int columns = rsmetadata.getColumnCount();
@@ -58,6 +53,7 @@ public class FoundLuggageOverview extends JPanel {
         }
 
         foundLuggageTable.setModel(dtm);
+        foundLuggageTable.repaint();
     }
 
     /**

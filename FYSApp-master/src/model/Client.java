@@ -1,9 +1,10 @@
 package model;
 
 /**
- * @author Daniel Stern, Chris verra
+ * @author Team 1 IS106 ZoekJeKoffer
  *
  */
+
 public class Client {
 
     private String firstName;

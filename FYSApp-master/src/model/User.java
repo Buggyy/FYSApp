@@ -15,10 +15,10 @@ import java.util.List;
 
 /**
  *
- * @author Marijn
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class User {
-
+    
     private String userName;
     private String pass;
     private String role;
@@ -27,6 +27,19 @@ public class User {
     private String lastName;
     private String email;
     private String airport;
+
+    public User(String userName, String pass, String role, String firstName, String middleName, String lastName, String email, String airport) {
+        this.userName = userName;
+        this.pass = pass;
+        this.role = role;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.email = email;
+        this.airport = airport;
+    }
+
+    
  
     public String getUserName() {
         return userName;

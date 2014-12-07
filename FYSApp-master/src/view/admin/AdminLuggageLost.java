@@ -4,11 +4,10 @@ import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
-import view.employee.RegisterLostLuggage;
 
 /**
  *
- * @author Lars
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class AdminLuggageLost extends JPanel {
 

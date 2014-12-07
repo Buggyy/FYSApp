@@ -2,7 +2,6 @@ package main;
 
 import connectivity.DatabaseManager;
 import connectivity.QueryManager;
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -16,7 +15,7 @@ import javax.swing.UIManager;
 
 /**
  *
- * @author Daniel Stern IS 106
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public final class FYSApp {
 
@@ -117,8 +116,8 @@ public final class FYSApp {
         return instance;
     }
     
-    public QueryManager getQueryManager() {
-        return qm;
+    public static QueryManager getQueryManager() {
+        return getInstance().qm;
     }
     
     public DatabaseManager getDatabaseManager() {

@@ -6,12 +6,11 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
 import model.Client;
-import model.Luggage;
 import view.LoginScreen;
 
 /**
  *
- * @author Gebruiker
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class RegisterLostLuggage extends JPanel {
 
@@ -320,7 +319,7 @@ public class RegisterLostLuggage extends JPanel {
         // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
         // methode zodat de koffer geregistreerd wordt. :D
         Client client = new Client();
-        Luggage luggage = new Luggage();
+//        Luggage luggage = new Luggage((weight,brand,description,status);
         
         // Set alle gegevens in deze luggage object.
 //        luggage.setBlbalba(fabf);
@@ -348,7 +347,7 @@ public class RegisterLostLuggage extends JPanel {
         int id = FYSApp.getInstance().getQueryManager().getLastClientId();
         // Pak de id van deze client
         // luggage.setId(de id van je query die je ophaalt.)
-        FYSApp.getInstance().getQueryManager().addLuggage(luggage, id);
+//        FYSApp.getInstance().getQueryManager().addLuggage(luggage);
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException ex) {

@@ -1,7 +1,6 @@
 package view.manager;
 
 import javax.swing.JPanel;
-import view.admin.*;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;

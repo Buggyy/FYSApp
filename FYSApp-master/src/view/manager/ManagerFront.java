@@ -6,7 +6,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Daniel Stern IS 106
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class ManagerFront extends JPanel {
 

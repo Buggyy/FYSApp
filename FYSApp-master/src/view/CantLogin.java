@@ -2,10 +2,10 @@ package view;
 
 import javax.swing.JPanel;
 import main.FYSApp;
-import view.employee.EmployeeFront;
+
 /**
  *
- * @author Daniel Stern IS 106
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class CantLogin extends JPanel {
 

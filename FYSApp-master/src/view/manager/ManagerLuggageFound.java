@@ -1,14 +1,13 @@
 package view.manager;
 
 import javax.swing.JPanel;
-import view.admin.*;
 import main.FYSApp;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
 
 /**
  * @version 1
- * @author chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
+ * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
  * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
  */
 public class ManagerLuggageFound extends JPanel {

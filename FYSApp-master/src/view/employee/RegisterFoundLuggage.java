@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import model.Luggage;
 import view.LoginScreen;
 
 /**
@@ -195,9 +196,11 @@ public class RegisterFoundLuggage extends JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -213,13 +216,15 @@ public class RegisterFoundLuggage extends JPanel {
         String description = descriptionJTextField.getText(); 
         String status = "found";
         
-        //connectivity.QueryManager.addLuggage(luggage, id);
+        Luggage luggage = new Luggage(weight,brand,description,status);
+        
+//        connectivity.QueryManager.addLuggage(luggage);
         
         try {
             FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitJButtonMouseClicked

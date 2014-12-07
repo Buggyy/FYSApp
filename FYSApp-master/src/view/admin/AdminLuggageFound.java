@@ -3,13 +3,10 @@ package view.admin;
 import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
-import view.employee.EmployeeFront;
-import view.employee.LostLuggageOverview;
-import view.employee.RegisterFoundLuggage;
 
 /**
  *
- * @author Lars
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class AdminLuggageFound extends JPanel {
 
