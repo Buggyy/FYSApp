@@ -183,12 +183,12 @@ public class LoginScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameJTextFieldActionPerformed
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-        String sql = "SELECT * FROM user WHERE username=? and password=?";
-        String sql_role = "SELECT role FROM user WHERE username=?";
+       // String sql = "SELECT * FROM user WHERE username=? and password=?";
+       //String sql_role = "SELECT role FROM user WHERE username=?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "neee");
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
