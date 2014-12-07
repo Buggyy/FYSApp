@@ -218,7 +218,7 @@ public class RegisterFoundLuggage extends JPanel {
         
         Luggage luggage = new Luggage(weight,brand,description,status);
         
-//        connectivity.QueryManager.addLuggage(luggage);
+        FYSApp.getInstance().getQueryManager().addFoundLuggage(luggage);
         
         try {
             FYSApp.getInstance().showPanel(new FoundLuggageOverview());

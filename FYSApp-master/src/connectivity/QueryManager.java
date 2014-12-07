@@ -15,7 +15,6 @@ import model.User;
  * @author Team 1 IS106 ZoekJeKoffer
  *
  */
-
 public class QueryManager {
 
     private DatabaseManager dbManager;
@@ -26,37 +25,59 @@ public class QueryManager {
     }
 
     // Method die Luggage aan de database toevoegd. 
-    public void addLuggage(Luggage luggage) {
+    public void addFoundLuggage(Luggage luggage) {
 
-        String date = main.FYSApp.getDate();
-
+//        String date = main.FYSApp.getDate();
 //        String airportName = getAirportById(id);
         try {
-            // Query aanmaken, daarna connection maken. 
-            // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
-            // en voert hij de query uit met de benodigde variabelen.
-            // Hij zet deze op de juiste plaats in de database.
-            //Aan t einde moet de connection altijd weer gesloten worden.
-
-            String sql = "INSERT INTO luggage (status, created, "
-                    + "brand, weight, description, ownerid,"
-                    + "airportname) VALUES (?,?,?,?,?,?,?)";
 
             dbManager.openConnection();
+
+            String sql = "INSERT INTO luggage (status,brand,weight,description) VALUES (?,?,?,?)";
+
             pst = dbManager.getConnection().prepareStatement(sql);
 
             pst.setString(1, luggage.getStatus());
-            pst.setString(2, date);
-            pst.setString(3, luggage.getBrand());
-            pst.setString(4, luggage.getWeight());
-            pst.setString(5, luggage.getDescription());
+//            pst.setString(2, date);
+            pst.setString(2, luggage.getBrand());
+            pst.setString(3, luggage.getWeight());
+            pst.setString(4, luggage.getDescription());
 //            pst.setInt(6, id);
 //            pst.setString(7, airportName);
+
             pst.executeUpdate();
 
         } catch (Exception e) {
             e.printStackTrace();
 
+        }
+
+        dbManager.closeConnection();
+
+    }
+
+    public void addLostLuggage(Luggage luggage, int id) {
+
+        try {
+            dbManager.openConnection();
+            
+            int lastId = id;
+            
+            String sql = "INSERT INTO luggage (status,brand,weight,description,"
+                    + "ownerid) VALUES (?,?,?,?,?)";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, luggage.getStatus());
+            pst.setString(2, luggage.getBrand());
+            pst.setString(3, luggage.getWeight());
+            pst.setString(4, luggage.getDescription());
+            pst.setInt(5, id);
+
+            pst.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         dbManager.closeConnection();
@@ -78,7 +99,7 @@ public class QueryManager {
             //Aan t einde moet de connection altijd weer gesloten worden.
             // Pas de query aan. Maak indien nodig een nieuwe tabel genaamd client of owner.
             String sql = "INSERT INTO client (firstname,middlename,lastname, "
-                    + "country, phonenumber, email ,adress, city, state,"
+                    + "country, phonenumber, email ,address, city, state,"
                     + "zipcode) VALUES (?,?,?,?,?,?,?,?,?,?)";
             dbManager.openConnection();
 
@@ -91,7 +112,7 @@ public class QueryManager {
             pst.setString(4, client.getCountry());
             pst.setString(5, client.getPhone());
             pst.setString(6, client.getEmail());
-            pst.setString(7, client.getAdress());
+            pst.setString(7, client.getAddress());
             pst.setString(8, client.getCity());
             pst.setString(9, client.getState());
             pst.setString(10, client.getZipCode());
@@ -108,54 +129,53 @@ public class QueryManager {
     }
 
     //Not sure wat deze doet en of ie nog nodig is?.
-    public static int getClientd() {
+    public int getClientd() {
+        
         int ownerid = 0;
-        // Method die zorgt dat de hoogste ownerID wordt gegenereerd.
-//
-//        int ownerid = 0;
-//        try {
-//
-//            // Query aanmaken, daarna connection maken.
-//            // Daarna bereid ie de query voor, haalt hij de laatste ownerid 
-//            // uit de database en returnt het.
-//            String sql = "SELECT ownerid FROM owner ORDER BY ownerid DESC LIMIT 0 , 1";
-//            dbManager.openConnection();
-//            PreparedStatement pst = connection.prepareStatement(sql);
-//            ResultSet rs = pst.executeQuery();
-//
-//            // While loop die zorgt dat de hoogste ownerid wordt gepakt.
-//            while (rs.next()) {
-//
-//                ownerid = rs.getInt(1);
-//            }
-//            connection.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//
-//        }
+//         Method die zorgt dat de hoogste ownerID wordt gegenereerd.
+
+        try {
+
+            String sql = "SELECT ownerid FROM client ORDER BY ownerid DESC LIMIT 0 , 1";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                ownerid = rs.getInt(1);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+         dbManager.closeConnection();
         return ownerid;
     }
 
-    public int getLastClientId() {
-        String sql = "SELECT ownerid FROM zoekjekoffer.client ORDER BY ownerid DESC LIMIT 1";
-
-        dbManager.openConnection();
-
-        int clientID = 0;
-
-        try {
-            pst = dbManager.getConnection().prepareStatement(sql);
-
-            ResultSet rs = pst.executeQuery();
-            clientID = rs.getInt("ownerid");
-
-        } catch (SQLException ex) {
-            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dbManager.closeConnection();
-
-        return clientID;
-    }
+//    public int getLastClientId() {
+//        
+//        int clientID = 0;
+//
+//        dbManager.openConnection();
+//
+//        String sql = "SELECT ownerid FROM owner ORDER BY ownerid DESC LIMIT 1";
+//        
+//
+//        try {
+//            pst = dbManager.getConnection().prepareStatement(sql);
+//
+//            ResultSet rs = pst.executeQuery();
+//            clientID = rs.getInt("ownerid");
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        dbManager.closeConnection();
+//
+//        return clientID;
+//    }
 
     public ArrayList<String> getAirports() {
         // Method die zorgt dat er een arraylist komt met alle airports erin.

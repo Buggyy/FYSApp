@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
 import model.Client;
+import model.Luggage;
 import view.LoginScreen;
 
 /**
@@ -318,33 +319,34 @@ public class RegisterLostLuggage extends JPanel {
         // Get de input van de user in de textfields en stopt dit
         // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
         // methode zodat de koffer geregistreerd wordt. :D
-        Client client = new Client();
 //        Luggage luggage = new Luggage((weight,brand,description,status);
-        
         // Set alle gegevens in deze luggage object.
 //        luggage.setBlbalba(fabf);
+        String firstName = firstNameJTextField.getText();
+        String middleName = middleNameJTextField.getText();
+        String lastName = lastNameJTextField.getText();
+        String phone = phoneNrJTextField.getText();
+        String email = emailJTextField.getText();
+        String country = countryJTextField.getText();
+        String address = addressJTextField.getText();
+        String city = cityJTextField.getText();
+        String state = stateJTextField.getText();
+        String zipCode = zipcodeJTextField.getText();
 
-        client.setFirstName(firstNameJTextField.getText());
-        client.setMiddleName(middleNameJTextField.getText());
-        client.setLastName(lastNameJTextField.getText());
-        client.setPhone(phoneNrJTextField.getText());
-        client.setEmail(emailJTextField.getText());
-        client.setCountry(countryJTextField.getText());
-        client.setAdress(addressJTextField.getText());
-        client.setCity(cityJTextField.getText());
-        client.setState(stateJTextField.getText());
-        client.setZipCode(zipcodeJTextField.getText()); 
-        
-        //Query voor het ophalen van het ID van de laatste entry
-        //Querymanager.getid
-        /*
-        1. Voeg client toe in de database.
-        2. Haal de id op van laatst toegevoegde client.
-        3. Zet deze id in de luggage object.
-        4. Voeg daarna de luggage object toe.
-        */
+        Client client = new Client(firstName, middleName, lastName, phone, email, country,
+                address, city, state, zipCode);
         FYSApp.getInstance().getQueryManager().addClient(client);
-        int id = FYSApp.getInstance().getQueryManager().getLastClientId();
+        int id = FYSApp.getInstance().getQueryManager().getClientd();
+
+        String weight = weightJTextField.getText();
+        String brand = brandJTextField.getText();
+        String description = descriptionJTextField.getText();
+        String status = "lost";
+
+        Luggage luggage = new Luggage(weight, brand, description, status);
+
+        FYSApp.getInstance().getQueryManager().addLostLuggage(luggage, id);
+
         // Pak de id van deze client
         // luggage.setId(de id van je query die je ophaalt.)
 //        FYSApp.getInstance().getQueryManager().addLuggage(luggage);
@@ -411,7 +413,7 @@ public class RegisterLostLuggage extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_countryJTextFieldActionPerformed
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressJTextField;
     private javax.swing.JButton backJButton;

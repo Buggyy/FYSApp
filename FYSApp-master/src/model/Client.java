@@ -17,6 +17,22 @@ public class Client {
     private String city;
     private String state;
     private String zipCode;
+    
+    public Client(String firstName, String middleName, String lastName, 
+            String phone, String email, String country, String address, 
+            String city, String state, String zipCode) {
+        
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.country = country;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -66,11 +82,11 @@ public class Client {
         this.country = country;
     }
 
-    public String getAdress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAdress(String adress) {
+    public void setAddress(String adress) {
         this.address = adress;
     }
 
