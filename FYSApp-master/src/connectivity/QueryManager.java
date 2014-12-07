@@ -296,4 +296,67 @@ public class QueryManager {
         return rs;
 
     }
+    
+    
+    
+//     dbManager.openConnection();
+//
+//            String sql = "INSERT INTO user (username,password,role,firstname"
+//                    + ",middlename,lastname,email,airportname) VALUES (?,?,?,?,?,?,?,?)";
+//
+//            // Gebruik de getters en setters van de user object
+//            pst = dbManager.getConnection().prepareStatement(sql);
+//
+//            pst.setString(1, user.getUserName());
+//            pst.setString(2, user.getPass());
+//            pst.setString(3, user.getRole());
+//            pst.setString(4, user.getFirstName());
+//            pst.setString(5, user.getMiddleName());
+//            pst.setString(6, user.getLastName());
+//            pst.setString(7, user.getEmail());
+//            pst.setString(8, user.getAirport());
+    
+    
+    
+    public ResultSet getLoginUser(String userName, String passWord){
+        ResultSet rs = null;
+        
+        try{
+            dbManager.openConnection();
+            
+            String sql = "SELECT * FROM user WHERE username=? and password=?";
+            pst = dbManager.getConnection().prepareStatement(sql);
+            
+            pst.setString(1, userName);
+            pst.setString(2, passWord);
+            
+            rs = pst.executeQuery(sql);
+            return rs;
+            
+        }catch(SQLException ex){
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
+    
+    public ResultSet getLoginRole(String userName){
+        ResultSet rs = null;
+        
+        try{
+            dbManager.openConnection();
+            
+            String sql_role = "SELECT role FROM user WHERE username=?";
+            pst = dbManager.getConnection().prepareStatement(sql_role);
+            
+            pst.setString(1, userName);
+            
+            rs = pst.executeQuery(sql_role);
+            return rs;
+        }catch(SQLException ex){
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
 }

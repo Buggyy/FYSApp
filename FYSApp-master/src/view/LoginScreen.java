@@ -185,31 +185,34 @@ public class LoginScreen extends javax.swing.JPanel {
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
        // String sql = "SELECT * FROM user WHERE username=? and password=?";
        //String sql_role = "SELECT role FROM user WHERE username=?";
+        //ResultSetMetaData rsmetadata = rs.getMetaData();
+        
 
+       
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
+            String userName = userNameJTextField.getText();
+            String passWord = passJTextField.getText();
+        
+            ResultSet rsUser = FYSApp.getQueryManager().getLoginUser(userName, passWord);
+            ResultSetMetaData rsmetadataUser = rsUser.getMetaData();
+        
+            ResultSet rsRole = FYSApp.getQueryManager().getLoginRole(userName);
+            ResultSetMetaData rsmetadateRole = rsRole.getMetaData();
             //  Select the user
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, userNameJTextField.getText());
-            pst.setString(2, passJTextField.getText());
-            rs = pst.executeQuery();
+            //pst = conn.prepareStatement(sql);
+            //pst.setString(1, userNameJTextField.getText());
+            //pst.setString(2, passJTextField.getText());
+            //rs = pst.executeQuery();
 
             // Select the role
-            pst = conn.prepareStatement(sql_role);
-            pst.setString(1, userNameJTextField.getText());
-            ResultSet rs = pst.executeQuery();
+//            pst = conn.prepareStatement(sql_role);
+//            pst.setString(1, userNameJTextField.getText());
+//            ResultSet rs = pst.executeQuery();
 
             //  Down here we need to check the user on its role..
-            if (rs.next()) {
+            if (rsRole.next()) {
 
-                String role = rs.getString("role");
+                String role = rsRole.getString("role");
 
                 if (role == null || role.isEmpty()) {
                     // process no role case first - it deals with the null role problem
