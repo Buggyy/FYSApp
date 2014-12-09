@@ -201,9 +201,8 @@ public class LostLuggageOverview extends JPanel {
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LostLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+            //Replace with multicatch
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(LostLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_foundJButtonActionPerformed
