@@ -14,12 +14,17 @@ import view.LoginScreen;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class RegisterLostLuggage extends JPanel {
-
+    private boolean updateMode = false;
     /**
      * Creates new form RegisterLostLuggage
      */
     public RegisterLostLuggage() {
         initComponents();
+    }
+    
+    public RegisterLostLuggage(Luggage luggage){
+        this.updateMode =  true;
+        // object aanmaken voor de edit
     }
 
     /**

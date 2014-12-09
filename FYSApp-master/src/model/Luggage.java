@@ -11,7 +11,11 @@ public class Luggage {
     private String brand;
     private String description; 
     private String status;
-
+    
+    public Luggage(){
+        
+    }
+    
     public Luggage(String weight, String brand, String description, 
             String status){
         

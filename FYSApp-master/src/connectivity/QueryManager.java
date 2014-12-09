@@ -379,4 +379,34 @@ public class QueryManager {
         dbManager.closeConnection();
         return rs;
     }
+    
+    public Luggage getSelectedLuggage(int id){
+        // nog afmaken edit luggage
+        Luggage luggage = new Luggage();
+        ResultSet rs = null;
+        
+        try{
+            dbManager.openConnection();
+            
+            String sql_getLuggage = "SELECT * FROM luggage WHERE luggageid=?";
+            pst = dbManager.getConnection().prepareStatement(sql_getLuggage);
+            
+            pst.setInt(1, id);
+            
+            rs = pst.executeQuery(sql_getLuggage);
+            
+            if(rs.next()){
+               luggage.setStatus(rs.getString("status"));
+               luggage.setBrand(rs.getString("brand"));
+               luggage.setDescription("description");
+               luggage.setWeight("weight");  
+            }
+            
+            return luggage;
+        }catch(SQLException ex){
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return luggage;
+    }
 }

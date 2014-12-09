@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import model.Luggage;
 import view.LoginScreen;
 
 /**
@@ -109,7 +110,6 @@ public class LostLuggageOverview extends JPanel {
         add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
 
         editJButton.setText("EDIT");
-        editJButton.setEnabled(false);
         editJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editJButtonActionPerformed(evt);
@@ -224,7 +224,18 @@ public class LostLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
+        // haal huidige id op
+        //luggageID
+        // query
+        //object maken
+        // meesturen naar scherm jpanel voor register
+        
+        int row = lostLuggageTable.getSelectedRow();
+        int col = 0; 
+        int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
+        System.out.println(id);
+        FYSApp.getQueryManager().getSelectedLuggage(id);
+        
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
