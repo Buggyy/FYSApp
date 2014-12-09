@@ -65,7 +65,6 @@ public class LostLuggageOverview extends JPanel {
 
         searchJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
-        deleteJButton = new javax.swing.JButton();
         foundJButton = new javax.swing.JButton();
         editJButton = new javax.swing.JButton();
         searchJTextField = new javax.swing.JTextField();
@@ -100,15 +99,6 @@ public class LostLuggageOverview extends JPanel {
             }
         });
         add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
-
-        deleteJButton.setText("DELETE");
-        deleteJButton.setEnabled(false);
-        deleteJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteJButtonActionPerformed(evt);
-            }
-        });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 80, 40));
 
         foundJButton.setText("FOUND");
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -238,10 +228,6 @@ public class LostLuggageOverview extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_editJButtonActionPerformed
 
-    private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteJButtonActionPerformed
-
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         FYSApp.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_backJButtonActionPerformed
@@ -249,7 +235,6 @@ public class LostLuggageOverview extends JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLabel1;

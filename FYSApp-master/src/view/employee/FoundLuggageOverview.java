@@ -74,7 +74,6 @@ public class FoundLuggageOverview extends JPanel {
         searchJTextField = new javax.swing.JTextField();
         registerJButton = new javax.swing.JButton();
         editJButton = new javax.swing.JButton();
-        deleteJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         foundLuggageTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -153,15 +152,6 @@ public class FoundLuggageOverview extends JPanel {
             }
         });
         add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 80, 40));
-
-        deleteJButton.setText("DELETE");
-        deleteJButton.setEnabled(false);
-        deleteJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteJButtonActionPerformed(evt);
-            }
-        });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 480, 80, 40));
 
         foundLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         foundLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -247,14 +237,9 @@ public class FoundLuggageOverview extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_editJButtonActionPerformed
 
-    private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
     private javax.swing.JTable foundLuggageTable;
     private javax.swing.JLabel jLabel1;

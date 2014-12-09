@@ -33,7 +33,6 @@ public class AdminLuggageFound extends JPanel {
         logoutJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
-        registerJButton = new javax.swing.JButton();
         editJButton = new javax.swing.JButton();
         deleteJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -126,14 +125,6 @@ public class AdminLuggageFound extends JPanel {
         });
         add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
 
-        registerJButton.setText("REGISTER FOUND LUGGAGE");
-        registerJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerJButtonActionPerformed(evt);
-            }
-        });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 210, 40));
-
         editJButton.setText("EDIT");
         editJButton.setEnabled(false);
         editJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -189,10 +180,6 @@ public class AdminLuggageFound extends JPanel {
         FYSApp.getInstance().showPanel(new AdminLuggageLost());
     }//GEN-LAST:event_lostJButtonActionPerformed
 
-    private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminRegisterFoundLuggage());
-    }//GEN-LAST:event_registerJButtonActionPerformed
-
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editJButtonActionPerformed
@@ -213,7 +200,6 @@ public class AdminLuggageFound extends JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
-    private javax.swing.JButton registerJButton;
     private javax.swing.JButton searchJButton;
     private javax.swing.JTextField searchJTextField;
     // End of variables declaration//GEN-END:variables
