@@ -4,8 +4,6 @@ import connectivity.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import main.FYSApp;
 import view.admin.AdminFront;
 import view.employee.EmployeeFront;
@@ -183,37 +181,17 @@ public class LoginScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameJTextFieldActionPerformed
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-       // String sql = "SELECT * FROM user WHERE username=? and password=?";
-       //String sql_role = "SELECT role FROM user WHERE username=?";
-        //ResultSetMetaData rsmetadata = rs.getMetaData();
+        // Getting inputs from user. Getting the role and password from the 
+        // Querymanager. After that it will match the password, if it's
+        // correct it will get the users role and let the user go to the
+        // right screen. If the password is not correct it wil print out
+        // an error message.
         
-
-       
         try {
-//            String userName = userNameJTextField.getText();
+            String userName = userNameJTextField.getText();
             String passWord = passJTextField.getText();
-        
-//            ResultSet rsUser = FYSApp.getQueryManager().getLoginUser(userName, passWord);
-//            ResultSetMetaData rsmetadataUser = rsUser.getMetaData();
-//        
-//            ResultSet rsRole = FYSApp.getQueryManager().getLoginRole(userName);
-//            ResultSetMetaData rsmetadateRole = rsRole.getMetaData();
-//              Select the user
             
-            String sql = "SELECT password,role FROM user WHERE username=?";
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, userNameJTextField.getText());
-            rs = pst.executeQuery();
+            rs = FYSApp.getQueryManager().getUserLoginfo(userName);
             
 
             //  Down here we need to check the user on its role..
@@ -231,18 +209,48 @@ public class LoginScreen extends javax.swing.JPanel {
                 } else if (role.equals("admin")) {
                     main.FYSApp.getInstance().showPanel(new AdminFront());
                 }
-            }
             } else {
                 jLabel1.setText("Wrong Username/Password - Please try again");
+            }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-//        dbmanager.closeConnection();
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void passJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passJTextFieldActionPerformed
-        // TODO add your handling code here:
+        // Does the same ass the login button, only this will perform when
+        // 'enter' has been hitten.
+        
+        try {
+            String userName = userNameJTextField.getText();
+            String passWord = passJTextField.getText();
+            
+            rs = FYSApp.getQueryManager().getUserLoginfo(userName);
+            
+
+            //  Down here we need to check the user on its role..
+            if (rs.next()) {
+                String pass = rs.getString("password");
+                String role = rs.getString("role");
+                if (pass.equals(passWord)){ 
+                if (role == null || role.isEmpty()) {
+                    // process no role case first - it deals with the null role problem
+                }
+                if (role.equals("manager")) {
+                    main.FYSApp.getInstance().showPanel(new ManagerFront());
+                } else if (role.equals("employee")) {
+                    main.FYSApp.getInstance().showPanel(new EmployeeFront());
+                } else if (role.equals("admin")) {
+                    main.FYSApp.getInstance().showPanel(new AdminFront());
+                }
+            } else {
+                jLabel1.setText("Wrong Username/Password - Please try again");
+            }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_passJTextFieldActionPerformed
 
     private void cantLoginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantLoginJButtonActionPerformed

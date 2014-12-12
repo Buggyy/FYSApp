@@ -22,10 +22,10 @@ public class AdminRegisterUser extends JPanel {
     public AdminRegisterUser() {
         initComponents();
 
-//        // Add roles to the combobox.
-//        roleJComboBox.addItem("employee");
-//        roleJComboBox.addItem("manager");
-//        roleJComboBox.addItem("admin");
+        // Add roles to the combobox.
+        roleJComboBox.addItem("employee");
+        roleJComboBox.addItem("manager");
+        roleJComboBox.addItem("admin");
 //        
 //        ArrayList<String> fgt = connectivity.QueryManager.getAirports();
 //        for (int i = 0; i < fgt.size(); i++) {
@@ -238,9 +238,7 @@ public class AdminRegisterUser extends JPanel {
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new AdminUsers());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_backJButtonActionPerformed
@@ -268,9 +266,7 @@ public class AdminRegisterUser extends JPanel {
         
         try {
             FYSApp.getInstance().showPanel(new AdminUsers());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
