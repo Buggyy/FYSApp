@@ -339,42 +339,9 @@ public class QueryManager {
 //            pst.setString(7, user.getEmail());
 //            pst.setString(8, user.getAirport());
     
-    
-    
-    public Luggage getSelectedLuggage(int id){
-        // nog afmaken edit luggage
-        Luggage luggage = new Luggage();
-        ResultSet rs = null;
-        
-        try{
-            dbManager.openConnection();
-            
-            String sql_getLuggage = "SELECT * FROM luggage WHERE luggageid=?";
-            pst = dbManager.getConnection().prepareStatement(sql_getLuggage);
-            
-            pst.setInt(1, id);
-            
-            rs = pst.executeQuery(sql_getLuggage);
-            
-            if(rs.next()){
-               luggage.setStatus(rs.getString("status"));
-               luggage.setBrand(rs.getString("brand"));
-               luggage.setDescription("description");
-               luggage.setWeight("weight");  
-            }
-            
-            return luggage;
-        }catch(SQLException ex){
-            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dbManager.closeConnection();
-        return luggage;
-    }
-    
     public ResultSet getUserLoginfo (String username){
         String sql = "SELECT password,role FROM user WHERE username=?";
         ResultSet rs = null;
-        Connection conn;
         
         try {
             dbManager.openConnection();
@@ -388,5 +355,29 @@ public class QueryManager {
         }
         dbManager.closeConnection();
         return rs;
+    }
+    
+    public Luggage getSelectedLuggage(int i){
+        Luggage luggage = new Luggage();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM luggage WHERE luggageid=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setInt(1, i);
+            
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+               luggage.setStatus(rs.getString("status"));
+               luggage.setBrand(rs.getString("brand"));
+               luggage.setDescription(rs.getString("description"));
+               luggage.setWeight(rs.getString("weight"));  
+            }
+            return luggage;
+        } catch (SQLException ex){
+            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return luggage;
     }
 }

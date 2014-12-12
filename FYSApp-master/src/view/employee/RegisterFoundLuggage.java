@@ -22,6 +22,7 @@ public class RegisterFoundLuggage extends JPanel {
         initComponents();
         // Always declare first. (nullpointerexception H8 guys)
         Connection conn = null;
+        brandJTextField.setText("Wat denken jij?");
         
     }
 
@@ -172,6 +173,7 @@ public class RegisterFoundLuggage extends JPanel {
     
     private void brandJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextFieldActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_brandJTextFieldActionPerformed
 
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed

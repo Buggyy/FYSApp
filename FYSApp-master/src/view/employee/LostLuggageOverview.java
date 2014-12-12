@@ -234,7 +234,9 @@ public class LostLuggageOverview extends JPanel {
         int col = 0; 
         int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
         System.out.println(id);
-        FYSApp.getQueryManager().getSelectedLuggage(id);
+        Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
+        FYSApp.getInstance().showPanel(new RegisterLostLuggage());
+        RegisterLostLuggage.setText(luggage);
         
     }//GEN-LAST:event_editJButtonActionPerformed
 

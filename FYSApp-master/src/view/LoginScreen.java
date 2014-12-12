@@ -222,35 +222,7 @@ public class LoginScreen extends javax.swing.JPanel {
         // Does the same ass the login button, only this will perform when
         // 'enter' has been hitten.
         
-        try {
-            String userName = userNameJTextField.getText();
-            String passWord = passJTextField.getText();
-            
-            rs = FYSApp.getQueryManager().getUserLoginfo(userName);
-            
-
-            //  Down here we need to check the user on its role..
-            if (rs.next()) {
-                String pass = rs.getString("password");
-                String role = rs.getString("role");
-                if (pass.equals(passWord)){ 
-                if (role == null || role.isEmpty()) {
-                    // process no role case first - it deals with the null role problem
-                }
-                if (role.equals("manager")) {
-                    main.FYSApp.getInstance().showPanel(new ManagerFront());
-                } else if (role.equals("employee")) {
-                    main.FYSApp.getInstance().showPanel(new EmployeeFront());
-                } else if (role.equals("admin")) {
-                    main.FYSApp.getInstance().showPanel(new AdminFront());
-                }
-            } else {
-                jLabel1.setText("Wrong Username/Password - Please try again");
-            }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        loginJButtonActionPerformed(evt);
     }//GEN-LAST:event_passJTextFieldActionPerformed
 
     private void cantLoginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantLoginJButtonActionPerformed

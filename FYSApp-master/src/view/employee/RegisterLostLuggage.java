@@ -417,17 +417,22 @@ public class RegisterLostLuggage extends JPanel {
     private void countryJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryJTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_countryJTextFieldActionPerformed
-
+    
+    public static void setText(Luggage luggage){
+        brandJTextField.setText(luggage.getBrand());
+        weightJTextField.setText(luggage.getWeight());
+        descriptionJTextField.setText(luggage.getDescription());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressJTextField;
     private javax.swing.JButton backJButton;
-    private javax.swing.JTextField brandJTextField;
+    private static javax.swing.JTextField brandJTextField;
     private java.awt.Canvas canvas1;
     private javax.swing.JTextField cityJTextField;
     private javax.swing.JButton clearJButton;
     private javax.swing.JTextField countryJTextField;
-    private javax.swing.JTextField descriptionJTextField;
+    private static javax.swing.JTextField descriptionJTextField;
     private javax.swing.JTextField emailJTextField;
     private javax.swing.JTextField firstNameJTextField;
     private javax.swing.JLabel jLabel1;
@@ -454,7 +459,7 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JTextField phoneNrJTextField;
     private javax.swing.JTextField stateJTextField;
     private javax.swing.JButton submitJButton;
-    private javax.swing.JTextField weightJTextField;
+    private static javax.swing.JTextField weightJTextField;
     private javax.swing.JTextField zipcodeJTextField;
     // End of variables declaration//GEN-END:variables
 }
