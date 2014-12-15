@@ -14,7 +14,9 @@ import view.LoginScreen;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class RegisterLostLuggage extends JPanel {
-    private boolean updateMode = false;
+    private static int updateMode = 0;
+    private static int luggageid;
+    //private Client client;
     /**
      * Creates new form RegisterLostLuggage
      */
@@ -22,9 +24,9 @@ public class RegisterLostLuggage extends JPanel {
         initComponents();
     }
     
-    public RegisterLostLuggage(Luggage luggage){
-        this.updateMode =  true;
-        // object aanmaken voor de edit
+    public static void setUpdate(int id){
+        RegisterLostLuggage.updateMode =  id;
+        RegisterLostLuggage.luggageid = id;
     }
 
     /**
@@ -337,11 +339,9 @@ public class RegisterLostLuggage extends JPanel {
         String city = cityJTextField.getText();
         String state = stateJTextField.getText();
         String zipCode = zipcodeJTextField.getText();
-
+        
         Client client = new Client(firstName, middleName, lastName, phone, email, country,
-                address, city, state, zipCode);
-        FYSApp.getInstance().getQueryManager().addClient(client);
-        int id = FYSApp.getInstance().getQueryManager().getClientd();
+            address, city, state, zipCode);
 
         String weight = weightJTextField.getText();
         String brand = brandJTextField.getText();
@@ -350,16 +350,20 @@ public class RegisterLostLuggage extends JPanel {
 
         Luggage luggage = new Luggage(weight, brand, description, status);
 
-        FYSApp.getInstance().getQueryManager().addLostLuggage(luggage, id);
+        if (updateMode > 1){
+            FYSApp.getQueryManager().updateLuggage(luggage,luggageid);
+        } else {
+            FYSApp.getQueryManager().addClient(client);
+            int id = FYSApp.getQueryManager().getClientd();
+            FYSApp.getQueryManager().addLostLuggage(luggage, id);
+        }
 
         // Pak de id van deze client
         // luggage.setId(de id van je query die je ophaalt.)
 //        FYSApp.getInstance().getQueryManager().addLuggage(luggage);
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitJButtonActionPerformed

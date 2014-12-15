@@ -15,15 +15,19 @@ import view.LoginScreen;
  */
 public class RegisterFoundLuggage extends JPanel {
 
+    private static int updateMode = 0;
+    private static int luggageid;
     /**
      * Creates new form AddUser
      */
     public RegisterFoundLuggage() {
         initComponents();
-        // Always declare first. (nullpointerexception H8 guys)
-        Connection conn = null;
-        brandJTextField.setText("Wat denken jij?");
-        
+    }
+    
+    public static void setUpdate(int id){
+        updateMode =  id;
+        luggageid = id;
+        // object aanmaken voor de edit
     }
 
     /**
@@ -220,23 +224,31 @@ public class RegisterFoundLuggage extends JPanel {
         
         Luggage luggage = new Luggage(weight,brand,description,status);
         
-        FYSApp.getInstance().getQueryManager().addFoundLuggage(luggage);
+
+        if (updateMode > 1){
+            FYSApp.getQueryManager().updateLuggage(luggage,luggageid);
+        } else {
+            FYSApp.getQueryManager().addFoundLuggage(luggage);
+        }
         
         try {
             FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitJButtonMouseClicked
 
+    public static void setText(Luggage luggage){
+        brandJTextField.setText(luggage.getBrand());
+        weightJTextField.setText(luggage.getWeight());
+        descriptionJTextField.setText(luggage.getDescription());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JTextField brandJTextField;
+    private static javax.swing.JTextField brandJTextField;
     private javax.swing.JButton clearJButton;
-    private javax.swing.JTextField descriptionJTextField;
+    private static javax.swing.JTextField descriptionJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -247,6 +259,6 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JButton logoutJButton;
     private java.awt.Panel panel1;
     private javax.swing.JButton submitJButton;
-    private javax.swing.JTextField weightJTextField;
+    private static javax.swing.JTextField weightJTextField;
     // End of variables declaration//GEN-END:variables
 }

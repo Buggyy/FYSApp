@@ -18,6 +18,8 @@ import view.LoginScreen;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class LostLuggageOverview extends JPanel {
+    
+    private static final int UPDATE_MODE_FALSE = 0;
 
     /**
      * Creates new form LostLuggageOverview
@@ -213,6 +215,7 @@ public class LostLuggageOverview extends JPanel {
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new RegisterLostLuggage());
+        RegisterLostLuggage.setUpdate(UPDATE_MODE_FALSE);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
@@ -233,9 +236,9 @@ public class LostLuggageOverview extends JPanel {
         int row = lostLuggageTable.getSelectedRow();
         int col = 0; 
         int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
-        System.out.println(id);
         Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
         FYSApp.getInstance().showPanel(new RegisterLostLuggage());
+        RegisterLostLuggage.setUpdate(id);
         RegisterLostLuggage.setText(luggage);
         
     }//GEN-LAST:event_editJButtonActionPerformed

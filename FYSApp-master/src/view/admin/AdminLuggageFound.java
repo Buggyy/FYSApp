@@ -1,6 +1,13 @@
 package view.admin;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
 
@@ -13,8 +20,37 @@ public class AdminLuggageFound extends JPanel {
     /**
      * Creates new form AdminLuggageFound
      */
-    public AdminLuggageFound() {
+    public AdminLuggageFound()  throws ClassNotFoundException, SQLException {
         initComponents();
+        
+        
+        ResultSet rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        ResultSetMetaData rsmetadata = rs.getMetaData();
+
+        int columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        foundLuggageJTable.setModel(dtm);
+        foundLuggageJTable.repaint();
     }
 
     /**
@@ -135,7 +171,6 @@ public class AdminLuggageFound extends JPanel {
         add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 80, 40));
 
         deleteJButton.setText("DELETE");
-        deleteJButton.setEnabled(false);
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteJButtonActionPerformed(evt);
@@ -177,7 +212,11 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageLost());
+        try {
+            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
@@ -186,6 +225,16 @@ public class AdminLuggageFound extends JPanel {
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
+        int row = foundLuggageJTable.getSelectedRow();
+        int col = 0; 
+        int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
+        FYSApp.getQueryManager().delete(id);
+        
+        try {
+            FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
 

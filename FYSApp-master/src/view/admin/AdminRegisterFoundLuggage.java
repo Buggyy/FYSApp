@@ -1,5 +1,8 @@
 package view.admin;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
@@ -186,7 +189,13 @@ public class AdminRegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        try {
+            FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminRegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminRegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_backJButtonActionPerformed
 
 

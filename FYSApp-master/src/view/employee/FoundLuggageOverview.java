@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import model.Luggage;
 import view.LoginScreen;
 
 /**
@@ -18,7 +19,7 @@ import view.LoginScreen;
  */
 public class FoundLuggageOverview extends JPanel {
 
-  
+    private static final int UPDATE_MODE_FALSE = 0;
     
     /**
      * Creates new form FoundLuggageOverview
@@ -145,7 +146,6 @@ public class FoundLuggageOverview extends JPanel {
         add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 210, 40));
 
         editJButton.setText("EDIT");
-        editJButton.setEnabled(false);
         editJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editJButtonActionPerformed(evt);
@@ -210,9 +210,7 @@ public class FoundLuggageOverview extends JPanel {
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
@@ -231,10 +229,19 @@ public class FoundLuggageOverview extends JPanel {
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
+        RegisterFoundLuggage.setUpdate(UPDATE_MODE_FALSE);
+        
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         // TODO add your handling code here:
+        int row = foundLuggageTable.getSelectedRow();
+        int col = 0; 
+        int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
+        Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
+        FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
+        RegisterFoundLuggage.setUpdate(id);
+        RegisterFoundLuggage.setText(luggage);
     }//GEN-LAST:event_editJButtonActionPerformed
 
 

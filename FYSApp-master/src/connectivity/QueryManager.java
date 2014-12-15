@@ -1,6 +1,5 @@
 package connectivity;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -63,7 +62,6 @@ public class QueryManager {
         try {
             dbManager.openConnection();
             
-            int lastId = id;
             
             String sql = "INSERT INTO luggage (status,brand,weight,description,"
                     + "ownerid) VALUES (?,?,?,?,?)";
@@ -378,6 +376,71 @@ public class QueryManager {
         } catch (SQLException ex){
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dbManager.closeConnection();
         return luggage;
+        
+    }
+    
+    public void deleteLuggage(int i){
+        String sql = "DELETE from luggage WHERE luggageid=?";
+        try{
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setInt(1, i);
+            pst.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        dbManager.closeConnection();
+    }
+    
+    public void delete(int id){
+        try {
+            String sql = "DELETE from luggage WHERE luggageid=?";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+    }
+    
+    public void updateLuggage(Luggage luggage, int id){
+        try {
+            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, luggage.getBrand());
+            pst.setString(2, luggage.getWeight());
+            pst.setString(3, luggage.getDescription());
+            pst.setInt(4, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+    }
+    
+    public void updateClient(Client client, int id){
+        try {
+            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, client.getFirstName());
+            pst.setString(2, client.getMiddleName());
+            pst.setString(3, client.getLastName());
+            pst.setString(4, client.getCountry());
+            pst.setString(5, client.getPhone());
+            pst.setString(6, client.getEmail());
+            pst.setString(7, client.getAddress());
+            pst.setString(8, client.getCity());
+            pst.setString(9, client.getState());
+            //pst.setString(10, client.getZipCode());
+            pst.setInt(4, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
     }
 }

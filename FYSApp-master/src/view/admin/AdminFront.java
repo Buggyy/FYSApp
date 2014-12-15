@@ -113,11 +113,23 @@ public class AdminFront extends JPanel {
     }//GEN-LAST:event_overviewJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageLost());
+        try {
+            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        try {
+            FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_foundJButtonActionPerformed
 
 
