@@ -104,9 +104,17 @@ public final class FYSApp {
         mainWindow.dispose();
     }
     
+    // Gets current date (timestamp)
     public static String getDate(){
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         return date;
+    }
+    
+    // Gets current date and time (timestamp)
+    public static String getDateTime(){
+        String dateTime = new SimpleDateFormat("dd-MM-yyyy:k:m")
+                .format(new Date());
+        return dateTime;
     }
 
     /**

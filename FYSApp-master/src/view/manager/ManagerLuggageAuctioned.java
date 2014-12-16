@@ -34,11 +34,12 @@ public class ManagerLuggageAuctioned extends JPanel {
         foundJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        searchJButton = new javax.swing.JButton();
+        JButtonPrint = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         auctionedJTable = new javax.swing.JTable();
+        searchJButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 0));
@@ -111,14 +112,13 @@ public class ManagerLuggageAuctioned extends JPanel {
         });
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
 
-        searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
-        searchJButton.addActionListener(new java.awt.event.ActionListener() {
+        JButtonPrint.setText("PRINT PDF");
+        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchJButtonActionPerformed(evt);
+                JButtonPrintActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 100, 40));
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 100, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -168,6 +168,15 @@ public class ManagerLuggageAuctioned extends JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 590, 340));
 
+        searchJButton1.setText("SEARCH");
+        searchJButton1.setEnabled(false);
+        searchJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchJButton1ActionPerformed(evt);
+            }
+        });
+        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 100, 40));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 650));
@@ -205,12 +214,17 @@ public class ManagerLuggageAuctioned extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
+    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchJButtonActionPerformed
+    }//GEN-LAST:event_JButtonPrintActionPerformed
+
+    private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchJButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JTable auctionedJTable;
     private javax.swing.JButton backJButton;
@@ -222,7 +236,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
-    private javax.swing.JButton searchJButton;
+    private javax.swing.JButton searchJButton1;
     private javax.swing.JButton statisticsJButton;
     // End of variables declaration//GEN-END:variables
 }
