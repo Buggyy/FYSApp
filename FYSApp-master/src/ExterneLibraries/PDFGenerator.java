@@ -14,7 +14,7 @@ import java.io.*;
 
 /**
  *
- * @author Amrish Heddes
+ * @author Amrit HebDees
  */
 public class PDFGenerator {
 

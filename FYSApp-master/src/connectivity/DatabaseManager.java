@@ -18,13 +18,28 @@ public class DatabaseManager {
      * Open database connection
      */
     public void openConnection() {
+
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
-            
-        } catch (Exception e) {
+            //  Database information
+            String url = "jdbc:mysql://iavconcepts.com:3306/"; //deze moet ik nog suchen.
+            String dbName = "zoekjekoffer";
+
+            //  jdbc driver
+            String driver = "com.mysql.jdbc.Driver";
+            //  username of database user
+            String userName = "hvateammember";
+            //  Password of database user
+            String password = "Q3c&QKCsUI";
+
+            // The newInstance() call is a work around for some
+            // broken Java implementations
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url + dbName, userName, password);
+
+            //  Adding multiple exception catches
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
-            
+
         }
     }
 
@@ -38,7 +53,7 @@ public class DatabaseManager {
             System.err.println(e.getMessage());
         }
     }
-    
+
     public Connection getConnection() {
         return conn;
     }
@@ -62,6 +77,7 @@ public class DatabaseManager {
      * Executes a query with result.
      *
      * @param query, the SQL query
+     * @return 
      */
     // Maak hier preparedstatement van.
     public ResultSet doQuery(String query) {
