@@ -230,13 +230,7 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        try {
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed

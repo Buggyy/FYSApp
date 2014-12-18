@@ -1,11 +1,19 @@
 package view.admin;
 
+import connectivity.DatabaseManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
@@ -20,11 +28,30 @@ public class AdminLuggageFound extends JPanel {
     /**
      * Creates new form AdminLuggageFound
      */
-    public AdminLuggageFound()  throws ClassNotFoundException, SQLException {
+    // Always declare first. (nullpointerexception H8 guys)
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+
+    public AdminLuggageFound() {
         initComponents();
-        
-        
+        getFoundLuggage();
+    }
+    
+    private void getFoundLuggage(){
         ResultSet rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        try {
+            updateTable(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
         ResultSetMetaData rsmetadata = rs.getMetaData();
 
         int columns = rsmetadata.getColumnCount();
@@ -126,10 +153,14 @@ public class AdminLuggageFound extends JPanel {
                 searchJTextFieldActionPerformed(evt);
             }
         });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyTyped(evt);
+            }
+        });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 150, -1));
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -197,10 +228,47 @@ public class AdminLuggageFound extends JPanel {
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
         // TODO add your handling code here:
+
+//         searchJButton.addActionListener(new ActionListener()
+//            {     
+//                @Override
+//                public void actionPerformed(ActionEvent e)
+//                {
+//                 searchJTextField.setText(searchJTextField.getText());
+//                }
+//            });
+//        
+//        searchJTextField.addKeyListener(new KeyAdapter()
+//        {
+//            @Override
+//            public void keyPressed(KeyEvent e)
+//            {
+//            if(e.getKeyCode() == KeyEvent.VK_ENTER)
+//            searchJTextField.setText(searchJTextField.getText());
+//            }
+//        });
+
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            input = searchJTextField.getText();
+            ResultSet rs = FYSApp.getQueryManager().searchTable(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                //Text/popup van niks gevonden~
+                System.out.println("Nothing found");
+                getFoundLuggage();
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -226,23 +294,24 @@ public class AdminLuggageFound extends JPanel {
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
         int row = foundLuggageJTable.getSelectedRow();
-        int col = 0; 
+        int col = 0;
         int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
         FYSApp.getQueryManager().delete(id);
-        
-        try {
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        FYSApp.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_deleteJButtonActionPerformed
+
+    private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
+        // Roep de zoekmethode van query op
+
+    }//GEN-LAST:event_searchJTextFieldKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
-    private javax.swing.JTable foundLuggageJTable;
+    public javax.swing.JTable foundLuggageJTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -250,6 +319,8 @@ public class AdminLuggageFound extends JPanel {
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     private javax.swing.JButton searchJButton;
-    private javax.swing.JTextField searchJTextField;
+    public javax.swing.JTextField searchJTextField;
     // End of variables declaration//GEN-END:variables
+
+
 }

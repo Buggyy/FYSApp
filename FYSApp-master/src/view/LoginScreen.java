@@ -192,7 +192,7 @@ public class LoginScreen extends javax.swing.JPanel {
             String passWord = passJTextField.getText();
             
             rs = FYSApp.getQueryManager().getUserLoginfo(userName);
-            
+           
 
             //  Down here we need to check the user on its role..
             if (rs.next()) {
