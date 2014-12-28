@@ -31,6 +31,12 @@ public final class FYSApp {
     */
    
     /**
+     * Finals for warnings
+     */
+    public static final String WARNING_REQUIRED = "Some fields are required to fill in!";
+    public static final String WARNING_MUST_SELECT_SOMETHING = "You must select something!";
+    
+    /**
      * Define frame width, height and name
      */
     public static final int FRAME_WIDTH = 1024;

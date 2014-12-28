@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import view.LoginScreen;
 
 /**
@@ -39,8 +40,8 @@ public class AdminLuggageFound extends JPanel {
         initComponents();
         getFoundLuggage();
     }
-    
-    private void getFoundLuggage(){
+
+    private void getFoundLuggage() {
         ResultSet rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
@@ -100,6 +101,7 @@ public class AdminLuggageFound extends JPanel {
         deleteJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLWarning = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -218,6 +220,10 @@ public class AdminLuggageFound extends JPanel {
         jLabel3.setText("Currently logged in as: [username]");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
 
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -262,7 +268,7 @@ public class AdminLuggageFound extends JPanel {
                 System.out.println("Nothing found");
                 getFoundLuggage();
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -288,17 +294,26 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
+        if (foundLuggageJTable.getSelectedRow() >= 0) {
+            // Code to edit found luggage
+        } else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+        }
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
-        int row = foundLuggageJTable.getSelectedRow();
-        int col = 0;
-        int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
-        FYSApp.getQueryManager().delete(id);
 
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        if (foundLuggageJTable.getSelectedRow() >= 0) {
+            int row = foundLuggageJTable.getSelectedRow();
+            int col = 0;
+            int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
+            FYSApp.getQueryManager().delete(id);
+
+            FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        } else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+        }
+
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
@@ -312,6 +327,7 @@ public class AdminLuggageFound extends JPanel {
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
     public javax.swing.JTable foundLuggageJTable;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -321,6 +337,5 @@ public class AdminLuggageFound extends JPanel {
     private javax.swing.JButton searchJButton;
     public javax.swing.JTextField searchJTextField;
     // End of variables declaration//GEN-END:variables
-
 
 }

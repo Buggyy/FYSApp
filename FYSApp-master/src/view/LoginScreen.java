@@ -202,13 +202,17 @@ public class LoginScreen extends javax.swing.JPanel {
                 if (role == null || role.isEmpty()) {
                     // process no role case first - it deals with the null role problem
                 }
-                if (role.equals("manager")) {
-                    main.FYSApp.getInstance().showPanel(new ManagerFront());
-                } else if (role.equals("employee")) {
-                    main.FYSApp.getInstance().showPanel(new EmployeeFront());
-                } else if (role.equals("admin")) {
-                    main.FYSApp.getInstance().showPanel(new AdminFront());
-                }
+                    switch (role) {
+                        case "manager":
+                            main.FYSApp.getInstance().showPanel(new ManagerFront());
+                            break;
+                        case "employee":
+                            main.FYSApp.getInstance().showPanel(new EmployeeFront());
+                            break;
+                        case "admin":
+                            main.FYSApp.getInstance().showPanel(new AdminFront());
+                            break;
+                    }
             } else {
                 jLabel1.setText("Wrong Username/Password - Please try again");
             }

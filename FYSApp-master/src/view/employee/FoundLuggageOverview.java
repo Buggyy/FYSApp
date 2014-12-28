@@ -1,15 +1,16 @@
 package view.employee;
 
-
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import static main.FYSApp.*;
 import model.Luggage;
 import view.LoginScreen;
 
@@ -20,14 +21,14 @@ import view.LoginScreen;
 public class FoundLuggageOverview extends JPanel {
 
     private static final int UPDATE_MODE_FALSE = 0;
-    
+
     /**
      * Creates new form FoundLuggageOverview
      */
     public FoundLuggageOverview() throws ClassNotFoundException, SQLException {
-        
+
         initComponents();
-        
+
         ResultSet rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
         ResultSetMetaData rsmetadata = rs.getMetaData();
 
@@ -66,7 +67,6 @@ public class FoundLuggageOverview extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -77,7 +77,7 @@ public class FoundLuggageOverview extends JPanel {
         editJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         foundLuggageTable = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
@@ -86,21 +86,13 @@ public class FoundLuggageOverview extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
-
         lostJButton.setText("LOST");
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 100, 50));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +135,7 @@ public class FoundLuggageOverview extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 210, 40));
 
         editJButton.setText("EDIT");
         editJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -192,8 +184,10 @@ public class FoundLuggageOverview extends JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
 
-        jLabel4.setForeground(new java.awt.Color(51, 255, 255));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 300, 30));
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
+        jLWarning.getAccessibleContext().setAccessibleName("jLWarning");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -202,10 +196,6 @@ public class FoundLuggageOverview extends JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new EmployeeFront());
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
@@ -230,29 +220,33 @@ public class FoundLuggageOverview extends JPanel {
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
         RegisterFoundLuggage.setUpdate(UPDATE_MODE_FALSE);
-        
+
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
-        int row = foundLuggageTable.getSelectedRow();
-        int col = 0; 
-        int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
-        Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
-        FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
-        RegisterFoundLuggage.setUpdate(id);
-        RegisterFoundLuggage.setText(luggage);
+        //  If there is no row selected to edit
+        if (foundLuggageTable.getSelectedRow() >= 0) {
+            int row = foundLuggageTable.getSelectedRow();
+            int col = 0;
+            int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
+            Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
+            FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
+            RegisterFoundLuggage.setUpdate(id);
+            RegisterFoundLuggage.setText(luggage);
+        } //  We show a warning
+        else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+        }
     }//GEN-LAST:event_editJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton editJButton;
     private javax.swing.JTable foundLuggageTable;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;

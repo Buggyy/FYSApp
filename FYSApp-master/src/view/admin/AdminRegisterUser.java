@@ -300,8 +300,7 @@ public class AdminRegisterUser extends JPanel {
     }//GEN-LAST:event_passJTextFieldActionPerformed
 
     private void roleJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleJComboBoxActionPerformed
-        // TODO add your handling code here:
-        //COMBOBOX NIGA
+
     }//GEN-LAST:event_roleJComboBoxActionPerformed
 
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked

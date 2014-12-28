@@ -1,15 +1,13 @@
 package view.employee;
 
-
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.Vector;
+import java.sql.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.*;
 import main.FYSApp;
+import static main.FYSApp.*;
 import model.Luggage;
 import view.LoginScreen;
 
@@ -19,18 +17,21 @@ import view.LoginScreen;
  */
 public class LostLuggageOverview extends JPanel {
     
+
     private static final int UPDATE_MODE_FALSE = 0;
 
     /**
      * Creates new form LostLuggageOverview
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public LostLuggageOverview() throws ClassNotFoundException, SQLException {
-        
+
         initComponents();
-        
+
         ResultSet rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
         ResultSetMetaData rsmetadata = rs.getMetaData();
-        
+
         int columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
@@ -76,7 +77,7 @@ public class LostLuggageOverview extends JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lostLuggageTable = new javax.swing.JTable();
-        backJButton = new javax.swing.JButton();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
@@ -93,7 +94,7 @@ public class LostLuggageOverview extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 100, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 100, 40));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +102,7 @@ public class LostLuggageOverview extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 430, 90, 30));
 
         foundJButton.setText("FOUND");
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +110,7 @@ public class LostLuggageOverview extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
         editJButton.setText("EDIT");
         editJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +118,7 @@ public class LostLuggageOverview extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 80, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 510, 80, 30));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -126,7 +127,7 @@ public class LostLuggageOverview extends JPanel {
                 searchJTextFieldActionPerformed(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 150, -1));
 
         registerJButton.setText("REGISTER LOST LUGGAGE");
         registerJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,12 +135,12 @@ public class LostLuggageOverview extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Lost Luggage Overview - Employee");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 360, 33));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 360, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -182,22 +183,18 @@ public class LostLuggageOverview extends JPanel {
         });
         jScrollPane2.setViewportView(lostLuggageTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 590, 340));
 
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 410, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
@@ -232,26 +229,29 @@ public class LostLuggageOverview extends JPanel {
         // query
         //object maken
         // meesturen naar scherm jpanel voor register
-        
-        int row = lostLuggageTable.getSelectedRow();
-        int col = 0; 
-        int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
-        Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
-        FYSApp.getInstance().showPanel(new RegisterLostLuggage());
-        RegisterLostLuggage.setUpdate(id);
-        RegisterLostLuggage.setText(luggage);
-        
-    }//GEN-LAST:event_editJButtonActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new EmployeeFront());
-    }//GEN-LAST:event_backJButtonActionPerformed
+        //  If there is no row selected to edit
+        if (lostLuggageTable.getSelectedRow() >= 0) {
+            int row = lostLuggageTable.getSelectedRow();
+            int col = 0;
+            int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
+            Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
+            FYSApp.getInstance().showPanel(new RegisterLostLuggage());
+            RegisterLostLuggage.setUpdate(id);
+            RegisterLostLuggage.setText(luggage);
+        } //  We show a warning
+        else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+        }
+
+
+    }//GEN-LAST:event_editJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton editJButton;
     private javax.swing.JButton foundJButton;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
