@@ -83,6 +83,7 @@ public class RegisterLostLuggage extends JPanel {
         jLabel16 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtfld_description2 = new javax.swing.JTextArea();
+        jLabel17 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -116,7 +117,6 @@ public class RegisterLostLuggage extends JPanel {
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 130, 30));
 
         clearJButton.setText("CANCEL");
-        clearJButton.setActionCommand("CANCEL");
         clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearJButtonActionPerformed(evt);
@@ -317,8 +317,8 @@ public class RegisterLostLuggage extends JPanel {
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Other details:");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+        jLabel16.setText(">>>> Error message <<<<");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 210, 20));
 
         txtfld_description2.setColumns(20);
         txtfld_description2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -326,6 +326,11 @@ public class RegisterLostLuggage extends JPanel {
         jScrollPane4.setViewportView(txtfld_description2);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 340, 60));
+
+        jLabel17.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Other details:");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -464,6 +469,7 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;

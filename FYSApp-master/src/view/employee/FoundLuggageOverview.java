@@ -78,7 +78,10 @@ public class FoundLuggageOverview extends JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         foundLuggageTable = new javax.swing.JTable();
         jLWarning = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lostJButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 102, 102));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -86,13 +89,13 @@ public class FoundLuggageOverview extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lostJButton.setText("LOST");
+        lostJButton.setText("Matches");
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 100, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, 100, 20));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,8 +111,8 @@ public class FoundLuggageOverview extends JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 410, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
+        jLabel1.setText(" matches");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 190, -1, -1));
 
         searchJButton.setText("SEARCH");
         searchJButton.setEnabled(false);
@@ -189,12 +192,25 @@ public class FoundLuggageOverview extends JPanel {
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
         jLWarning.getAccessibleContext().setAccessibleName("jLWarning");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
-        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
-        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as: [username]");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("There are currently:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 150, -1, -1));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("[ number ]");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, -1, -1));
+
+        lostJButton1.setText("LOST");
+        lostJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lostJButton1ActionPerformed(evt);
+            }
+        });
+        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 100, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
@@ -239,6 +255,10 @@ public class FoundLuggageOverview extends JPanel {
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
+    private void lostJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lostJButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editJButton;
@@ -246,10 +266,13 @@ public class FoundLuggageOverview extends JPanel {
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
+    private javax.swing.JButton lostJButton1;
     private javax.swing.JButton registerJButton;
     private javax.swing.JButton searchJButton;
     private javax.swing.JTextField searchJTextField;
