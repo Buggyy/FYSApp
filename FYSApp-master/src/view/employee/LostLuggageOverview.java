@@ -1,5 +1,6 @@
 package view.employee;
 
+import connectivity.DatabaseManager;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -10,6 +11,7 @@ import main.FYSApp;
 import static main.FYSApp.*;
 import model.Luggage;
 import view.LoginScreen;
+import view.admin.AdminLuggageLost;
 
 /**
  *
@@ -17,22 +19,42 @@ import view.LoginScreen;
  */
 public class LostLuggageOverview extends JPanel {
     
-
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
     private static final int UPDATE_MODE_FALSE = 0;
 
+    public LostLuggageOverview() throws ClassNotFoundException, SQLException {
+        initComponents();
+        getLostLuggage();
+    }
+    
+    private void getLostLuggage() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
+        try {
+            updateTable(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Creates new form LostLuggageOverview
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */
-    public LostLuggageOverview() throws ClassNotFoundException, SQLException {
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
-        initComponents();
+        rsmetadata = rs.getMetaData();
 
-        ResultSet rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
-        ResultSetMetaData rsmetadata = rs.getMetaData();
-
-        int columns = rsmetadata.getColumnCount();
+        columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -88,7 +110,6 @@ public class LostLuggageOverview extends JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -198,12 +219,7 @@ public class LostLuggageOverview extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        try {
-            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-            //Replace with multicatch
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(LostLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -216,7 +232,23 @@ public class LostLuggageOverview extends JPanel {
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                //Text/popup van niks gevonden~
+                System.out.println("Nothing found");
+                getLostLuggage();
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed

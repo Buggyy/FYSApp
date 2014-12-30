@@ -91,13 +91,7 @@ public class EmployeeFront extends JPanel {
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
 
-        try {
-            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
@@ -119,13 +113,7 @@ public class EmployeeFront extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void foundJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foundJButtonMouseClicked
-         try {
-            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
          
     }//GEN-LAST:event_foundJButtonMouseClicked
 

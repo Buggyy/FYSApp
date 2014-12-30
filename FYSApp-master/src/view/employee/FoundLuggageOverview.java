@@ -1,5 +1,8 @@
 package view.employee;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -13,6 +16,7 @@ import main.FYSApp;
 import static main.FYSApp.*;
 import model.Luggage;
 import view.LoginScreen;
+import view.admin.AdminLuggageFound;
 
 /**
  *
@@ -20,19 +24,47 @@ import view.LoginScreen;
  */
 public class FoundLuggageOverview extends JPanel {
 
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
     private static final int UPDATE_MODE_FALSE = 0;
+
+    /**
+     * Blablabla
+     */
+    public FoundLuggageOverview() {
+        initComponents();
+        getFoundLuggage();
+    }
+
+    /**
+     * Blablabla
+     */
+    private void getFoundLuggage() {
+        rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        try {
+            updateTable(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
     /**
      * Creates new form FoundLuggageOverview
      */
-    public FoundLuggageOverview() throws ClassNotFoundException, SQLException {
+    private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+        
+        rsmetadata = rs.getMetaData();
 
-        initComponents();
-
-        ResultSet rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
-        ResultSetMetaData rsmetadata = rs.getMetaData();
-
-        int columns = rsmetadata.getColumnCount();
+        columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -55,6 +87,7 @@ public class FoundLuggageOverview extends JPanel {
         }
 
         foundLuggageTable.setModel(dtm);
+
         foundLuggageTable.repaint();
     }
 
@@ -67,7 +100,7 @@ public class FoundLuggageOverview extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lostJButton = new javax.swing.JButton();
+        matchesJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -82,20 +115,21 @@ public class FoundLuggageOverview extends JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lostJButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 102, 102));
+        setToolTipText("");
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lostJButton.setText("Matches");
-        lostJButton.addActionListener(new java.awt.event.ActionListener() {
+        matchesJButton.setText("Matches");
+        matchesJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lostJButtonActionPerformed(evt);
+                matchesJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, 100, 20));
+        add(matchesJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, 100, 20));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +149,6 @@ public class FoundLuggageOverview extends JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 190, -1, -1));
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -211,22 +244,38 @@ public class FoundLuggageOverview extends JPanel {
             }
         });
         add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 100, 50));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
-        try {
-            FYSApp.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_lostJButtonActionPerformed
+    private void matchesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchesJButtonActionPerformed
+       
+    }//GEN-LAST:event_matchesJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                //Text/popup van niks gevonden~
+                System.out.println("Nothing found");
+                getFoundLuggage();
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
@@ -256,7 +305,11 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void lostJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButton1ActionPerformed
-        // TODO add your handling code here:
+         try {
+            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lostJButton1ActionPerformed
 
 
@@ -266,13 +319,14 @@ public class FoundLuggageOverview extends JPanel {
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
-    private javax.swing.JButton lostJButton;
     private javax.swing.JButton lostJButton1;
+    private javax.swing.JButton matchesJButton;
     private javax.swing.JButton registerJButton;
     private javax.swing.JButton searchJButton;
     private javax.swing.JTextField searchJTextField;

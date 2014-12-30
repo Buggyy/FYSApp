@@ -84,8 +84,9 @@ public class RegisterLostLuggage extends JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtfld_description2 = new javax.swing.JTextArea();
         jLabel17 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 102, 102));
+        setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -331,6 +332,10 @@ public class RegisterLostLuggage extends JPanel {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Other details:");
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1090, 630));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -477,6 +482,7 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -299,15 +299,7 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        try {
-            try {
-                FYSApp.getInstance().showPanel(new FoundLuggageOverview());
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked

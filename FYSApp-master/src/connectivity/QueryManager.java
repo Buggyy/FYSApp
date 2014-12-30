@@ -353,7 +353,7 @@ public class QueryManager {
         return rs;
     }
 
-    public ResultSet searchTable(String input) throws ClassNotFoundException {
+    public ResultSet searchTableLuggageFound(String input) throws ClassNotFoundException {
         
         ResultSet rs = null;
 
@@ -363,6 +363,36 @@ public class QueryManager {
                 String sql
                 = "SELECT * FROM luggage WHERE ("
                         + "status = 'found' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                        + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
+          
+            pst = dbManager.getConnection().prepareStatement(sql);
+            
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            
+            rs = pst.executeQuery();
+           return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
+    
+    public ResultSet searchTableLuggageLost(String input) throws ClassNotFoundException {
+        
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+            
+                String sql
+                = "SELECT * FROM luggage WHERE ("
+                        + "status = 'lost' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
                         + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
           
             pst = dbManager.getConnection().prepareStatement(sql);

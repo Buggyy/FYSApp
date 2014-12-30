@@ -1,5 +1,8 @@
 package view.admin;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -19,16 +22,36 @@ import view.employee.EmployeeFront;
  */
 public class AdminLuggageLost extends JPanel {
 
-    /**
-     * Creates new form AdminLuggageLost
-     */
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
+
     public AdminLuggageLost() throws ClassNotFoundException, SQLException {
         initComponents();
+        getLostLuggage();
+    }
 
-        ResultSet rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
-        ResultSetMetaData rsmetadata = rs.getMetaData();
+    private void getLostLuggage() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
+        try {
+            updateTable(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-        int columns = rsmetadata.getColumnCount();
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+
+        rsmetadata = rs.getMetaData();
+
+        columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -91,7 +114,6 @@ public class AdminLuggageLost extends JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -212,7 +234,23 @@ public class AdminLuggageLost extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                //Text/popup van niks gevonden~
+                System.out.println("Nothing found");
+                getLostLuggage();
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -244,11 +282,16 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
+        if (lostLuggageTable.getSelectedRow() >= 0) {
+            // Code to edit lost luggage
+        } else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+        }
+
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
