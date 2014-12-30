@@ -36,7 +36,7 @@ public class ManagerFront extends JPanel {
         logoutJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 153, 0));
+        setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
@@ -99,7 +99,13 @@ public class ManagerFront extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+        try {
+            FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed

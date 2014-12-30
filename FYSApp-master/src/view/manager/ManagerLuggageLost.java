@@ -100,7 +100,7 @@ public class ManagerLuggageLost extends JPanel {
         statisticsJButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(51, 153, 0));
+        setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
@@ -228,16 +228,23 @@ public class ManagerLuggageLost extends JPanel {
         });
         add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
 
+        jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1050, 640));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 640));
     }// </editor-fold>//GEN-END:initComponents
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+        try {
+            FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed

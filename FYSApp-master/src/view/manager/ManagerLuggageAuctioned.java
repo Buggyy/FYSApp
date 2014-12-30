@@ -1,11 +1,19 @@
 package view.manager;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
+import view.admin.AdminLuggageLost;
 import view.employee.EmployeeFront;
 
 /**
@@ -13,14 +21,65 @@ import view.employee.EmployeeFront;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class ManagerLuggageAuctioned extends JPanel {
-
+    
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
+    
+    public ManagerLuggageAuctioned() throws ClassNotFoundException, SQLException {
+        initComponents();
+        getAuctionedLuggage();
+    }
+    
     /**
      * Creates new form AdminAuctionedLuggage
      */
-    public ManagerLuggageAuctioned() {
-        initComponents();
+    private void getAuctionedLuggage() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getQueryManager().getManagerAuctionedOverview();
+        try {
+            updateTable(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+
+        rsmetadata = rs.getMetaData();
+
+        columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        auctionedJTable.setModel(dtm);
+        auctionedJTable.repaint();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +95,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         auctionedJButton = new javax.swing.JButton();
         foundJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        searchJTextField = new javax.swing.JTextField();
         JButtonPrint = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -106,14 +165,14 @@ public class ManagerLuggageAuctioned extends JPanel {
         });
         add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 50));
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jTextField1.setText("Enter keywords");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        searchJTextField.setText("Enter keywords");
+        searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchJTextFieldActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
 
         JButtonPrint.setText("PRINT PDF");
         JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +231,6 @@ public class ManagerLuggageAuctioned extends JPanel {
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 590, 340));
 
         searchJButton1.setText("SEARCH");
-        searchJButton1.setEnabled(false);
         searchJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButton1ActionPerformed(evt);
@@ -219,16 +277,32 @@ public class ManagerLuggageAuctioned extends JPanel {
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableAuctioned(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                //Text/popup van niks gevonden~
+                System.out.println("Nothing found");
+                getAuctionedLuggage();
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButton1ActionPerformed
 
 
@@ -242,10 +316,10 @@ public class ManagerLuggageAuctioned extends JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     private javax.swing.JButton searchJButton1;
+    private javax.swing.JTextField searchJTextField;
     private javax.swing.JButton statisticsJButton;
     // End of variables declaration//GEN-END:variables
 }
