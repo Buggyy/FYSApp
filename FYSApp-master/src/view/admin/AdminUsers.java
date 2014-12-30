@@ -1,9 +1,14 @@
 package view.admin;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
@@ -15,19 +20,39 @@ import view.LoginScreen;
  */
 public class AdminUsers extends JPanel {
 
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
+
+    public AdminUsers() throws ClassNotFoundException, SQLException {
+        initComponents();
+        getUsers();
+    }
+
+    private void getUsers() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getQueryManager().getAdminUsersOverview();
+        try {
+            updateTable(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     /**
      * Creates new form AdminUsers
      */
-    public AdminUsers() throws ClassNotFoundException, SQLException {
-        initComponents();
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
-      
-        
-        ResultSet rs = FYSApp.getQueryManager().getAdminUsersOverview();
+        rsmetadata = rs.getMetaData();
 
-        ResultSetMetaData rsmetadata = rs.getMetaData();
-
-        int columns = rsmetadata.getColumnCount();
+        columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -107,7 +132,6 @@ public class AdminUsers extends JPanel {
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -195,7 +219,23 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableUser(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                //Text/popup van niks gevonden~
+                System.out.println("Nothing found");
+                getUsers();
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed

@@ -21,7 +21,6 @@ public class QueryManager {
 
     private DatabaseManager dbManager;
     private PreparedStatement pst;
-    
 
     public QueryManager(DatabaseManager dbmanager) {
         this.dbManager = dbmanager;
@@ -176,7 +175,6 @@ public class QueryManager {
 //
 //        return clientID;
 //    }
-    
     public ArrayList<String> getAirports() {
         // Method die zorgt dat er een arraylist komt met alle airports erin.
 
@@ -334,7 +332,6 @@ public class QueryManager {
 //            pst.setString(6, user.getLastName());
 //            pst.setString(7, user.getEmail());
 //            pst.setString(8, user.getAirport());
-    
     public ResultSet getUserLoginfo(String username) {
         String sql = "SELECT password,role FROM user WHERE username=?";
         ResultSet rs = null;
@@ -354,58 +351,93 @@ public class QueryManager {
     }
 
     public ResultSet searchTableLuggageFound(String input) throws ClassNotFoundException {
-        
+
         ResultSet rs = null;
 
         try {
             dbManager.openConnection();
-            
-                String sql
-                = "SELECT * FROM luggage WHERE ("
-                        + "status = 'found' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
-                        + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
-          
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'found' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
+
             pst = dbManager.getConnection().prepareStatement(sql);
-            
+
             pst.setString(1, "%" + input + "%");
             pst.setString(2, "%" + input + "%");
             pst.setString(3, "%" + input + "%");
             pst.setString(4, "%" + input + "%");
             pst.setString(5, "%" + input + "%");
             pst.setString(6, "%" + input + "%");
-            
+
             rs = pst.executeQuery();
-           return rs;
+            return rs;
 
         } catch (SQLException e) {
         }
         dbManager.closeConnection();
         return rs;
     }
-    
+
     public ResultSet searchTableLuggageLost(String input) throws ClassNotFoundException {
-        
+
         ResultSet rs = null;
 
         try {
             dbManager.openConnection();
-            
-                String sql
-                = "SELECT * FROM luggage WHERE ("
-                        + "status = 'lost' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
-                        + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
-          
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'lost' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
+
             pst = dbManager.getConnection().prepareStatement(sql);
-            
+
             pst.setString(1, "%" + input + "%");
             pst.setString(2, "%" + input + "%");
             pst.setString(3, "%" + input + "%");
             pst.setString(4, "%" + input + "%");
             pst.setString(5, "%" + input + "%");
             pst.setString(6, "%" + input + "%");
-            
+
             rs = pst.executeQuery();
-           return rs;
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
+
+    public ResultSet searchTableUser(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM zoekjekoffer.user WHERE "
+                    + "userid LIKE ? OR username LIKE ? OR password LIKE ? OR role LIKE ? "
+                    + "OR firstname LIKE ? OR middlename LIKE ? OR lastname LIKE ? "
+                    + "OR email LIKE ? OR created LIKE ? OR updated LIKE ?";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
+            pst.setString(8, "%" + input + "%");
+            pst.setString(9, "%" + input + "%");
+            pst.setString(10, "%" + input + "%");
+
+            rs = pst.executeQuery();
+            return rs;
 
         } catch (SQLException e) {
         }
