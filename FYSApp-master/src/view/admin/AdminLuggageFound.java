@@ -50,9 +50,7 @@ public class AdminLuggageFound extends JPanel {
         rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -267,20 +265,16 @@ public class AdminLuggageFound extends JPanel {
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            // TODO add your handling code here:
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                //Text/popup van niks gevonden~
-                System.out.println("Nothing found");
+                jLWarning.setText("No matches found!");
                 getFoundLuggage();
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -297,9 +291,7 @@ public class AdminLuggageFound extends JPanel {
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new AdminLuggageLost());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed

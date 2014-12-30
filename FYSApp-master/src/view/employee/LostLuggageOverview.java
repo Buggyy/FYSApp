@@ -38,15 +38,14 @@ public class LostLuggageOverview extends JPanel {
         rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     /**
      * Creates new form LostLuggageOverview
+     * @param rs
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
      */
@@ -233,20 +232,16 @@ public class LostLuggageOverview extends JPanel {
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            // TODO add your handling code here:
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                //Text/popup van niks gevonden~
-                System.out.println("Nothing found");
+                jLWarning.setText("No matches found!");
                 getLostLuggage();
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButtonActionPerformed

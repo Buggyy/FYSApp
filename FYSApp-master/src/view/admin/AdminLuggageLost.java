@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import view.LoginScreen;
-import view.employee.EmployeeFront;
 
 /**
  *
@@ -40,9 +39,7 @@ public class AdminLuggageLost extends JPanel {
         rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -235,20 +232,16 @@ public class AdminLuggageLost extends JPanel {
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
          try {
-            // TODO add your handling code here:
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                //Text/popup van niks gevonden~
-                System.out.println("Nothing found");
+                jLWarning.setText("No matches found!");
                 getLostLuggage();
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButtonActionPerformed
@@ -267,7 +260,7 @@ public class AdminLuggageLost extends JPanel {
             jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }
 
-        //  Wat is dit? verklaar u nader.
+        //  Wat is dit? leg uit.
 //        try {
 //            FYSApp.getInstance().showPanel(new AdminLuggageLost());
 //        } catch (ClassNotFoundException ex) {

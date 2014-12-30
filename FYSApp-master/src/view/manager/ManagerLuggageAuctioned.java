@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import view.LoginScreen;
-import view.admin.AdminLuggageLost;
 import view.employee.EmployeeFront;
 
 /**
@@ -43,9 +42,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         rs = FYSApp.getQueryManager().getManagerAuctionedOverview();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -102,6 +99,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         auctionedJTable = new javax.swing.JTable();
         searchJButton1 = new javax.swing.JButton();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 0));
@@ -114,7 +112,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 130, 40));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +123,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
         statisticsJButton.setText("STATISTICS");
         statisticsJButton.setEnabled(false);
         statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -132,9 +131,10 @@ public class ManagerLuggageAuctioned extends JPanel {
                 statisticsJButtonActionPerformed(evt);
             }
         });
-        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
+        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 40));
 
         auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
         auctionedJButton.setText("AUCTIONED");
         auctionedJButton.setBorder(null);
         auctionedJButton.setEnabled(false);
@@ -143,7 +143,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 auctionedJButtonActionPerformed(evt);
             }
         });
-        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 50));
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 40));
 
         foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         foundJButton.setText("FOUND");
@@ -153,7 +153,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 130, 40));
 
         lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lostJButton.setText("LOST");
@@ -163,7 +163,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -172,15 +172,16 @@ public class ManagerLuggageAuctioned extends JPanel {
                 searchJTextFieldActionPerformed(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, 30));
 
-        JButtonPrint.setText("PRINT PDF");
+        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
+        JButtonPrint.setText("PRINT");
         JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButtonPrintActionPerformed(evt);
             }
         });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 100, 40));
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -228,7 +229,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         });
         jScrollPane2.setViewportView(auctionedJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 590, 340));
 
         searchJButton1.setText("SEARCH");
         searchJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +237,11 @@ public class ManagerLuggageAuctioned extends JPanel {
                 searchJButton1ActionPerformed(evt);
             }
         });
-        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 100, 40));
+        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 130, 30));
+
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 410, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -270,9 +275,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         try {
             // TODO add your handling code here:
             FYSApp.getInstance().showPanel(new ManagerLuggageLost());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
@@ -287,20 +290,16 @@ public class ManagerLuggageAuctioned extends JPanel {
 
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
-            // TODO add your handling code here:
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableAuctioned(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                //Text/popup van niks gevonden~
-                System.out.println("Nothing found");
+                jLWarning.setText("No matches found!");
                 getAuctionedLuggage();
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButton1ActionPerformed
@@ -312,6 +311,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     private javax.swing.JTable auctionedJTable;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton foundJButton;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

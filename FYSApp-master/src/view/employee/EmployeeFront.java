@@ -4,6 +4,7 @@ import java.awt.Label;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
@@ -96,12 +97,10 @@ public class EmployeeFront extends JPanel {
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
 
-     
+    
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
         }
        

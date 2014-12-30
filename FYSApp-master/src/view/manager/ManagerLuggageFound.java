@@ -47,9 +47,7 @@ public class ManagerLuggageFound extends JPanel {
         rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -108,6 +106,7 @@ public class ManagerLuggageFound extends JPanel {
         foundLuggageJTable = new javax.swing.JTable();
         backJButton = new javax.swing.JButton();
         statisticsJButton = new javax.swing.JButton();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -238,10 +237,14 @@ public class ManagerLuggageFound extends JPanel {
         });
         add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
 
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 410, 30));
+
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1030, 620));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -251,9 +254,7 @@ public class ManagerLuggageFound extends JPanel {
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         try {
             FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_auctionedJButtonActionPerformed
@@ -266,9 +267,7 @@ public class ManagerLuggageFound extends JPanel {
         try {
             // TODO add your handling code here:
             FYSApp.getInstance().showPanel(new ManagerLuggageLost());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
@@ -279,20 +278,16 @@ public class ManagerLuggageFound extends JPanel {
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            // TODO add your handling code here:
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                //Text/popup van niks gevonden~
-                System.out.println("Nothing found");
+                jLWarning.setText("No matches found!");
                 getFoundLuggage();
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButtonActionPerformed
@@ -311,6 +306,7 @@ public class ManagerLuggageFound extends JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JTable foundLuggageJTable;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

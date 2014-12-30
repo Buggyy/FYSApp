@@ -117,6 +117,7 @@ public class RegisterLostLuggage extends JPanel {
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 130, 30));
 
+        clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
         clearJButton.setText("CANCEL");
         clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

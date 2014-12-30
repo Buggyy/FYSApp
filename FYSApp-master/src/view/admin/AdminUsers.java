@@ -38,15 +38,16 @@ public class AdminUsers extends JPanel {
         rs = FYSApp.getQueryManager().getAdminUsersOverview();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     /**
      * Creates new form AdminUsers
+     * @param rs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
      */
     public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
@@ -98,6 +99,7 @@ public class AdminUsers extends JPanel {
         deleteJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         registerJButton = new javax.swing.JButton();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
@@ -198,6 +200,10 @@ public class AdminUsers extends JPanel {
         });
         add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 210, 40));
 
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 410, 30));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -215,25 +221,21 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            // TODO add your handling code here:
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableUser(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                //Text/popup van niks gevonden~
-                System.out.println("Nothing found");
+                jLWarning.setText("No matches found!");
                 getUsers();
             }
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButtonActionPerformed
@@ -255,6 +257,7 @@ public class AdminUsers extends JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
