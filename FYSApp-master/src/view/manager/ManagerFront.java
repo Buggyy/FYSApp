@@ -1,5 +1,8 @@
 package view.manager;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
 import view.LoginScreen;
@@ -85,8 +88,14 @@ public class ManagerFront extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
-        // TODO add your handling code here:
-        FYSApp.getInstance().showPanel(new ManagerLuggageLost());
+        try {
+            // TODO add your handling code here:
+            FYSApp.getInstance().showPanel(new ManagerLuggageLost());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed

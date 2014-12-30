@@ -308,7 +308,7 @@ public class QueryManager {
         return rs;
     }
 
-    public ResultSet getManagerOverview() {
+    public ResultSet getManagerAuctionedOverview() {
         ResultSet rs = null;
 
         //EMPTY METHOD; komt nog
@@ -359,7 +359,7 @@ public class QueryManager {
 
             String sql
                     = "SELECT * FROM luggage WHERE ("
-                    + "status = 'found' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "status = 'found' AND (luggageid LIKE ? OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
                     + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
 
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -370,6 +370,7 @@ public class QueryManager {
             pst.setString(4, "%" + input + "%");
             pst.setString(5, "%" + input + "%");
             pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
 
             rs = pst.executeQuery();
             return rs;
@@ -389,7 +390,7 @@ public class QueryManager {
 
             String sql
                     = "SELECT * FROM luggage WHERE ("
-                    + "status = 'lost' AND (created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "status = 'lost' AND (luggageid LIKE ? OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
                     + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
 
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -400,6 +401,7 @@ public class QueryManager {
             pst.setString(4, "%" + input + "%");
             pst.setString(5, "%" + input + "%");
             pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
 
             rs = pst.executeQuery();
             return rs;
