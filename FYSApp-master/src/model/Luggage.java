@@ -21,27 +21,7 @@ public class Luggage {
      private static ArrayList<String> weight_class;
      private static ArrayList<String> departureFrom;
     
-    private ArrayList<String> color;
-     color.add("red");
-     color.add("blue");
-     color.add("yellow");
-     color.add("pink");
-     color.add("purple");
-     color.add("green");
-     color.add("black");
-     color.add("white");
-     color.add("orange");
-     color.add("grey");
-     color.add("brown");
-     color.add("other..");
-        
-    private ArrayList<String> weight_class;
-     weight_class.add("0kg - 5kg");
-     weight_class.add("5kg - 10kg");
-     weight_class.add("10kg - 15kg");
-    
-     weight_class.add("15kg - 20kg");
-     weight_class.add("20kg+");
+
      */
     // Initializing attributes
     private String brand = NO_VALUE;
