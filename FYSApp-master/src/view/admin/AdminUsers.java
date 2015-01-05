@@ -132,6 +132,11 @@ public class AdminUsers extends JPanel {
                 searchJTextFieldActionPerformed(evt);
             }
         });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
+            }
+        });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
 
         searchJButton.setText("SEARCH");
@@ -227,11 +232,16 @@ public class AdminUsers extends JPanel {
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableUser(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
+
+            if (input == null)
+            {userTable.repaint();
+            }if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getUsers();
+                updateTable(rs);
+            } else {
+                rs.beforeFirst();
+                updateTable(rs);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -274,6 +284,10 @@ public class AdminUsers extends JPanel {
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
         AdminRegisterUser.setUpdate(0,0);
     }//GEN-LAST:event_registerJButtonActionPerformed
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
