@@ -3,6 +3,8 @@ package view;
 import connectivity.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.nio.channels.SelectionKey;
 import java.sql.*;
 import main.FYSApp;
 import view.admin.AdminFront;
@@ -72,6 +74,11 @@ public class LoginScreen extends javax.swing.JPanel {
         userNameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameJTextFieldActionPerformed(evt);
+            }
+        });
+        userNameJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userNameJTextFieldKeyPressed(evt);
             }
         });
 
@@ -189,6 +196,7 @@ public class LoginScreen extends javax.swing.JPanel {
         // an error message.
         
         try {
+            
             String userName = userNameJTextField.getText();
             String passWord = passJTextField.getText();
             
@@ -205,12 +213,15 @@ public class LoginScreen extends javax.swing.JPanel {
                 }
                     switch (role) {
                         case "manager":
+                            FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new ManagerFront());
                             break;
                         case "employee":
+                            FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new EmployeeFront());
                             break;
                         case "admin":
+                            FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new AdminFront());
                             break;
                     }
@@ -233,6 +244,13 @@ public class LoginScreen extends javax.swing.JPanel {
     private void cantLoginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantLoginJButtonActionPerformed
         FYSApp.getInstance().showPanel(new CantLogin());
     }//GEN-LAST:event_cantLoginJButtonActionPerformed
+
+    private void userNameJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameJTextFieldKeyPressed
+       
+        if(evt.getKeyCode() == KeyEvent.VK_TAB){
+            passJTextField.setFocusTraversalKeysEnabled(true);
+        }
+    }//GEN-LAST:event_userNameJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

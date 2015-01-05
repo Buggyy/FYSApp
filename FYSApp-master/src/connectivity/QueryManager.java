@@ -21,6 +21,7 @@ public class QueryManager {
 
     private DatabaseManager dbManager;
     private PreparedStatement pst;
+    private String userName;
 
     public QueryManager(DatabaseManager dbmanager) {
         this.dbManager = dbmanager;
@@ -594,7 +595,7 @@ public class QueryManager {
         dbManager.closeConnection();
     }
 
-    public User getSelectedUser(String userName) {
+    public User getSelectedUser(String userName) throws SQLException {
         User user = new User();
         ResultSet rs = null;
         String sql = "SELECT * FROM user WHERE username=?";
@@ -604,6 +605,7 @@ public class QueryManager {
             pst.setString(1, userName);
 
             rs = pst.executeQuery();
+
 
             if (rs.next()) {
                 user.setUserName(rs.getString("username"));
@@ -615,6 +617,18 @@ public class QueryManager {
                 user.setEmail(rs.getString("email"));
                 user.setAirport(rs.getString("airport"));
             }
+            
+            if(rs.next()){
+               user.setUserName(rs.getString("username"));
+               user.setRole(rs.getString("role"));
+               user.setPass(rs.getString("password"));
+               user.setFirstName(rs.getString("firstname"));
+               user.setMiddleName(rs.getString("middlename"));
+               user.setLastName(rs.getString("lastname"));
+               user.setEmail(rs.getString("email"));
+               user.setAirport(rs.getString("airportname")); 
+
+            }
             return user;
 
         } catch (SQLException ex) {
@@ -624,5 +638,37 @@ public class QueryManager {
         dbManager.closeConnection();
         return user;
 
+    }
+    
+    
+    public void updateUser(User user, int id) {
+        try {
+            String sql = "UPDATE user SET username=?, password=?, role=?, "
+                    + "firstName=?, middlename=?, lastname=?, email=?, "
+                    + "airportname=?  WHERE userid=?";
+            
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, user.getUserName());
+            pst.setString(2, user.getPass());
+            pst.setString(3, user.getRole());
+            pst.setString(4, user.getFirstName());
+            pst.setString(5, user.getMiddleName());
+            pst.setString(6, user.getLastName());
+            pst.setString(7, user.getEmail());
+            pst.setString(8, user.getAirport());
+            pst.setInt(9, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+    }
+    
+    public void setUserName(String userName){
+        this.userName = userName;
+    }
+    
+    public String getUserName(){
+        return userName;
     }
 }

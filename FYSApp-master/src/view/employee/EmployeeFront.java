@@ -20,6 +20,7 @@ public class EmployeeFront extends JPanel {
      */
     public EmployeeFront() {
         initComponents();
+        setLoggedInAs();
     }
 
     /**
@@ -34,7 +35,7 @@ public class EmployeeFront extends JPanel {
         foundJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -75,11 +76,11 @@ public class EmployeeFront extends JPanel {
         });
         add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("[username]");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, -1, -1));
-        jLabel3.getAccessibleContext().setAccessibleName("lbl_currently");
-        jLabel3.getAccessibleContext().setAccessibleDescription("");
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("[username]");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
+        loggedInAs.getAccessibleContext().setAccessibleName("lbl_currently");
+        loggedInAs.getAccessibleContext().setAccessibleDescription("");
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Currently logged in as:");
@@ -117,11 +118,16 @@ public class EmployeeFront extends JPanel {
     }//GEN-LAST:event_foundJButtonMouseClicked
 
 
+    private void setLoggedInAs(){
+        String userName = FYSApp.getQueryManager().getUserName();
+        System.out.println(userName);
+        loggedInAs.setText(userName);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     // End of variables declaration//GEN-END:variables

@@ -242,12 +242,17 @@ public class AdminUsers extends JPanel {
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         // TODO add your handling code here:
         int row = userTable.getSelectedRow();
-        int col = 0; 
-        String uName = (String) userTable.getModel().getValueAt(row, col);
+        int userNameCol = 1; 
+        int userIdCol = 0;
+        
+        String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
+        int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
+        
         User user = FYSApp.getQueryManager().getSelectedUser(uName);
+        
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        //AdminRegisterUser.setUpdate(10);
-        //AdminRegisterUser.setText(user);
+        AdminRegisterUser.setUpdate(10,userId);
+        AdminRegisterUser.setText(user);
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
@@ -267,7 +272,7 @@ public class AdminUsers extends JPanel {
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        //AdminRegisterUser.setUpdate(0);
+        AdminRegisterUser.setUpdate(0,0);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
 
