@@ -30,9 +30,7 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("employee");
         roleJComboBox.addItem("manager");
         roleJComboBox.addItem("admin");
-        
-        
-        setAirports();
+       
     }
 
     /**
@@ -67,7 +65,6 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox = new javax.swing.JComboBox();
         airportJComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -222,19 +219,17 @@ public class AdminRegisterUser extends JPanel {
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 190, -1));
 
         airportJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
+        airportJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                airportJComboBoxActionPerformed(evt);
+            }
+        });
         add(airportJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 190, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Airport");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 80, 20));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jLabel4.setMaximumSize(new java.awt.Dimension(1024, 600));
-        jLabel4.setMinimumSize(new java.awt.Dimension(1024, 600));
-        jLabel4.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -314,11 +309,11 @@ public class AdminRegisterUser extends JPanel {
         
     }//GEN-LAST:event_submitJButtonMouseClicked
 
+    private void airportJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airportJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_airportJComboBoxActionPerformed
 
-    public String getSelectedCombo(){
-        return "noob";
-    }
-    
+    //  Edit method
     public static void setText(User user) {
         userNameJTextField.setText(user.getUserName());
         passJTextField.setText(user.getPass());
@@ -335,12 +330,13 @@ public class AdminRegisterUser extends JPanel {
         AdminRegisterUser.userId = userId;
     }
     
-    public void setAirports(){
-        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
-        for (int i = 0; i < fgt.size(); i++) {
-            airportJComboBox.addItem(fgt.get(i));
-        }
-    }
+    //  in the main class there is a method called getAirports
+//    public void setAirports(){
+//        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
+//        for (int i = 0; i < fgt.size(); i++) {
+//            airportJComboBox.addItem(fgt.get(i));
+//        }
+//    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,7 +352,6 @@ public class AdminRegisterUser extends JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

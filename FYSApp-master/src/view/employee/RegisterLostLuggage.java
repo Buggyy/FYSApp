@@ -1,12 +1,13 @@
 package view.employee;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
-import model.Client;
-import model.Luggage;
+import static main.FYSApp.*;
+import model.*;
 import view.LoginScreen;
 
 /**
@@ -19,13 +20,39 @@ public class RegisterLostLuggage extends JPanel {
     private static int luggageid;
 
     //private Client client;
-
     /**
      * Creates new form RegisterLostLuggage
      */
     public RegisterLostLuggage() {
-        
+
         initComponents();
+
+        for (int i = 0; i < 10; i++) {
+            
+        }
+        this.departureFrom = FYSApp.getAirportsList();
+        
+
+        //  These items should be stored in an array
+        cmb_color.addItem("red");
+        cmb_color.addItem("blue");
+        cmb_color.addItem("yellow");
+        cmb_color.addItem("pink");
+        cmb_color.addItem("purple");
+        cmb_color.addItem("green");
+        cmb_color.addItem("black");
+        cmb_color.addItem("white");
+        cmb_color.addItem("orange");
+        cmb_color.addItem("grey");
+        cmb_color.addItem("brown");
+        cmb_color.addItem("other..");
+
+        cmb_weightClass.addItem("0kg - 5kg");
+        cmb_weightClass.addItem("5kg - 10kg");
+        cmb_weightClass.addItem("10kg - 15kg");
+        cmb_weightClass.addItem("15kg - 20kg");
+        cmb_weightClass.addItem("20kg+");
+
     }
 
     public static void setUpdate(int id) {
@@ -43,58 +70,58 @@ public class RegisterLostLuggage extends JPanel {
     private void initComponents() {
 
         canvas1 = new java.awt.Canvas();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_rightTitle = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lbl_leftTitle = new javax.swing.JLabel();
         submitJButton = new javax.swing.JButton();
         clearJButton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        firstNameJTextField = new javax.swing.JTextField();
-        middleNameJTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        lastNameJTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        phoneNrJTextField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        emailJTextField = new javax.swing.JTextField();
-        cityJTextField = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        addressJTextField = new javax.swing.JTextField();
-        zipcodeJTextField = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        stateJTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        countryJTextField = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jCbox_Color1 = new javax.swing.JComboBox();
-        jCbox_Color = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        brandJTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lbl_firstname = new javax.swing.JLabel();
+        txt_firstname = new javax.swing.JTextField();
+        txt_middlename = new javax.swing.JTextField();
+        lbl_middlename = new javax.swing.JLabel();
+        txt_lastName = new javax.swing.JTextField();
+        lbl_lastname = new javax.swing.JLabel();
+        txt_phoneNumber = new javax.swing.JTextField();
+        lbl_phoneNumber = new javax.swing.JLabel();
+        lbl_email = new javax.swing.JLabel();
+        txt_email = new javax.swing.JTextField();
+        txt_city = new javax.swing.JTextField();
+        lbl_address = new javax.swing.JLabel();
+        lbl_city = new javax.swing.JLabel();
+        txt_address = new javax.swing.JTextField();
+        txt_zipcode = new javax.swing.JTextField();
+        lbl_state = new javax.swing.JLabel();
+        lbl_zipCode = new javax.swing.JLabel();
+        txt_state = new javax.swing.JTextField();
+        lbl_country = new javax.swing.JLabel();
+        txt_country = new javax.swing.JTextField();
+        lbl_weightClass = new javax.swing.JLabel();
+        cmb_weightClass = new javax.swing.JComboBox();
+        cmb_color = new javax.swing.JComboBox();
+        lbl_color = new javax.swing.JLabel();
+        lbl_brand = new javax.swing.JLabel();
+        txt_brand = new javax.swing.JTextField();
+        lbl_loadingMessage = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtfld_description = new javax.swing.JTextArea();
-        jLabel16 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txtfld_description2 = new javax.swing.JTextArea();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txt_otherDetails = new javax.swing.JTextArea();
+        lbl_otherDetails = new javax.swing.JLabel();
+        cmb_departureFrom = new javax.swing.JComboBox();
+        lbl_departureFrom = new javax.swing.JLabel();
+        lbl_material = new javax.swing.JLabel();
+        txt_material = new javax.swing.JTextField();
+        lbl_lableCode = new javax.swing.JLabel();
+        txt_lableCode = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Contact details");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 230, 30));
+        lbl_rightTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        lbl_rightTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_rightTitle.setText("Contact details");
+        add(lbl_rightTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 230, 30));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -104,10 +131,10 @@ public class RegisterLostLuggage extends JPanel {
         });
         add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Register Lost Luggage");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 360, 30));
+        lbl_leftTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        lbl_leftTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_leftTitle.setText("Register Lost Luggage");
+        add(lbl_leftTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 360, 30));
 
         submitJButton.setText("SUBMIT");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,269 +153,296 @@ public class RegisterLostLuggage extends JPanel {
         });
         add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 130, 30));
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Firstname");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
+        lbl_firstname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_firstname.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_firstname.setText("Firstname");
+        add(lbl_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
 
-        firstNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        firstNameJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_firstname.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_firstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameJTextFieldActionPerformed(evt);
+                txt_firstnameActionPerformed(evt);
             }
         });
-        add(firstNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 190, -1));
+        add(txt_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 190, -1));
 
-        middleNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        middleNameJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_middlename.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_middlename.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                middleNameJTextFieldActionPerformed(evt);
+                txt_middlenameActionPerformed(evt);
             }
         });
-        add(middleNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 190, -1));
+        add(txt_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 190, -1));
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Middlename");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
+        lbl_middlename.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_middlename.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_middlename.setText("Middlename");
+        add(lbl_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
 
-        lastNameJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lastNameJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_lastName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_lastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastNameJTextFieldActionPerformed(evt);
+                txt_lastNameActionPerformed(evt);
             }
         });
-        add(lastNameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 190, -1));
+        add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 190, -1));
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Lastname");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
+        lbl_lastname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_lastname.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_lastname.setText("Lastname");
+        add(lbl_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
 
-        phoneNrJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        phoneNrJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phoneNrJTextFieldActionPerformed(evt);
+                txt_phoneNumberActionPerformed(evt);
             }
         });
-        add(phoneNrJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 190, -1));
+        add(txt_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 190, -1));
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Phonenumber");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, -1));
+        lbl_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_phoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_phoneNumber.setText("Phonenumber");
+        add(lbl_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Email");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
+        lbl_email.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_email.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_email.setText("Email");
+        add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
 
-        emailJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        emailJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_email.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailJTextFieldActionPerformed(evt);
+                txt_emailActionPerformed(evt);
             }
         });
-        add(emailJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 190, -1));
+        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 190, -1));
 
-        cityJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        cityJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_city.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityJTextFieldActionPerformed(evt);
+                txt_cityActionPerformed(evt);
             }
         });
-        add(cityJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 190, 20));
+        add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 190, 20));
 
-        jLabel12.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Address");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, 20));
+        lbl_address.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_address.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_address.setText("Address");
+        add(lbl_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, 20));
 
-        jLabel13.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("City");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, -1, 20));
+        lbl_city.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_city.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_city.setText("City");
+        add(lbl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, -1, 20));
 
-        addressJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        addressJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_address.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressJTextFieldActionPerformed(evt);
+                txt_addressActionPerformed(evt);
             }
         });
-        add(addressJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 190, 20));
+        add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 190, 20));
 
-        zipcodeJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        zipcodeJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_zipcode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                zipcodeJTextFieldActionPerformed(evt);
+                txt_zipcodeActionPerformed(evt);
             }
         });
-        add(zipcodeJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 130, 20));
+        add(txt_zipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 110, 20));
 
-        jLabel14.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("State");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, -1, 20));
+        lbl_state.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_state.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_state.setText("State");
+        add(lbl_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, -1, 20));
 
-        jLabel15.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Zipcode");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, -1, 20));
+        lbl_zipCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_zipCode.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_zipCode.setText("Zipcode");
+        add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, -1, 20));
 
-        stateJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        stateJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_state.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_state.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stateJTextFieldActionPerformed(evt);
+                txt_stateActionPerformed(evt);
             }
         });
-        add(stateJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 190, 20));
+        add(txt_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 190, 20));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        lbl_country.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_country.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_country.setText("Country ");
+        add(lbl_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, -1, 20));
 
-        jLabel18.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Country ");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, -1, 20));
-
-        countryJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        countryJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_country.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_country.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                countryJTextFieldActionPerformed(evt);
+                txt_countryActionPerformed(evt);
             }
         });
-        add(countryJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 190, 20));
+        add(txt_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 190, 20));
 
-        jLabel19.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Last place seen");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
+        lbl_weightClass.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_weightClass.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_weightClass.setText("Weight class:");
+        add(lbl_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
 
-        jLabel20.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Weight class:");
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
-
-        jCbox_Color1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbox_Color1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbox_Color1ActionPerformed(evt);
+                cmb_weightClassActionPerformed(evt);
             }
         });
-        add(jCbox_Color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, -1));
+        add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, -1));
 
-        jCbox_Color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbox_Color.addActionListener(new java.awt.event.ActionListener() {
+        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbox_ColorActionPerformed(evt);
+                cmb_colorActionPerformed(evt);
             }
         });
-        add(jCbox_Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 160, -1));
+        add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 160, -1));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Color:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_color.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_color.setText("Color:");
+        add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
 
-        jLabel21.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Brand:");
-        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+        lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_brand.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_brand.setText("Brand:");
+        add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
-        brandJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        brandJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_brand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandJTextFieldActionPerformed(evt);
+                txt_brandActionPerformed(evt);
             }
         });
-        add(brandJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 160, -1));
+        add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 160, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Loading message..");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, 10));
+        lbl_loadingMessage.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lbl_loadingMessage.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_loadingMessage.setText("Loading message..");
+        add(lbl_loadingMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, 10));
         add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 340, 20));
 
-        txtfld_description.setColumns(20);
-        txtfld_description.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtfld_description.setRows(5);
-        jScrollPane2.setViewportView(txtfld_description);
+        txt_otherDetails.setColumns(20);
+        txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txt_otherDetails.setRows(5);
+        jScrollPane4.setViewportView(txt_otherDetails);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 340, 60));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 340, 60));
 
-        jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText(">>>> Error message <<<<");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 210, 20));
+        lbl_otherDetails.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_otherDetails.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_otherDetails.setText("Other details:");
+        add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
-        txtfld_description2.setColumns(20);
-        txtfld_description2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtfld_description2.setRows(5);
-        jScrollPane4.setViewportView(txtfld_description2);
+        cmb_departureFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_departureFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_departureFromActionPerformed(evt);
+            }
+        });
+        add(cmb_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 160, -1));
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 340, 60));
+        lbl_departureFrom.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_departureFrom.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_departureFrom.setText("Departure from:");
+        add(lbl_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Other details:");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+        lbl_material.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_material.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_material.setText("Material:");
+        add(lbl_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1090, 630));
+        txt_material.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_materialActionPerformed(evt);
+            }
+        });
+        add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 160, -1));
+
+        lbl_lableCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_lableCode.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_lableCode.setText("lable code");
+        add(lbl_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
+
+        txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lableCodeActionPerformed(evt);
+            }
+        });
+        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
+
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-/*
-        // Get de input van de user in de textfields en stopt dit
-        // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
-        // methode zodat de koffer geregistreerd wordt. :D
-//        Luggage luggage = new Luggage((weight,brand,description,status);
-        // Set alle gegevens in deze luggage object.
-//        luggage.setBlbalba(fabf);
-        String firstName = firstNameJTextField.getText();
-        String middleName = middleNameJTextField.getText();
-        String lastName = lastNameJTextField.getText();
-        String phone = phoneNrJTextField.getText();
-        String email = emailJTextField.getText();
-        String country = countryJTextField.getText();
-        String address = addressJTextField.getText();
-        String city = cityJTextField.getText();
-        String state = stateJTextField.getText();
-        String zipCode = zipcodeJTextField.getText();
 
-        Client client = new Client(firstName, middleName, lastName, phone, email, country,
-                address, city, state, zipCode);
+        //  Create client
+        String firstName = txt_firstname.getText();
+        String middleName = txt_middlename.getText();
+        String lastName = txt_lastName.getText();
 
-        String weight = weightJTextField.getText();
-        String brand = brandJTextField.getText();
-        String description = descriptionJTextField.getText();
-        String status = "lost";
+        String phone = txt_phoneNumber.getText();
+        String email = txt_email.getText();
 
-        Luggage luggage = new Luggage(weight, brand, description, status);
+        String country = txt_country.getText();
+        String address = txt_address.getText();
+        String city = txt_city.getText();
+        String state = txt_state.getText();
+        String zipCode = txt_zipcode.getText();
 
+        //  Calling client constructor from the client class
+        Client newClient = new Client(firstName, middleName, lastName, phone,
+                email, country, address, city, state, zipCode);
+
+        //  store user input in variables
+        String brand = txt_brand.getText();
+        String color
+                = String.valueOf(cmb_color.getSelectedItem());
+        String weightClass
+                = String.valueOf(cmb_weightClass.getSelectedItem());
+        String departureFrom
+                = String.valueOf(cmb_departureFrom.getSelectedItem());
+        String material = txt_material.getText();
+        String lableCode = txt_lableCode.getText();
+        String otherDetails = txt_otherDetails.getText();
+        String status = "Lost";
+        String whenFound = "";
+        String foundAt = "";
+
+        //  Create lost luggage item with user input
+        Luggage luggage = new Luggage(brand, lableCode, material,
+                otherDetails, status, color, weightClass, whenFound, foundAt,
+                departureFrom);
+
+        //  if Admin/Manager presses 'Edit' we call in the update query and
+        //  the same JFrame
         if (updateMode > 1) {
-            FYSApp.getQueryManager().updateLuggage(luggage, luggageid);
+            FYSApp.getQueryManager().updateLostLuggage(luggage, luggageid);
         } else {
-            FYSApp.getQueryManager().addClient(client);
-            int id = FYSApp.getQueryManager().getClientd();
+        //  If this is not the case, then we call the addLuggage Query +
+            //  the add client luggage
+            FYSApp.getQueryManager().addClient(newClient);
+            int id = FYSApp.getQueryManager().getClientid();
             FYSApp.getQueryManager().addLostLuggage(luggage, id);
         }
 
-        // Pak de id van deze client
-        // luggage.setId(de id van je query die je ophaalt.)
-//        FYSApp.getInstance().getQueryManager().addLuggage(luggage);
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
@@ -399,106 +453,117 @@ public class RegisterLostLuggage extends JPanel {
         }
     }//GEN-LAST:event_clearJButtonActionPerformed
 
-    private void firstNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameJTextFieldActionPerformed
+    private void txt_firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_firstnameActionPerformed
 
-    private void middleNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_middleNameJTextFieldActionPerformed
+    private void txt_middlenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middlenameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_middleNameJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_middlenameActionPerformed
 
-    private void lastNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameJTextFieldActionPerformed
+    private void txt_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lastNameJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_lastNameActionPerformed
 
-    private void phoneNrJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNrJTextFieldActionPerformed
+    private void txt_phoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phoneNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_phoneNrJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_phoneNumberActionPerformed
 
-    private void emailJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailJTextFieldActionPerformed
+    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_emailActionPerformed
 
-    private void cityJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityJTextFieldActionPerformed
+    private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cityJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_cityActionPerformed
 
-    private void addressJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressJTextFieldActionPerformed
+    private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addressJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_addressActionPerformed
 
-    private void zipcodeJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipcodeJTextFieldActionPerformed
+    private void txt_zipcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipcodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_zipcodeJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_zipcodeActionPerformed
 
-    private void stateJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateJTextFieldActionPerformed
+    private void txt_stateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_stateJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_stateActionPerformed
 
-    private void countryJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryJTextFieldActionPerformed
+    private void txt_countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_countryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_countryJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_countryActionPerformed
 
-    private void jCbox_Color1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbox_Color1ActionPerformed
+    private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbox_Color1ActionPerformed
+    }//GEN-LAST:event_cmb_weightClassActionPerformed
 
-    private void jCbox_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbox_ColorActionPerformed
+    private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbox_ColorActionPerformed
+    }//GEN-LAST:event_cmb_colorActionPerformed
 
-    private void brandJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextFieldActionPerformed
+    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_brandJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_brandActionPerformed
+
+    private void cmb_departureFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureFromActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_departureFromActionPerformed
+
+    private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_materialActionPerformed
+
+    private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lableCodeActionPerformed
 
     public static void setText(Luggage luggage) {
-        brandJTextField.setText(luggage.getBrand());
-     
+        txt_brand.setText(luggage.getBrand());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressJTextField;
-    private static javax.swing.JTextField brandJTextField;
     private java.awt.Canvas canvas1;
-    private javax.swing.JTextField cityJTextField;
     private javax.swing.JButton clearJButton;
-    private javax.swing.JTextField countryJTextField;
-    private javax.swing.JTextField emailJTextField;
-    private javax.swing.JTextField firstNameJTextField;
-    private static javax.swing.JComboBox jCbox_Color;
-    private static javax.swing.JComboBox jCbox_Color1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private static javax.swing.JComboBox cmb_color;
+    private static javax.swing.JComboBox cmb_departureFrom;
+    private static javax.swing.JComboBox cmb_weightClass;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField lastNameJTextField;
+    private javax.swing.JLabel lbl_address;
+    private javax.swing.JLabel lbl_brand;
+    private javax.swing.JLabel lbl_city;
+    private javax.swing.JLabel lbl_color;
+    private javax.swing.JLabel lbl_country;
+    private javax.swing.JLabel lbl_departureFrom;
+    private javax.swing.JLabel lbl_email;
+    private javax.swing.JLabel lbl_firstname;
+    private javax.swing.JLabel lbl_lableCode;
+    private javax.swing.JLabel lbl_lastname;
+    private javax.swing.JLabel lbl_leftTitle;
+    private javax.swing.JLabel lbl_loadingMessage;
+    private javax.swing.JLabel lbl_material;
+    private javax.swing.JLabel lbl_middlename;
+    private javax.swing.JLabel lbl_otherDetails;
+    private javax.swing.JLabel lbl_phoneNumber;
+    private javax.swing.JLabel lbl_rightTitle;
+    private javax.swing.JLabel lbl_state;
+    private javax.swing.JLabel lbl_weightClass;
+    private javax.swing.JLabel lbl_zipCode;
     private javax.swing.JButton logoutJButton;
-    private javax.swing.JTextField middleNameJTextField;
-    private javax.swing.JTextField phoneNrJTextField;
-    private javax.swing.JTextField stateJTextField;
     private javax.swing.JButton submitJButton;
-    private static javax.swing.JTextArea txtfld_description;
-    private static javax.swing.JTextArea txtfld_description2;
-    private javax.swing.JTextField zipcodeJTextField;
+    private javax.swing.JTextField txt_address;
+    private static javax.swing.JTextField txt_brand;
+    private javax.swing.JTextField txt_city;
+    private javax.swing.JTextField txt_country;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_firstname;
+    private static javax.swing.JTextField txt_lableCode;
+    private javax.swing.JTextField txt_lastName;
+    private static javax.swing.JTextField txt_material;
+    private javax.swing.JTextField txt_middlename;
+    private static javax.swing.JTextArea txt_otherDetails;
+    private javax.swing.JTextField txt_phoneNumber;
+    private javax.swing.JTextField txt_state;
+    private javax.swing.JTextField txt_zipcode;
     // End of variables declaration//GEN-END:variables
 }

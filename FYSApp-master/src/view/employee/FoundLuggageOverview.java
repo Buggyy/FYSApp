@@ -317,7 +317,7 @@ public class FoundLuggageOverview extends JPanel {
             RegisterFoundLuggage.setText(luggage);
         } //  We show a warning
         else {
-            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+            //  WARNINGPOPUP
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
