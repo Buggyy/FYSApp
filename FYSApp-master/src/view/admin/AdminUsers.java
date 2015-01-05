@@ -127,6 +127,11 @@ public class AdminUsers extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
@@ -240,6 +245,7 @@ public class AdminUsers extends JPanel {
                 getUsers();
                 updateTable(rs);
             } else {
+                jLWarning.setText("");
                 rs.beforeFirst();
                 updateTable(rs);
             }
@@ -290,8 +296,12 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
-        searchJTextField.setText("");
+        
     }//GEN-LAST:event_searchJTextFieldKeyPressed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

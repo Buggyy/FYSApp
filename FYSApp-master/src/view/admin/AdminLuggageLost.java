@@ -153,6 +153,11 @@ public class AdminLuggageLost extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
@@ -236,17 +241,19 @@ public class AdminLuggageLost extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-         try {
+        try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
 
-            if (input == null)
-            {lostLuggageTable.repaint();
-            }if (!rs.next()) {
+            if (input == null) {
+                lostLuggageTable.repaint();
+            }
+            if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getLostLuggage();
                 updateTable(rs);
             } else {
+                jLWarning.setText("");
                 rs.beforeFirst();
                 updateTable(rs);
             }
@@ -269,15 +276,6 @@ public class AdminLuggageLost extends JPanel {
         } else {
             jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }
-
-        //  Wat is dit? leg uit.
-//        try {
-//            FYSApp.getInstance().showPanel(new AdminLuggageLost());
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
@@ -294,7 +292,7 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-       
+
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -302,8 +300,12 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
-        searchJTextField.setText("");
+
     }//GEN-LAST:event_searchJTextFieldKeyPressed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

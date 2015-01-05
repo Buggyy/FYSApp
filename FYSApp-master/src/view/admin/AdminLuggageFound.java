@@ -260,6 +260,7 @@ public class AdminLuggageFound extends JPanel {
                 getFoundLuggage();
                 updateTable(rs);
             } else {
+                jLWarning.setText("");
                 rs.beforeFirst();
                 updateTable(rs);
             }
