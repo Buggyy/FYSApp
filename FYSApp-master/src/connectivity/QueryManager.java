@@ -386,8 +386,8 @@ public class QueryManager {
             pst.setString(7, "%" + input + "%");
 
             rs = pst.executeQuery();
-            return rs;
 
+            return rs;
         } catch (SQLException e) {
         }
         dbManager.closeConnection();
@@ -424,7 +424,7 @@ public class QueryManager {
         dbManager.closeConnection();
         return rs;
     }
-    
+
     public ResultSet searchTableAuctioned(String input) throws ClassNotFoundException {
 
         ResultSet rs = null;
@@ -509,8 +509,10 @@ public class QueryManager {
                 luggage.setWeight(rs.getString("weight"));
             }
             return luggage;
+
         } catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
         return luggage;
@@ -579,8 +581,8 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public void deleteUser(String userName){
+
+    public void deleteUser(String userName) {
         try {
             String sql = "DELETE from user WHERE userid=?";
             dbManager.openConnection();
@@ -591,8 +593,8 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public User getSelectedUser(String userName){
+
+    public User getSelectedUser(String userName) {
         User user = new User();
         ResultSet rs = null;
         String sql = "SELECT * FROM user WHERE username=?";
@@ -600,25 +602,27 @@ public class QueryManager {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, userName);
-            
+
             rs = pst.executeQuery();
-            
-            if(rs.next()){
-               user.setUserName(rs.getString("username"));
-               user.setRole(rs.getString("role"));
-               user.setPass(rs.getString("password"));
-               user.setFirstName(rs.getString("firstname"));
-               user.setMiddleName(rs.getString("middlename"));
-               user.setLastName(rs.getString("lastname"));
-               user.setEmail(rs.getString("email"));
-               user.setAirport(rs.getString("airport")); 
+
+            if (rs.next()) {
+                user.setUserName(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+                user.setPass(rs.getString("password"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setMiddleName(rs.getString("middlename"));
+                user.setLastName(rs.getString("lastname"));
+                user.setEmail(rs.getString("email"));
+                user.setAirport(rs.getString("airport"));
             }
             return user;
-        } catch (SQLException ex){
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
         return user;
-        
+
     }
 }

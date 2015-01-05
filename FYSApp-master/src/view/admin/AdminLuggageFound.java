@@ -55,11 +55,11 @@ public class AdminLuggageFound extends JPanel {
         }
     }
 
-     /**
+    /**
      * Blablabla
      */
     private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
-        
+
         rsmetadata = rs.getMetaData();
 
         columns = rsmetadata.getColumnCount();
@@ -157,6 +157,11 @@ public class AdminLuggageFound extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
@@ -240,26 +245,6 @@ public class AdminLuggageFound extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        // TODO add your handling code here:
-
-//         searchJButton.addActionListener(new ActionListener()
-//            {     
-//                @Override
-//                public void actionPerformed(ActionEvent e)
-//                {
-//                 searchJTextField.setText(searchJTextField.getText());
-//                }
-//            });
-//        
-//        searchJTextField.addKeyListener(new KeyAdapter()
-//        {
-//            @Override
-//            public void keyPressed(KeyEvent e)
-//            {
-//            if(e.getKeyCode() == KeyEvent.VK_ENTER)
-//            searchJTextField.setText(searchJTextField.getText());
-//            }
-//        });
 
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
@@ -267,11 +252,16 @@ public class AdminLuggageFound extends JPanel {
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
+
+            if (input == null)
+            {foundLuggageJTable.repaint();
+            }if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getFoundLuggage();
+                updateTable(rs);
+            } else {
+                rs.beforeFirst();
+                updateTable(rs);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -320,9 +310,13 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
-        // Roep de zoekmethode van query op
+
 
     }//GEN-LAST:event_searchJTextFieldKeyTyped
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
