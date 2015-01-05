@@ -605,16 +605,16 @@ public class QueryManager {
             pst.setString(1, userName);
 
             rs = pst.executeQuery();
-            
-            if(rs.next()){
-               user.setUserName(rs.getString("username"));
-               user.setRole(rs.getString("role"));
-               user.setPass(rs.getString("password"));
-               user.setFirstName(rs.getString("firstname"));
-               user.setMiddleName(rs.getString("middlename"));
-               user.setLastName(rs.getString("lastname"));
-               user.setEmail(rs.getString("email"));
-               user.setAirport(rs.getString("airportname")); 
+
+            if (rs.next()) {
+                user.setUserName(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+                user.setPass(rs.getString("password"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setMiddleName(rs.getString("middlename"));
+                user.setLastName(rs.getString("lastname"));
+                user.setEmail(rs.getString("email"));
+                user.setAirport(rs.getString("airportname"));
 
             }
             return user;
@@ -627,14 +627,13 @@ public class QueryManager {
         return user;
 
     }
-    
-    
+
     public void updateUser(User user, int id) {
         try {
             String sql = "UPDATE user SET username=?, password=?, role=?, "
                     + "firstName=?, middlename=?, lastname=?, email=?, "
                     + "airportname=?  WHERE userid=?";
-            
+
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, user.getUserName());
@@ -651,12 +650,12 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public void setUserName(String userName){
+
+    public void setUserName(String userName) {
         this.userName = userName;
     }
-    
-    public String getUserName(){
+
+    public String getUserName() {
         return userName;
     }
 }

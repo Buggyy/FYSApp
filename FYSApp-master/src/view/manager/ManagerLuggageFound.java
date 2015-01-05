@@ -1,6 +1,7 @@
 package view.manager;
 
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,8 +19,9 @@ import view.employee.EmployeeFront;
 
 /**
  * @version 1
- * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
+ * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato,
+ * jerryrump, larsvanalphen, marijnbakker, danielstern Doel: Het maken van een
+ * kofferapplicatie.
  */
 public class ManagerLuggageFound extends JPanel {
 
@@ -31,7 +33,7 @@ public class ManagerLuggageFound extends JPanel {
     public String input;
     ResultSetMetaData rsmetadata = null;
     public int columns = 0;
-    
+
     /**
      * Blablabla
      */
@@ -39,7 +41,7 @@ public class ManagerLuggageFound extends JPanel {
         initComponents();
         getFoundLuggage();
     }
-    
+
     /**
      * Blablabla
      */
@@ -51,12 +53,12 @@ public class ManagerLuggageFound extends JPanel {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Blablabla
      */
     private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
-        
+
         rsmetadata = rs.getMetaData();
 
         columns = rsmetadata.getColumnCount();
@@ -156,9 +158,19 @@ public class ManagerLuggageFound extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
+            }
+        });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyTyped(evt);
             }
         });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
@@ -280,15 +292,22 @@ public class ManagerLuggageFound extends JPanel {
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
+
+            if (input == null) {
+                foundLuggageJTable.repaint();
+            }
+            if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getFoundLuggage();
+                updateTable(rs);
+            } else {
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
@@ -299,6 +318,35 @@ public class ManagerLuggageFound extends JPanel {
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
         FYSApp.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
+
+    private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                input = searchJTextField.getText();
+                rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+
+                if (input == null) {
+                    foundLuggageJTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getFoundLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_searchJTextFieldKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
