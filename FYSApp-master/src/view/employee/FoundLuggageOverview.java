@@ -159,7 +159,7 @@ public class FoundLuggageOverview extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 100, 30));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 110, 30));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -239,7 +239,7 @@ public class FoundLuggageOverview extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 410, 30));
         jLWarning.getAccessibleContext().setAccessibleName("jLWarning");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
