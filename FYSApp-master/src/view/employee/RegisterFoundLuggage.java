@@ -90,7 +90,6 @@ public class RegisterFoundLuggage extends JPanel {
 
         clearJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         clearJButton.setText("CLEAR ALL");
-        clearJButton.setEnabled(false);
         clearJButton.setMinimumSize(new java.awt.Dimension(70, 25));
         clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,7 +243,16 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_brandJTextFieldActionPerformed
 
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
-        // TODO add your handling code here:
+        //clear all the fields
+        brandJTextField.setText("");
+        jCbox_Color.setSelectedIndex(0);
+        jCbox_Color1.setSelectedIndex(0);
+        brandJTextField2.setText("");
+        jCbox_Color2.setSelectedIndex(0);
+        brandJTextField1.setText("");
+        brandJTextField2.setText("");
+        lbl_picname.setText("");
+        txtfld_description1.setText("");  
     }//GEN-LAST:event_clearJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -315,6 +323,12 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JLabel jLabel9;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JScrollPane jScrollPane2;
+<<<<<<< HEAD
+=======
+    private javax.swing.JScrollPane jScrollPane3;
+    private static javax.swing.JLabel lbl_picname;
+    private static javax.swing.JLabel lbl_picname1;
+>>>>>>> origin/master
     private javax.swing.JButton logoutJButton;
     private java.awt.Panel panel1;
     private javax.swing.JButton submitJButton1;

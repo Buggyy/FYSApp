@@ -1,6 +1,7 @@
 package view.admin;
 
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,6 +47,7 @@ public class AdminUsers extends JPanel {
 
     /**
      * Creates new form AdminUsers
+     *
      * @param rs
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
@@ -127,9 +129,19 @@ public class AdminUsers extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
+            }
+        });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
             }
         });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
@@ -220,18 +232,25 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        
+
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableUser(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
+
+            if (input == null) {
+                userTable.repaint();
+            }
+            if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getUsers();
+                updateTable(rs);
+            } else {
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -240,40 +259,73 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
-        int row = userTable.getSelectedRow();
-        int userNameCol = 1; 
-        int userIdCol = 0;
-        
-        String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
-        int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
-        
-        User user = FYSApp.getQueryManager().getSelectedUser(uName);
-        
-        FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        AdminRegisterUser.setUpdate(10,userId);
-        AdminRegisterUser.setText(user);
+        try {
+            // TODO add your handling code here:
+            int row = userTable.getSelectedRow();
+            int userNameCol = 1;
+            int userIdCol = 0;
+
+            String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
+            int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
+
+            User user = FYSApp.getQueryManager().getSelectedUser(uName);
+
+            FYSApp.getInstance().showPanel(new AdminRegisterUser());
+            AdminRegisterUser.setUpdate(10, userId);
+            AdminRegisterUser.setText(user);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
         int row = userTable.getSelectedRow();
-        int col = 0; 
+        int col = 0;
         String uName = (String) userTable.getModel().getValueAt(row, col);
         FYSApp.getQueryManager().deleteUser(uName);
-        
+
         try {
             FYSApp.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        AdminRegisterUser.setUpdate(0,0);
+        AdminRegisterUser.setUpdate(0, 0);
     }//GEN-LAST:event_registerJButtonActionPerformed
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                input = searchJTextField.getText();
+                rs = FYSApp.getQueryManager().searchTableUser(input);
+
+                if (input == null) {
+                    userTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getUsers();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

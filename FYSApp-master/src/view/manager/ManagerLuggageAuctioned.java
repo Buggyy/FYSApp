@@ -1,6 +1,8 @@
 package view.manager;
 
+import ExterneLibraries.PDFGenerator;
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +22,7 @@ import view.employee.EmployeeFront;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class ManagerLuggageAuctioned extends JPanel {
-    
+
     // Always declare first..!
     DatabaseManager dbmanager;
     Connection conn = null;
@@ -29,12 +31,12 @@ public class ManagerLuggageAuctioned extends JPanel {
     public String input;
     ResultSetMetaData rsmetadata = null;
     public int columns = 0;
-    
+
     public ManagerLuggageAuctioned() throws ClassNotFoundException, SQLException {
         initComponents();
         getAuctionedLuggage();
     }
-    
+
     /**
      * Creates new form AdminAuctionedLuggage
      */
@@ -76,7 +78,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         auctionedJTable.setModel(dtm);
         auctionedJTable.repaint();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,9 +169,19 @@ public class ManagerLuggageAuctioned extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
+            }
+        });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyTyped(evt);
             }
         });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, 30));
@@ -252,7 +264,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-       FYSApp.getInstance().showPanel(new ManagerFront());
+        FYSApp.getInstance().showPanel(new ManagerFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -285,24 +297,68 @@ public class ManagerLuggageAuctioned extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // TODO add your handling code here:
+        // create object for pdf generator
+        PDFGenerator pdf = new PDFGenerator();
+        // create own content through arrays using querymanager
+        pdf.generate();
+        // current date using timestamp
+        String currentDate = FYSApp.getDateTime();
+        //name of pdf file
+        pdf.save(currentDate + " Auctioned.pdf");
+        
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableAuctioned(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
+
+            if (input == null) {
+                auctionedJTable.repaint();
+            }
+            if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getAuctionedLuggage();
+                updateTable(rs);
+            } else {
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchJButton1ActionPerformed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
+
+    private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                input = searchJTextField.getText();
+                rs = FYSApp.getQueryManager().searchTableAuctioned(input);
+
+                if (input == null) {
+                    auctionedJTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getAuctionedLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_searchJTextFieldKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
