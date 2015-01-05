@@ -302,7 +302,7 @@ public class AdminUsers extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+                rs = FYSApp.getQueryManager().searchTableUser(input);
 
                 if (input == null) {
                     userTable.repaint();
