@@ -1,5 +1,6 @@
 package view.manager;
 
+import ExterneLibraries.PDFGenerator;
 import connectivity.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -296,7 +297,15 @@ public class ManagerLuggageAuctioned extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // TODO add your handling code here:
+        // create object for pdf generator
+        PDFGenerator pdf = new PDFGenerator();
+        // create own content through arrays using querymanager
+        pdf.generate();
+        // current date using timestamp
+        String currentDate = FYSApp.getDateTime();
+        //name of pdf file
+        pdf.save(currentDate + " Auctioned.pdf");
+        
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed

@@ -1,5 +1,6 @@
 package view.manager;
 
+import ExterneLibraries.PDFGenerator;
 import connectivity.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
@@ -109,6 +111,7 @@ public class ManagerLuggageFound extends JPanel {
         backJButton = new javax.swing.JButton();
         statisticsJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
+        JButtonPrint = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -253,6 +256,15 @@ public class ManagerLuggageFound extends JPanel {
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 410, 30));
 
+        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
+        JButtonPrint.setText("PRINT");
+        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonPrintActionPerformed(evt);
+            }
+        });
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 40));
+
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -319,6 +331,7 @@ public class ManagerLuggageFound extends JPanel {
         FYSApp.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
+<<<<<<< Updated upstream
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
@@ -347,9 +360,24 @@ public class ManagerLuggageFound extends JPanel {
             }
         }
     }//GEN-LAST:event_searchJTextFieldKeyTyped
+=======
+    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
+        // create object for pdf generator
+        PDFGenerator pdf = new PDFGenerator();
+        // create own content through arrays using querymanager
+        pdf.generate();
+        // current date using timestamp
+        String currentDate = FYSApp.getDateTime();
+        //name of pdf file
+        pdf.save(currentDate + " Found.pdf");
+        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
+                + " Found.pdf \n in the rood folder of the app" );
+    }//GEN-LAST:event_JButtonPrintActionPerformed
+>>>>>>> Stashed changes
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton foundJButton;
