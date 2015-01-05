@@ -4,9 +4,12 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import model.User;
 import view.LoginScreen;
 
 /**
@@ -144,7 +147,6 @@ public class AdminUsers extends JPanel {
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 590, 340));
 
         editJButton.setText("EDIT");
-        editJButton.setEnabled(false);
         editJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editJButtonActionPerformed(evt);
@@ -153,7 +155,6 @@ public class AdminUsers extends JPanel {
         add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 80, 40));
 
         deleteJButton.setText("DELETE");
-        deleteJButton.setEnabled(false);
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteJButtonActionPerformed(evt);
@@ -200,14 +201,33 @@ public class AdminUsers extends JPanel {
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         // TODO add your handling code here:
+        int row = userTable.getSelectedRow();
+        int col = 0; 
+        String uName = (String) userTable.getModel().getValueAt(row, col);
+        User user = FYSApp.getQueryManager().getSelectedUser(uName);
+        FYSApp.getInstance().showPanel(new AdminRegisterUser());
+        AdminRegisterUser.setUpdate(10);
+        AdminRegisterUser.setText(user);
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
+        int row = userTable.getSelectedRow();
+        int col = 0; 
+        String uName = (String) userTable.getModel().getValueAt(row, col);
+        FYSApp.getQueryManager().deleteUser(uName);
+        
+        try {
+            FYSApp.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
+        AdminRegisterUser.setUpdate(0);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
 

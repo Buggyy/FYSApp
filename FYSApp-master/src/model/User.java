@@ -28,6 +28,9 @@ public class User {
     private String email;
     private String airport;
 
+    public User(){
+        // Empty constructor.
+    }
     public User(String userName, String pass, String role, String firstName, String middleName, String lastName, String email, String airport) {
         this.userName = userName;
         this.pass = pass;
