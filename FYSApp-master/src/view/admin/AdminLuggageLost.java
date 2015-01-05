@@ -158,6 +158,11 @@ public class AdminLuggageLost extends JPanel {
                 searchJTextFieldActionPerformed(evt);
             }
         });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
+            }
+        });
         jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -234,11 +239,16 @@ public class AdminLuggageLost extends JPanel {
          try {
             input = searchJTextField.getText();
             rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
+
+            if (input == null)
+            {lostLuggageTable.repaint();
+            }if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getLostLuggage();
+                updateTable(rs);
+            } else {
+                rs.beforeFirst();
+                updateTable(rs);
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -290,6 +300,10 @@ public class AdminLuggageLost extends JPanel {
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
