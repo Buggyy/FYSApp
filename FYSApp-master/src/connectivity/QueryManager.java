@@ -21,6 +21,7 @@ public class QueryManager {
 
     private DatabaseManager dbManager;
     private PreparedStatement pst;
+    private String userName;
 
     public QueryManager(DatabaseManager dbmanager) {
         this.dbManager = dbmanager;
@@ -643,5 +644,13 @@ public class QueryManager {
         } catch (SQLException e) {
         }
         dbManager.closeConnection();
+    }
+    
+    public void setUserName(String userName){
+        this.userName = userName;
+    }
+    
+    public String getUserName(){
+        return userName;
     }
 }

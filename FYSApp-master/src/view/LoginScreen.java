@@ -196,6 +196,7 @@ public class LoginScreen extends javax.swing.JPanel {
         // an error message.
         
         try {
+            
             String userName = userNameJTextField.getText();
             String passWord = passJTextField.getText();
             
@@ -212,12 +213,15 @@ public class LoginScreen extends javax.swing.JPanel {
                 }
                     switch (role) {
                         case "manager":
+                            FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new ManagerFront());
                             break;
                         case "employee":
+                            FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new EmployeeFront());
                             break;
                         case "admin":
+                            FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new AdminFront());
                             break;
                     }
