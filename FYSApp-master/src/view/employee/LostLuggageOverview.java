@@ -142,9 +142,19 @@ public class LostLuggageOverview extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
+            }
+        });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
             }
         });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 150, -1));
@@ -273,6 +283,14 @@ public class LostLuggageOverview extends JPanel {
 
 
     }//GEN-LAST:event_editJButtonActionPerformed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
