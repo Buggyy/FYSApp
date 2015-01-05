@@ -611,7 +611,7 @@ public class QueryManager {
                user.setMiddleName(rs.getString("middlename"));
                user.setLastName(rs.getString("lastname"));
                user.setEmail(rs.getString("email"));
-               user.setAirport(rs.getString("airport")); 
+               user.setAirport(rs.getString("airportname")); 
             }
             return user;
         } catch (SQLException ex){
@@ -620,5 +620,28 @@ public class QueryManager {
         dbManager.closeConnection();
         return user;
         
+    }
+    
+    public void updateUser(User user, int id) {
+        try {
+            String sql = "UPDATE user SET username=?, password=?, role=?, "
+                    + "firstName=?, middlename=?, lastname=?, email=?, "
+                    + "airportname=?  WHERE userid=?";
+            
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, user.getUserName());
+            pst.setString(2, user.getPass());
+            pst.setString(3, user.getRole());
+            pst.setString(4, user.getFirstName());
+            pst.setString(5, user.getMiddleName());
+            pst.setString(6, user.getLastName());
+            pst.setString(7, user.getEmail());
+            pst.setString(8, user.getAirport());
+            pst.setInt(9, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
     }
 }

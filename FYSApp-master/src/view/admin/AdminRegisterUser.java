@@ -1,12 +1,14 @@
 package view.admin;
 
-import javax.swing.JPanel;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import main.FYSApp;
-import view.LoginScreen;
+import model.Luggage;
 import model.User;
+import view.LoginScreen;
 
 /**
  * @version 1
@@ -16,6 +18,8 @@ import model.User;
 
 public class AdminRegisterUser extends JPanel {
     private static int updateMode = 0;
+    private static int userId = 0;
+    
     /**
      * Creates new form UserOverview
      */
@@ -26,11 +30,9 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("employee");
         roleJComboBox.addItem("manager");
         roleJComboBox.addItem("admin");
-//        
-//        ArrayList<String> fgt = connectivity.QueryManager.getAirports();
-//        for (int i = 0; i < fgt.size(); i++) {
-//            airportJComboBox.addItem(fgt.get(i));
-//        }
+        
+        
+        setAirports();
     }
 
     /**
@@ -264,7 +266,7 @@ public class AdminRegisterUser extends JPanel {
         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
         
         if (updateMode > 1) {
-            //FYSApp.getQueryManager().updateUser(user); DEZE MOET NOG GEMAAKT WORDEN.!!
+            FYSApp.getQueryManager().updateUser(user,userId);
         } else {
             FYSApp.getQueryManager().addUser(user);
         }
@@ -316,6 +318,31 @@ public class AdminRegisterUser extends JPanel {
     public String getSelectedCombo(){
         return "noob";
     }
+    
+    public static void setText(User user) {
+        userNameJTextField.setText(user.getUserName());
+        passJTextField.setText(user.getPass());
+        firstNameJTextField.setText(user.getFirstName());
+        middleNameJTextField.setText(user.getMiddleName());
+        lastNameJTextField.setText(user.getLastName());
+        roleJComboBox.setSelectedItem(user.getRole());
+        emailJTextField.setText(user.getEmail());
+        airportJComboBox.setSelectedItem(user.getAirport());
+    }
+    
+    public static void setUpdate(int update, int userId){
+        AdminRegisterUser.updateMode = update;
+        AdminRegisterUser.userId = userId;
+    }
+    
+    public void setAirports(){
+        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
+        for (int i = 0; i < fgt.size(); i++) {
+            airportJComboBox.addItem(fgt.get(i));
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox airportJComboBox;
     private javax.swing.JButton backJButton;
