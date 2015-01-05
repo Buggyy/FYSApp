@@ -310,7 +310,6 @@ public class ManagerLuggageLost extends JPanel {
         FYSApp.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
-<<<<<<< Updated upstream
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
@@ -332,7 +331,7 @@ public class ManagerLuggageLost extends JPanel {
             }
         }
     }//GEN-LAST:event_searchJTextFieldKeyTyped
-=======
+
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
         // create object for pdf generator
         PDFGenerator pdf = new PDFGenerator();
@@ -344,7 +343,6 @@ public class ManagerLuggageLost extends JPanel {
         pdf.save(currentDate + " Auctioned.pdf");
 
     }//GEN-LAST:event_JButtonPrintActionPerformed
->>>>>>> Stashed changes
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
