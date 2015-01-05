@@ -605,18 +605,6 @@ public class QueryManager {
             pst.setString(1, userName);
 
             rs = pst.executeQuery();
-
-
-            if (rs.next()) {
-                user.setUserName(rs.getString("username"));
-                user.setRole(rs.getString("role"));
-                user.setPass(rs.getString("password"));
-                user.setFirstName(rs.getString("firstname"));
-                user.setMiddleName(rs.getString("middlename"));
-                user.setLastName(rs.getString("lastname"));
-                user.setEmail(rs.getString("email"));
-                user.setAirport(rs.getString("airport"));
-            }
             
             if(rs.next()){
                user.setUserName(rs.getString("username"));

@@ -240,19 +240,23 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
-        int row = userTable.getSelectedRow();
-        int userNameCol = 1; 
-        int userIdCol = 0;
-        
-        String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
-        int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
-        
-        User user = FYSApp.getQueryManager().getSelectedUser(uName);
-        
-        FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        AdminRegisterUser.setUpdate(10,userId);
-        AdminRegisterUser.setText(user);
+        try {
+            // TODO add your handling code here:
+            int row = userTable.getSelectedRow();
+            int userNameCol = 1;
+            int userIdCol = 0;
+            
+            String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
+            int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
+            
+            User user = FYSApp.getQueryManager().getSelectedUser(uName);
+            
+            FYSApp.getInstance().showPanel(new AdminRegisterUser());
+            AdminRegisterUser.setUpdate(10,userId);
+            AdminRegisterUser.setText(user);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
