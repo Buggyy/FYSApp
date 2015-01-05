@@ -1,6 +1,7 @@
 package view.employee;
 
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -173,6 +174,11 @@ public class FoundLuggageOverview extends JPanel {
                 searchJTextFieldActionPerformed(evt);
             }
         });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
+            }
+        });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 150, 30));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
@@ -326,6 +332,25 @@ public class FoundLuggageOverview extends JPanel {
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                 try {
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                jLWarning.setText("No matches found!");
+                getFoundLuggage();
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

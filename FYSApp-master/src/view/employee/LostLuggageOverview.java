@@ -1,6 +1,7 @@
 package view.employee;
 
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -289,7 +290,22 @@ public class LostLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
-        // TODO add your handling code here:
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                 try {
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                jLWarning.setText("No matches found!");
+                getLostLuggage();
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
