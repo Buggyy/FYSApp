@@ -15,7 +15,7 @@ import model.User;
  */
 
 public class AdminRegisterUser extends JPanel {
-    
+    private static int updateMode = 0;
     /**
      * Creates new form UserOverview
      */
@@ -251,7 +251,7 @@ public class AdminRegisterUser extends JPanel {
         
         // Zorgt dat de method addUser wordt aangeroepen en zo een
         // nieuwe gebruiker wordt toegevoegd aan de database.
-       
+        
         String userName = userNameJTextField.getText(); 
         String pass = passJTextField.getText(); 
         String role = String.valueOf(roleJComboBox.getSelectedItem());
@@ -261,8 +261,13 @@ public class AdminRegisterUser extends JPanel {
         String email = emailJTextField.getText(); 
         String airport = String.valueOf(airportJComboBox.getSelectedItem());
         
-         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
-        FYSApp.getQueryManager().addUser(user);
+        User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
+        
+        if (updateMode > 1) {
+            //FYSApp.getQueryManager().updateUser(user); DEZE MOET NOG GEMAAKT WORDEN.!!
+        } else {
+            FYSApp.getQueryManager().addUser(user);
+        }
         
         try {
             FYSApp.getInstance().showPanel(new AdminUsers());
@@ -300,8 +305,7 @@ public class AdminRegisterUser extends JPanel {
     }//GEN-LAST:event_passJTextFieldActionPerformed
 
     private void roleJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleJComboBoxActionPerformed
-        // TODO add your handling code here:
-        //COMBOBOX NIGA
+
     }//GEN-LAST:event_roleJComboBoxActionPerformed
 
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
@@ -313,11 +317,11 @@ public class AdminRegisterUser extends JPanel {
         return "noob";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox airportJComboBox;
+    private static javax.swing.JComboBox airportJComboBox;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton clearJButton;
-    private javax.swing.JTextField emailJTextField;
-    private javax.swing.JTextField firstNameJTextField;
+    private static javax.swing.JTextField emailJTextField;
+    private static javax.swing.JTextField firstNameJTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
@@ -330,12 +334,12 @@ public class AdminRegisterUser extends JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField lastNameJTextField;
+    private static javax.swing.JTextField lastNameJTextField;
     private javax.swing.JButton logoutJButton;
-    private javax.swing.JTextField middleNameJTextField;
-    private javax.swing.JTextField passJTextField;
-    private javax.swing.JComboBox roleJComboBox;
+    private static javax.swing.JTextField middleNameJTextField;
+    private static javax.swing.JTextField passJTextField;
+    private static javax.swing.JComboBox roleJComboBox;
     private javax.swing.JButton submitJButton;
-    private javax.swing.JTextField userNameJTextField;
+    private static javax.swing.JTextField userNameJTextField;
     // End of variables declaration//GEN-END:variables
 }

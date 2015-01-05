@@ -1,5 +1,8 @@
 package view.admin;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -18,19 +21,40 @@ import view.LoginScreen;
  */
 public class AdminUsers extends JPanel {
 
-    /**
-     * Creates new form AdminUsers
-     */
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
+
     public AdminUsers() throws ClassNotFoundException, SQLException {
         initComponents();
+        getUsers();
+    }
 
-      
-        
-        ResultSet rs = FYSApp.getQueryManager().getAdminUsersOverview();
+    private void getUsers() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getQueryManager().getAdminUsersOverview();
+        try {
+            updateTable(rs);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-        ResultSetMetaData rsmetadata = rs.getMetaData();
+    /**
+     * Creates new form AdminUsers
+     * @param rs
+     * @throws java.lang.ClassNotFoundException
+     * @throws java.sql.SQLException
+     */
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
-        int columns = rsmetadata.getColumnCount();
+        rsmetadata = rs.getMetaData();
+
+        columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -76,6 +100,7 @@ public class AdminUsers extends JPanel {
         deleteJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         registerJButton = new javax.swing.JButton();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
@@ -110,7 +135,6 @@ public class AdminUsers extends JPanel {
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 150, -1));
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -175,6 +199,10 @@ public class AdminUsers extends JPanel {
         });
         add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 210, 40));
 
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 410, 30));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -192,11 +220,23 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableUser(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                jLWarning.setText("No matches found!");
+                getUsers();
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
@@ -206,8 +246,8 @@ public class AdminUsers extends JPanel {
         String uName = (String) userTable.getModel().getValueAt(row, col);
         User user = FYSApp.getQueryManager().getSelectedUser(uName);
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        AdminRegisterUser.setUpdate(10);
-        AdminRegisterUser.setText(user);
+        //AdminRegisterUser.setUpdate(10);
+        //AdminRegisterUser.setText(user);
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
@@ -227,7 +267,7 @@ public class AdminUsers extends JPanel {
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         FYSApp.getInstance().showPanel(new AdminRegisterUser());
-        AdminRegisterUser.setUpdate(0);
+        //AdminRegisterUser.setUpdate(0);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
 
@@ -235,6 +275,7 @@ public class AdminUsers extends JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

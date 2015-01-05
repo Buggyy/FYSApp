@@ -189,13 +189,7 @@ public class AdminRegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        try {
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminRegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminRegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_backJButtonActionPerformed
 
 

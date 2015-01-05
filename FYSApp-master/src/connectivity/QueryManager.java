@@ -11,6 +11,7 @@ import model.Client;
 import model.Luggage;
 import model.User;
 import view.LoginScreen;
+import javax.swing.*;
 
 /**
  * @author Team 1 IS106 ZoekJeKoffer
@@ -61,8 +62,7 @@ public class QueryManager {
 
         try {
             dbManager.openConnection();
-            
-            
+
             String sql = "INSERT INTO luggage (status,brand,weight,description,"
                     + "ownerid) VALUES (?,?,?,?,?)";
 
@@ -75,7 +75,7 @@ public class QueryManager {
             pst.setInt(5, id);
 
             pst.executeUpdate();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,9 +128,8 @@ public class QueryManager {
 
     }
 
-   
     public int getClientd() {
-        
+
         int ownerid = 0;
 //         Method die zorgt dat de hoogste ownerID wordt gegenereerd.
 
@@ -145,12 +144,12 @@ public class QueryManager {
 
                 ownerid = rs.getInt(1);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-         dbManager.closeConnection();
+        dbManager.closeConnection();
         return ownerid;
     }
 
@@ -176,7 +175,6 @@ public class QueryManager {
 //
 //        return clientID;
 //    }
-
     public ArrayList<String> getAirports() {
         // Method die zorgt dat er een arraylist komt met alle airports erin.
 
@@ -310,16 +308,27 @@ public class QueryManager {
         return rs;
     }
 
-    public ResultSet getManagerOverview() {
+    public ResultSet getManagerAuctionedOverview() {
         ResultSet rs = null;
+        try {
 
-        //EMPTY METHOD; komt nog
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'auctioned';";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dbManager.closeConnection();
         return rs;
 
     }
-    
-    
-    
+
 //     dbManager.openConnection();
 //
 //            String sql = "INSERT INTO user (username,password,role,firstname"
@@ -336,14 +345,13 @@ public class QueryManager {
 //            pst.setString(6, user.getLastName());
 //            pst.setString(7, user.getEmail());
 //            pst.setString(8, user.getAirport());
-    
-    public ResultSet getUserLoginfo (String username){
+    public ResultSet getUserLoginfo(String username) {
         String sql = "SELECT password,role FROM user WHERE username=?";
         ResultSet rs = null;
-        
+
         try {
             dbManager.openConnection();
-        
+
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, username);
             rs = pst.executeQuery();
@@ -354,8 +362,136 @@ public class QueryManager {
         dbManager.closeConnection();
         return rs;
     }
+
+    public ResultSet searchTableLuggageFound(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'found' AND (luggageid LIKE ? OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
+
+            rs = pst.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
+
+    public ResultSet searchTableLuggageLost(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'lost' AND (luggageid LIKE ? OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
+
+            rs = pst.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
     
-    public Luggage getSelectedLuggage(int i){
+    public ResultSet searchTableAuctioned(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'auctioned' AND (luggageid LIKE ? OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? OR airportname LIKE ?))";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
+
+            rs = pst.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
+
+    public ResultSet searchTableUser(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM zoekjekoffer.user WHERE "
+                    + "userid LIKE ? OR username LIKE ? OR password LIKE ? OR role LIKE ? "
+                    + "OR firstname LIKE ? OR middlename LIKE ? OR lastname LIKE ? "
+                    + "OR email LIKE ? OR created LIKE ? OR updated LIKE ?";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
+            pst.setString(8, "%" + input + "%");
+            pst.setString(9, "%" + input + "%");
+            pst.setString(10, "%" + input + "%");
+
+            rs = pst.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
+
+    public Luggage getSelectedLuggage(int i) {
         Luggage luggage = new Luggage();
         ResultSet rs = null;
         String sql = "SELECT * FROM luggage WHERE luggageid=?";
@@ -363,27 +499,27 @@ public class QueryManager {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setInt(1, i);
-            
+
             rs = pst.executeQuery();
-            
-            if(rs.next()){
-               luggage.setStatus(rs.getString("status"));
-               luggage.setBrand(rs.getString("brand"));
-               luggage.setDescription(rs.getString("description"));
-               luggage.setWeight(rs.getString("weight"));  
+
+            if (rs.next()) {
+                luggage.setStatus(rs.getString("status"));
+                luggage.setBrand(rs.getString("brand"));
+                luggage.setDescription(rs.getString("description"));
+                luggage.setWeight(rs.getString("weight"));
             }
             return luggage;
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
         return luggage;
-        
+
     }
-    
-    public void deleteLuggage(int i){
+
+    public void deleteLuggage(int i) {
         String sql = "DELETE from luggage WHERE luggageid=?";
-        try{
+        try {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setInt(1, i);
@@ -394,8 +530,8 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public void delete(int id){
+
+    public void delete(int id) {
         try {
             String sql = "DELETE from luggage WHERE luggageid=?";
             dbManager.openConnection();
@@ -406,8 +542,8 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public void updateLuggage(Luggage luggage, int id){
+
+    public void updateLuggage(Luggage luggage, int id) {
         try {
             String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
             dbManager.openConnection();
@@ -421,8 +557,8 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public void updateClient(Client client, int id){
+
+    public void updateClient(Client client, int id) {
         try {
             String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
             dbManager.openConnection();

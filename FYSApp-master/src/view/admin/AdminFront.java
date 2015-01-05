@@ -56,6 +56,7 @@ public class AdminFront extends JPanel {
         jLabel2.setText("Luggage");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 110, 30));
 
+        overviewJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/table-go-icon.png"))); // NOI18N
         overviewJButton.setText("OVERVIEW");
         overviewJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         overviewJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,13 +124,7 @@ public class AdminFront extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        try {
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
 

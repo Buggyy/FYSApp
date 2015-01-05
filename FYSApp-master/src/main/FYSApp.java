@@ -8,16 +8,21 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public final class FYSApp {
+
+    
 
     /*
     *   Styling Conventions:
@@ -30,6 +35,12 @@ public final class FYSApp {
                    GEEN BORDERS
     */
    
+    /**
+     * Finals for warnings
+     */
+    public static final String WARNING_REQUIRED = "Some fields are required to fill in!";
+    public static final String WARNING_MUST_SELECT_SOMETHING = "You must select something!";
+    
     /**
      * Define frame width, height and name
      */
@@ -60,7 +71,7 @@ public final class FYSApp {
     public void initialize() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.err.println("Error setting LookAndFeelClassName: " + e);
         }
     }
@@ -104,9 +115,17 @@ public final class FYSApp {
         mainWindow.dispose();
     }
     
+    // Gets current date (timestamp)
     public static String getDate(){
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         return date;
+    }
+    
+    // Gets current date and time (timestamp)
+    public static String getDateTime(){
+        String dateTime = new SimpleDateFormat("dd-MM-yyyy:k:m")
+                .format(new Date());
+        return dateTime;
     }
 
     /**
@@ -134,7 +153,7 @@ public final class FYSApp {
                     applicatie.initialize();
                     applicatie.startup();
                 } catch (Exception e) {
-                    System.out.println("Application" + applicatie.getClass().getName() + "failed to launch");
+                    JOptionPane.showMessageDialog(null,"Application failed to launch","Failure",JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

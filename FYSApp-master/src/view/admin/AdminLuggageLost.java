@@ -1,5 +1,8 @@
 package view.admin;
 
+import connectivity.DatabaseManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -9,8 +12,8 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import view.LoginScreen;
-import view.employee.EmployeeFront;
 
 /**
  *
@@ -18,16 +21,34 @@ import view.employee.EmployeeFront;
  */
 public class AdminLuggageLost extends JPanel {
 
-    /**
-     * Creates new form AdminLuggageLost
-     */
-    public AdminLuggageLost()  throws ClassNotFoundException, SQLException {
+    // Always declare first..!
+    DatabaseManager dbmanager;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    public String input;
+    ResultSetMetaData rsmetadata = null;
+    public int columns = 0;
+
+    public AdminLuggageLost() throws ClassNotFoundException, SQLException {
         initComponents();
-          
-        ResultSet rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
-        ResultSetMetaData rsmetadata = rs.getMetaData();
-        
-        int columns = rsmetadata.getColumnCount();
+        getLostLuggage();
+    }
+
+    private void getLostLuggage() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
+        try {
+            updateTable(rs);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+
+        rsmetadata = rs.getMetaData();
+
+        columns = rsmetadata.getColumnCount();
 
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -74,6 +95,7 @@ public class AdminLuggageLost extends JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         lostLuggageTable = new javax.swing.JTable();
         backJButton = new javax.swing.JButton();
+        jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -89,7 +111,6 @@ public class AdminLuggageLost extends JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         searchJButton.setText("SEARCH");
-        searchJButton.setEnabled(false);
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
@@ -195,6 +216,10 @@ public class AdminLuggageLost extends JPanel {
         });
         jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
 
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, 30));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -206,7 +231,19 @@ public class AdminLuggageLost extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-        // TODO add your handling code here:
+         try {
+            input = searchJTextField.getText();
+            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            if (rs != null) {
+                updateTable(rs);
+            } else {
+                jLWarning.setText("No matches found!");
+                getLostLuggage();
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -214,37 +251,40 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
-        int row = lostLuggageTable.getSelectedRow();
-        int col = 0; 
-        int id = Integer.parseInt((String) lostLuggageTable.getValueAt(row, col));
-        FYSApp.getQueryManager().delete(id);
-        
-        try {
-            FYSApp.getInstance().showPanel(new AdminLuggageLost());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        if (lostLuggageTable.getSelectedRow() >= 0) {
+            int row = lostLuggageTable.getSelectedRow();
+            int col = 0;
+            int id = Integer.parseInt((String) lostLuggageTable.getValueAt(row, col));
+            FYSApp.getQueryManager().delete(id);
+        } else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }
+
+        //  Wat is dit? leg uit.
+//        try {
+//            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        try {
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FYSApp.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // TODO add your handling code here:
+        if (lostLuggageTable.getSelectedRow() >= 0) {
+            // Code to edit lost luggage
+        } else {
+            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+        }
+
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -257,6 +297,7 @@ public class AdminLuggageLost extends JPanel {
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
     private javax.swing.JButton foundJButton;
+    private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
