@@ -10,19 +10,6 @@ import static main.FYSApp.*;
  */
 public class Luggage {
 
-    /*
-     private ArrayList<String> departureFrom;
-     this.departureFrom  = FYSApp.getAirportsList();
-    
-     private ArrayList<String> foundAt;
-     this.foundAt = FYSApp.getAirportsList();
-    
-     private static ArrayList<String> color;
-     private static ArrayList<String> weight_class;
-     private static ArrayList<String> departureFrom;
-    
-
-     */
     // Initializing attributes
     private String brand = NO_VALUE;
     private String lableCode = NO_VALUE;
@@ -34,6 +21,10 @@ public class Luggage {
     private String whenFound = NO_VALUE;
     private String foundAt = NO_VALUE;
     private String departureFrom = NO_VALUE;
+
+    public Luggage() {
+
+    }
 
     /**
      *
@@ -91,14 +82,14 @@ public class Luggage {
         this.status = status;
     }
 
-        public void setWhenFound(String whenFound) {
+    public void setWhenFound(String whenFound) {
         this.whenFound = whenFound;
     }
 
     public void setFoundAt(String foundAt) {
         this.foundAt = foundAt;
     }
-    
+
     public String getWhenFound() {
         return whenFound;
     }

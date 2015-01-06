@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
@@ -141,8 +142,9 @@ public class FoundLuggageOverview extends JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Found Luggage Overview - Employee");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 410, 33));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
+        jLabel2.setText("   Found Luggage Overview - Employee");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 410, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(" matches");
@@ -237,7 +239,7 @@ public class FoundLuggageOverview extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 410, 30));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 410, 30));
         jLWarning.getAccessibleContext().setAccessibleName("jLWarning");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -252,7 +254,7 @@ public class FoundLuggageOverview extends JPanel {
         jLabel6.setText("[ number ]");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, -1, -1));
 
-        lostJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton1.setText("Lost Luggage");
         lostJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,6 +277,10 @@ public class FoundLuggageOverview extends JPanel {
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
+    /**
+     *
+     * @param evt
+     */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
@@ -302,7 +308,7 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
@@ -312,7 +318,7 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        //  If there is no row selected to edit
+
         if (foundLuggageTable.getSelectedRow() >= 0) {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
@@ -323,7 +329,10 @@ public class FoundLuggageOverview extends JPanel {
             RegisterFoundLuggage.setText(luggage);
         }
         else {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Please select a row before editing!",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 

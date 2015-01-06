@@ -46,93 +46,100 @@ public class TableManager {
      *
      * @return
      */
-//    public ResultSet getManagerAuctionedOverview() {
-//        ResultSet rs = null;
-//        try {
-//
-//            dbManager.openConnection();
-//
-//            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'auctioned';";
-//
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            rs = pst.executeQuery(sql);
-//            return rs;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        dbManager.closeConnection();
-//        return rs;
-//    }
+    public ResultSet getManagerAuctionedOverview() {
+        ResultSet rs = null;
+        try {
+
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'auctioned';";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dbManager.closeConnection();
+        return rs;
+    }
+
     /**
      *
      * @return
      */
-//    public ResultSet getAdminUsersOverview() {
-//        ResultSet rs = null;
-//
-//        try {
-//            dbManager.openConnection();
-//
-//            String sql = "SELECT * FROM zoekjekoffer.user;";
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            rs = pst.executeQuery(sql);
-//            return rs;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        dbManager.closeConnection();
-//        return rs;
-//    }
+    public ResultSet getAdminUsersOverview() {
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM zoekjekoffer.user;";
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dbManager.closeConnection();
+        return rs;
+    }
+
     /**
      *
      * @return found luggage data
      */
-//    public ResultSet getEmployeeFoundLuggage() {
-//
-//        ResultSet rs = null;
-//        try {
-//
-//            dbManager.openConnection();
-//
-//            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'found';";
-//
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            rs = pst.executeQuery(sql);
-//            return rs;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        dbManager.closeConnection();
-//        return rs;
-//    }
+    public ResultSet getEmployeeFoundLuggage() {
+
+        ResultSet rs = null;
+        try {
+
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'found';";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            dbManager.closeConnection();
+
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+    }
+
     /**
      *
      * @return lost luggage data
      */
-//    public ResultSet getEmployeeLostLuggage() {
-//
-//        ResultSet rs = null;
-//        try {
-//
-//            dbManager.openConnection();
-//
-//            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'lost';";
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            rs = pst.executeQuery(sql);
-//
-//            return rs;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        dbManager.closeConnection();
-//        return rs;
-//    }
+    public ResultSet getEmployeeLostLuggage() {
+
+        ResultSet rs = null;
+
+        try {
+
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM luggage WHERE status = 'lost';";
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            dbManager.closeConnection();
+
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+    }
 }

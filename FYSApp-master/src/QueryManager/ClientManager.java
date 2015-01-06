@@ -6,6 +6,8 @@
 package QueryManager;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import model.Client;
 
 /**
@@ -55,26 +57,26 @@ public class ClientManager {
     
     
     
-//    public int getClientid() {
-//
-//        int ownerid = 0;
-//
-//        try {
-//            String sql = "SELECT ownerid FROM client ORDER BY ownerid DESC LIMIT 0 , 1";
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            ResultSet rs = pst.executeQuery();
-//
-//            while (rs.next()) {
-//
-//                ownerid = rs.getInt(1);
-//            }
-//
-//        } catch (Exception e) {
-//        }
-//        dbManager.closeConnection();
-//        return ownerid;
-//    }
+    public int getClientid() {
+
+        int ownerid = 0;
+
+        try {
+            String sql = "SELECT ownerid FROM client ORDER BY ownerid DESC LIMIT 0 , 1";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                ownerid = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            //  ERROR-MESSAGE
+        }
+        dbManager.closeConnection();
+        return ownerid;
+    }
     
     
       public void updateClient(Client client, int id) {

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import main.FYSApp;
 import model.Luggage;
 import view.LoginScreen;
@@ -49,7 +50,10 @@ public class LuggageManager {
             pst.executeUpdate();
 
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         dbManager.closeConnection();
     }
@@ -82,7 +86,10 @@ public class LuggageManager {
             dbManager.closeConnection();
 
         } catch (SQLException e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -114,7 +121,10 @@ public class LuggageManager {
 
             dbManager.closeConnection();
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -150,7 +160,10 @@ public class LuggageManager {
             dbManager.closeConnection();
 
         } catch (SQLException e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -180,6 +193,8 @@ public class LuggageManager {
 //                luggage.setWeight(rs.getString("weight"));
 //                luggage.setWeight(rs.getString("weight"));
 //                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
 //            }
 //            return luggage;
 //
@@ -197,38 +212,40 @@ public class LuggageManager {
      * @param i
      * @return 
      */
-//    public Luggage getSelectedFoundLuggage(int i) {
-//        Luggage luggage = new Luggage();
-//        ResultSet rs = null;
-//        String sql = "SELECT * FROM luggage WHERE luggageid=?";
-//        try {
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            pst.setInt(1, i);
-//
-//            rs = pst.executeQuery();
-//
-//            if (rs.next()) {
-//                luggage.setBrand(rs.getString("brand"));
-//                luggage.setColor(rs.getString("color"));
-//                luggage.setWeightClass(rs.getString("weightclass"));
-//                luggage.setFoundAt(rs.getString("foundat"));
-//                luggage.setLableCode(rs.getString("LableCode"));
-//                luggage.setMaterial(rs.getString("material"));
-//                luggage.setWhenFound(rs.getString("whenfound"));
-//                luggage.setOtherDetails(rs.getString("otherDetails"));
-//                luggage.setStatus(rs.getString("status"));
-//                luggage.setDepartureFrom(rs.getString("departureFrom"));
-//            }
-//            return luggage;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LoginScreen.class
-//                    .getName()).log(Level.SEVERE, null, ex);
-//        }
-//        dbManager.closeConnection();
-//        return luggage;
-//    }
+    public Luggage getSelectedFoundLuggage(int i) {
+        Luggage luggage = new Luggage();
+        ResultSet rs = null;
+        String getSelectedFoundLuggage = "SELECT * FROM luggage WHERE luggageid=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(getSelectedFoundLuggage);
+            
+            pst.setInt(1, i);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                luggage.setBrand(rs.getString("brand"));
+                luggage.setColor(rs.getString("color"));
+                luggage.setWeightClass(rs.getString("weightclass"));
+                luggage.setFoundAt(rs.getString("foundat"));
+                luggage.setLableCode(rs.getString("LableCode"));
+                luggage.setMaterial(rs.getString("material"));
+                luggage.setWhenFound(rs.getString("whenfound"));
+                luggage.setOtherDetails(rs.getString("otherDetails"));
+                luggage.setStatus(rs.getString("status"));
+                luggage.setDepartureFrom(rs.getString("departureFrom"));
+            }
+            return luggage;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return luggage;
+    }
 
     /**
      * 
@@ -244,7 +261,10 @@ public class LuggageManager {
 
             dbManager.closeConnection();
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }

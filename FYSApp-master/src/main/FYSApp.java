@@ -62,12 +62,7 @@ public final class FYSApp {
     public static final Font FONT_12_BOLD = new Font("Verdana", Font.BOLD, 12);
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
 
-<<<<<<< HEAD
-    private JFrame mainWindow;
-
-=======
     private static JFrame mainWindow;
->>>>>>> origin/master
     private DatabaseManager manager = new DatabaseManager();
     private QueryManager qm = new QueryManager(manager);
 

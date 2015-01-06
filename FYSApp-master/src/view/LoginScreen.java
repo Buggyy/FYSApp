@@ -7,9 +7,9 @@ import java.awt.event.KeyEvent;
 import java.nio.channels.SelectionKey;
 import java.sql.*;
 import main.FYSApp;
-import view.admin.AdminFront;
-import view.employee.EmployeeFront;
-import view.manager.ManagerFront;
+import view.admin.AdminLuggageFound;
+import view.employee.FoundLuggageOverview;
+import view.manager.ManagerLuggageFound;
 
 /**
  *
@@ -190,12 +190,7 @@ public class LoginScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameJTextFieldActionPerformed
 
     private void loginJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJButtonActionPerformed
-        // Getting inputs from user. Getting the role and password from the 
-        // Querymanager. After that it will match the password, if it's
-        // correct it will get the users role and let the user go to the
-        // right screen. If the password is not correct it wil print out
-        // an error message.
-        
+
         try {
             
             String userName = userNameJTextField.getText();
@@ -215,19 +210,21 @@ public class LoginScreen extends javax.swing.JPanel {
                     switch (role) {
                         case "manager":
                             FYSApp.getUserManager().setUserName(userName);
-                            main.FYSApp.getInstance().showPanel(new ManagerFront());
+                            main.FYSApp.getInstance().showPanel(new ManagerLuggageFound());
                             FYSApp.shutdown();
                             main.Frame.ManagerFrame();
                             break;
                         case "employee":
                             FYSApp.getUserManager().setUserName(userName);
-                            main.FYSApp.getInstance().showPanel(new EmployeeFront());
+                            main.FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+                            
                             FYSApp.shutdown();
                             main.Frame.EmployeeFrame();
                             break;
                         case "admin":
                             FYSApp.getUserManager().setUserName(userName);
-                            main.FYSApp.getInstance().showPanel(new AdminFront());
+                            main.FYSApp.getInstance().showPanel(new AdminLuggageFound());
+
                             FYSApp.shutdown();
                             main.Frame.AdminFrame();
                             break;
@@ -242,9 +239,8 @@ public class LoginScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void passJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passJTextFieldActionPerformed
-        // Does the same ass the login button, only this will perform when
-        // 'enter' has been hitten.
-        
+        // Does the same as the login button, only this will perform when
+        // 'enter' has been hitten.    
         loginJButtonActionPerformed(evt);
     }//GEN-LAST:event_passJTextFieldActionPerformed
 

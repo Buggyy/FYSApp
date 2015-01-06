@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import main.FYSApp;
 import model.User;
 import view.LoginScreen;
@@ -49,7 +50,10 @@ public class UserManager {
 
         } catch (Exception e) {
             e.printStackTrace();
-            // ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -65,7 +69,10 @@ public class UserManager {
             dbManager.closeConnection();
 
         } catch (SQLException e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -102,28 +109,28 @@ public class UserManager {
 
     }
     
-//    public void updateUser(User user, int id) {
-//        try {
-//            String sql = "UPDATE user SET username=?, password=?, role=?, "
-//                    + "firstName=?, middlename=?, lastname=?, email=?, "
-//                    + "airportname=?  WHERE userid=?";
-//
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            pst.setString(1, user.getUserName());
-//            pst.setString(2, user.getPass());
-//            pst.setString(3, user.getRole());
-//            pst.setString(4, user.getFirstName());
-//            pst.setString(5, user.getMiddleName());
-//            pst.setString(6, user.getLastName());
-//            pst.setString(7, user.getEmail());
-//            pst.setString(8, user.getAirport());
-//            pst.setInt(9, id);
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//        }
-//        dbManager.closeConnection();
-//    }
+    public void updateUser(User user, int id) {
+        try {
+            String sql = "UPDATE user SET username=?, password=?, role=?, "
+                    + "firstName=?, middlename=?, lastname=?, email=?, "
+                    + "airportname=?  WHERE userid=?";
+
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, user.getUserName());
+            pst.setString(2, user.getPass());
+            pst.setString(3, user.getRole());
+            pst.setString(4, user.getFirstName());
+            pst.setString(5, user.getMiddleName());
+            pst.setString(6, user.getLastName());
+            pst.setString(7, user.getEmail());
+            pst.setString(8, user.getAirport());
+            pst.setInt(9, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+    }
     
     public void setUserName(String userName) {
         this.userName = userName;
