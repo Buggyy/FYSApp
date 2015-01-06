@@ -8,11 +8,18 @@ package main;
 import connectivity.DatabaseManager;
 import connectivity.QueryManager;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -39,6 +46,7 @@ public class Frame {
     public static final String EMPLOYEE_NAME = "Employee View";
     
     private static JFrame mainWindow;
+    private JMenuBar menuBar = new JMenuBar();
     private DatabaseManager manager = new DatabaseManager();
     private QueryManager qm = new QueryManager(manager);
     
@@ -147,6 +155,29 @@ public class Frame {
         return manager;
     }
 
+    public void menu(){
+                    UIManager.put("PopupMenu.border", BorderFactory.createLineBorder(Color.black, 1));  
+                    
+                    JSeparator sep = new JSeparator();    
+
+                    JMenu optionsMenu = new JMenu("Options");
+                    optionsMenu.setMnemonic(KeyEvent.VK_F);
+                    menuBar.add(optionsMenu);
+
+                    JMenuItem newMenuHelp = new JMenuItem("Help", KeyEvent.VK_N);
+                    optionsMenu.add(newMenuHelp);
+                    menuBar.add(sep);
+                    JMenuItem newMenuUserManual = new JMenuItem("User Manual", KeyEvent.VK_N);
+                    optionsMenu.add(newMenuUserManual);
+                    menuBar.add(sep);
+                    JMenuItem newMenuLogout = new JMenuItem("Logout", KeyEvent.VK_N);
+                    optionsMenu.add(newMenuLogout);
+                    menuBar.add(sep);
+                    JMenuItem newMenuExit = new JMenuItem("Exit", KeyEvent.VK_N);
+                    optionsMenu.add(newMenuExit);
+                    
+                    mainWindow.setJMenuBar(menuBar);
+    }
     
     public static void ManagerFrame() {
         final Frame applicatie = Frame.getInstance();
@@ -173,6 +204,7 @@ public class Frame {
                 try {
                     applicatie.initialize();
                     applicatie.startAdmin();
+                    applicatie.menu();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,"Application failed to launch","Failure",JOptionPane.WARNING_MESSAGE);
                 }

@@ -3,15 +3,23 @@ package main;
 import connectivity.DatabaseManager;
 import connectivity.QueryManager;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -43,10 +51,10 @@ public final class FYSApp {
     /**
      * Define frame width, height and name
      */
-    public static final int MAIN_WIDTH = 1026;
-    public static final int MAIN_HEIGHT = 600;
+    public static final int MAIN_WIDTH = 376;
+    public static final int MAIN_HEIGHT = 225;
     public static final String MAIN_NAME = "Zoek juh köffer";
-    
+
     /**
      * static fonts which are used within the application
      */
@@ -167,7 +175,7 @@ public final class FYSApp {
                     applicatie.initialize();
                     applicatie.startup();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null,"Application failed to launch","Failure",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
