@@ -1,4 +1,4 @@
-package connectivity;
+package QueryManager;
 
 import java.sql.*;
 import javax.swing.*;
@@ -20,9 +20,18 @@ public class DatabaseManager {
     public void openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+<<<<<<< HEAD:FYSApp-master/src/connectivity/DatabaseManager.java
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "Kuiken123");
+=======
+<<<<<<< HEAD:FYSApp-master/src/QueryManager/DatabaseManager.java
+            conn = DriverManager.getConnection
+        ("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
+=======
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "qwallie1");
+>>>>>>> origin/master:FYSApp-master/src/connectivity/DatabaseManager.java
+>>>>>>> origin/master:FYSApp-master/src/QueryManager/DatabaseManager.java
             
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
             
         }
@@ -45,10 +54,8 @@ public class DatabaseManager {
 
     /**
      * Executes a query without result.
-     *
      * @param query, the SQl query
      */
-    // Maak hier preparedstatement van.
     public void executeQuery(String query) {
         try {
             Statement statement = conn.createStatement();
@@ -60,36 +67,35 @@ public class DatabaseManager {
 
     /**
      * Executes a query with result.
-     *
      * @param query, the SQL query
+     * @return 
      */
-    // Maak hier preparedstatement van.
-    public ResultSet doQuery(String query) {
-        ResultSet result = null;
-        try {
-            Statement statement = conn.createStatement();
-            result = statement.executeQuery(query);
-        } catch (java.sql.SQLException e) {
-            System.err.println(SQL_EXCEPTION + e);
-        }
-        return result;
-    }
+//    public ResultSet doQuery(String query) {
+//        ResultSet result = null;
+//        try {
+//            Statement statement = conn.createStatement();
+//            result = statement.executeQuery(query);
+//        } catch (java.sql.SQLException e) {
+//            System.err.println(SQL_EXCEPTION + e);
+//        }
+//        return result;
+//    }
 
     /**
      * Executes a query with result.
-     *
      * @param query, the SQL query
+     * @return 
      */
-    public ResultSet insertQuery(String query) {
-        ResultSet result = null;
-        try {
-            Statement statement = conn.createStatement();
-            statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
-            result = statement.getGeneratedKeys();
-        } catch (java.sql.SQLException e) {
-            System.err.println(SQL_EXCEPTION + e);
-        }
-        return result;
-    }
+//    public ResultSet insertQuery(String query) {
+//        ResultSet result = null;
+//        try {
+//            Statement statement = conn.createStatement();
+//            statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+//            result = statement.getGeneratedKeys();
+//        } catch (java.sql.SQLException e) {
+//            System.err.println(SQL_EXCEPTION + e);
+//        }
+//        return result;
+//    }
 
 }

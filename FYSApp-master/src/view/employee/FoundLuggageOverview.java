@@ -1,6 +1,6 @@
 package view.employee;
 
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import main.FYSApp;
 import main.Frame;
 import model.Luggage;
 import view.LoginScreen;
@@ -272,7 +273,8 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_matchesJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     /**
@@ -321,12 +323,23 @@ public class FoundLuggageOverview extends JPanel {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
+<<<<<<< HEAD
+            Luggage luggage = FYSApp.getQueryManager().getSelectedFoundLuggage(id);
+            FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
+=======
             Luggage luggage = Frame.getQueryManager().getSelectedLuggage(id);
             Frame.getInstance().showPanel(new RegisterFoundLuggage());
+>>>>>>> origin/master
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
+<<<<<<< HEAD
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
+=======
+        }
+        else {
+            //  ERROR-MESSAGE
+>>>>>>> origin/master
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
@@ -347,7 +360,11 @@ public class FoundLuggageOverview extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
+<<<<<<< HEAD
+                rs = FYSApp.getTableManager().searchTableLuggageFound(input);
+=======
                 rs = Frame.getQueryManager().searchTableLuggageFound(input);
+>>>>>>> origin/master
 
                 if (input == null) {
                     foundLuggageTable.repaint();

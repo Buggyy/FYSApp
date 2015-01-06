@@ -6,7 +6,7 @@
  */
 package model;
 
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,8 +42,6 @@ public class User {
         this.airport = airport;
     }
 
-    
- 
     public String getUserName() {
         return userName;
     }

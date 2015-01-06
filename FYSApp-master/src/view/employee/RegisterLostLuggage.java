@@ -1,7 +1,6 @@
 package view.employee;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -29,12 +28,10 @@ public class RegisterLostLuggage extends JPanel {
     public RegisterLostLuggage() {
 
         initComponents();
-
-        for (int i = 0; i < 10; i++) {
-            
-        }
-        this.departureFrom = FYSApp.getAirportsList();
         
+        for (int i = 0; i < airportsList.size(); i++) {
+            cmb_departureFrom.addItem(airportsList);
+        }
 
         //  These items should be stored in an array
         cmb_color.addItem("red");
@@ -435,10 +432,21 @@ public class RegisterLostLuggage extends JPanel {
         Luggage luggage = new Luggage(brand, lableCode, material,
                 otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
-
-        //  if Admin/Manager presses 'Edit' we call in the update query and
-        //  the same JFrame
+        
+        //  COMMENT
         if (updateMode > 1) {
+<<<<<<< HEAD
+            FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
+        } else {
+            //  If this is not the case, then we call the addLuggage Query +
+            //  the add client luggage
+            FYSApp.getClientManager().addClient(newClient);
+            int id = FYSApp.getClientManager().getClientid();
+            FYSApp.getLuggageManager().addLostLuggage(luggage, id);
+        }
+
+        //  COMMENT
+=======
             Frame.getQueryManager().updateLostLuggage(luggage, luggageid);
         } else {
             Frame.getQueryManager().addClient(client);
@@ -449,10 +457,12 @@ public class RegisterLostLuggage extends JPanel {
         // Pak de id van deze client
         // luggage.setId(de id van je query die je ophaalt.)
         
+>>>>>>> origin/master
         try {
             Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger
+        (RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed

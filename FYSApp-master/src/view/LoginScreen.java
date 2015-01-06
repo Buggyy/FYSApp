@@ -1,6 +1,6 @@
 package view;
 
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;

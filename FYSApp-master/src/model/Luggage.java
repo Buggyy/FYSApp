@@ -63,6 +63,14 @@ public class Luggage {
         this.departureFrom = departureFrom;
     }
 
+    public void setDepartureFrom(String departureFrom) {
+        this.departureFrom = departureFrom;
+    }
+
+    public String getDepartureFrom() {
+        return departureFrom;
+    }
+
     public void setBrand(String brand) {
         this.brand = brand;
     }
