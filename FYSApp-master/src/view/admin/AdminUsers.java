@@ -1,6 +1,7 @@
 package view.admin;
 
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
 import model.User;
-import view.LoginScreen;
 
 /**
  *
@@ -47,6 +47,7 @@ public class AdminUsers extends JPanel {
 
     /**
      * Creates new form AdminUsers
+     *
      * @param rs
      * @throws java.lang.ClassNotFoundException
      * @throws java.sql.SQLException
@@ -128,6 +129,11 @@ public class AdminUsers extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
@@ -227,7 +233,7 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
-        
+
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
@@ -235,13 +241,15 @@ public class AdminUsers extends JPanel {
             input = searchJTextField.getText();
             rs = Frame.getQueryManager().searchTableUser(input);
 
-            if (input == null)
-            {userTable.repaint();
-            }if (!rs.next()) {
+            if (input == null) {
+                userTable.repaint();
+            }
+            if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getUsers();
                 updateTable(rs);
             } else {
+                jLWarning.setText("");
                 rs.beforeFirst();
                 updateTable(rs);
             }
@@ -257,14 +265,19 @@ public class AdminUsers extends JPanel {
             int row = userTable.getSelectedRow();
             int userNameCol = 1;
             int userIdCol = 0;
-            
+
             String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
             int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
+
             
             User user = Frame.getQueryManager().getSelectedUser(uName);
             
             Frame.getInstance().showPanel(new AdminRegisterUser());
             AdminRegisterUser.setUpdate(10,userId);
+
+            Frame.getInstance().showPanel(new AdminRegisterUser());
+            AdminRegisterUser.setUpdate(10, userId);
+
             AdminRegisterUser.setText(user);
         } catch (SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
@@ -274,26 +287,53 @@ public class AdminUsers extends JPanel {
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
         // TODO add your handling code here:
         int row = userTable.getSelectedRow();
-        int col = 0; 
+        int col = 0;
         String uName = (String) userTable.getModel().getValueAt(row, col);
+
         Frame.getQueryManager().deleteUser(uName);
-        
+
         try {
             Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
+
         Frame.getInstance().showPanel(new AdminRegisterUser());
         AdminRegisterUser.setUpdate(0,0);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
-        searchJTextField.setText("");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                input = searchJTextField.getText();
+                rs = Frame.getQueryManager().searchTableUser(input);
+
+                if (input == null) {
+                    userTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getUsers();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
+
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

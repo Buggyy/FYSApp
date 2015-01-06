@@ -12,6 +12,7 @@ import model.Luggage;
 import model.User;
 import view.LoginScreen;
 import javax.swing.*;
+import static main.FYSApp.NO_VALUE;
 
 /**
  * @author Team 1 IS106 ZoekJeKoffer
@@ -88,7 +89,6 @@ public class QueryManager {
     // Method om een user toe te voegen aan de database.
     public void addClient(Client client) {
 
-        // Hij get de date en userid hier.
         String date = main.FYSApp.getDate();
 
         try {
@@ -129,13 +129,11 @@ public class QueryManager {
 
     }
 
-    public int getClientd() {
+    public int getClientid() {
 
         int ownerid = 0;
-//         Method die zorgt dat de hoogste ownerID wordt gegenereerd.
 
         try {
-
             String sql = "SELECT ownerid FROM client ORDER BY ownerid DESC LIMIT 0 , 1";
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -147,8 +145,6 @@ public class QueryManager {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
-
         }
         dbManager.closeConnection();
         return ownerid;
@@ -330,22 +326,6 @@ public class QueryManager {
 
     }
 
-//     dbManager.openConnection();
-//
-//            String sql = "INSERT INTO user (username,password,role,firstname"
-//                    + ",middlename,lastname,email,airportname) VALUES (?,?,?,?,?,?,?,?)";
-//
-//            // Gebruik de getters en setters van de user object
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//
-//            pst.setString(1, user.getUserName());
-//            pst.setString(2, user.getPass());
-//            pst.setString(3, user.getRole());
-//            pst.setString(4, user.getFirstName());
-//            pst.setString(5, user.getMiddleName());
-//            pst.setString(6, user.getLastName());
-//            pst.setString(7, user.getEmail());
-//            pst.setString(8, user.getAirport());
     public ResultSet getUserLoginfo(String username) {
         String sql = "SELECT password,role FROM user WHERE username=?";
         ResultSet rs = null;
@@ -546,17 +526,31 @@ public class QueryManager {
         dbManager.closeConnection();
     }
 
-    public void updateLuggage(Luggage luggage, int id) {
+    /**
+     * 
+     * @param luggage item
+     * @param id of the luggage
+     * Update existing luggage data
+     */
+    public void updateLostLuggage(Luggage luggage, int id) {
         try {
-            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
+            String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
+                    + " color=?, material=?, otherDetails=?, weightClass=?,"
+                    + "status=?, weightClass=? WHERE luggageid=?";
             dbManager.openConnection();
-            pst = dbManager.getConnection().prepareStatement(sql);
+            pst = dbManager.getConnection().prepareStatement(updateLuggage);
             pst.setString(1, luggage.getBrand());
-            pst.setString(2, luggage.getWeight());
-            pst.setString(3, luggage.getDescription());
-            pst.setInt(4, id);
+            pst.setString(2, luggage.getLableCode());
+            pst.setString(3, luggage.getColor());
+            pst.setString(4, luggage.getMaterial());
+            pst.setString(5, luggage.getOtherDetails());
+            pst.setString(6, luggage.getWeightClass());
+            pst.setString(7, "Lost");
+            pst.setString(8, luggage.getWeightClass());
+            pst.setInt(9, id);
             pst.executeUpdate();
         } catch (SQLException e) {
+            JOptionPane.showConfirmDialog(null, "Something went wrong!");
         }
         dbManager.closeConnection();
     }
@@ -605,16 +599,16 @@ public class QueryManager {
             pst.setString(1, userName);
 
             rs = pst.executeQuery();
-            
-            if(rs.next()){
-               user.setUserName(rs.getString("username"));
-               user.setRole(rs.getString("role"));
-               user.setPass(rs.getString("password"));
-               user.setFirstName(rs.getString("firstname"));
-               user.setMiddleName(rs.getString("middlename"));
-               user.setLastName(rs.getString("lastname"));
-               user.setEmail(rs.getString("email"));
-               user.setAirport(rs.getString("airportname")); 
+
+            if (rs.next()) {
+                user.setUserName(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+                user.setPass(rs.getString("password"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setMiddleName(rs.getString("middlename"));
+                user.setLastName(rs.getString("lastname"));
+                user.setEmail(rs.getString("email"));
+                user.setAirport(rs.getString("airportname"));
 
             }
             return user;
@@ -627,14 +621,13 @@ public class QueryManager {
         return user;
 
     }
-    
-    
+
     public void updateUser(User user, int id) {
         try {
             String sql = "UPDATE user SET username=?, password=?, role=?, "
                     + "firstName=?, middlename=?, lastname=?, email=?, "
                     + "airportname=?  WHERE userid=?";
-            
+
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, user.getUserName());
@@ -651,12 +644,12 @@ public class QueryManager {
         }
         dbManager.closeConnection();
     }
-    
-    public void setUserName(String userName){
+
+    public void setUserName(String userName) {
         this.userName = userName;
     }
-    
-    public String getUserName(){
+
+    public String getUserName() {
         return userName;
     }
 }

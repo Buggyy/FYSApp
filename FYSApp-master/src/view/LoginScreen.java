@@ -55,7 +55,6 @@ public class LoginScreen extends javax.swing.JPanel {
         cantLoginJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -124,7 +123,7 @@ public class LoginScreen extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(cantLoginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -174,6 +173,7 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addContainerGap(419, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
         add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 190));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
@@ -182,6 +182,9 @@ public class LoginScreen extends javax.swing.JPanel {
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 190));
+=======
+        add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 172, 370, 190));
+>>>>>>> origin/master
     }// </editor-fold>//GEN-END:initComponents
 
     private void userNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameJTextFieldActionPerformed
@@ -263,7 +266,6 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JButton cantLoginJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginJButton;
     private javax.swing.JPasswordField passJTextField;

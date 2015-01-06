@@ -10,13 +10,9 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import main.Frame;
-import static main.Frame.*;
 import model.Luggage;
 import view.LoginScreen;
 import view.admin.AdminLuggageFound;
@@ -26,8 +22,7 @@ import view.admin.AdminLuggageFound;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class FoundLuggageOverview extends JPanel {
-       
-       
+
     // Always declare first..!
     DatabaseManager dbmanager;
     Connection conn = null;
@@ -161,7 +156,7 @@ public class FoundLuggageOverview extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 100, 30));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 110, 30));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -241,7 +236,7 @@ public class FoundLuggageOverview extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 410, 30));
         jLWarning.getAccessibleContext().setAccessibleName("jLWarning");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -278,22 +273,29 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
-
-        
-
         try {
             input = searchJTextField.getText();
             rs = Frame.getQueryManager().searchTableLuggageFound(input);
             if (rs != null) {
+            rs = Frame.getQueryManager().searchTableLuggageFound(input);
+
+            if (input == null) {
+                foundLuggageTable.repaint();
+            }
+            if (!rs.next()) {
+                jLWarning.setText("No matches found!");
+                getFoundLuggage();
                 updateTable(rs);
             } else {
-                jLWarning.setText("No matches found");
-                getFoundLuggage();
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
             }
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
@@ -318,7 +320,7 @@ public class FoundLuggageOverview extends JPanel {
             RegisterFoundLuggage.setText(luggage);
         } //  We show a warning
         else {
-            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+            //  WARNINGPOPUP
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
@@ -335,22 +337,29 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
-        
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-                 try {
-            input = searchJTextField.getText();
-            rs = Frame.getQueryManager().searchTableLuggageLost(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
-                jLWarning.setText("No matches found!");
-                getFoundLuggage();
-            }
 
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                input = searchJTextField.getText();
+                rs = Frame.getQueryManager().searchTableLuggageFound(input);
+
+                if (input == null) {
+                    foundLuggageTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getFoundLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 

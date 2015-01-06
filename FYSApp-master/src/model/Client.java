@@ -1,5 +1,7 @@
 package model;
 
+import static main.FYSApp.*;
+
 /**
  * @author Team 1 IS106 ZoekJeKoffer
  *
@@ -7,16 +9,16 @@ package model;
 
 public class Client {
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String phone;
-    private String email;
-    private String country;
-    private String address;
-    private String city;
-    private String state;
-    private String zipCode;
+    private String firstName = NO_VALUE;
+    private String middleName = NO_VALUE;
+    private String lastName = NO_VALUE;
+    private String phone = NO_VALUE;
+    private String email = NO_VALUE;
+    private String country = NO_VALUE;
+    private String address = NO_VALUE;
+    private String city = NO_VALUE;
+    private String state = NO_VALUE;
+    private String zipCode = NO_VALUE;
     
     public Client(String firstName, String middleName, String lastName, 
             String phone, String email, String country, String address, 

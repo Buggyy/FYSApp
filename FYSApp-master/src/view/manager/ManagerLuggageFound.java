@@ -1,6 +1,8 @@
 package view.manager;
 
+import ExterneLibraries.PDFGenerator;
 import connectivity.DatabaseManager;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,18 +11,19 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
-import view.LoginScreen;
 import view.admin.AdminLuggageFound;
 import view.employee.EmployeeFront;
 
 /**
  * @version 1
- * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
+ * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato,
+ * jerryrump, larsvanalphen, marijnbakker, danielstern Doel: Het maken van een
+ * kofferapplicatie.
  */
 public class ManagerLuggageFound extends JPanel {
 
@@ -32,7 +35,7 @@ public class ManagerLuggageFound extends JPanel {
     public String input;
     ResultSetMetaData rsmetadata = null;
     public int columns = 0;
-    
+
     /**
      * Blablabla
      */
@@ -40,7 +43,7 @@ public class ManagerLuggageFound extends JPanel {
         initComponents();
         getFoundLuggage();
     }
-    
+
     /**
      * Blablabla
      */
@@ -52,12 +55,12 @@ public class ManagerLuggageFound extends JPanel {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Blablabla
      */
     private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
-        
+
         rsmetadata = rs.getMetaData();
 
         columns = rsmetadata.getColumnCount();
@@ -108,6 +111,7 @@ public class ManagerLuggageFound extends JPanel {
         backJButton = new javax.swing.JButton();
         statisticsJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
+        JButtonPrint = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -157,9 +161,19 @@ public class ManagerLuggageFound extends JPanel {
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
+        searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchJTextFieldMouseClicked(evt);
+            }
+        });
         searchJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJTextFieldActionPerformed(evt);
+            }
+        });
+        searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyTyped(evt);
             }
         });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
@@ -242,6 +256,15 @@ public class ManagerLuggageFound extends JPanel {
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 410, 30));
 
+        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
+        JButtonPrint.setText("PRINT");
+        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonPrintActionPerformed(evt);
+            }
+        });
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 40));
+
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -280,18 +303,26 @@ public class ManagerLuggageFound extends JPanel {
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            input = searchJTextField.getText();
-            rs = Frame.getQueryManager().searchTableLuggageFound(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
-                jLWarning.setText("No matches found!");
-                getFoundLuggage();
-            }
+                input = searchJTextField.getText();
+                rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                if (input == null) {
+                    foundLuggageJTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getFoundLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -302,8 +333,52 @@ public class ManagerLuggageFound extends JPanel {
         Frame.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
+
+    private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                input = searchJTextField.getText();
+                rs = Frame.getQueryManager().searchTableLuggageFound(input);
+
+                if (input == null) {
+                    foundLuggageJTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getFoundLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_searchJTextFieldKeyTyped
+
+    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
+        // create object for pdf generator
+        PDFGenerator pdf = new PDFGenerator();
+        // create own content through arrays using querymanager
+        pdf.generate();
+        // current date using timestamp
+        String currentDate = FYSApp.getDateTime();
+        //name of pdf file
+        pdf.save(currentDate + " Found.pdf");
+        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
+                + " Found.pdf \n in the rood folder of the app" );
+    }//GEN-LAST:event_JButtonPrintActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton foundJButton;
