@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import main.FYSApp;
 import model.Luggage;
 import view.LoginScreen;
@@ -49,7 +50,10 @@ public class LuggageManager {
             pst.executeUpdate();
 
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         dbManager.closeConnection();
     }
@@ -82,7 +86,10 @@ public class LuggageManager {
             dbManager.closeConnection();
 
         } catch (SQLException e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -114,7 +121,10 @@ public class LuggageManager {
 
             dbManager.closeConnection();
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -150,7 +160,10 @@ public class LuggageManager {
             dbManager.closeConnection();
 
         } catch (SQLException e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -244,7 +257,10 @@ public class LuggageManager {
 
             dbManager.closeConnection();
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
