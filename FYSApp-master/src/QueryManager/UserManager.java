@@ -7,6 +7,7 @@ package QueryManager;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import main.FYSApp;
 import model.User;
 
@@ -44,7 +45,10 @@ public class UserManager {
 
         } catch (Exception e) {
             e.printStackTrace();
-            // ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -60,7 +64,10 @@ public class UserManager {
             dbManager.closeConnection();
 
         } catch (SQLException e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -338,7 +338,10 @@ public class FoundLuggageOverview extends JPanel {
 =======
         }
         else {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
 >>>>>>> origin/master
         }
     }//GEN-LAST:event_editJButtonActionPerformed

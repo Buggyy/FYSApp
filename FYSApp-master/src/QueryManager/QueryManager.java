@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Luggage;
 import main.FYSApp;
 
@@ -44,7 +45,10 @@ public class QueryManager {
             dbManager.closeConnection();
 
         } catch (Exception e) {
-            //  ERROR-MESSAGE
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
         return (ArrayList<String>) airports;
