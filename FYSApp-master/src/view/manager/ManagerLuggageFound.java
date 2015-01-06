@@ -17,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
 import view.admin.AdminLuggageFound;
-import view.employee.EmployeeFront;
 
 /**
  * @version 1
@@ -108,7 +107,6 @@ public class ManagerLuggageFound extends JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         foundLuggageJTable = new javax.swing.JTable();
-        backJButton = new javax.swing.JButton();
         statisticsJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
         JButtonPrint = new javax.swing.JButton();
@@ -141,7 +139,7 @@ public class ManagerLuggageFound extends JPanel {
         add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 50));
 
         foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         foundJButton.setText("Found Luggage");
         foundJButton.setBorder(null);
         foundJButton.setEnabled(false);
@@ -153,7 +151,7 @@ public class ManagerLuggageFound extends JPanel {
         add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 140, 50));
 
         lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton.setText("Lost Luggage");
         lostJButton.setBorder(null);
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +174,9 @@ public class ManagerLuggageFound extends JPanel {
             }
         });
         searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 searchJTextFieldKeyTyped(evt);
             }
@@ -239,15 +240,6 @@ public class ManagerLuggageFound extends JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 590, 340));
 
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 40));
-
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
         statisticsJButton.setText("STATISTICS");
@@ -261,7 +253,7 @@ public class ManagerLuggageFound extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 410, 30));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 410, 30));
 
         JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
         JButtonPrint.setText("PRINT");
@@ -310,34 +302,30 @@ public class ManagerLuggageFound extends JPanel {
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-                input = searchJTextField.getText();
-                rs = Frame.getQueryManager().searchTableLuggageFound(input);
+            input = searchJTextField.getText();
+            rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
-                if (input == null) {
-                    foundLuggageJTable.repaint();
-                }
-                if (!rs.next()) {
-                    jLWarning.setText("No matches found!");
-                    getFoundLuggage();
-                    updateTable(rs);
-                } else {
-                    jLWarning.setText("");
-                    rs.beforeFirst();
-                    updateTable(rs);
-                }
-
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            if (input == null) {
+                foundLuggageJTable.repaint();
             }
-        
+            if (!rs.next()) {
+                jLWarning.setText("No matches found!");
+                getFoundLuggage();
+                updateTable(rs);
+            } else {
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_searchJButtonActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new ManagerFront());
-    }//GEN-LAST:event_backJButtonActionPerformed
-
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
-        Frame.getInstance().showPanel(new EmployeeFront());
+
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
@@ -345,6 +333,23 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
     private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
+
+    }//GEN-LAST:event_searchJTextFieldKeyTyped
+
+    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
+        // create object for pdf generator
+        PDFGenerator pdf = new PDFGenerator();
+        // create own content through arrays using querymanager
+        pdf.generate();
+        // current date using timestamp
+        String currentDate = FYSApp.getDateTime();
+        //name of pdf file
+        pdf.save(currentDate + " Found.pdf");
+        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
+                + " Found.pdf \n in the rood folder of the app");
+    }//GEN-LAST:event_JButtonPrintActionPerformed
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
@@ -367,27 +372,12 @@ public class ManagerLuggageFound extends JPanel {
                 Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_searchJTextFieldKeyTyped
-
-    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // create object for pdf generator
-        PDFGenerator pdf = new PDFGenerator();
-        // create own content through arrays using querymanager
-        pdf.generate();
-        // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
-        //name of pdf file
-        pdf.save(currentDate + " Found.pdf");
-        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
-                + " Found.pdf \n in the rood folder of the app" );
-    }//GEN-LAST:event_JButtonPrintActionPerformed
-
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JTable foundLuggageJTable;
     private javax.swing.JLabel jLWarning;

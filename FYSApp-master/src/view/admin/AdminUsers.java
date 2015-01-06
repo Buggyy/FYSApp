@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
@@ -91,7 +92,6 @@ public class AdminUsers extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
         searchJTextField = new javax.swing.JTextField();
         searchJButton = new javax.swing.JButton();
@@ -103,6 +103,9 @@ public class AdminUsers extends JPanel {
         jLabel2 = new javax.swing.JLabel();
         registerJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
+        foundJButton = new javax.swing.JButton();
+        overviewJButton = new javax.swing.JButton();
+        lostJButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
@@ -110,15 +113,6 @@ public class AdminUsers extends JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 100, 40));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -205,8 +199,9 @@ public class AdminUsers extends JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Users Overview - Admin");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 270, 33));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
+        jLabel2.setText("   Users Overview - Admin");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 290, 33));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
         registerJButton.setText("REGISTER NEW USER");
@@ -219,7 +214,35 @@ public class AdminUsers extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 410, 30));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 410, 30));
+
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
+        foundJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foundJButtonActionPerformed(evt);
+            }
+        });
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 40));
+
+        overviewJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
+        overviewJButton.setText("User Overview");
+        overviewJButton.setEnabled(false);
+        overviewJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                overviewJButtonActionPerformed(evt);
+            }
+        });
+        add(overviewJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 140, 40));
+
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
+        lostJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lostJButtonActionPerformed(evt);
+            }
+        });
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 140, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -228,10 +251,6 @@ public class AdminUsers extends JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new AdminFront());
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
@@ -271,45 +290,77 @@ public class AdminUsers extends JPanel {
             int row = userTable.getSelectedRow();
             int userNameCol = 1;
             int userIdCol = 0;
+            if (userTable.getSelectedRow() >= 0) {
+                String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
+                int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
 
-            String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
-            int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
+                User user = Frame.getQueryManager().getSelectedUser(uName);
 
-            
-            User user = Frame.getQueryManager().getSelectedUser(uName);
-            
-            Frame.getInstance().showPanel(new AdminRegisterUser());
-            AdminRegisterUser.setUpdate(10,userId);
+                Frame.getInstance().showPanel(new AdminRegisterUser());
+                AdminRegisterUser.setUpdate(10, userId);
 
-            Frame.getInstance().showPanel(new AdminRegisterUser());
-            AdminRegisterUser.setUpdate(10, userId);
+                Frame.getInstance().showPanel(new AdminRegisterUser());
+                AdminRegisterUser.setUpdate(10, userId);
 
-            AdminRegisterUser.setText(user);
+                AdminRegisterUser.setText(user);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a row before editing!");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        // TODO add your handling code here:
-        int row = userTable.getSelectedRow();
-        int col = 0;
-        String uName = (String) userTable.getModel().getValueAt(row, col);
 
-        Frame.getQueryManager().deleteUser(uName);
+        if (userTable.getSelectedRow() >= 0) {
+            int row = userTable.getSelectedRow();
+            int col = 0;
+            String uName = (String) userTable.getModel().getValueAt(row, col);
 
-        try {
-            Frame.getInstance().showPanel(new AdminUsers());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+            //Custom button text
+            Object[] options = {"Yes",
+                "No"};
+            int n = JOptionPane.showOptionDialog(null,
+                    "Are you sure you want to delete this row?",
+                    "Warning",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+            if (n == JOptionPane.YES_OPTION) {
+                Frame.getQueryManager().deleteUser(uName);
+                try {
+                    Frame.getInstance().showPanel(new AdminUsers());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                try {
+                    Frame.getInstance().showPanel(new AdminUsers());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            //custom title, warning icon
+            JOptionPane.showMessageDialog(null,
+                    "Please select a row before editing!",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
+
         }
-
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
 
         Frame.getInstance().showPanel(new AdminRegisterUser());
-        AdminRegisterUser.setUpdate(0,0);
+        AdminRegisterUser.setUpdate(0, 0);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
@@ -341,17 +392,41 @@ public class AdminUsers extends JPanel {
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
+    private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
+        Frame.getInstance().showPanel(new AdminLuggageFound());
+    }//GEN-LAST:event_foundJButtonActionPerformed
+
+    private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
+        try {
+            Frame.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_overviewJButtonActionPerformed
+
+    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
+        try {
+            Frame.getInstance().showPanel(new AdminLuggageLost());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lostJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
+    private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
+    private javax.swing.JButton lostJButton;
+    private javax.swing.JButton overviewJButton;
     private javax.swing.JButton registerJButton;
     private javax.swing.JButton searchJButton;
     private javax.swing.JTextField searchJTextField;

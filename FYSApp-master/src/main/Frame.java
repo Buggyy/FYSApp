@@ -23,9 +23,9 @@ import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import view.admin.AdminFront;
-import view.employee.EmployeeFront;
-import view.manager.ManagerFront;
+import view.admin.AdminLuggageFound;
+import view.employee.FoundLuggageOverview;
+import view.manager.ManagerLuggageFound;
 
 /**
  *
@@ -79,7 +79,7 @@ public class Frame {
         });
 
         mainWindow.getContentPane().setLayout(new BorderLayout());
-        showPanel(new ManagerFront());
+        showPanel(new ManagerLuggageFound());
 
         mainWindow.setVisible(true);
     }
@@ -100,7 +100,7 @@ public class Frame {
         });
 
         mainWindow.getContentPane().setLayout(new BorderLayout());
-        showPanel(new AdminFront());
+        showPanel(new AdminLuggageFound());
 
         mainWindow.setVisible(true);
     }
@@ -121,7 +121,7 @@ public class Frame {
         });
 
         mainWindow.getContentPane().setLayout(new BorderLayout());
-        showPanel(new EmployeeFront());
+        showPanel(new FoundLuggageOverview());
 
         mainWindow.setVisible(true);
     }

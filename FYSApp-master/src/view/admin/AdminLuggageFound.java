@@ -14,6 +14,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
@@ -106,13 +107,14 @@ public class AdminLuggageFound extends JPanel {
         searchJTextField = new javax.swing.JTextField();
         searchJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
         editJButton = new javax.swing.JButton();
         deleteJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLWarning = new javax.swing.JLabel();
+        overviewJButton = new javax.swing.JButton();
+        foundJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -172,6 +174,9 @@ public class AdminLuggageFound extends JPanel {
             }
         });
         searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchJTextFieldKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 searchJTextFieldKeyTyped(evt);
             }
@@ -196,24 +201,14 @@ public class AdminLuggageFound extends JPanel {
         });
         add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 100, 30));
 
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 100, 40));
-
-        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton.setText("Lost Luggage");
-        lostJButton.setActionCommand("Lost Luggage");
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 40));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 140, 40));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -236,8 +231,9 @@ public class AdminLuggageFound extends JPanel {
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Found Luggage Overview - Admin");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 370, 33));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
+        jLabel2.setText("   Found Luggage Overview - Admin");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 380, 33));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Currently logged in as: [username]");
@@ -246,6 +242,25 @@ public class AdminLuggageFound extends JPanel {
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
+
+        overviewJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
+        overviewJButton.setText("User Overview");
+        overviewJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                overviewJButtonActionPerformed(evt);
+            }
+        });
+        add(overviewJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 140, 40));
+
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
+        foundJButton.setEnabled(false);
+        foundJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foundJButtonActionPerformed(evt);
+            }
+        });
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -290,10 +305,6 @@ public class AdminLuggageFound extends JPanel {
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new AdminFront());
-    }//GEN-LAST:event_backJButtonActionPerformed
     /**
      *
      * @param evt
@@ -310,7 +321,7 @@ public class AdminLuggageFound extends JPanel {
         if (foundLuggageJTable.getSelectedRow() >= 0) {
             // Code to edit found luggage
         } else {
-            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+            JOptionPane.showMessageDialog(null, "Please select a row before editing!");
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
@@ -320,11 +331,32 @@ public class AdminLuggageFound extends JPanel {
             int row = foundLuggageJTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
-            Frame.getQueryManager().delete(id);
 
-            Frame.getInstance().showPanel(new AdminLuggageFound());
+            //Custom button text
+            Object[] options = {"Yes",
+                "No"};
+            int n = JOptionPane.showOptionDialog(null,
+                    "Are you sure you want to delete this row?",
+                    "Warning",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+            if (n == JOptionPane.YES_OPTION) {
+                Frame.getQueryManager().delete(id);
+                Frame.getInstance().showPanel(new AdminLuggageFound());
+            } else {
+                Frame.getInstance().showPanel(new AdminLuggageFound());
+            }
+            
         } else {
-            jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
+            //custom title, warning icon
+            JOptionPane.showMessageDialog(null,
+                    "Please select a row before editing!",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
+
         }
 
     }//GEN-LAST:event_deleteJButtonActionPerformed
@@ -333,6 +365,30 @@ public class AdminLuggageFound extends JPanel {
      * @param evt
      */
     private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
+
+    }//GEN-LAST:event_searchJTextFieldKeyTyped
+    /**
+     *
+     * @param evt
+     */
+    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
+        searchJTextField.setText("");
+    }//GEN-LAST:event_searchJTextFieldMouseClicked
+
+    private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
+        try {
+            Frame.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_overviewJButtonActionPerformed
+
+    private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
+        Frame.getInstance().showPanel(new AdminLuggageFound());
+    }//GEN-LAST:event_foundJButtonActionPerformed
+
+    private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
@@ -355,20 +411,13 @@ public class AdminLuggageFound extends JPanel {
                 Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_searchJTextFieldKeyTyped
-    /**
-     *
-     * @param evt
-     */
-    private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
-        searchJTextField.setText("");
-    }//GEN-LAST:event_searchJTextFieldMouseClicked
+    }//GEN-LAST:event_searchJTextFieldKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton deleteJButton;
     private javax.swing.JButton editJButton;
+    private javax.swing.JButton foundJButton;
     public javax.swing.JTable foundLuggageJTable;
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
@@ -377,6 +426,7 @@ public class AdminLuggageFound extends JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
+    private javax.swing.JButton overviewJButton;
     private javax.swing.JButton searchJButton;
     public javax.swing.JTextField searchJTextField;
     // End of variables declaration//GEN-END:variables

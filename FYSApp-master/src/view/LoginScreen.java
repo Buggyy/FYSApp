@@ -7,9 +7,9 @@ import java.awt.event.KeyEvent;
 import java.nio.channels.SelectionKey;
 import java.sql.*;
 import main.FYSApp;
-import view.admin.AdminFront;
-import view.employee.EmployeeFront;
-import view.manager.ManagerFront;
+import view.admin.AdminLuggageFound;
+import view.employee.FoundLuggageOverview;
+import view.manager.ManagerLuggageFound;
 
 /**
  *
@@ -215,19 +215,19 @@ public class LoginScreen extends javax.swing.JPanel {
                     switch (role) {
                         case "manager":
                             FYSApp.getQueryManager().setUserName(userName);
-                            main.FYSApp.getInstance().showPanel(new ManagerFront());
+                            main.FYSApp.getInstance().showPanel(new ManagerLuggageFound());
                             FYSApp.shutdown();
                             main.Frame.ManagerFrame();
                             break;
                         case "employee":
                             FYSApp.getQueryManager().setUserName(userName);
-                            main.FYSApp.getInstance().showPanel(new EmployeeFront());
+                            main.FYSApp.getInstance().showPanel(new FoundLuggageOverview());
                             FYSApp.shutdown();
                             main.Frame.EmployeeFrame();
                             break;
                         case "admin":
                             FYSApp.getQueryManager().setUserName(userName);
-                            main.FYSApp.getInstance().showPanel(new AdminFront());
+                            main.FYSApp.getInstance().showPanel(new AdminLuggageFound());
                             FYSApp.shutdown();
                             main.Frame.AdminFrame();
                             break;
@@ -242,7 +242,7 @@ public class LoginScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_loginJButtonActionPerformed
 
     private void passJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passJTextFieldActionPerformed
-        // Does the same ass the login button, only this will perform when
+        // Does the same as the login button, only this will perform when
         // 'enter' has been hitten.
         
         loginJButtonActionPerformed(evt);
