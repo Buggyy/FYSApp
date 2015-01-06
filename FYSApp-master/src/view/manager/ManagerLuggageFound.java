@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,9 +22,9 @@ import view.employee.EmployeeFront;
 
 /**
  * @version 1
- * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato,
- * jerryrump, larsvanalphen, marijnbakker, danielstern Doel: Het maken van een
- * kofferapplicatie.
+ * @author Team 1 IS106;
+ * @description class for handeling everything related to the found luggage
+ * in the manager section of the app
  */
 public class ManagerLuggageFound extends JPanel {
 
@@ -37,7 +38,7 @@ public class ManagerLuggageFound extends JPanel {
     public int columns = 0;
 
     /**
-     * Blablabla
+     * @default constructor
      */
     public ManagerLuggageFound() {
         initComponents();
@@ -45,7 +46,7 @@ public class ManagerLuggageFound extends JPanel {
     }
 
     /**
-     * Blablabla
+     * @description gets data from database and fills the table on screen
      */
     private void getFoundLuggage() {
         rs = Frame.getQueryManager().getEmployeeFoundLuggage();
@@ -56,9 +57,13 @@ public class ManagerLuggageFound extends JPanel {
         }
     }
 
-    /**
-     * Blablabla
-     */
+   /**
+    * 
+    * @param rs Resultset with the data from the database
+    * @throws ClassNotFoundException
+    * @throws SQLException 
+    * @description get data from database and update the table
+    */
     private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
         rsmetadata = rs.getMetaData();
@@ -295,6 +300,11 @@ public class ManagerLuggageFound extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_foundJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * @description switch to the lost frame
+     */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             // TODO add your handling code here:
@@ -308,6 +318,11 @@ public class ManagerLuggageFound extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * @description Update table based on search query
+     */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
                 input = searchJTextField.getText();
@@ -370,16 +385,11 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // create object for pdf generator
-        PDFGenerator pdf = new PDFGenerator();
-        // create own content through arrays using querymanager
-        pdf.generate();
-        // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
-        //name of pdf file
-        pdf.save(currentDate + " Found.pdf");
-        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
-                + " Found.pdf \n in the rood folder of the app" );
+
+           rs = Frame.getQueryManager().getEmployeeFoundLuggage();
+
+           FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
+
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
 
