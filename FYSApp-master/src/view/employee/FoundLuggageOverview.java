@@ -156,7 +156,7 @@ public class FoundLuggageOverview extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, 110, 30));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 110, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -175,7 +175,7 @@ public class FoundLuggageOverview extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 150, 30));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 150, -1));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
         registerJButton.setText("REGISTER FOUND LUGGAGE");
@@ -184,7 +184,7 @@ public class FoundLuggageOverview extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 210, 40));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -193,7 +193,7 @@ public class FoundLuggageOverview extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 90, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 90, 40));
 
         foundLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         foundLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -251,13 +251,14 @@ public class FoundLuggageOverview extends JPanel {
         jLabel6.setText("[ number ]");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, -1, -1));
 
-        lostJButton1.setText("LOST");
+        lostJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton1.setText("Lost Luggage");
         lostJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButton1ActionPerformed(evt);
             }
         });
-        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 100, 50));
+        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 130, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");

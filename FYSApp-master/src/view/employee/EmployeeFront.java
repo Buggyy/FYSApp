@@ -37,14 +37,15 @@ public class EmployeeFront extends JPanel {
         logoutJButton = new javax.swing.JButton();
         loggedInAs = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 102, 102));
         setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        foundJButton.setBackground(new java.awt.Color(255, 255, 255));
-        foundJButton.setText("FOUND");
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
         foundJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         foundJButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -56,35 +57,41 @@ public class EmployeeFront extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 170, 130));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 210, 60));
 
-        lostJButton.setBackground(new java.awt.Color(255, 255, 255));
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
         lostJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 170, 130));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 210, 60));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 100, 30));
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("[username]");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, -1, -1));
         loggedInAs.getAccessibleContext().setAccessibleName("lbl_currently");
         loggedInAs.getAccessibleContext().setAccessibleDescription("");
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Currently logged in as:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Luggage");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -126,6 +133,7 @@ public class EmployeeFront extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;

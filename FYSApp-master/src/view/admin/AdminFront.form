@@ -34,6 +34,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="logoutJButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/logout-icon.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
       <Events>
@@ -41,7 +44,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="890" y="30" width="90" height="30"/>
+          <AbsoluteConstraints x="880" y="30" width="100" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -66,7 +69,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Images/table-go-icon.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="OVERVIEW"/>
+        <Property name="text" type="java.lang.String" value="Overview"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2"/>
@@ -84,7 +87,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="lostJButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="LOST"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/login-icon.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Lost"/>
         <Property name="actionCommand" type="java.lang.String" value="Found"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -119,8 +125,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="foundJButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="FOUND"/>
-        <Property name="actionCommand" type="java.lang.String" value="Found"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/login-icon.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Found"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2"/>

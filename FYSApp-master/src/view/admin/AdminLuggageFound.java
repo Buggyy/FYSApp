@@ -176,7 +176,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -185,7 +185,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 56, 120, -1));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 120, -1));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -194,7 +194,7 @@ public class AdminLuggageFound extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 130, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 100, 30));
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
@@ -203,15 +203,17 @@ public class AdminLuggageFound extends JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 100, 40));
 
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
+        lostJButton.setActionCommand("Lost Luggage");
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 140, 100, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 40));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -221,7 +223,7 @@ public class AdminLuggageFound extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 120, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 110, 40));
 
         deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
@@ -230,16 +232,16 @@ public class AdminLuggageFound extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 120, 40));
+        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Found Luggage Overview - Admin");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 370, 33));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 370, 33));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Currently logged in as: [username]");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));

@@ -60,7 +60,7 @@ public class AdminRegisterFoundLuggage extends JPanel {
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Register Found Luggage - Admin");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 340, 40));
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 340, 40));
 
         brandJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         brandJTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +92,7 @@ public class AdminRegisterFoundLuggage extends JPanel {
         panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
 
         clearJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         clearJButton.setText("CLEAR");
         clearJButton.setEnabled(false);
         clearJButton.setMinimumSize(new java.awt.Dimension(70, 25));
@@ -113,6 +114,7 @@ public class AdminRegisterFoundLuggage extends JPanel {
         panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
 
         submitJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         submitJButton.setText("SUBMIT");
         submitJButton.setEnabled(false);
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -122,21 +124,23 @@ public class AdminRegisterFoundLuggage extends JPanel {
         });
         panel1.add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 130, 60));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
 
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 40));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));

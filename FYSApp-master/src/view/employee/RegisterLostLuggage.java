@@ -115,6 +115,7 @@ public class RegisterLostLuggage extends JPanel {
         txt_material = new javax.swing.JTextField();
         lbl_lableCode = new javax.swing.JLabel();
         txt_lableCode = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -124,21 +125,23 @@ public class RegisterLostLuggage extends JPanel {
         lbl_rightTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         lbl_rightTitle.setForeground(new java.awt.Color(255, 255, 255));
         lbl_rightTitle.setText("Contact details");
-        add(lbl_rightTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 230, 30));
+        add(lbl_rightTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 230, 30));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
 
         lbl_leftTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         lbl_leftTitle.setForeground(new java.awt.Color(255, 255, 255));
         lbl_leftTitle.setText("Register Lost Luggage");
-        add(lbl_leftTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 360, 30));
+        add(lbl_leftTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 360, 30));
 
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         submitJButton.setText("SUBMIT");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +162,7 @@ public class RegisterLostLuggage extends JPanel {
         lbl_firstname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_firstname.setForeground(new java.awt.Color(255, 255, 255));
         lbl_firstname.setText("Firstname");
-        add(lbl_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, -1, -1));
+        add(lbl_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
         txt_firstname.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_firstname.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +170,7 @@ public class RegisterLostLuggage extends JPanel {
                 txt_firstnameActionPerformed(evt);
             }
         });
-        add(txt_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, 190, -1));
+        add(txt_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 190, -1));
 
         txt_middlename.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_middlename.addActionListener(new java.awt.event.ActionListener() {
@@ -175,12 +178,12 @@ public class RegisterLostLuggage extends JPanel {
                 txt_middlenameActionPerformed(evt);
             }
         });
-        add(txt_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 190, -1));
+        add(txt_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, 190, -1));
 
         lbl_middlename.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_middlename.setForeground(new java.awt.Color(255, 255, 255));
         lbl_middlename.setText("Middlename");
-        add(lbl_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
+        add(lbl_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
 
         txt_lastName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_lastName.addActionListener(new java.awt.event.ActionListener() {
@@ -188,12 +191,12 @@ public class RegisterLostLuggage extends JPanel {
                 txt_lastNameActionPerformed(evt);
             }
         });
-        add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 190, -1));
+        add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 190, -1));
 
         lbl_lastname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_lastname.setForeground(new java.awt.Color(255, 255, 255));
         lbl_lastname.setText("Lastname");
-        add(lbl_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
+        add(lbl_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, -1, -1));
 
         txt_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
@@ -201,17 +204,17 @@ public class RegisterLostLuggage extends JPanel {
                 txt_phoneNumberActionPerformed(evt);
             }
         });
-        add(txt_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 190, -1));
+        add(txt_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 190, -1));
 
         lbl_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_phoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         lbl_phoneNumber.setText("Phonenumber");
-        add(lbl_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, -1));
+        add(lbl_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, -1, -1));
 
         lbl_email.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_email.setForeground(new java.awt.Color(255, 255, 255));
         lbl_email.setText("Email");
-        add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, -1, -1));
+        add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
 
         txt_email.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_email.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +222,7 @@ public class RegisterLostLuggage extends JPanel {
                 txt_emailActionPerformed(evt);
             }
         });
-        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 190, -1));
+        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 190, -1));
 
         txt_city.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_city.addActionListener(new java.awt.event.ActionListener() {
@@ -227,17 +230,17 @@ public class RegisterLostLuggage extends JPanel {
                 txt_cityActionPerformed(evt);
             }
         });
-        add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, 190, 20));
+        add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 190, 20));
 
         lbl_address.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_address.setForeground(new java.awt.Color(255, 255, 255));
         lbl_address.setText("Address");
-        add(lbl_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, 20));
+        add(lbl_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, 20));
 
         lbl_city.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_city.setForeground(new java.awt.Color(255, 255, 255));
         lbl_city.setText("City");
-        add(lbl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, -1, 20));
+        add(lbl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, -1, 20));
 
         txt_address.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_address.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +248,7 @@ public class RegisterLostLuggage extends JPanel {
                 txt_addressActionPerformed(evt);
             }
         });
-        add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 190, 20));
+        add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 190, 20));
 
         txt_zipcode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
@@ -253,17 +256,17 @@ public class RegisterLostLuggage extends JPanel {
                 txt_zipcodeActionPerformed(evt);
             }
         });
-        add(txt_zipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 110, 20));
+        add(txt_zipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 110, 20));
 
         lbl_state.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_state.setForeground(new java.awt.Color(255, 255, 255));
         lbl_state.setText("State");
-        add(lbl_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, -1, 20));
+        add(lbl_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, -1, 20));
 
         lbl_zipCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_zipCode.setForeground(new java.awt.Color(255, 255, 255));
         lbl_zipCode.setText("Zipcode");
-        add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, -1, 20));
+        add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, -1, 20));
 
         txt_state.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_state.addActionListener(new java.awt.event.ActionListener() {
@@ -271,12 +274,12 @@ public class RegisterLostLuggage extends JPanel {
                 txt_stateActionPerformed(evt);
             }
         });
-        add(txt_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 190, 20));
+        add(txt_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 190, 20));
 
         lbl_country.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_country.setForeground(new java.awt.Color(255, 255, 255));
         lbl_country.setText("Country ");
-        add(lbl_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, -1, 20));
+        add(lbl_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, 20));
 
         txt_country.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_country.addActionListener(new java.awt.event.ActionListener() {
@@ -284,7 +287,7 @@ public class RegisterLostLuggage extends JPanel {
                 txt_countryActionPerformed(evt);
             }
         });
-        add(txt_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 190, 20));
+        add(txt_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, 190, 20));
 
         lbl_weightClass.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_weightClass.setForeground(new java.awt.Color(255, 255, 255));
@@ -381,6 +384,10 @@ public class RegisterLostLuggage extends JPanel {
             }
         });
         add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, -1));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Currently logged in as: [username]");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -532,6 +539,7 @@ public class RegisterLostLuggage extends JPanel {
     private static javax.swing.JComboBox cmb_color;
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_weightClass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_address;

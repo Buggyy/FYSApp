@@ -109,21 +109,23 @@ public class ManagerLuggageAuctioned extends JPanel {
         setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 130, 40));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 40));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
 
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
@@ -134,11 +136,11 @@ public class ManagerLuggageAuctioned extends JPanel {
                 statisticsJButtonActionPerformed(evt);
             }
         });
-        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 130, 40));
+        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 140, 40));
 
         auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
-        auctionedJButton.setText("AUCTIONED");
+        auctionedJButton.setText("Auctioned Luggage");
         auctionedJButton.setBorder(null);
         auctionedJButton.setEnabled(false);
         auctionedJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -146,27 +148,29 @@ public class ManagerLuggageAuctioned extends JPanel {
                 auctionedJButtonActionPerformed(evt);
             }
         });
-        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 40));
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 40));
 
         foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        foundJButton.setText("FOUND");
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
         foundJButton.setBorder(null);
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 130, 40));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 40));
 
         lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
         lostJButton.setBorder(null);
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, 40));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -185,7 +189,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, 30));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 150, 20));
 
         JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
         JButtonPrint.setText("PRINT");
@@ -194,7 +198,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 JButtonPrintActionPerformed(evt);
             }
         });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 40));
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 130, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -203,7 +207,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Auctioned Luggage Overview");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 300, 33));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 300, 33));
 
         auctionedJTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         auctionedJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,15 +246,16 @@ public class ManagerLuggageAuctioned extends JPanel {
         });
         jScrollPane2.setViewportView(auctionedJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 590, 340));
 
+        searchJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton1.setText("SEARCH");
         searchJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButton1ActionPerformed(evt);
             }
         });
-        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 130, 30));
+        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 120, 40));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));

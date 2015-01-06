@@ -88,35 +88,38 @@ public class RegisterFoundLuggage extends JPanel {
         panel1.add(brandJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, -1));
 
         clearJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        clearJButton.setText("CLEAR ALL");
+        clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
+        clearJButton.setText("CLEAR");
         clearJButton.setMinimumSize(new java.awt.Dimension(70, 25));
         clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearJButtonActionPerformed(evt);
             }
         });
-        panel1.add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 130, 30));
+        panel1.add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 130, 40));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Color:");
         panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
 
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 100, 30));
+        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 30));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -187,6 +190,7 @@ public class RegisterFoundLuggage extends JPanel {
         panel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         submitJButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        submitJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         submitJButton1.setText("SUBMIT");
         submitJButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,7 +202,7 @@ public class RegisterFoundLuggage extends JPanel {
                 submitJButton1ActionPerformed(evt);
             }
         });
-        panel1.add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 30));
+        panel1.add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 40));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
