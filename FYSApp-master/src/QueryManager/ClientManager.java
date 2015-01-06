@@ -77,25 +77,25 @@ public class ClientManager {
 //    }
     
     
-    //    public void updateClient(Client client, int id) {
-//        try {
-//            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            pst.setString(1, client.getFirstName());
-//            pst.setString(2, client.getMiddleName());
-//            pst.setString(3, client.getLastName());
-//            pst.setString(4, client.getCountry());
-//            pst.setString(5, client.getPhone());
-//            pst.setString(6, client.getEmail());
-//            pst.setString(7, client.getAddress());
-//            pst.setString(8, client.getCity());
-//            pst.setString(9, client.getState());
-//            //pst.setString(10, client.getZipCode());
-//            pst.setInt(4, id);
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//        }
-//        dbManager.closeConnection();
-//    }
+      public void updateClient(Client client, int id) {
+        try {
+            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, client.getFirstName());
+            pst.setString(2, client.getMiddleName());
+            pst.setString(3, client.getLastName());
+            pst.setString(4, client.getCountry());
+            pst.setString(5, client.getPhone());
+            pst.setString(6, client.getEmail());
+            pst.setString(7, client.getAddress());
+            pst.setString(8, client.getCity());
+            pst.setString(9, client.getState());
+            //pst.setString(10, client.getZipCode());
+            pst.setInt(4, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+    }
 }
