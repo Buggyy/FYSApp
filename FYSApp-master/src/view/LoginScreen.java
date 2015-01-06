@@ -171,17 +171,17 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addContainerGap(419, Short.MAX_VALUE))
         );
 
-        add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 172, 370, 190));
+        add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 190));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 190));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameJTextFieldActionPerformed
@@ -215,14 +215,20 @@ public class LoginScreen extends javax.swing.JPanel {
                         case "manager":
                             FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new ManagerFront());
+                            FYSApp.shutdown();
+                            main.Frame.ManagerFrame();
                             break;
                         case "employee":
                             FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new EmployeeFront());
+                            FYSApp.shutdown();
+                            main.Frame.EmployeeFrame();
                             break;
                         case "admin":
                             FYSApp.getQueryManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new AdminFront());
+                            FYSApp.shutdown();
+                            main.Frame.AdminFrame();
                             break;
                     }
             } else {

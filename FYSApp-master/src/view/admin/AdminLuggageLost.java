@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -36,7 +37,7 @@ public class AdminLuggageLost extends JPanel {
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
-        rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
+        rs = Frame.getQueryManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -238,7 +239,7 @@ public class AdminLuggageLost extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
          try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            rs = Frame.getQueryManager().searchTableLuggageLost(input);
 
             if (input == null)
             {lostLuggageTable.repaint();
@@ -257,7 +258,8 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
@@ -265,14 +267,14 @@ public class AdminLuggageLost extends JPanel {
             int row = lostLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) lostLuggageTable.getValueAt(row, col));
-            FYSApp.getQueryManager().delete(id);
+            Frame.getQueryManager().delete(id);
         } else {
             jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }
 
         //  Wat is dit? leg uit.
 //        try {
-//            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+//            Frame.getInstance().showPanel(new AdminLuggageLost());
 //        } catch (ClassNotFoundException ex) {
 //            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (SQLException ex) {
@@ -281,7 +283,7 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        Frame.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
@@ -298,7 +300,7 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminFront());
+        Frame.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed

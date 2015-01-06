@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -90,7 +91,7 @@ public class ManagerFront extends JPanel {
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             // TODO add your handling code here:
-            FYSApp.getInstance().showPanel(new ManagerLuggageLost());
+            Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -100,7 +101,7 @@ public class ManagerFront extends JPanel {
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -109,11 +110,12 @@ public class ManagerFront extends JPanel {
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerLuggageFound());
+        Frame.getInstance().showPanel(new ManagerLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
 

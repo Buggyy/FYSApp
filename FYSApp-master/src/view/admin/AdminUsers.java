@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import main.Frame;
 import model.User;
 import view.LoginScreen;
 
@@ -36,7 +37,7 @@ public class AdminUsers extends JPanel {
     }
 
     private void getUsers() throws ClassNotFoundException, SQLException {
-        rs = FYSApp.getQueryManager().getAdminUsersOverview();
+        rs = Frame.getQueryManager().getAdminUsersOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -217,11 +218,12 @@ public class AdminUsers extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminFront());
+        Frame.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
@@ -231,7 +233,7 @@ public class AdminUsers extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableUser(input);
+            rs = Frame.getQueryManager().searchTableUser(input);
 
             if (input == null)
             {userTable.repaint();
@@ -259,9 +261,9 @@ public class AdminUsers extends JPanel {
             String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
             int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
             
-            User user = FYSApp.getQueryManager().getSelectedUser(uName);
+            User user = Frame.getQueryManager().getSelectedUser(uName);
             
-            FYSApp.getInstance().showPanel(new AdminRegisterUser());
+            Frame.getInstance().showPanel(new AdminRegisterUser());
             AdminRegisterUser.setUpdate(10,userId);
             AdminRegisterUser.setText(user);
         } catch (SQLException ex) {
@@ -274,10 +276,10 @@ public class AdminUsers extends JPanel {
         int row = userTable.getSelectedRow();
         int col = 0; 
         String uName = (String) userTable.getModel().getValueAt(row, col);
-        FYSApp.getQueryManager().deleteUser(uName);
+        Frame.getQueryManager().deleteUser(uName);
         
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -285,7 +287,7 @@ public class AdminUsers extends JPanel {
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminRegisterUser());
+        Frame.getInstance().showPanel(new AdminRegisterUser());
         AdminRegisterUser.setUpdate(0,0);
     }//GEN-LAST:event_registerJButtonActionPerformed
 

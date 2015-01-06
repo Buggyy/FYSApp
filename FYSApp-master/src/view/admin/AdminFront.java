@@ -1,10 +1,11 @@
 package view.admin;
 
-import javax.swing.JPanel;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -100,12 +101,13 @@ public class AdminFront extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -115,7 +117,7 @@ public class AdminFront extends JPanel {
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+            Frame.getInstance().showPanel(new AdminLuggageLost());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -124,7 +126,7 @@ public class AdminFront extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        Frame.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
 

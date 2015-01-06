@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -47,7 +48,7 @@ public class AdminLuggageFound extends JPanel {
      * Blablabla
      */
     private void getFoundLuggage() {
-        rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        rs = Frame.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -251,7 +252,7 @@ public class AdminLuggageFound extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+            rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
             if (input == null)
             {foundLuggageJTable.repaint();
@@ -271,16 +272,17 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminFront());
+        Frame.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+            Frame.getInstance().showPanel(new AdminLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -300,9 +302,9 @@ public class AdminLuggageFound extends JPanel {
             int row = foundLuggageJTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
-            FYSApp.getQueryManager().delete(id);
+            Frame.getQueryManager().delete(id);
 
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
+            Frame.getInstance().showPanel(new AdminLuggageFound());
         } else {
             jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }

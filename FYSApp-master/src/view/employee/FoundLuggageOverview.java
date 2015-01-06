@@ -14,8 +14,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import main.FYSApp;
-import static main.FYSApp.*;
+import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
+import main.Frame;
+import static main.Frame.*;
 import model.Luggage;
 import view.LoginScreen;
 import view.admin.AdminLuggageFound;
@@ -49,7 +50,7 @@ public class FoundLuggageOverview extends JPanel {
      * Blablabla
      */
     private void getFoundLuggage() {
-        rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        rs = Frame.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException ex) {
@@ -273,7 +274,7 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_matchesJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
@@ -282,7 +283,7 @@ public class FoundLuggageOverview extends JPanel {
 
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+            rs = Frame.getQueryManager().searchTableLuggageFound(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
@@ -300,7 +301,7 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
+        Frame.getInstance().showPanel(new RegisterFoundLuggage());
         RegisterFoundLuggage.setUpdate(UPDATE_MODE_FALSE);
 
     }//GEN-LAST:event_registerJButtonActionPerformed
@@ -311,8 +312,8 @@ public class FoundLuggageOverview extends JPanel {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
-            Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
-            FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
+            Luggage luggage = Frame.getQueryManager().getSelectedLuggage(id);
+            Frame.getInstance().showPanel(new RegisterFoundLuggage());
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
         } //  We show a warning
@@ -323,7 +324,7 @@ public class FoundLuggageOverview extends JPanel {
 
     private void lostJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButton1ActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+            Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -338,7 +339,7 @@ public class FoundLuggageOverview extends JPanel {
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
                  try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            rs = Frame.getQueryManager().searchTableLuggageLost(input);
             if (rs != null) {
                 updateTable(rs);
             } else {

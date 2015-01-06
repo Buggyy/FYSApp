@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -287,7 +288,8 @@ public class AdminRegisterLostLuggage extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void brandJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextFieldActionPerformed
@@ -348,7 +350,7 @@ public class AdminRegisterLostLuggage extends JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+            Frame.getInstance().showPanel(new AdminLuggageLost());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminRegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

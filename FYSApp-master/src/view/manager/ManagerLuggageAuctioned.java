@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 import view.employee.EmployeeFront;
 
@@ -39,7 +40,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * Creates new form AdminAuctionedLuggage
      */
     private void getAuctionedLuggage() throws ClassNotFoundException, SQLException {
-        rs = FYSApp.getQueryManager().getManagerAuctionedOverview();
+        rs = Frame.getQueryManager().getManagerAuctionedOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -252,15 +253,16 @@ public class ManagerLuggageAuctioned extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-       FYSApp.getInstance().showPanel(new ManagerFront());
+       Frame.getInstance().showPanel(new ManagerFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new EmployeeFront());
+        Frame.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
@@ -268,13 +270,13 @@ public class ManagerLuggageAuctioned extends JPanel {
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerLuggageFound());
+        Frame.getInstance().showPanel(new ManagerLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             // TODO add your handling code here:
-            FYSApp.getInstance().showPanel(new ManagerLuggageLost());
+            Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -291,7 +293,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableAuctioned(input);
+            rs = Frame.getQueryManager().searchTableAuctioned(input);
             if (rs != null) {
                 updateTable(rs);
             } else {

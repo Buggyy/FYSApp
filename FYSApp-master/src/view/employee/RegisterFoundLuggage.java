@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import model.Luggage;
 import view.LoginScreen;
 
@@ -295,11 +296,12 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
@@ -314,13 +316,13 @@ public class RegisterFoundLuggage extends JPanel {
      //   Luggage luggage = new Luggage(brand, description, status);
 
         if (updateMode > 1) {
-            FYSApp.getQueryManager().updateLuggage(luggage, luggageid);
+            Frame.getQueryManager().updateLuggage(luggage, luggageid);
         } else {
-            FYSApp.getQueryManager().addFoundLuggage(luggage);
+            Frame.getQueryManager().addFoundLuggage(luggage);
         }
 
         try {
-            FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }

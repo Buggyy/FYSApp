@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import model.Luggage;
 import model.User;
 import view.LoginScreen;
@@ -239,14 +240,15 @@ public class AdminRegisterUser extends JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -266,13 +268,13 @@ public class AdminRegisterUser extends JPanel {
         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
         
         if (updateMode > 1) {
-            FYSApp.getQueryManager().updateUser(user,userId);
+            Frame.getQueryManager().updateUser(user,userId);
         } else {
-            FYSApp.getQueryManager().addUser(user);
+            Frame.getQueryManager().addUser(user);
         }
         
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -336,9 +338,9 @@ public class AdminRegisterUser extends JPanel {
     }
     
     public void setAirports(){
-        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
-        for (int i = 0; i < fgt.size(); i++) {
-            airportJComboBox.addItem(fgt.get(i));
+        ArrayList<String> fgt = Frame.getQueryManager().getAirports();
+        for (String fgt1 : fgt) {
+            airportJComboBox.addItem(fgt1);
         }
     }
     

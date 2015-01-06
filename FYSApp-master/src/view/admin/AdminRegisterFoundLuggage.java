@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -185,11 +186,12 @@ public class AdminRegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        Frame.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_backJButtonActionPerformed
 
 

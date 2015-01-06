@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -93,14 +93,14 @@ public class EmployeeFront extends JPanel {
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
 
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
 
     
         try {
-            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+            Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -109,17 +109,17 @@ public class EmployeeFront extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.getInstance().showPanel(new LoginScreen());
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void foundJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foundJButtonMouseClicked
-        FYSApp.getInstance().showPanel(new FoundLuggageOverview());
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
          
     }//GEN-LAST:event_foundJButtonMouseClicked
 
 
     private void setLoggedInAs(){
-        String userName = FYSApp.getQueryManager().getUserName();
+        String userName = Frame.getQueryManager().getUserName();
         System.out.println(userName);
         loggedInAs.setText(userName);
     }

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 import view.admin.AdminLuggageLost;
 import view.employee.EmployeeFront;
@@ -37,7 +38,7 @@ public class ManagerLuggageLost extends JPanel {
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
-        rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
+        rs = Frame.getQueryManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -242,14 +243,14 @@ public class ManagerLuggageLost extends JPanel {
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerLuggageFound());
+        Frame.getInstance().showPanel(new ManagerLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
@@ -257,7 +258,8 @@ public class ManagerLuggageLost extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
@@ -267,7 +269,7 @@ public class ManagerLuggageLost extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            rs = Frame.getQueryManager().searchTableLuggageLost(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
@@ -281,11 +283,11 @@ public class ManagerLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerFront());
+        Frame.getInstance().showPanel(new ManagerFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new EmployeeFront());
+        Frame.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
 

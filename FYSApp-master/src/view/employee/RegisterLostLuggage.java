@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import model.Client;
 import model.Luggage;
 import view.LoginScreen;
@@ -340,7 +341,8 @@ public class RegisterLostLuggage extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -373,18 +375,18 @@ public class RegisterLostLuggage extends JPanel {
         Luggage luggage = new Luggage(weight, brand, description, status);
 
         if (updateMode > 1) {
-            FYSApp.getQueryManager().updateLuggage(luggage, luggageid);
+            Frame.getQueryManager().updateLuggage(luggage, luggageid);
         } else {
-            FYSApp.getQueryManager().addClient(client);
-            int id = FYSApp.getQueryManager().getClientd();
-            FYSApp.getQueryManager().addLostLuggage(luggage, id);
+            Frame.getQueryManager().addClient(client);
+            int id = Frame.getQueryManager().getClientd();
+            Frame.getQueryManager().addLostLuggage(luggage, id);
         }
 
         // Pak de id van deze client
         // luggage.setId(de id van je query die je ophaalt.)
-//        FYSApp.getInstance().getQueryManager().addLuggage(luggage);
+//        Frame.getInstance().getQueryManager().addLuggage(luggage);
         try {
-            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+            Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -393,7 +395,7 @@ public class RegisterLostLuggage extends JPanel {
 
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+            Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
