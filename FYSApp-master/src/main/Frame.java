@@ -5,8 +5,13 @@
  */
 package main;
 
-import connectivity.DatabaseManager;
-import connectivity.QueryManager;
+import QueryManager.ClientManager;
+import QueryManager.DatabaseManager;
+import QueryManager.LuggageManager;
+import QueryManager.QueryManager;
+import QueryManager.SearchManager;
+import QueryManager.TableManager;
+import QueryManager.UserManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -54,6 +59,13 @@ public class Frame {
     private JMenuBar menuBar = new JMenuBar();
     private DatabaseManager manager = new DatabaseManager();
     private QueryManager qm = new QueryManager(manager);
+
+    private LuggageManager lm = new LuggageManager();
+
+    private SearchManager sm = new SearchManager();
+    private TableManager tm = new TableManager();
+    private UserManager um = new UserManager();
+    private ClientManager cm = new ClientManager();
 
     private static Frame instance = new Frame();
 
@@ -150,14 +162,6 @@ public class Frame {
 
     public static Frame getInstance() {
         return instance;
-    }
-
-    public static QueryManager getQueryManager() {
-        return getInstance().qm;
-    }
-
-    public DatabaseManager getDatabaseManager() {
-        return manager;
     }
 
     public void menu() {
@@ -286,5 +290,58 @@ public class Frame {
 
     private void contactActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(mainWindow, CONTACT_MESSAGE);
+    }
+    
+
+    public QueryManager getQm() {
+        return qm;
+    }
+
+    public static QueryManager getQueryManager() {
+        return getInstance().qm;
+    }
+
+    public LuggageManager getLm() {
+        return lm;
+    }
+
+    public static LuggageManager getLuggageManager() {
+        return getInstance().lm;
+    }
+
+    public SearchManager getSm() {
+        return sm;
+    }
+
+    public static SearchManager getSearchManager() {
+        return getInstance().sm;
+    }
+
+    public TableManager getTm() {
+        return tm;
+    }
+
+    public static TableManager getTableManager() {
+        return getInstance().tm;
+    }
+
+    public UserManager getUm() {
+        return um;
+    }
+
+    public static UserManager getUserManager() {
+        return getInstance().um;
+    }
+
+    public ClientManager getCm() {
+        return cm;
+    }
+
+    public static ClientManager getClientManager() {
+        return getInstance().cm;
+    }
+
+    public DatabaseManager getDatabaseManager() {
+        return manager;
     }
 }
