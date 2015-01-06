@@ -12,6 +12,9 @@ import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import connectivity.QueryManager;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,18 +43,37 @@ public class PDFGenerator {
         
     }
     // parameters meegeven en basisopmaak maken 
-    public void generate() {
+    /**
+     * 
+     * @param a
+     * @param b 
+     */
+    public void generate(ArrayList<String> a, ArrayList<String> b) {
+       
         try {
             this.contentStream.beginText();
             this.contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
-            // content goes here
-            this.contentStream.moveTextPositionByAmount(100, 700);
-            this.contentStream.drawString("Month");
             
+            // content goes here
+            this.contentStream.moveTextPositionByAmount(100, 360);
+            int y = -20;
+            
+            for (int i = 0; i < a.size(); i++) {
+                this.contentStream.drawString(a.get(i)+ "");
+                this.contentStream.moveTextPositionByAmount(0, y - 5);
+                
+            }
+            this.contentStream.moveTextPositionByAmount(100, 360);
+            y = -20;
+            
+            for (int i = 0; i < b.size(); i++) {
+                this.contentStream.drawString(b.get(i)+ "");
+                this.contentStream.moveTextPositionByAmount(0, y - 5);
+            
+            }
             this.contentStream.endText();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
