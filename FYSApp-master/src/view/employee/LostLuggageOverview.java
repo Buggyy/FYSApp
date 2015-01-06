@@ -1,6 +1,6 @@
 package view.employee;
 
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.*;
@@ -270,18 +270,13 @@ public class LostLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-        // haal huidige id op
-        //luggageID
-        // query
-        //object maken
-        // meesturen naar scherm jpanel voor register
 
         //  If there is no row selected to edit
         if (lostLuggageTable.getSelectedRow() >= 0) {
             int row = lostLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
-            Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
+            Luggage luggage = FYSApp.getQueryManager().getSelectedLostLuggage(id);
             FYSApp.getInstance().showPanel(new RegisterLostLuggage());
             RegisterLostLuggage.setUpdate(id);
             RegisterLostLuggage.setText(luggage);

@@ -1,6 +1,6 @@
 package view.admin;
 
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,6 +1,6 @@
 package view.employee;
 
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -315,13 +315,13 @@ public class FoundLuggageOverview extends JPanel {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
-            Luggage luggage = FYSApp.getQueryManager().getSelectedLuggage(id);
+            Luggage luggage = FYSApp.getQueryManager().getSelectedFoundLuggage(id);
             FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
-        } //  We show a warning
+        }
         else {
-            //  WARNINGPOPUP
+            //  ERROR-MESSAGE
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
@@ -342,7 +342,7 @@ public class FoundLuggageOverview extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+                rs = FYSApp.getTableManager().searchTableLuggageFound(input);
 
                 if (input == null) {
                     foundLuggageTable.repaint();

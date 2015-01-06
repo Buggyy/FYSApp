@@ -1,7 +1,7 @@
 package view.manager;
 
 import ExterneLibraries.PDFGenerator;
-import connectivity.DatabaseManager;
+import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

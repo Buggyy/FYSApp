@@ -5,6 +5,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import static main.FYSApp.airportsList;
+import model.Client;
 import model.Luggage;
 import view.LoginScreen;
 
@@ -22,6 +24,30 @@ public class RegisterFoundLuggage extends JPanel {
      */
     public RegisterFoundLuggage() {
         initComponents();
+
+        for (int i = 0; i < airportsList.size(); i++) {
+            cmb_foundAt.addItem(airportsList);
+        }
+
+        //  These items should be stored in an array
+        cmb_color.addItem("red");
+        cmb_color.addItem("blue");
+        cmb_color.addItem("yellow");
+        cmb_color.addItem("pink");
+        cmb_color.addItem("purple");
+        cmb_color.addItem("green");
+        cmb_color.addItem("black");
+        cmb_color.addItem("white");
+        cmb_color.addItem("orange");
+        cmb_color.addItem("grey");
+        cmb_color.addItem("brown");
+        cmb_color.addItem("other..");
+
+        cmb_weightClass.addItem("0kg - 5kg");
+        cmb_weightClass.addItem("5kg - 10kg");
+        cmb_weightClass.addItem("10kg - 15kg");
+        cmb_weightClass.addItem("15kg - 20kg");
+        cmb_weightClass.addItem("20kg+");
     }
 
     // this method does not belong here..
@@ -42,29 +68,28 @@ public class RegisterFoundLuggage extends JPanel {
 
         panel1 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
-        brandJTextField = new javax.swing.JTextField();
-        clearJButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        txt_brand = new javax.swing.JTextField();
+        btn_clear = new javax.swing.JButton();
+        lbl_color = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtfld_description = new javax.swing.JTextArea();
-        jLabel9 = new javax.swing.JLabel();
-        jCbox_Color = new javax.swing.JComboBox();
-        jLabel10 = new javax.swing.JLabel();
-        jCbox_Color1 = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
-        jCbox_Color2 = new javax.swing.JComboBox();
-        brandJTextField1 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        submitJButton1 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        brandJTextField3 = new javax.swing.JTextField();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
+        txt_otherDetails = new javax.swing.JTextArea();
+        lbl_brand = new javax.swing.JLabel();
+        cmb_color = new javax.swing.JComboBox();
+        lbl_weightClass = new javax.swing.JLabel();
+        cmb_weightClass = new javax.swing.JComboBox();
+        lbl_foundAt = new javax.swing.JLabel();
+        cmb_foundAt = new javax.swing.JComboBox();
+        txt_whenFound = new javax.swing.JTextField();
+        lbl_material = new javax.swing.JLabel();
+        lbl_otherDetails = new javax.swing.JLabel();
+        btn_submit = new javax.swing.JButton();
+        lbl_code = new javax.swing.JLabel();
+        txt_lableCode = new javax.swing.JTextField();
+        txt_material = new javax.swing.JTextField();
+        lbl_whenFound = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
@@ -80,28 +105,28 @@ public class RegisterFoundLuggage extends JPanel {
         jLabel2.setText("Register Found Luggage - Employee");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 380, 40));
 
-        brandJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        brandJTextField.addActionListener(new java.awt.event.ActionListener() {
+        txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_brand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandJTextFieldActionPerformed(evt);
+                txt_brandActionPerformed(evt);
             }
         });
-        panel1.add(brandJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, -1));
+        panel1.add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, -1));
 
-        clearJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        clearJButton.setText("CLEAR ALL");
-        clearJButton.setMinimumSize(new java.awt.Dimension(70, 25));
-        clearJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_clear.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btn_clear.setText("CLEAR ALL");
+        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearJButtonActionPerformed(evt);
+                btn_clearActionPerformed(evt);
             }
         });
-        panel1.add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 130, 30));
+        panel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 130, 30));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Color:");
-        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_color.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_color.setText("Color:");
+        panel1.add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,106 +148,111 @@ public class RegisterFoundLuggage extends JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
-        txtfld_description.setColumns(20);
-        txtfld_description.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtfld_description.setRows(5);
-        jScrollPane2.setViewportView(txtfld_description);
+        txt_otherDetails.setColumns(20);
+        txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txt_otherDetails.setRows(5);
+        jScrollPane2.setViewportView(txt_otherDetails);
 
         panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 340, 90));
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Brand:");
-        panel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
+        lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_brand.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_brand.setText("Brand:");
+        panel1.add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
 
-        jCbox_Color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbox_Color.addActionListener(new java.awt.event.ActionListener() {
+        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbox_ColorActionPerformed(evt);
+                cmb_colorActionPerformed(evt);
             }
         });
-        panel1.add(jCbox_Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 160, -1));
+        panel1.add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 160, -1));
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Weight class:");
-        panel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        lbl_weightClass.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_weightClass.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_weightClass.setText("Weight class:");
+        panel1.add(lbl_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
-        jCbox_Color1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbox_Color1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbox_Color1ActionPerformed(evt);
+                cmb_weightClassActionPerformed(evt);
             }
         });
-        panel1.add(jCbox_Color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 160, -1));
+        panel1.add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 160, -1));
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Found at");
-        panel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
+        lbl_foundAt.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_foundAt.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_foundAt.setText("Found at");
+        panel1.add(lbl_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
 
-        jCbox_Color2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCbox_Color2.addActionListener(new java.awt.event.ActionListener() {
+        cmb_foundAt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_foundAt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbox_Color2ActionPerformed(evt);
+                cmb_foundAtActionPerformed(evt);
             }
         });
-        panel1.add(jCbox_Color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 160, -1));
+        panel1.add(cmb_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 160, -1));
 
-        brandJTextField1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        brandJTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_whenFound.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_whenFound.setText("dd-MM-yyyy");
+        txt_whenFound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandJTextField1ActionPerformed(evt);
+                txt_whenFoundActionPerformed(evt);
             }
         });
-        panel1.add(brandJTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 160, -1));
+        panel1.add(txt_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 160, -1));
 
-        jLabel13.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Material:");
-        panel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
+        lbl_material.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_material.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_material.setText("Material:");
+        panel1.add(lbl_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Other details:");
-        panel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
+        lbl_otherDetails.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_otherDetails.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_otherDetails.setText("Other details:");
+        panel1.add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
-        submitJButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        submitJButton1.setText("SUBMIT");
-        submitJButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_submit.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btn_submit.setText("SUBMIT");
+        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                submitJButton1MouseClicked(evt);
+                btn_submitMouseClicked(evt);
             }
         });
-        submitJButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitJButton1ActionPerformed(evt);
+                btn_submitActionPerformed(evt);
             }
         });
-        panel1.add(submitJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 30));
+        panel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 30));
 
-        jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("When found:");
-        panel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
+        lbl_code.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_code.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_code.setText("lable code");
+        panel1.add(lbl_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("lable code");
-        panel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
-
-        jDateChooser1.setToolTipText("Pick a date");
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
-        panel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 160, -1));
-
-        brandJTextField3.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        brandJTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_lableCode.setText("0000-2222-3333");
+        txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandJTextField3ActionPerformed(evt);
+                txt_lableCodeActionPerformed(evt);
             }
         });
-        panel1.add(brandJTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 160, -1));
-        panel1.add(jMonthChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 280, -1, -1));
+        panel1.add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 160, -1));
+
+        txt_material.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_materialActionPerformed(evt);
+            }
+        });
+        panel1.add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 160, -1));
+
+        lbl_whenFound.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_whenFound.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_whenFound.setText("When found:");
+        panel1.add(lbl_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -237,23 +267,22 @@ public class RegisterFoundLuggage extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void brandJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextFieldActionPerformed
+    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_brandJTextFieldActionPerformed
+    }//GEN-LAST:event_txt_brandActionPerformed
 
-    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
         //clear all the fields
-        brandJTextField.setText("");
-        jCbox_Color.setSelectedIndex(0);
-        jCbox_Color1.setSelectedIndex(0);
-        brandJTextField2.setText("");
-        jCbox_Color2.setSelectedIndex(0);
-        brandJTextField1.setText("");
-        brandJTextField2.setText("");
-        lbl_picname.setText("");
-        txtfld_description1.setText("");  
-    }//GEN-LAST:event_clearJButtonActionPerformed
+        txt_brand.setText("");
+        cmb_color.setSelectedIndex(0);
+        cmb_weightClass.setSelectedIndex(0);
+        txt_material.setText("");
+        cmb_foundAt.setSelectedIndex(0);
+        txt_whenFound.setText("");
+        txt_material.setText("");
+
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         FYSApp.getInstance().showPanel(new LoginScreen());
@@ -263,76 +292,103 @@ public class RegisterFoundLuggage extends JPanel {
         FYSApp.getInstance().showPanel(new FoundLuggageOverview());
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void jCbox_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbox_ColorActionPerformed
+    private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbox_ColorActionPerformed
+    }//GEN-LAST:event_cmb_colorActionPerformed
 
-    private void jCbox_Color1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbox_Color1ActionPerformed
+    private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbox_Color1ActionPerformed
+    }//GEN-LAST:event_cmb_weightClassActionPerformed
 
-    private void jCbox_Color2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbox_Color2ActionPerformed
+    private void cmb_foundAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_foundAtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCbox_Color2ActionPerformed
+    }//GEN-LAST:event_cmb_foundAtActionPerformed
 
-    private void brandJTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextField1ActionPerformed
+    private void txt_whenFoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_whenFoundActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_brandJTextField1ActionPerformed
+    }//GEN-LAST:event_txt_whenFoundActionPerformed
 
-    private void submitJButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButton1MouseClicked
+    private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_submitJButton1MouseClicked
+    }//GEN-LAST:event_btn_submitMouseClicked
 
-    private void submitJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButton1ActionPerformed
-        try {
-            // Code for submission
-        } catch (Exception e) {
-            // Set warning on label
+    private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
+
+        //  store user input in variables
+        String brand            = txt_brand.getText();
+        
+        String color
+                = String.valueOf(cmb_color.getSelectedItem());
+        String weightClass
+                = String.valueOf(cmb_weightClass.getSelectedItem());
+        String foundAt
+                = String.valueOf(cmb_foundAt.getSelectedItem());
+        
+        String lableCode        = txt_lableCode.getText();
+        String material         = txt_material.getText();
+        String whenFound        = txt_whenFound.getText();
+        String otherDetails     = txt_otherDetails.getText();
+        String status           = "Found";
+        String departureFrom    = "";
+
+        //  Create lost luggage item with user input
+        Luggage luggage = new Luggage(brand, lableCode, material,
+                otherDetails, status, color, weightClass, whenFound, foundAt,
+                departureFrom);
+
+        if (updateMode > 1) {
+            FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
+        } else {
+            int id = FYSApp.getClientManager().getClientid();
+            FYSApp.getLuggageManager().addFoundLuggage(luggage, id);
         }
-            
-    }//GEN-LAST:event_submitJButton1ActionPerformed
 
-    private void brandJTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandJTextField3ActionPerformed
+        try {
+            FYSApp.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_brandJTextField3ActionPerformed
+    }//GEN-LAST:event_txt_lableCodeActionPerformed
+
+    private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_materialActionPerformed
 
     public static void setText(Luggage luggage) {
-        brandJTextField.setText(luggage.getBrand());
-        txtfld_description.setText(luggage.getDescription());
+        txt_brand.setText(luggage.getBrand());
+        txt_otherDetails.setText(luggage.getDescription());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private static javax.swing.JTextField brandJTextField;
-    private static javax.swing.JTextField brandJTextField1;
-    private static javax.swing.JTextField brandJTextField3;
-    private javax.swing.JButton clearJButton;
-    private static javax.swing.JComboBox jCbox_Color;
-    private static javax.swing.JComboBox jCbox_Color1;
-    private static javax.swing.JComboBox jCbox_Color2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_submit;
+    private static javax.swing.JComboBox cmb_color;
+    private static javax.swing.JComboBox cmb_foundAt;
+    private static javax.swing.JComboBox cmb_weightClass;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel9;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JScrollPane jScrollPane2;
-<<<<<<< HEAD
-=======
-    private javax.swing.JScrollPane jScrollPane3;
-    private static javax.swing.JLabel lbl_picname;
-    private static javax.swing.JLabel lbl_picname1;
->>>>>>> origin/master
+    private javax.swing.JLabel lbl_brand;
+    private javax.swing.JLabel lbl_code;
+    private javax.swing.JLabel lbl_color;
+    private javax.swing.JLabel lbl_foundAt;
+    private javax.swing.JLabel lbl_material;
+    private javax.swing.JLabel lbl_otherDetails;
+    private javax.swing.JLabel lbl_weightClass;
+    private javax.swing.JLabel lbl_whenFound;
     private javax.swing.JButton logoutJButton;
     private java.awt.Panel panel1;
-    private javax.swing.JButton submitJButton1;
-    private static javax.swing.JTextArea txtfld_description;
+    private static javax.swing.JTextField txt_brand;
+    private static javax.swing.JTextField txt_lableCode;
+    private static javax.swing.JTextField txt_material;
+    private static javax.swing.JTextArea txt_otherDetails;
+    private static javax.swing.JTextField txt_whenFound;
     // End of variables declaration//GEN-END:variables
 
 }

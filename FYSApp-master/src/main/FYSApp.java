@@ -1,7 +1,6 @@
 package main;
 
-import connectivity.DatabaseManager;
-import connectivity.QueryManager;
+import QueryManager.*;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -55,8 +54,16 @@ public final class FYSApp {
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
 
     private JFrame mainWindow;
+
     private DatabaseManager manager = new DatabaseManager();
     private QueryManager qm = new QueryManager(manager);
+
+    private LuggageManager lm = new LuggageManager();
+
+    private SearchManager sm = new SearchManager();
+    private TableManager tm = new TableManager();
+    private UserManager um = new UserManager();
+    private ClientManager cm = new ClientManager();
 
     /**
      * singleton of the application
@@ -75,21 +82,21 @@ public final class FYSApp {
         }
     }
 
-    //  Arraylisy of all the airports from the database
+    //  Arraylist of all the airports from the database
     public static ArrayList<String> airportsList;
 
     public static ArrayList<String> getAirportsList() {
         return airportsList;
     }
 
-    public void getAirports() {
-        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
-        fgt.stream().forEach((fgt1) -> {
-            airportsList.add(fgt1);
-        });
+    public void setAirports() {
+        ArrayList<String> airports = FYSApp.getQueryManager().getAirports();
+        for (int i = 0; i < airports.size(); i++) {
+            airportsList.add(airports.get(i));
+        }
     }
 
-    //Start de mainwindow. en include 
+//Start de mainwindow. en include 
     public void startup() {
         mainWindow = new JFrame(NAME);
         mainWindow.setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -148,8 +155,52 @@ public final class FYSApp {
         return instance;
     }
 
+    public QueryManager getQm() {
+        return qm;
+    }
+
     public static QueryManager getQueryManager() {
         return getInstance().qm;
+    }
+
+    public LuggageManager getLm() {
+        return lm;
+    }
+
+    public static LuggageManager getLuggageManager() {
+        return getInstance().lm;
+    }
+
+    public SearchManager getSm() {
+        return sm;
+    }
+
+    public static SearchManager getSearchManager() {
+        return getInstance().sm;
+    }
+
+    public TableManager getTm() {
+        return tm;
+    }
+
+    public static TableManager getTableManager() {
+        return getInstance().tm;
+    }
+
+    public UserManager getUm() {
+        return um;
+    }
+
+    public static UserManager getUserManager() {
+        return getInstance().um;
+    }
+
+    public ClientManager getCm() {
+        return cm;
+    }
+
+    public static ClientManager getClientManager() {
+        return getInstance().cm;
     }
 
     public DatabaseManager getDatabaseManager() {

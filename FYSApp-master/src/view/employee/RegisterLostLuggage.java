@@ -1,7 +1,6 @@
 package view.employee;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -26,12 +25,10 @@ public class RegisterLostLuggage extends JPanel {
     public RegisterLostLuggage() {
 
         initComponents();
-
-        for (int i = 0; i < 10; i++) {
-            
-        }
-        this.departureFrom = FYSApp.getAirportsList();
         
+        for (int i = 0; i < airportsList.size(); i++) {
+            cmb_departureFrom.addItem(airportsList);
+        }
 
         //  These items should be stored in an array
         cmb_color.addItem("red");
@@ -424,23 +421,24 @@ public class RegisterLostLuggage extends JPanel {
         Luggage luggage = new Luggage(brand, lableCode, material,
                 otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
-
-        //  if Admin/Manager presses 'Edit' we call in the update query and
-        //  the same JFrame
+        
+        //  COMMENT
         if (updateMode > 1) {
-            FYSApp.getQueryManager().updateLostLuggage(luggage, luggageid);
+            FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
         } else {
-        //  If this is not the case, then we call the addLuggage Query +
+            //  If this is not the case, then we call the addLuggage Query +
             //  the add client luggage
-            FYSApp.getQueryManager().addClient(newClient);
-            int id = FYSApp.getQueryManager().getClientid();
-            FYSApp.getQueryManager().addLostLuggage(luggage, id);
+            FYSApp.getClientManager().addClient(newClient);
+            int id = FYSApp.getClientManager().getClientid();
+            FYSApp.getLuggageManager().addLostLuggage(luggage, id);
         }
 
+        //  COMMENT
         try {
             FYSApp.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger
+        (RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
