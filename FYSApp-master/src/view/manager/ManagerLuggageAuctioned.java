@@ -40,7 +40,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * Creates new form AdminAuctionedLuggage
      */
     private void getAuctionedLuggage() throws ClassNotFoundException, SQLException {
-        rs = Frame.getQueryManager().getManagerAuctionedOverview();
+        rs = Frame.getTableManager().getManagerAuctionedOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -305,7 +305,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
                 input = searchJTextField.getText();
-                rs = Frame.getQueryManager().searchTableAuctioned(input);
+                rs = Frame.getTableManager().searchTableAuctioned(input);
 
                 if (input == null) {
                     auctionedJTable.repaint();
@@ -338,7 +338,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = Frame.getQueryManager().searchTableAuctioned(input);
+                rs = Frame.getTableManager().searchTableAuctioned(input);
 
                 if (input == null) {
                     auctionedJTable.repaint();
