@@ -6,9 +6,13 @@
 package QueryManager;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.FYSApp;
 import model.User;
+import view.LoginScreen;
 
 /**
  *
@@ -18,6 +22,7 @@ public class UserManager {
 
     private DatabaseManager dbManager;
     private PreparedStatement pst;
+    private String userName;
 
     public void addUser(User user) {
         String sql = "INSERT INTO user (username,password,role,firstname"
@@ -64,38 +69,39 @@ public class UserManager {
         }
     }
 
-//    public User getSelectedUser(String userName) throws SQLException {
-//        User user = new User();
-//        ResultSet rs = null;
-//        String sql = "SELECT * FROM user WHERE username=?";
-//        try {
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            pst.setString(1, userName);
-//
-//            rs = pst.executeQuery();
-//
-//            if (rs.next()) {
-//                user.setUserName(rs.getString("username"));
-//                user.setRole(rs.getString("role"));
-//                user.setPass(rs.getString("password"));
-//                user.setFirstName(rs.getString("firstname"));
-//                user.setMiddleName(rs.getString("middlename"));
-//                user.setLastName(rs.getString("lastname"));
-//                user.setEmail(rs.getString("email"));
-//                user.setAirport(rs.getString("airportname"));
-//
-//            }
-//            return user;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LoginScreen.class
-//                    .getName()).log(Level.SEVERE, null, ex);
-//        }
-//        dbManager.closeConnection();
-//        return user;
-//
-//    }
+    public User getSelectedUser(String userName) throws SQLException {
+        User user = new User();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM user WHERE username=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, userName);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                user.setUserName(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+                user.setPass(rs.getString("password"));
+                user.setFirstName(rs.getString("firstname"));
+                user.setMiddleName(rs.getString("middlename"));
+                user.setLastName(rs.getString("lastname"));
+                user.setEmail(rs.getString("email"));
+                user.setAirport(rs.getString("airportname"));
+
+            }
+            return user;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return user;
+
+    }
+    
 //    public void updateUser(User user, int id) {
 //        try {
 //            String sql = "UPDATE user SET username=?, password=?, role=?, "
@@ -118,9 +124,11 @@ public class UserManager {
 //        }
 //        dbManager.closeConnection();
 //    }
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
 //
 //    public String getUserName() {
 //        return userName;

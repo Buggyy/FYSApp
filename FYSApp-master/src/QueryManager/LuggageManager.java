@@ -159,76 +159,76 @@ public class LuggageManager {
      * @param i
      * @return
      */
-    public Luggage getSelectedLostLuggage(int i) {
-        Luggage luggage = new Luggage();
-        ResultSet rs = null;
-        String sql = "SELECT * FROM luggage WHERE luggageid=?";
-        try {
-            dbManager.openConnection();
-            pst = dbManager.getConnection().prepareStatement(sql);
-            pst.setInt(1, i);
-
-            rs = pst.executeQuery();
-
-            if (rs.next()) {
-                luggage.setStatus(rs.getString("status"));
-                luggage.setBrand(rs.getString("brand"));
-                luggage.setDescription(rs.getString("description"));
-                luggage.setWeight(rs.getString("weight"));
-                luggage.setWeight(rs.getString("weight"));
-                luggage.setWeight(rs.getString("weight"));
-                luggage.setWeight(rs.getString("weight"));
-                luggage.setWeight(rs.getString("weight"));
-                luggage.setWeight(rs.getString("weight"));
-            }
-            return luggage;
-
-            dbManager.closeConnection();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        return luggage;
-    }
+//    public Luggage getSelectedLostLuggage(int i) {
+//        Luggage luggage = new Luggage();
+//        ResultSet rs = null;
+//        String sql = "SELECT * FROM luggage WHERE luggageid=?";
+//        try {
+//            dbManager.openConnection();
+//            pst = dbManager.getConnection().prepareStatement(sql);
+//            pst.setInt(1, i);
+//
+//            rs = pst.executeQuery();
+//
+//            if (rs.next()) {
+//                luggage.setStatus(rs.getString("status"));
+//                luggage.setBrand(rs.getString("brand"));
+//                luggage.setDescription(rs.getString("description"));
+//                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
+//                luggage.setWeight(rs.getString("weight"));
+//            }
+//            return luggage;
+//
+//            dbManager.closeConnection();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LoginScreen.class
+//                    .getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return luggage;
+//    }
 
     /**
      * 
      * @param i
      * @return 
      */
-    public Luggage getSelectedFoundLuggage(int i) {
-        Luggage luggage = new Luggage();
-        ResultSet rs = null;
-        String sql = "SELECT * FROM luggage WHERE luggageid=?";
-        try {
-            dbManager.openConnection();
-            pst = dbManager.getConnection().prepareStatement(sql);
-            pst.setInt(1, i);
-
-            rs = pst.executeQuery();
-
-            if (rs.next()) {
-                luggage.setBrand(rs.getString("brand"));
-                luggage.setColor(rs.getString("color"));
-                luggage.setWeightClass(rs.getString("weightclass"));
-                luggage.setFoundAt(rs.getString("foundat"));
-                luggage.setLableCode(rs.getString("LableCode"));
-                luggage.setMaterial(rs.getString("material"));
-                luggage.setWhenFound(rs.getString("whenfound"));
-                luggage.setOtherDetails(rs.getString("otherDetails"));
-                luggage.setStatus(rs.getString("status"));
-                luggage.setDepartureFrom(rs.getString("departureFrom"));
-            }
-            return luggage;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-        dbManager.closeConnection();
-        return luggage;
-    }
+//    public Luggage getSelectedFoundLuggage(int i) {
+//        Luggage luggage = new Luggage();
+//        ResultSet rs = null;
+//        String sql = "SELECT * FROM luggage WHERE luggageid=?";
+//        try {
+//            dbManager.openConnection();
+//            pst = dbManager.getConnection().prepareStatement(sql);
+//            pst.setInt(1, i);
+//
+//            rs = pst.executeQuery();
+//
+//            if (rs.next()) {
+//                luggage.setBrand(rs.getString("brand"));
+//                luggage.setColor(rs.getString("color"));
+//                luggage.setWeightClass(rs.getString("weightclass"));
+//                luggage.setFoundAt(rs.getString("foundat"));
+//                luggage.setLableCode(rs.getString("LableCode"));
+//                luggage.setMaterial(rs.getString("material"));
+//                luggage.setWhenFound(rs.getString("whenfound"));
+//                luggage.setOtherDetails(rs.getString("otherDetails"));
+//                luggage.setStatus(rs.getString("status"));
+//                luggage.setDepartureFrom(rs.getString("departureFrom"));
+//            }
+//            return luggage;
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LoginScreen.class
+//                    .getName()).log(Level.SEVERE, null, ex);
+//        }
+//        dbManager.closeConnection();
+//        return luggage;
+//    }
 
     /**
      * 

@@ -435,7 +435,6 @@ public class RegisterLostLuggage extends JPanel {
         
         //  COMMENT
         if (updateMode > 1) {
-<<<<<<< HEAD
             FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
         } else {
             //  If this is not the case, then we call the addLuggage Query +
@@ -446,18 +445,6 @@ public class RegisterLostLuggage extends JPanel {
         }
 
         //  COMMENT
-=======
-            Frame.getQueryManager().updateLostLuggage(luggage, luggageid);
-        } else {
-            Frame.getQueryManager().addClient(client);
-            int id = Frame.getQueryManager().getClientid();
-            Frame.getQueryManager().addLostLuggage(luggage, id);
-        }
-
-        // Pak de id van deze client
-        // luggage.setId(de id van je query die je ophaalt.)
-        
->>>>>>> origin/master
         try {
             Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {

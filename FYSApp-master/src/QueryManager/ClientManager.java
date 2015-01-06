@@ -6,6 +6,7 @@
 package QueryManager;
 
 import java.sql.PreparedStatement;
+import model.Client;
 
 /**
  *
@@ -20,44 +21,37 @@ public class ClientManager {
      *
      * @param client
      */
-//    public void addClient(Client client) {
-//
-//        String date = main.FYSApp.getDate();
-//
-//        try {
-//
-//            // Query aanmaken, daarna connection maken.
-//            // Daarna bereid ie de query voor, plaatst hij de strings in de "?"'s
-//            // en voert hij de query uit met de benodigde variabelen.
-//            // Hij zet deze op de juiste plaats in de database.
-//            //Aan t einde moet de connection altijd weer gesloten worden.
-//            // Pas de query aan. Maak indien nodig een nieuwe tabel genaamd client of owner.
-//            String sql = "INSERT INTO client (firstname,middlename,lastname, "
-//                    + "country, phonenumber, email ,address, city, state,"
-//                    + "zipcode) VALUES (?,?,?,?,?,?,?,?,?,?)";
-//            dbManager.openConnection();
-//
-//            // Gebruik de getters en setters van de user object
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//
-//            pst.setString(1, client.getFirstName());
-//            pst.setString(2, client.getMiddleName());
-//            pst.setString(3, client.getLastName());
-//            pst.setString(4, client.getCountry());
-//            pst.setString(5, client.getPhone());
-//            pst.setString(6, client.getEmail());
-//            pst.setString(7, client.getAddress());
-//            pst.setString(8, client.getCity());
-//            pst.setString(9, client.getState());
-//            pst.setString(10, client.getZipCode());
-//
-//            pst.executeUpdate();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        dbManager.closeConnection();
-//    }
+    public void addClient(Client client) {
+
+        String date = main.FYSApp.getDate();
+
+        try {
+            String sql = "INSERT INTO client (firstname,middlename,lastname, "
+                    + "country, phonenumber, email ,address, city, state,"
+                    + "zipcode) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            dbManager.openConnection();
+
+            // Gebruik de getters en setters van de user object
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, client.getFirstName());
+            pst.setString(2, client.getMiddleName());
+            pst.setString(3, client.getLastName());
+            pst.setString(4, client.getCountry());
+            pst.setString(5, client.getPhone());
+            pst.setString(6, client.getEmail());
+            pst.setString(7, client.getAddress());
+            pst.setString(8, client.getCity());
+            pst.setString(9, client.getState());
+            pst.setString(10, client.getZipCode());
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        dbManager.closeConnection();
+    }
     
     
     

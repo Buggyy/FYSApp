@@ -354,7 +354,7 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
 <<<<<<< HEAD
-    private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
+    private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {                                          
 =======
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
         // Get de input van de user in de textfields en stopt dit
@@ -380,11 +380,7 @@ public class RegisterFoundLuggage extends JPanel {
         }
         */
     }//GEN-LAST:event_submitJButtonMouseClicked
-
-    private void jCbox_ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbox_ColorActionPerformed
->>>>>>> origin/master
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_colorActionPerformed
+                                  
 
     private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
         // TODO add your handling code here:

@@ -5,8 +5,7 @@
  */
 package main;
 
-import connectivity.DatabaseManager;
-import connectivity.QueryManager;
+import QueryManager.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -161,7 +160,8 @@ public class Frame {
     }
 
     public void menu() {
-        UIManager.put("PopupMenu.border", BorderFactory.createLineBorder(Color.black, 1));
+        UIManager.put("PopupMenu.border",
+                BorderFactory.createLineBorder(Color.black, 1));
 
         JSeparator sep = new JSeparator();
 
@@ -225,7 +225,9 @@ public class Frame {
                     applicatie.initialize();
                     applicatie.startManager();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,
+                            "Application failed to launch", "Failure",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -242,7 +244,9 @@ public class Frame {
                     applicatie.startAdmin();
                     applicatie.menu();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,
+                            "Application failed to launch", "Failure",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -258,7 +262,9 @@ public class Frame {
                     applicatie.initialize();
                     applicatie.startEmployee();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                            "Application failed to launch", "Failure", 
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -277,7 +283,9 @@ public class Frame {
         File filee = new File("Usermanual.pdf");
         String absolutePath = filee.getAbsolutePath();
         try {
-                Process process = Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler " + absolutePath);
+                Process process = Runtime.getRuntime()
+                        .exec("rundll32 url.dll, FileProtocolHandler "
+                                + absolutePath);
                 process.waitFor();
         } catch (Exception e) {
             System.out.println(":: -----Exception---- ::\n" + e);

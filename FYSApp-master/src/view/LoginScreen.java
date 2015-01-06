@@ -201,7 +201,7 @@ public class LoginScreen extends javax.swing.JPanel {
             String userName = userNameJTextField.getText();
             String passWord = passJTextField.getText();
             
-            rs = FYSApp.getQueryManager().getUserLoginfo(userName);
+            rs = FYSApp.getTableManager().getUserLoginfo(userName);
            
 
             //  Down here we need to check the user on its role..
@@ -214,19 +214,19 @@ public class LoginScreen extends javax.swing.JPanel {
                 }
                     switch (role) {
                         case "manager":
-                            FYSApp.getQueryManager().setUserName(userName);
+                            FYSApp.getUserManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new ManagerFront());
                             FYSApp.shutdown();
                             main.Frame.ManagerFrame();
                             break;
                         case "employee":
-                            FYSApp.getQueryManager().setUserName(userName);
+                            FYSApp.getUserManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new EmployeeFront());
                             FYSApp.shutdown();
                             main.Frame.EmployeeFrame();
                             break;
                         case "admin":
-                            FYSApp.getQueryManager().setUserName(userName);
+                            FYSApp.getUserManager().setUserName(userName);
                             main.FYSApp.getInstance().showPanel(new AdminFront());
                             FYSApp.shutdown();
                             main.Frame.AdminFrame();

@@ -317,13 +317,8 @@ public class FoundLuggageOverview extends JPanel {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
-<<<<<<< HEAD
-            Luggage luggage = FYSApp.getQueryManager().getSelectedFoundLuggage(id);
+            Luggage luggage = FYSApp.getLuggageManager().getSelectedFoundLuggage(id);
             FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
-=======
-            Luggage luggage = Frame.getQueryManager().getSelectedLuggage(id);
-            Frame.getInstance().showPanel(new RegisterFoundLuggage());
->>>>>>> origin/master
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
         }
