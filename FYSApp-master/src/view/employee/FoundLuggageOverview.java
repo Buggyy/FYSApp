@@ -323,23 +323,22 @@ public class FoundLuggageOverview extends JPanel {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
-<<<<<<< HEAD
-            Luggage luggage = FYSApp.getQueryManager().getSelectedFoundLuggage(id);
-            FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
-=======
+            Luggage luggage = Frame.getQueryManager().getSelectedFoundLuggage(id);
+            Frame.getInstance().showPanel(new RegisterFoundLuggage());
+
             Luggage luggage = Frame.getQueryManager().getSelectedLuggage(id);
             Frame.getInstance().showPanel(new RegisterFoundLuggage());
->>>>>>> origin/master
+
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
-<<<<<<< HEAD
+
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
-=======
+
         }
         else {
             //  ERROR-MESSAGE
->>>>>>> origin/master
+
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
@@ -360,11 +359,7 @@ public class FoundLuggageOverview extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-<<<<<<< HEAD
                 rs = FYSApp.getTableManager().searchTableLuggageFound(input);
-=======
-                rs = Frame.getQueryManager().searchTableLuggageFound(input);
->>>>>>> origin/master
 
                 if (input == null) {
                     foundLuggageTable.repaint();
