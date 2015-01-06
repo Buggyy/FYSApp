@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -34,6 +35,8 @@ public class ManagerFront extends JPanel {
         foundJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -42,45 +45,57 @@ public class ManagerFront extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost");
         lostJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 230, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 230, 50));
 
-        auctionedJButton.setText("AUCTIONED");
+        auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
+        auctionedJButton.setText("Auctioned");
         auctionedJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         auctionedJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 auctionedJButtonActionPerformed(evt);
             }
         });
-        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 230, 50));
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 230, 50));
 
-        foundJButton.setText("FOUND");
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setText("Found");
         foundJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 230, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 230, 50));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 26)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Luggage");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 80, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 100, 40));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 100, 30));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Currently logged in as:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("[username]");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -90,7 +105,7 @@ public class ManagerFront extends JPanel {
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             // TODO add your handling code here:
-            FYSApp.getInstance().showPanel(new ManagerLuggageLost());
+            Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -100,7 +115,7 @@ public class ManagerFront extends JPanel {
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManagerFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -109,11 +124,12 @@ public class ManagerFront extends JPanel {
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerLuggageFound());
+        Frame.getInstance().showPanel(new ManagerLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
 
@@ -122,6 +138,8 @@ public class ManagerFront extends JPanel {
     private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     // End of variables declaration//GEN-END:variables

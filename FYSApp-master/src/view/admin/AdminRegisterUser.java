@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import model.Luggage;
 import model.User;
 import view.LoginScreen;
@@ -73,6 +74,7 @@ public class AdminRegisterUser extends JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
         backJButton.setBorder(null);
         backJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -80,15 +82,16 @@ public class AdminRegisterUser extends JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 100, 30));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 100, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,6 +103,7 @@ public class AdminRegisterUser extends JPanel {
         jLabel3.setText("Register new user");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, 30));
 
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         submitJButton.setText("SUBMIT");
         submitJButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,6 +117,7 @@ public class AdminRegisterUser extends JPanel {
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 130, 60));
 
+        clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         clearJButton.setText("CLEAR");
         clearJButton.setEnabled(false);
         clearJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +181,7 @@ public class AdminRegisterUser extends JPanel {
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,14 +239,15 @@ public class AdminRegisterUser extends JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -261,13 +267,13 @@ public class AdminRegisterUser extends JPanel {
         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
         
         if (updateMode > 1) {
-            FYSApp.getQueryManager().updateUser(user,userId);
+            Frame.getQueryManager().updateUser(user,userId);
         } else {
-            FYSApp.getQueryManager().addUser(user);
+            Frame.getQueryManager().addUser(user);
         }
         
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -330,6 +336,12 @@ public class AdminRegisterUser extends JPanel {
         AdminRegisterUser.userId = userId;
     }
     
+    public void setAirports(){
+        ArrayList<String> fgt = Frame.getQueryManager().getAirports();
+        for (String fgt1 : fgt) {
+            airportJComboBox.addItem(fgt1);
+        }
+    }
     //  in the main class there is a method called getAirports
 //    public void setAirports(){
 //        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();

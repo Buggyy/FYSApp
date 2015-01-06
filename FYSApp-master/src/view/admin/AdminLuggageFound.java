@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -47,7 +48,7 @@ public class AdminLuggageFound extends JPanel {
      * Method that gets the found luggage
      */
     private void getFoundLuggage() {
-        rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        rs = Frame.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -175,7 +176,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -184,7 +185,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 56, 120, -1));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 120, -1));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -193,7 +194,7 @@ public class AdminLuggageFound extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 130, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 100, 30));
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
@@ -202,15 +203,17 @@ public class AdminLuggageFound extends JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 100, 40));
 
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
+        lostJButton.setActionCommand("Lost Luggage");
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 140, 100, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 40));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -220,7 +223,7 @@ public class AdminLuggageFound extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 120, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 110, 40));
 
         deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
@@ -229,16 +232,16 @@ public class AdminLuggageFound extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 120, 40));
+        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Found Luggage Overview - Admin");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 370, 33));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 370, 33));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Currently logged in as: [username]");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,7 +265,7 @@ public class AdminLuggageFound extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+            rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
             if (input == null) {
                 foundLuggageJTable.repaint();
@@ -284,11 +287,12 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminFront());
+        Frame.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_backJButtonActionPerformed
     /**
      *
@@ -296,7 +300,7 @@ public class AdminLuggageFound extends JPanel {
      */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+            Frame.getInstance().showPanel(new AdminLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -316,9 +320,9 @@ public class AdminLuggageFound extends JPanel {
             int row = foundLuggageJTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
-            FYSApp.getQueryManager().delete(id);
+            Frame.getQueryManager().delete(id);
 
-            FYSApp.getInstance().showPanel(new AdminLuggageFound());
+            Frame.getInstance().showPanel(new AdminLuggageFound());
         } else {
             jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }

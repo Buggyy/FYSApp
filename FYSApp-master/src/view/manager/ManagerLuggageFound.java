@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,15 +16,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
-import view.LoginScreen;
+import main.Frame;
 import view.admin.AdminLuggageFound;
 import view.employee.EmployeeFront;
 
 /**
  * @version 1
- * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato,
- * jerryrump, larsvanalphen, marijnbakker, danielstern Doel: Het maken van een
- * kofferapplicatie.
+ * @author Team 1 IS106;
+ * @description class for handeling everything related to the found luggage
+ * in the manager section of the app
  */
 public class ManagerLuggageFound extends JPanel {
 
@@ -37,7 +38,7 @@ public class ManagerLuggageFound extends JPanel {
     public int columns = 0;
 
     /**
-     * Blablabla
+     * @default constructor
      */
     public ManagerLuggageFound() {
         initComponents();
@@ -45,10 +46,10 @@ public class ManagerLuggageFound extends JPanel {
     }
 
     /**
-     * Blablabla
+     * @description gets data from database and fills the table on screen
      */
     private void getFoundLuggage() {
-        rs = FYSApp.getQueryManager().getEmployeeFoundLuggage();
+        rs = Frame.getQueryManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -56,9 +57,13 @@ public class ManagerLuggageFound extends JPanel {
         }
     }
 
-    /**
-     * Blablabla
-     */
+   /**
+    * 
+    * @param rs Resultset with the data from the database
+    * @throws ClassNotFoundException
+    * @throws SQLException 
+    * @description get data from database and update the table
+    */
     private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
         rsmetadata = rs.getMetaData();
@@ -120,26 +125,29 @@ public class ManagerLuggageFound extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(915, 20, -1, 30));
 
         auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        auctionedJButton.setText("AUCTIONED");
+        auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
+        auctionedJButton.setText("Auctioned Luggage");
         auctionedJButton.setBorder(null);
         auctionedJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 auctionedJButtonActionPerformed(evt);
             }
         });
-        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 50));
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 50));
 
         foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        foundJButton.setText("FOUND");
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
         foundJButton.setBorder(null);
         foundJButton.setEnabled(false);
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -147,17 +155,18 @@ public class ManagerLuggageFound extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 140, 50));
 
         lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
         lostJButton.setBorder(null);
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 50));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 140, 50));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -176,15 +185,16 @@ public class ManagerLuggageFound extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 150, -1));
 
+        searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 100, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 110, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -232,17 +242,19 @@ public class ManagerLuggageFound extends JPanel {
         });
         jScrollPane2.setViewportView(foundLuggageJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 590, 340));
 
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 100, 50));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 40));
 
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
         statisticsJButton.setText("STATISTICS");
         statisticsJButton.setEnabled(false);
         statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -250,7 +262,7 @@ public class ManagerLuggageFound extends JPanel {
                 statisticsJButtonActionPerformed(evt);
             }
         });
-        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 110, 50));
+        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 140, 50));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,16 +280,17 @@ public class ManagerLuggageFound extends JPanel {
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 620));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1030, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new ManagerLuggageAuctioned());
+            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -287,10 +300,15 @@ public class ManagerLuggageFound extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_foundJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * @description switch to the lost frame
+     */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
             // TODO add your handling code here:
-            FYSApp.getInstance().showPanel(new ManagerLuggageLost());
+            Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -300,35 +318,41 @@ public class ManagerLuggageFound extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * @description Update table based on search query
+     */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+                input = searchJTextField.getText();
+                rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
-            if (input == null) {
-                foundLuggageJTable.repaint();
-            }
-            if (!rs.next()) {
-                jLWarning.setText("No matches found!");
-                getFoundLuggage();
-                updateTable(rs);
-            } else {
-                jLWarning.setText("");
-                rs.beforeFirst();
-                updateTable(rs);
-            }
+                if (input == null) {
+                    foundLuggageJTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getFoundLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
 
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new ManagerFront());
+        Frame.getInstance().showPanel(new ManagerFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new EmployeeFront());
+        Frame.getInstance().showPanel(new EmployeeFront());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
@@ -339,7 +363,7 @@ public class ManagerLuggageFound extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
+                rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
                 if (input == null) {
                     foundLuggageJTable.repaint();
@@ -361,16 +385,11 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // create object for pdf generator
-        PDFGenerator pdf = new PDFGenerator();
-        // create own content through arrays using querymanager
-        pdf.generate();
-        // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
-        //name of pdf file
-        pdf.save(currentDate + " Found.pdf");
-        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
-                + " Found.pdf \n in the rood folder of the app" );
+
+           rs = Frame.getQueryManager().getEmployeeFoundLuggage();
+
+           FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
+
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
 

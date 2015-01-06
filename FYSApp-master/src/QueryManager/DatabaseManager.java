@@ -20,8 +20,12 @@ public class DatabaseManager {
     public void openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+<<<<<<< HEAD:FYSApp-master/src/QueryManager/DatabaseManager.java
             conn = DriverManager.getConnection
         ("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
+=======
+            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "qwallie1");
+>>>>>>> origin/master:FYSApp-master/src/connectivity/DatabaseManager.java
             
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);

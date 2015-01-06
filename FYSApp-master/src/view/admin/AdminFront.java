@@ -1,10 +1,11 @@
 package view.admin;
 
-import javax.swing.JPanel;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import main.FYSApp;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -43,13 +44,14 @@ public class AdminFront extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 30, 90, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 30, 100, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -57,7 +59,7 @@ public class AdminFront extends JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 110, 30));
 
         overviewJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/table-go-icon.png"))); // NOI18N
-        overviewJButton.setText("OVERVIEW");
+        overviewJButton.setText("Overview");
         overviewJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         overviewJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +68,8 @@ public class AdminFront extends JPanel {
         });
         add(overviewJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 230, 50));
 
-        lostJButton.setText("LOST");
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        lostJButton.setText("Lost");
         lostJButton.setActionCommand("Found");
         lostJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         lostJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,8 +84,8 @@ public class AdminFront extends JPanel {
         jLabel3.setText("User");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 50, 30));
 
-        foundJButton.setText("FOUND");
-        foundJButton.setActionCommand("Found");
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setText("Found");
         foundJButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,12 +103,13 @@ public class AdminFront extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminUsers());
+            Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -115,7 +119,7 @@ public class AdminFront extends JPanel {
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
-            FYSApp.getInstance().showPanel(new AdminLuggageLost());
+            Frame.getInstance().showPanel(new AdminLuggageLost());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminFront.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -124,7 +128,7 @@ public class AdminFront extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        Frame.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
 

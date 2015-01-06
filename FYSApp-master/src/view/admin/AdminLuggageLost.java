@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
+import main.Frame;
 import view.LoginScreen;
 
 /**
@@ -37,7 +38,7 @@ public class AdminLuggageLost extends JPanel {
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
-        rs = FYSApp.getQueryManager().getEmployeeLostLuggage();
+        rs = Frame.getQueryManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -111,38 +112,43 @@ public class AdminLuggageLost extends JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 100, 40));
+        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 120, 40));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
+        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
 
+        deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
         deleteJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 80, 40));
+        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 40));
 
-        foundJButton.setText("FOUND");
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
         foundJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 foundJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
+        jPanel1.add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 40));
 
+        editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
         editJButton.setEnabled(false);
         editJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +156,7 @@ public class AdminLuggageLost extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 80, 40));
+        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 100, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -169,7 +175,7 @@ public class AdminLuggageLost extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 150, -1));
+        jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,13 +225,14 @@ public class AdminLuggageLost extends JPanel {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 590, 340));
 
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText("BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 50));
+        jPanel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 100, 40));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -244,7 +251,7 @@ public class AdminLuggageLost extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+            rs = Frame.getQueryManager().searchTableLuggageLost(input);
 
             if (input == null) {
                 lostLuggageTable.repaint();
@@ -265,7 +272,8 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
@@ -273,14 +281,23 @@ public class AdminLuggageLost extends JPanel {
             int row = lostLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) lostLuggageTable.getValueAt(row, col));
-            FYSApp.getQueryManager().delete(id);
+            Frame.getQueryManager().delete(id);
         } else {
             jLWarning.setText(WARNING_MUST_SELECT_SOMETHING);
         }
+
+        //  Wat is dit? leg uit.
+//        try {
+//            Frame.getInstance().showPanel(new AdminLuggageLost());
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminLuggageFound());
+        Frame.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
@@ -297,7 +314,7 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        FYSApp.getInstance().showPanel(new AdminFront());
+        Frame.getInstance().showPanel(new AdminFront());
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed

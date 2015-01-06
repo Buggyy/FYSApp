@@ -2,15 +2,23 @@ package main;
 
 import QueryManager.*;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -42,9 +50,10 @@ public final class FYSApp {
     /**
      * Define frame width, height and name
      */
-    public static final int FRAME_WIDTH = 1024;
-    public static final int FRAME_HEIGHT = 600;
-    public static final String NAME = "Zoek juh köffer";
+    public static final int MAIN_WIDTH = 376;
+    public static final int MAIN_HEIGHT = 225;
+    public static final String MAIN_NAME = "Zoek juh köffer";
+
     /**
      * static fonts which are used within the application
      */
@@ -53,8 +62,12 @@ public final class FYSApp {
     public static final Font FONT_12_BOLD = new Font("Verdana", Font.BOLD, 12);
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
 
+<<<<<<< HEAD
     private JFrame mainWindow;
 
+=======
+    private static JFrame mainWindow;
+>>>>>>> origin/master
     private DatabaseManager manager = new DatabaseManager();
     private QueryManager qm = new QueryManager(manager);
 
@@ -98,8 +111,8 @@ public final class FYSApp {
 
 //Start de mainwindow. en include 
     public void startup() {
-        mainWindow = new JFrame(NAME);
-        mainWindow.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        mainWindow = new JFrame(MAIN_NAME);
+        mainWindow.setSize(MAIN_WIDTH, MAIN_HEIGHT);
         mainWindow.setResizable(false);
         mainWindow.setLocationRelativeTo(null);
 
@@ -131,7 +144,7 @@ public final class FYSApp {
     }
 
     //Database shutdown moet hierin nog toegevoegd worden
-    private void shutdown() {
+    public static void shutdown() {
         mainWindow.dispose();
     }
 
@@ -207,6 +220,21 @@ public final class FYSApp {
         return manager;
     }
 
+    public static void logout() {
+        final FYSApp applicatie = FYSApp.getInstance();
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    applicatie.initialize();
+                    applicatie.startup();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+    }
     public static void main(String args[]) {
         final FYSApp applicatie = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
