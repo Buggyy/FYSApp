@@ -173,18 +173,9 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addContainerGap(419, Short.MAX_VALUE))
         );
 
-<<<<<<< HEAD
         add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 190));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
-        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
-        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 190));
-=======
         add(pnl_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 172, 370, 190));
->>>>>>> origin/master
     }// </editor-fold>//GEN-END:initComponents
 
     private void userNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameJTextFieldActionPerformed
