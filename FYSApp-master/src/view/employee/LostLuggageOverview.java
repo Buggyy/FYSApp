@@ -304,42 +304,34 @@ public class LostLuggageOverview extends JPanel {
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
-<<<<<<< HEAD
+
         
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-                 try {
+            try {
             input = searchJTextField.getText();
+
             rs = Frame.getQueryManager().searchTableLuggageLost(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
+            rs = Frame.getQueryManager().searchTableLuggageLost(input);
+
+            if (input == null) {
+                lostLuggageTable.repaint();
+            }
+            if (!rs.next()) {
                 jLWarning.setText("No matches found!");
                 getLostLuggage();
+                updateTable(rs);
+            } else {
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
             }
-=======
->>>>>>> origin/master
-
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                input = searchJTextField.getText();
-                rs = FYSApp.getQueryManager().searchTableLuggageFound(input);
-
-                if (input == null) {
-                    lostLuggageTable.repaint();
-                }
-                if (!rs.next()) {
-                    jLWarning.setText("No matches found!");
-                    getLostLuggage();
-                    updateTable(rs);
-                } else {
-                    jLWarning.setText("");
-                    rs.beforeFirst();
-                    updateTable(rs);
-                }
-
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(LostLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
