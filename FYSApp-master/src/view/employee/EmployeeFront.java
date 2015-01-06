@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import main.FYSApp;
 import main.Frame;
 import view.LoginScreen;
 
@@ -105,27 +106,26 @@ public class EmployeeFront extends JPanel {
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
 
-    
         try {
             Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(EmployeeFront.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
+
+
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void foundJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_foundJButtonMouseClicked
         Frame.getInstance().showPanel(new FoundLuggageOverview());
-         
+
     }//GEN-LAST:event_foundJButtonMouseClicked
 
-
-    private void setLoggedInAs(){
+    private void setLoggedInAs() {
         String userName = Frame.getQueryManager().getUserName();
         System.out.println(userName);
         loggedInAs.setText(userName);

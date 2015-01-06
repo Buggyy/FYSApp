@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
+import main.FYSApp;
 import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import main.Frame;
 import static main.Frame.*;
@@ -240,7 +241,8 @@ public class LostLuggageOverview extends JPanel {
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
@@ -256,20 +258,20 @@ public class LostLuggageOverview extends JPanel {
             if (rs != null) {
                 updateTable(rs);
             } else {
-            rs = Frame.getQueryManager().searchTableLuggageLost(input);
+                rs = Frame.getQueryManager().searchTableLuggageLost(input);
 
-            if (input == null) {
-                lostLuggageTable.repaint();
-            }
-            if (!rs.next()) {
-                jLWarning.setText("No matches found!");
-                getLostLuggage();
-                updateTable(rs);
-            } else {
-                jLWarning.setText("");
-                rs.beforeFirst();
-                updateTable(rs);
-            }
+                if (input == null) {
+                    lostLuggageTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getLostLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
@@ -310,33 +312,32 @@ public class LostLuggageOverview extends JPanel {
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
 
-        
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
-            input = searchJTextField.getText();
+                input = searchJTextField.getText();
 
-            rs = Frame.getQueryManager().searchTableLuggageLost(input);
-            if (rs != null) {
-                updateTable(rs);
-            } else {
-            rs = Frame.getQueryManager().searchTableLuggageLost(input);
+                rs = Frame.getQueryManager().searchTableLuggageLost(input);
+                if (rs != null) {
+                    updateTable(rs);
+                } else {
+                    rs = Frame.getQueryManager().searchTableLuggageLost(input);
 
-            if (input == null) {
-                lostLuggageTable.repaint();
+                    if (input == null) {
+                        lostLuggageTable.repaint();
+                    }
+                    if (!rs.next()) {
+                        jLWarning.setText("No matches found!");
+                        getLostLuggage();
+                        updateTable(rs);
+                    } else {
+                        jLWarning.setText("");
+                        rs.beforeFirst();
+                        updateTable(rs);
+                    }
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (!rs.next()) {
-                jLWarning.setText("No matches found!");
-                getLostLuggage();
-                updateTable(rs);
-            } else {
-                jLWarning.setText("");
-                rs.beforeFirst();
-                updateTable(rs);
-            }
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 

@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import main.FYSApp;
 import main.Frame;
 import model.Luggage;
 import view.LoginScreen;
@@ -270,7 +271,8 @@ public class FoundLuggageOverview extends JPanel {
     }//GEN-LAST:event_matchesJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.getInstance().showPanel(new LoginScreen());
+        Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
@@ -278,22 +280,22 @@ public class FoundLuggageOverview extends JPanel {
             input = searchJTextField.getText();
             rs = Frame.getQueryManager().searchTableLuggageFound(input);
             if (rs != null) {
-            rs = Frame.getQueryManager().searchTableLuggageFound(input);
+                rs = Frame.getQueryManager().searchTableLuggageFound(input);
 
-            if (input == null) {
-                foundLuggageTable.repaint();
+                if (input == null) {
+                    foundLuggageTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getFoundLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
             }
-            if (!rs.next()) {
-                jLWarning.setText("No matches found!");
-                getFoundLuggage();
-                updateTable(rs);
-            } else {
-                jLWarning.setText("");
-                rs.beforeFirst();
-                updateTable(rs);
-            }
-            }
-            } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -356,7 +358,7 @@ public class FoundLuggageOverview extends JPanel {
                     rs.beforeFirst();
                     updateTable(rs);
                 }
-            
+
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
             }
