@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +47,7 @@ public class ManagerLuggageFound extends JPanel {
      * @description gets data from database and fills the table on screen
      */
     private void getFoundLuggage() {
-        rs = Frame.getQueryManager().getEmployeeFoundLuggage();
+        rs = Frame.getTableManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -114,7 +113,7 @@ public class ManagerLuggageFound extends JPanel {
         foundLuggageJTable = new javax.swing.JTable();
         statisticsJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
-        JButtonPrint = new javax.swing.JButton();
+        btn_print = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -260,14 +259,14 @@ public class ManagerLuggageFound extends JPanel {
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 410, 30));
 
-        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
-        JButtonPrint.setText("PRINT");
-        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+        btn_print.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
+        btn_print.setText("PRINT");
+        btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JButtonPrintActionPerformed(evt);
+                btn_printActionPerformed(evt);
             }
         });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 150, 40));
+        add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 150, 40));
 
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
@@ -318,7 +317,7 @@ public class ManagerLuggageFound extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getQueryManager().searchTableLuggageFound(input);
+            rs = Frame.getSearchManager().searchTableLuggageFound(input);
 
             if (input == null) {
                 foundLuggageJTable.repaint();
@@ -355,7 +354,7 @@ public class ManagerLuggageFound extends JPanel {
         // create object for pdf generator
         PDFGenerator pdf = new PDFGenerator();
         // create own content through arrays using querymanager
-        pdf.generate();
+    //    pdf.generate();
         // current date using timestamp
         String currentDate = FYSApp.getDateTime();
         //name of pdf file
@@ -368,7 +367,7 @@ public class ManagerLuggageFound extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = Frame.getQueryManager().searchTableLuggageFound(input);
+                rs = Frame.getSearchManager().searchTableLuggageFound(input);
 
                 if (input == null) {
                     foundLuggageJTable.repaint();
@@ -386,26 +385,24 @@ public class ManagerLuggageFound extends JPanel {
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-<<<<<<< HEAD
+        
     }//GEN-LAST:event_searchJTextFieldKeyPressed
-=======
+
     }                                         
 
-    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
+    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
 
-           rs = Frame.getQueryManager().getEmployeeFoundLuggage();
+           rs = Frame.getTableManager().getEmployeeFoundLuggage();
 
-           FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
+       //    FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
 
-    }//GEN-LAST:event_JButtonPrintActionPerformed
+    }//GEN-LAST:event_btn_printActionPerformed
 
->>>>>>> origin/master
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
+    private javax.swing.JButton btn_print;
     private javax.swing.JButton foundJButton;
     private javax.swing.JTable foundLuggageJTable;
     private javax.swing.JLabel jLWarning;

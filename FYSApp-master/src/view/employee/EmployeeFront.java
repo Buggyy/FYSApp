@@ -126,7 +126,7 @@ public class EmployeeFront extends JPanel {
     }//GEN-LAST:event_foundJButtonMouseClicked
 
     private void setLoggedInAs() {
-        String userName = Frame.getQueryManager().getUserName();
+        String userName = Frame.getUserManager().getUserName();
         System.out.println(userName);
         loggedInAs.setText(userName);
     }

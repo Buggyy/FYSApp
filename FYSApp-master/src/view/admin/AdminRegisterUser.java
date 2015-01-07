@@ -267,9 +267,9 @@ public class AdminRegisterUser extends JPanel {
         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
         
         if (updateMode > 1) {
-            Frame.getQueryManager().updateUser(user,userId);
+            Frame.getUserManager().updateUser(user,userId);
         } else {
-            Frame.getQueryManager().addUser(user);
+            Frame.getUserManager().addUser(user);
         }
         
         try {

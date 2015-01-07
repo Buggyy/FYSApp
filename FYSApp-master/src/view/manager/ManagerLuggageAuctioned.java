@@ -40,7 +40,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * Creates new form AdminAuctionedLuggage
      */
     private void getAuctionedLuggage() throws ClassNotFoundException, SQLException {
-        rs = Frame.getQueryManager().getManagerAuctionedOverview();
+        rs = Frame.getTableManager().getManagerAuctionedOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -294,7 +294,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         // create object for pdf generator
         PDFGenerator pdf = new PDFGenerator();
         // create own content through arrays using querymanager
-        pdf.generate();
+//        pdf.generate();
         // current date using timestamp
         String currentDate = FYSApp.getDateTime();
         //name of pdf file
@@ -338,7 +338,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = Frame.getQueryManager().searchTableAuctioned(input);
+                rs = Frame.getSearchManager().searchTableAuctioned(input);
 
                 if (input == null) {
                     auctionedJTable.repaint();

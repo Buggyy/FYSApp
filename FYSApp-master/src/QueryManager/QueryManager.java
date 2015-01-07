@@ -55,15 +55,15 @@ public class QueryManager {
 
     }
 
-//    public void delete(int id) {
-//        try {
-//            String sql = "DELETE from luggage WHERE luggageid=?";
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            pst.setInt(1, id);
-//            pst.executeUpdate();
-//        } catch (SQLException e) {
-//        }
-//        dbManager.closeConnection();
-//    }
+    public void delete(int id) {
+        try {
+            String sql = "DELETE from luggage WHERE luggageid=?";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+    }
 }

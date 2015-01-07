@@ -47,12 +47,10 @@ public class FoundLuggageOverview extends JPanel {
      * Blablabla
      */
     private void getFoundLuggage() {
-        rs = Frame.getQueryManager().getEmployeeFoundLuggage();
+        rs = Frame.getTableManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -284,9 +282,9 @@ public class FoundLuggageOverview extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getQueryManager().searchTableLuggageFound(input);
+            rs = Frame.getSearchManager().searchTableLuggageFound(input);
             if (rs != null) {
-                rs = Frame.getQueryManager().searchTableLuggageFound(input);
+                rs = Frame.getSearchManager().searchTableLuggageFound(input);
 
                 if (input == null) {
                     foundLuggageTable.repaint();
@@ -323,7 +321,7 @@ public class FoundLuggageOverview extends JPanel {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
-            Luggage luggage = FYSApp.getLuggageManager().getSelectedFoundLuggage(id);
+            Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
             FYSApp.getInstance().showPanel(new RegisterFoundLuggage());
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
@@ -353,11 +351,7 @@ public class FoundLuggageOverview extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-<<<<<<< HEAD
-                rs = FYSApp.getTableManager().searchTableLuggageFound(input);
-=======
-                rs = Frame.getQueryManager().searchTableLuggageFound(input);
->>>>>>> origin/master
+                rs = FYSApp.getSearchManager().searchTableLuggageFound(input);
 
                 if (input == null) {
                     foundLuggageTable.repaint();

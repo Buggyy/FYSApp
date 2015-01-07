@@ -38,7 +38,7 @@ public class AdminUsers extends JPanel {
     }
 
     private void getUsers() throws ClassNotFoundException, SQLException {
-        rs = Frame.getQueryManager().getAdminUsersOverview();
+        rs = Frame.getTableManager().getAdminUsersOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -264,7 +264,7 @@ public class AdminUsers extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getTableManager().searchTableUser(input);
+            rs = Frame.getSearchManager().searchTableUser(input);
 
             if (input == null) {
                 userTable.repaint();
@@ -289,18 +289,22 @@ public class AdminUsers extends JPanel {
         int userNameCol = 1;
         int userIdCol = 0;
         if (userTable.getSelectedRow() >= 0) {
-            String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
-            int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
-            
-            User user = Frame.getQueryManager().getSelectedUser(uName);
-            
-            Frame.getInstance().showPanel(new AdminRegisterUser());
-            AdminRegisterUser.setUpdate(10, userId);
-            
-            Frame.getInstance().showPanel(new AdminRegisterUser());
-            AdminRegisterUser.setUpdate(10, userId);
-            
-            AdminRegisterUser.setText(user);
+            try {
+                String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
+                int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
+                
+                User user = Frame.getUserManager().getSelectedUser(uName);
+                
+                Frame.getInstance().showPanel(new AdminRegisterUser());
+                AdminRegisterUser.setUpdate(10, userId);
+                
+                Frame.getInstance().showPanel(new AdminRegisterUser());
+                AdminRegisterUser.setUpdate(10, userId);
+                
+                AdminRegisterUser.setText(user);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
         }
@@ -362,7 +366,7 @@ public class AdminUsers extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = Frame.getQueryManager().searchTableUser(input);
+                rs = Frame.getSearchManager().searchTableUser(input);
 
                 if (input == null) {
                     userTable.repaint();

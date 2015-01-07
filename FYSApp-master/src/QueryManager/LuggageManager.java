@@ -167,60 +167,21 @@ public class LuggageManager {
         }
     }
 
+
     /**
      *
      * @param i
      * @return
      */
-//    public Luggage getSelectedLostLuggage(int i) {
-//        Luggage luggage = new Luggage();
-//        ResultSet rs = null;
-//        String sql = "SELECT * FROM luggage WHERE luggageid=?";
-//        try {
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(sql);
-//            pst.setInt(1, i);
-//
-//            rs = pst.executeQuery();
-//
-//            if (rs.next()) {
-//                luggage.setStatus(rs.getString("status"));
-//                luggage.setBrand(rs.getString("brand"));
-//                luggage.setDescription(rs.getString("description"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//                luggage.setWeight(rs.getString("weight"));
-//            }
-//            return luggage;
-//
-//            dbManager.closeConnection();
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LoginScreen.class
-//                    .getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return luggage;
-//    }
-
-    /**
-     * 
-     * @param i
-     * @return 
-     */
-    public Luggage getSelectedFoundLuggage(int i) {
+    public Luggage getSelectedLuggage(int i) {
         Luggage luggage = new Luggage();
         ResultSet rs = null;
-        String getSelectedFoundLuggage = "SELECT * FROM luggage WHERE luggageid=?";
+        String getSelectedLuggage = "SELECT * FROM luggage WHERE luggageid=?";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection()
-                    .prepareStatement(getSelectedFoundLuggage);
-            
+                    .prepareStatement(getSelectedLuggage);
+
             pst.setInt(1, i);
 
             rs = pst.executeQuery();
@@ -248,8 +209,8 @@ public class LuggageManager {
     }
 
     /**
-     * 
-     * @param i 
+     *
+     * @param i
      */
     public void deleteLuggage(int i) {
         String sql = "DELETE from luggage WHERE luggageid=?";

@@ -39,7 +39,7 @@ public class AdminLuggageLost extends JPanel {
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
-        rs = Frame.getQueryManager().getEmployeeLostLuggage();
+        rs = Frame.getTableManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -264,7 +264,7 @@ public class AdminLuggageLost extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getQueryManager().searchTableLuggageLost(input);
+            rs = Frame.getSearchManager().searchTableLuggageLost(input);
 
             if (input == null) {
                 lostLuggageTable.repaint();
@@ -365,7 +365,7 @@ public class AdminLuggageLost extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = FYSApp.getQueryManager().searchTableLuggageLost(input);
+                rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
                 if (input == null) {
                     lostLuggageTable.repaint();
