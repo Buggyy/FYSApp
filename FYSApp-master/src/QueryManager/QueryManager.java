@@ -31,8 +31,8 @@ public class QueryManager {
             // Query aanmaken, daarna connection maken.
             // Daarna bereid ie de query voor, haalt de airports
             // uit de database en returnt het.
+            dbManager.openConnection();
             String sql = "SELECT airportname FROM airport";
-//            Connection connection = DatabaseManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
 

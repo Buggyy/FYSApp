@@ -30,6 +30,7 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("manager");
         roleJComboBox.addItem("admin");
        
+        setAirports();
     }
 
     /**
@@ -340,13 +341,6 @@ public class AdminRegisterUser extends JPanel {
             airportJComboBox.addItem(fgt1);
         }
     }
-    //  in the main class there is a method called getAirports
-//    public void setAirports(){
-//        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
-//        for (int i = 0; i < fgt.size(); i++) {
-//            airportJComboBox.addItem(fgt.get(i));
-//        }
-//    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

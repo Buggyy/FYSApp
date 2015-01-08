@@ -22,7 +22,7 @@ public class DatabaseManager {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
 
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
 
         }
@@ -35,7 +35,7 @@ public class DatabaseManager {
     public void closeConnection() {
         try {
             conn.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }

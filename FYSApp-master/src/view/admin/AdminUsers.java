@@ -297,11 +297,8 @@ public class AdminUsers extends JPanel {
 
                 Frame.getInstance().showPanel(new AdminRegisterUser());
                 AdminRegisterUser.setUpdate(10, userId);
-
-                Frame.getInstance().showPanel(new AdminRegisterUser());
-                AdminRegisterUser.setUpdate(10, userId);
-
                 AdminRegisterUser.setText(user);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
+import model.Luggage;
+import view.employee.RegisterLostLuggage;
 
 /**
  *
@@ -150,7 +152,6 @@ public class AdminLuggageLost extends JPanel {
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
-        editJButton.setEnabled(false);
         editJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editJButtonActionPerformed(evt);
@@ -347,11 +348,29 @@ public class AdminLuggageLost extends JPanel {
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
+//        if (lostLuggageTable.getSelectedRow() >= 0) {
+//            // Code to edit lost luggage
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Please select a row before editing!");
+//        }
+        
+        //  If there is no row selected to edit
         if (lostLuggageTable.getSelectedRow() >= 0) {
-            // Code to edit lost luggage
+            int row = lostLuggageTable.getSelectedRow();
+            int col = 0;
+            int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
+
+            Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
+            Frame.getInstance().showPanel(new EditLostLuggage());
+
+            EditLostLuggage.setLuggageId(id);
+            EditLostLuggage.setText(luggage);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
         }
+
+
 
     }//GEN-LAST:event_editJButtonActionPerformed
 
