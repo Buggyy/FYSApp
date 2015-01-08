@@ -83,7 +83,36 @@ public class PDFGenerator {
     }
 
     public void generateReceiptPDF(){
+//        rsmetadata = rs.getMetaData();
+//
+//        columns = rsmetadata.getColumnCount();
+//
+//        columns_name = new ArrayList<String>();
+//        rows_name = new ArrayList<String>();
+//
+//        for (int i = 1; i < columns; i++) {
+//            columns_name.add(rsmetadata.getColumnName(i));
+//        }
+//        
+//        while (rs.next()) {
+//
+//            rows_name = new ArrayList<String>();
+//
+//            for (int j = 1; j < columns; j++) {
+//                rows_name.add(rs.getString(j));
+//            }
+//        }
         
+        // create object for pdf generator
+        PDFGenerator pdf = new PDFGenerator();
+        // create own content through arrays using querymanager
+        pdf.generatePDF(columns_name, rows_name);
+        // current date using timestamp
+        String currentDate = FYSApp.getDateTime();
+        //name of pdf file
+        pdf.save("Lost luggage receipt " + currentDate);
+        JOptionPane.showMessageDialog(null, "PDF saved as: Lost luggage receipt"
+                + " " + currentDate + "\n in the root folder of the app" );
     }
     public void save(String filename) {
         try {
