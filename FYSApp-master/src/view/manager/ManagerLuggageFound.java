@@ -21,8 +21,8 @@ import view.admin.AdminLuggageFound;
 /**
  * @version 1
  * @author Team 1 IS106;
- * @description class for handeling everything related to the found luggage
- * in the manager section of the app
+ * @description class for handeling everything related to the found luggage in
+ * the manager section of the app
  */
 public class ManagerLuggageFound extends JPanel {
 
@@ -55,13 +55,13 @@ public class ManagerLuggageFound extends JPanel {
         }
     }
 
-   /**
-    * 
-    * @param rs Resultset with the data from the database
-    * @throws ClassNotFoundException
-    * @throws SQLException 
-    * @description get data from database and update the table
-    */
+    /**
+     *
+     * @param rs Resultset with the data from the database
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @description get data from database and update the table
+     */
     private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
         rsmetadata = rs.getMetaData();
@@ -292,8 +292,8 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      * @description switch to the lost frame
      */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
@@ -310,8 +310,8 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      * @description Update table based on search query
      */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
@@ -350,18 +350,18 @@ public class ManagerLuggageFound extends JPanel {
 
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
-    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {
         // create object for pdf generator
         PDFGenerator pdf = new PDFGenerator();
         // create own content through arrays using querymanager
-    //    pdf.generate();
+        //    pdf.generate();
         // current date using timestamp
         String currentDate = FYSApp.getDateTime();
         //name of pdf file
         pdf.save(currentDate + " Found.pdf");
         JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
                 + " Found.pdf \n in the rood folder of the app");
-    }                                            
+    }
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -385,19 +385,22 @@ public class ManagerLuggageFound extends JPanel {
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
-    }                                         
+    }
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
 
-           rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
 
-       //    FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
+        try {
+            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btn_printActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
