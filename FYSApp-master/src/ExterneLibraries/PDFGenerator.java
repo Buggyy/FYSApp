@@ -36,12 +36,16 @@ public class PDFGenerator {
     ArrayList<String> columns_name = new ArrayList<String>();
     ArrayList<String> rows_name = new ArrayList<String>();
 
-    public PDFGenerator() throws IOException {
+    public PDFGenerator() {
         
         this.document = new PDDocument();
         PDPage page = new PDPage();
         this.document.addPage(page);
-        this.contentStream = new PDPageContentStream(document, page);
+        try {
+            this.contentStream = new PDPageContentStream(document, page);
+        } catch (IOException ex) {
+            Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void getFoundData(){

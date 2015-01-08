@@ -3,6 +3,7 @@ package view.manager;
 import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -291,14 +292,16 @@ public class ManagerLuggageAuctioned extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // create object for pdf generator
-        PDFGenerator pdf = new PDFGenerator();
-        // create own content through arrays using querymanager
-//        pdf.generate();
-        // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
-        //name of pdf file
-        pdf.save(currentDate + " Auctioned.pdf");
+//        rs = FYSApp.getTableManager().getEmployeeAuctionedLuggage();
+//
+//       
+//        try {
+//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
     }//GEN-LAST:event_JButtonPrintActionPerformed
 

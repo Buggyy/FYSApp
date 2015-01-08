@@ -3,6 +3,7 @@ package view.manager;
 import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -351,16 +352,16 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {
-        // create object for pdf generator
-        PDFGenerator pdf = new PDFGenerator();
-        // create own content through arrays using querymanager
-        //    pdf.generate();
-        // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
-        //name of pdf file
-        pdf.save(currentDate + " Found.pdf");
-        JOptionPane.showMessageDialog(null, "PDF saved as: " + currentDate
-                + " Found.pdf \n in the rood folder of the app");
+        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+
+       
+        try {
+            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
@@ -397,6 +398,8 @@ public class ManagerLuggageFound extends JPanel {
         try {
             FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
         } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
 

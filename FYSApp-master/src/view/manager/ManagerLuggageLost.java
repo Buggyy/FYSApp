@@ -3,6 +3,7 @@ package view.manager;
 import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -320,11 +321,15 @@ public class ManagerLuggageLost extends JPanel {
 
         rs = FYSApp.getTableManager().getEmployeeLostLuggage();
 
+       
         try {
-            FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
+            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
         } catch (SQLException ex) {
             Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
