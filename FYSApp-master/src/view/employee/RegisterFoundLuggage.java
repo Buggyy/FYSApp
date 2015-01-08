@@ -364,16 +364,14 @@ public class RegisterFoundLuggage extends JPanel {
 
         if (updateMode > 1) {
             FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
+            
         } else {
-            int id = FYSApp.getClientManager().getClientid();
-            FYSApp.getLuggageManager().addFoundLuggage(luggage, id);
+//            int id = FYSApp.getClientManager().getClientid();
+            
+            FYSApp.getLuggageManager().addFoundLuggage(luggage);
         }
 
-        try {
-            FYSApp.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
 
     }//GEN-LAST:event_btn_submitActionPerformed
 

@@ -38,7 +38,7 @@ public class LostLuggageOverview extends JPanel {
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
-        rs = Frame.getTableManager().getEmployeeLostLuggage();
+        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -254,11 +254,11 @@ public class LostLuggageOverview extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getSearchManager().searchTableLuggageLost(input);
+            rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
             if (rs != null) {
                 updateTable(rs);
             } else {
-                rs = Frame.getSearchManager().searchTableLuggageLost(input);
+                rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
                 if (input == null) {
                     lostLuggageTable.repaint();
@@ -290,7 +290,7 @@ public class LostLuggageOverview extends JPanel {
             int col = 0;
             int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
 
-            Luggage luggage = Frame.getLuggageManager().getSelectedLuggage(id);
+            Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
             Frame.getInstance().showPanel(new RegisterLostLuggage());
 
             RegisterLostLuggage.setUpdate(id);
@@ -312,11 +312,11 @@ public class LostLuggageOverview extends JPanel {
             try {
                 input = searchJTextField.getText();
 
-                rs = Frame.getSearchManager().searchTableLuggageLost(input);
+                rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
                 if (rs != null) {
                     updateTable(rs);
                 } else {
-                    rs = Frame.getSearchManager().searchTableLuggageLost(input);
+                    rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
                     if (input == null) {
                         lostLuggageTable.repaint();

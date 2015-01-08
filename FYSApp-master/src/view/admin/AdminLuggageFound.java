@@ -1,9 +1,6 @@
 package view.admin;
 
 import QueryManager.DatabaseManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,13 +11,10 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
-import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import main.Frame;
-import view.LoginScreen;
 
 /**
  *
@@ -49,7 +43,7 @@ public class AdminLuggageFound extends JPanel {
      * Method that gets the found luggage
      */
     private void getFoundLuggage() {
-        rs = Frame.getTableManager().getEmployeeFoundLuggage();
+        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -280,7 +274,7 @@ public class AdminLuggageFound extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getSearchManager().searchTableLuggageFound(input);
+            rs = FYSApp.getSearchManager().searchTableLuggageFound(input);
 
             if (input == null) {
                 foundLuggageJTable.repaint();
@@ -344,7 +338,7 @@ public class AdminLuggageFound extends JPanel {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
-                Frame.getQueryManager().delete(id);
+                FYSApp.getQueryManager().delete(id);
                 Frame.getInstance().showPanel(new AdminLuggageFound());
             } else {
                 Frame.getInstance().showPanel(new AdminLuggageFound());

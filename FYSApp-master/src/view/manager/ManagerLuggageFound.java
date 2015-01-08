@@ -47,7 +47,7 @@ public class ManagerLuggageFound extends JPanel {
      * @description gets data from database and fills the table on screen
      */
     private void getFoundLuggage() {
-        rs = Frame.getTableManager().getEmployeeFoundLuggage();
+        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -317,7 +317,7 @@ public class ManagerLuggageFound extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getSearchManager().searchTableLuggageFound(input);
+            rs = FYSApp.getSearchManager().searchTableLuggageFound(input);
 
             if (input == null) {
                 foundLuggageJTable.repaint();
@@ -367,7 +367,7 @@ public class ManagerLuggageFound extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = Frame.getSearchManager().searchTableLuggageFound(input);
+                rs = FYSApp.getSearchManager().searchTableLuggageFound(input);
 
                 if (input == null) {
                     foundLuggageJTable.repaint();
@@ -392,7 +392,7 @@ public class ManagerLuggageFound extends JPanel {
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
 
-           rs = Frame.getTableManager().getEmployeeFoundLuggage();
+           rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
 
        //    FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
 

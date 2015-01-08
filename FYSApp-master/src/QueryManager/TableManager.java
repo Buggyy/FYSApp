@@ -108,7 +108,7 @@ public class TableManager {
             return rs;
 
         } catch (SQLException ex) {
-            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TableManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
 
@@ -134,7 +134,7 @@ public class TableManager {
             return rs;
 
         } catch (SQLException ex) {
-            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TableManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
         return rs;

@@ -14,9 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
-import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import main.Frame;
-import view.LoginScreen;
 
 /**
  *
@@ -39,7 +37,7 @@ public class AdminLuggageLost extends JPanel {
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
-        rs = Frame.getTableManager().getEmployeeLostLuggage();
+        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -264,7 +262,7 @@ public class AdminLuggageLost extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getSearchManager().searchTableLuggageLost(input);
+            rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
             if (input == null) {
                 lostLuggageTable.repaint();
@@ -307,7 +305,7 @@ public class AdminLuggageLost extends JPanel {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
-                Frame.getQueryManager().delete(id);
+                FYSApp.getQueryManager().delete(id);
                 try {
                     Frame.getInstance().showPanel(new AdminLuggageLost());
                 } catch (ClassNotFoundException ex) {

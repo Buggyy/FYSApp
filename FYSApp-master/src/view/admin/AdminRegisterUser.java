@@ -7,9 +7,7 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import main.FYSApp;
 import main.Frame;
-import model.Luggage;
 import model.User;
-import view.LoginScreen;
 
 /**
  * @version 1
@@ -267,9 +265,9 @@ public class AdminRegisterUser extends JPanel {
         User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
         
         if (updateMode > 1) {
-            Frame.getUserManager().updateUser(user,userId);
+            FYSApp.getUserManager().updateUser(user,userId);
         } else {
-            Frame.getUserManager().addUser(user);
+            FYSApp.getUserManager().addUser(user);
         }
         
         try {
@@ -337,7 +335,7 @@ public class AdminRegisterUser extends JPanel {
     }
     
     public void setAirports(){
-        ArrayList<String> fgt = Frame.getQueryManager().getAirports();
+        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
         for (String fgt1 : fgt) {
             airportJComboBox.addItem(fgt1);
         }

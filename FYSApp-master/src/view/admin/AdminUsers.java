@@ -38,7 +38,7 @@ public class AdminUsers extends JPanel {
     }
 
     private void getUsers() throws ClassNotFoundException, SQLException {
-        rs = Frame.getTableManager().getAdminUsersOverview();
+        rs = FYSApp.getTableManager().getAdminUsersOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -264,7 +264,7 @@ public class AdminUsers extends JPanel {
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = Frame.getSearchManager().searchTableUser(input);
+            rs = FYSApp.getSearchManager().searchTableUser(input);
 
             if (input == null) {
                 userTable.repaint();
@@ -292,21 +292,25 @@ public class AdminUsers extends JPanel {
             try {
                 String uName = (String) userTable.getModel().getValueAt(row, userNameCol);
                 int userId = Integer.parseInt((String) userTable.getModel().getValueAt(row, userIdCol));
-                
-                User user = Frame.getUserManager().getSelectedUser(uName);
-                
+
+                User user = FYSApp.getUserManager().getSelectedUser(uName);
+
                 Frame.getInstance().showPanel(new AdminRegisterUser());
                 AdminRegisterUser.setUpdate(10, userId);
-                
+
                 Frame.getInstance().showPanel(new AdminRegisterUser());
                 AdminRegisterUser.setUpdate(10, userId);
-                
+
                 AdminRegisterUser.setText(user);
             } catch (SQLException ex) {
                 Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a row before editing!");
+            //custom title, warning icon
+            JOptionPane.showMessageDialog(null,
+                    "Please select a row before editing!",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
@@ -329,7 +333,7 @@ public class AdminUsers extends JPanel {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
-                Frame.getUserManager().deleteUser(uName);
+                FYSApp.getUserManager().deleteUser(uName);
                 try {
                     Frame.getInstance().showPanel(new AdminUsers());
                 } catch (ClassNotFoundException ex) {
@@ -366,7 +370,7 @@ public class AdminUsers extends JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = Frame.getSearchManager().searchTableUser(input);
+                rs = FYSApp.getSearchManager().searchTableUser(input);
 
                 if (input == null) {
                     userTable.repaint();

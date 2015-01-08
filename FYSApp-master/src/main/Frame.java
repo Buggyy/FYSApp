@@ -51,15 +51,6 @@ public class Frame {
 
     private static JFrame mainWindow;
     private JMenuBar menuBar = new JMenuBar();
-    private DatabaseManager manager = new DatabaseManager();
-    private QueryManager qm = new QueryManager(manager);
-
-    private LuggageManager lm = new LuggageManager();
-
-    private SearchManager sm = new SearchManager();
-    private TableManager tm = new TableManager();
-    private UserManager um = new UserManager();
-    private ClientManager cm = new ClientManager();
 
     private static Frame instance = new Frame();
 
@@ -223,6 +214,7 @@ public class Frame {
                 try {
                     applicatie.initialize();
                     applicatie.startManager();
+                    applicatie.menu();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,
                             "Application failed to launch", "Failure",
@@ -294,57 +286,5 @@ public class Frame {
 
     private void contactActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(mainWindow, CONTACT_MESSAGE);
-    }
-
-    public QueryManager getQm() {
-        return qm;
-    }
-
-    public static QueryManager getQueryManager() {
-        return getInstance().qm;
-    }
-
-    public LuggageManager getLm() {
-        return lm;
-    }
-
-    public static LuggageManager getLuggageManager() {
-        return getInstance().lm;
-    }
-
-    public SearchManager getSm() {
-        return sm;
-    }
-
-    public static SearchManager getSearchManager() {
-        return getInstance().sm;
-    }
-
-    public TableManager getTm() {
-        return tm;
-    }
-
-    public static TableManager getTableManager() {
-        return getInstance().tm;
-    }
-
-    public UserManager getUm() {
-        return um;
-    }
-
-    public static UserManager getUserManager() {
-        return getInstance().um;
-    }
-
-    public ClientManager getCm() {
-        return cm;
-    }
-
-    public static ClientManager getClientManager() {
-        return getInstance().cm;
-    }
-
-    public DatabaseManager getDatabaseManager() {
-        return manager;
     }
 }

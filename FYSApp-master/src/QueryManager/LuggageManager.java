@@ -27,12 +27,16 @@ public class LuggageManager {
     /**
      * @description HERE
      * @param luggage
-     * @param id
      */
-    public void addFoundLuggage(Luggage luggage, int id) {
+    public void addFoundLuggage(Luggage luggage) {
         String sql = "INSERT INTO luggage (brand,lablecode,color,material"
-                + "otherdetails, weightclass, status, created, departurefrom) "
-                + "VALUES (?,?,?,?,?,?,?,?,?)";
+                + ",otherdetails, weightclass, status, created, departurefrom,"
+                + " whenfound) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+        
+//        INSERT INTO luggage (brand,lablecode,color,material
+//,otherdetails, weightclass, status, created, departurefrom)
+//VALUES ('gutti',123456, 'noob', 'letather','lelijke sht','dik','Found','gister','chris roelvink')
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -43,15 +47,15 @@ public class LuggageManager {
             pst.setString(4, luggage.getMaterial());
             pst.setString(5, luggage.getOtherDetails());
             pst.setString(6, luggage.getWeightClass());
-            pst.setString(7, "Lost");
+            pst.setString(7, "Found");
             pst.setString(8, FYSApp.getDate());
             pst.setString(9, luggage.getDepartureFrom());
+            pst.setString(10,luggage.getWhenFound());
             // + Airport where user is working at
             pst.executeUpdate();
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Could not complete task, please contact your Administrator!",
+                    "Could nuts complete task, please contact your Administrator!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
@@ -76,7 +80,7 @@ public class LuggageManager {
             pst.setString(4, luggage.getMaterial());
             pst.setString(5, luggage.getOtherDetails());
             pst.setString(6, luggage.getWeightClass());
-            pst.setString(7, "Lost");
+            pst.setString(7, "Found");
             pst.setString(8, FYSApp.getDate());
             pst.setString(9, luggage.getDepartureFrom());
             // + Airport where user is working at
