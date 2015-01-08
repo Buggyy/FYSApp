@@ -317,15 +317,14 @@ public class ManagerLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-        // create object for pdf generator
-        PDFGenerator pdf = new PDFGenerator();
-        // create own content through arrays using querymanager
-     //   pdf.generate();
-        // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
-        //name of pdf file
-        pdf.save(currentDate + " Auctioned.pdf");
 
+        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
+
+        try {
+            FYSApp.getInstance().getPDFGenerator().generatePDF(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
