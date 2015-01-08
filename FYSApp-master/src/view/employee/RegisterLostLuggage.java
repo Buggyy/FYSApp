@@ -29,29 +29,29 @@ public class RegisterLostLuggage extends JPanel {
 
         initComponents();
         
-        for (int i = 0; i < airportsList.size(); i++) {
-            cmb_departureFrom.addItem(airportsList);
-        }
-
-        //  These items should be stored in an array
-        cmb_color.addItem("red");
-        cmb_color.addItem("blue");
-        cmb_color.addItem("yellow");
-        cmb_color.addItem("pink");
-        cmb_color.addItem("purple");
-        cmb_color.addItem("green");
-        cmb_color.addItem("black");
-        cmb_color.addItem("white");
-        cmb_color.addItem("orange");
-        cmb_color.addItem("grey");
-        cmb_color.addItem("brown");
-        cmb_color.addItem("other..");
-
-        cmb_weightClass.addItem("0kg - 5kg");
-        cmb_weightClass.addItem("5kg - 10kg");
-        cmb_weightClass.addItem("10kg - 15kg");
-        cmb_weightClass.addItem("15kg - 20kg");
-        cmb_weightClass.addItem("20kg+");
+//        for (int i = 0; i < airportsList.size(); i++) {
+//            cmb_departureFrom.addItem(airportsList);
+//        }
+//
+//        //  These items should be stored in an array
+//        cmb_color.addItem("red");
+//        cmb_color.addItem("blue");
+//        cmb_color.addItem("yellow");
+//        cmb_color.addItem("pink");
+//        cmb_color.addItem("purple");
+//        cmb_color.addItem("green");
+//        cmb_color.addItem("black");
+//        cmb_color.addItem("white");
+//        cmb_color.addItem("orange");
+//        cmb_color.addItem("grey");
+//        cmb_color.addItem("brown");
+//        cmb_color.addItem("other..");
+//
+//        cmb_weightClass.addItem("0kg - 5kg");
+//        cmb_weightClass.addItem("5kg - 10kg");
+//        cmb_weightClass.addItem("10kg - 15kg");
+//        cmb_weightClass.addItem("15kg - 20kg");
+//        cmb_weightClass.addItem("20kg+");
 
     }
 

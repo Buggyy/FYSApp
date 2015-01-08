@@ -26,29 +26,30 @@ public class RegisterFoundLuggage extends JPanel {
     public RegisterFoundLuggage() {
         initComponents();
 
-        for (int i = 0; i < airportsList.size(); i++) {
-            cmb_foundAt.addItem(airportsList);
-        }
+//        for (int i = 0; i < airportsList.size(); i++) {
+//            cmb_foundAt.addItem(airportsList);
+//        }
 
         //  These items should be stored in an array
         cmb_color.addItem("red");
         cmb_color.addItem("blue");
         cmb_color.addItem("yellow");
-        cmb_color.addItem("pink");
-        cmb_color.addItem("purple");
-        cmb_color.addItem("green");
-        cmb_color.addItem("black");
-        cmb_color.addItem("white");
-        cmb_color.addItem("orange");
-        cmb_color.addItem("grey");
-        cmb_color.addItem("brown");
-        cmb_color.addItem("other..");
-
-        cmb_weightClass.addItem("0kg - 5kg");
-        cmb_weightClass.addItem("5kg - 10kg");
-        cmb_weightClass.addItem("10kg - 15kg");
-        cmb_weightClass.addItem("15kg - 20kg");
-        cmb_weightClass.addItem("20kg+");
+//        cmb_color.addItem("pink");
+//        cmb_color.addItem("purple");
+//        cmb_color.addItem("green");
+//        cmb_color.addItem("black");
+//        cmb_color.addItem("white");
+//        cmb_color.addItem("orange");
+//        cmb_color.addItem("grey");
+//        cmb_color.addItem("brown");
+//        cmb_color.addItem("other..");
+        
+//
+//        cmb_weightClass.addItem("0kg - 5kg");
+//        cmb_weightClass.addItem("5kg - 10kg");
+//        cmb_weightClass.addItem("10kg - 15kg");
+//        cmb_weightClass.addItem("15kg - 20kg");
+//        cmb_weightClass.addItem("20kg+");
     }
 
     // this method does not belong here..
@@ -247,7 +248,8 @@ public class RegisterFoundLuggage extends JPanel {
         lbl_whenFound.setText("When found:");
         panel1.add(lbl_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
 
-        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_color.setMaximumRowCount(15);
+        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
         cmb_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_colorActionPerformed(evt);
@@ -356,12 +358,12 @@ public class RegisterFoundLuggage extends JPanel {
         String departureFrom    = "";
 
         //  Create lost luggage item with user input
-        Luggage luggage = new Luggage(brand, lableCode, material,
-                otherDetails, status, color, weightClass, whenFound, foundAt,
+        Luggage luggage = new Luggage(brand, lableCode, color,
+                otherDetails, status, material, weightClass, whenFound, foundAt,
                 departureFrom);
 
         if (updateMode > 1) {
-            FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
+            FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
         } else {
             int id = FYSApp.getClientManager().getClientid();
             FYSApp.getLuggageManager().addFoundLuggage(luggage, id);

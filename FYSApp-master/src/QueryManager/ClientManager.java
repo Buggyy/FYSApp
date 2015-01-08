@@ -15,7 +15,7 @@ import model.Client;
  * @author Rafael
  */
 public class ClientManager {
-     private DatabaseManager dbManager;
+     private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
     
        // Method om een user toe te voegen aan de database.

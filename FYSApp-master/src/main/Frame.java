@@ -260,9 +260,10 @@ public class Frame {
                 try {
                     applicatie.initialize();
                     applicatie.startEmployee();
+                    applicatie.menu();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, 
-                            "Application failed to launch", "Failure", 
+                    JOptionPane.showMessageDialog(null,
+                            "Application failed to launch", "Failure",
                             JOptionPane.WARNING_MESSAGE);
                 }
             }
@@ -282,10 +283,10 @@ public class Frame {
         File filee = new File("Usermanual.pdf");
         String absolutePath = filee.getAbsolutePath();
         try {
-                Process process = Runtime.getRuntime()
-                        .exec("rundll32 url.dll, FileProtocolHandler "
-                                + absolutePath);
-                process.waitFor();
+            Process process = Runtime.getRuntime()
+                    .exec("rundll32 url.dll, FileProtocolHandler "
+                            + absolutePath);
+            process.waitFor();
         } catch (Exception e) {
             System.out.println(":: -----Exception---- ::\n" + e);
         }
@@ -294,7 +295,6 @@ public class Frame {
     private void contactActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(mainWindow, CONTACT_MESSAGE);
     }
-    
 
     public QueryManager getQm() {
         return qm;

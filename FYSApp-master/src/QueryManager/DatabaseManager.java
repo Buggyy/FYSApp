@@ -12,7 +12,7 @@ public class DatabaseManager {
     public static final String JDBC_EXCEPTION = "JDBC Exception: ";
     public static final String SQL_EXCEPTION = "SQL Exception: ";
 
-    private Connection conn = null;
+    private Connection conn;
 
     /**
      * Open database connection
@@ -20,12 +20,13 @@ public class DatabaseManager {
     public void openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zoekjekoffer", "root", "");
-            
-        } catch (ClassNotFoundException | SQLException e) {
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+
         }
+
     }
 
     /**
@@ -38,13 +39,14 @@ public class DatabaseManager {
             System.err.println(e.getMessage());
         }
     }
-    
+
     public Connection getConnection() {
         return conn;
     }
 
     /**
      * Executes a query without result.
+     *
      * @param query, the SQl query
      */
     public void executeQuery(String query) {
@@ -58,8 +60,9 @@ public class DatabaseManager {
 
     /**
      * Executes a query with result.
+     *
      * @param query, the SQL query
-     * @return 
+     * @return
      */
 //    public ResultSet doQuery(String query) {
 //        ResultSet result = null;
@@ -71,11 +74,11 @@ public class DatabaseManager {
 //        }
 //        return result;
 //    }
-
     /**
      * Executes a query with result.
+     *
      * @param query, the SQL query
-     * @return 
+     * @return
      */
 //    public ResultSet insertQuery(String query) {
 //        ResultSet result = null;
@@ -88,5 +91,4 @@ public class DatabaseManager {
 //        }
 //        return result;
 //    }
-
 }

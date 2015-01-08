@@ -21,7 +21,7 @@ import view.LoginScreen;
  */
 public class LuggageManager {
 
-    private DatabaseManager dbManager;
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
 
     /**
@@ -83,7 +83,6 @@ public class LuggageManager {
             pst.setInt(10, id);
             pst.executeUpdate();
 
-            dbManager.closeConnection();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
@@ -91,6 +90,7 @@ public class LuggageManager {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
+        dbManager.closeConnection();
     }
 
     /**
@@ -119,7 +119,6 @@ public class LuggageManager {
             pst.setInt(10, id);
             pst.executeUpdate();
 
-            dbManager.closeConnection();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Could not complete task, please contact your Administrator!",
@@ -127,6 +126,7 @@ public class LuggageManager {
                     JOptionPane.ERROR_MESSAGE);
         }
 
+        dbManager.closeConnection();
     }
 
     /**
@@ -157,14 +157,13 @@ public class LuggageManager {
             pst.setInt(10, id);                                 //  id from luggage
             pst.executeUpdate();
 
-            dbManager.closeConnection();
-
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
                     "Could not complete task, please contact your Administrator!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
+        dbManager.closeConnection();
     }
 
 
@@ -220,7 +219,6 @@ public class LuggageManager {
             pst.setInt(1, i);
             pst.executeUpdate(sql);
 
-            dbManager.closeConnection();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Could not complete task, please contact your Administrator!",
@@ -228,5 +226,6 @@ public class LuggageManager {
                     JOptionPane.ERROR_MESSAGE);
         }
 
+        dbManager.closeConnection();
     }
 }

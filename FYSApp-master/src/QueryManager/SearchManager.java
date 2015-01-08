@@ -13,7 +13,7 @@ import java.sql.*;
  */
 public class SearchManager {
 
-    private DatabaseManager dbManager;
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
 
     /**

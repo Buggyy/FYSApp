@@ -16,7 +16,7 @@ import view.LoginScreen;
  */
 public class TableManager {
 
-    private DatabaseManager dbManager;
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
 
     /**
@@ -105,13 +105,12 @@ public class TableManager {
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
 
-            dbManager.closeConnection();
-
             return rs;
 
         } catch (SQLException ex) {
             Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dbManager.closeConnection();
 
         return rs;
     }
@@ -132,14 +131,12 @@ public class TableManager {
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
 
-            dbManager.closeConnection();
-
             return rs;
 
         } catch (SQLException ex) {
             Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        dbManager.closeConnection();
         return rs;
     }
 }

@@ -15,7 +15,7 @@ import main.FYSApp;
  */
 public class QueryManager {
 
-    private DatabaseManager dbManager;
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
 
     public QueryManager(DatabaseManager dbmanager) {

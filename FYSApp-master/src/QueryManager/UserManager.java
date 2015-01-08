@@ -21,7 +21,7 @@ import view.LoginScreen;
  */
 public class UserManager {
 
-    private DatabaseManager dbManager;
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
     private String userName;
 
