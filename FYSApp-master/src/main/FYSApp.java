@@ -1,5 +1,6 @@
 package main;
 
+import ExterneLibraries.PDFGenerator;
 import QueryManager.*;
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -57,13 +58,12 @@ public final class FYSApp {
     private static JFrame mainWindow;
     private DatabaseManager manager = new DatabaseManager();
     private QueryManager qm = new QueryManager(manager);
-
     private LuggageManager lm = new LuggageManager();
-
     private SearchManager sm = new SearchManager();
     private TableManager tm = new TableManager();
     private UserManager um = new UserManager();
     private ClientManager cm = new ClientManager();
+    private PDFGenerator pdf = new PDFGenerator();
 
     /**
      * singleton of the application
@@ -205,6 +205,10 @@ public final class FYSApp {
 
     public DatabaseManager getDatabaseManager() {
         return manager;
+    }
+    
+    public PDFGenerator getPDFGenerator(){
+        return pdf;
     }
 
     public static void logout() {
