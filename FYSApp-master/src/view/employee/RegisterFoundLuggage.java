@@ -73,8 +73,6 @@ public class RegisterFoundLuggage extends JPanel {
         txt_brand = new javax.swing.JTextField();
         btn_clear = new javax.swing.JButton();
         lbl_color = new javax.swing.JLabel();
-        logoutJButton = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txt_otherDetails = new javax.swing.JTextArea();
@@ -92,6 +90,9 @@ public class RegisterFoundLuggage extends JPanel {
         txt_material = new javax.swing.JTextField();
         lbl_whenFound = new javax.swing.JLabel();
         cmb_color = new javax.swing.JComboBox();
+        logoutJButton = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
@@ -116,6 +117,7 @@ public class RegisterFoundLuggage extends JPanel {
         panel1.add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, -1));
 
         btn_clear.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
         btn_clear.setText("CLEAR ALL");
         btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -129,22 +131,6 @@ public class RegisterFoundLuggage extends JPanel {
         lbl_color.setForeground(new java.awt.Color(255, 255, 255));
         lbl_color.setText("Color:");
         panel1.add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
-
-        logoutJButton.setText("Logout");
-        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutJButtonActionPerformed(evt);
-            }
-        });
-        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 90, 30));
-
-        backJButton.setText("BACK");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 100, 30));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -208,6 +194,7 @@ public class RegisterFoundLuggage extends JPanel {
         panel1.add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         btn_submit.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btn_submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         btn_submit.setText("SUBMIT");
         btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -257,6 +244,28 @@ public class RegisterFoundLuggage extends JPanel {
         });
         panel1.add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 160, -1));
 
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutJButtonActionPerformed(evt);
+            }
+        });
+        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 110, 40));
+
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
+        backJButton.setText(" BACK");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, 100, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -265,7 +274,7 @@ public class RegisterFoundLuggage extends JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -286,15 +295,6 @@ public class RegisterFoundLuggage extends JPanel {
         txt_material.setText("");
 
     }//GEN-LAST:event_btn_clearActionPerformed
-
-    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.shutdown();
-        FYSApp.logout();
-    }//GEN-LAST:event_logoutJButtonActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new FoundLuggageOverview());
-    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
         // Get de input van de user in de textfields en stopt dit
@@ -387,6 +387,15 @@ public class RegisterFoundLuggage extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_colorActionPerformed
 
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+        Frame.shutdown();
+        FYSApp.logout();
+    }//GEN-LAST:event_logoutJButtonActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
+    }//GEN-LAST:event_backJButtonActionPerformed
+
     public static void setText(Luggage luggage) {
 //        txt_brand.setText(luggage.getBrand());
 //        txt_otherDetails.setText(luggage.getDescription());
@@ -401,6 +410,7 @@ public class RegisterFoundLuggage extends JPanel {
     private static javax.swing.JComboBox cmb_weightClass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_brand;
     private javax.swing.JLabel lbl_code;

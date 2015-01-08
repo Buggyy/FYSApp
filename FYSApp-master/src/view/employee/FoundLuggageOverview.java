@@ -274,10 +274,6 @@ public class FoundLuggageOverview extends JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void matchesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchesJButtonActionPerformed
-
-    }//GEN-LAST:event_matchesJButtonActionPerformed
-
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
@@ -333,8 +329,7 @@ public class FoundLuggageOverview extends JPanel {
             Frame.getInstance().showPanel(new RegisterFoundLuggage());
             RegisterFoundLuggage.setUpdate(id);
             RegisterFoundLuggage.setText(luggage);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null,
                     "Please select a row before editing!",
                     "Error",
@@ -379,6 +374,10 @@ public class FoundLuggageOverview extends JPanel {
             }
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
+
+    private void matchesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchesJButtonActionPerformed
+        Frame.getInstance().showPanel(new MatchingLuggage());
+    }//GEN-LAST:event_matchesJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
