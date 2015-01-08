@@ -1,16 +1,19 @@
 package view.employee;
 
+import com.sun.webkit.dom.EventImpl;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import main.FYSApp;
 import main.Frame;
 import model.Client;
-import model.Luggage;
-import static main.FYSApp.*;
-import model.*;
-import view.LoginScreen;
 
 /**
  *
@@ -28,7 +31,14 @@ public class RegisterLostLuggage extends JPanel {
     public RegisterLostLuggage() {
 
         initComponents();
-        
+
+        try {
+            JFormattedTextField txt_lableCode = new JFormattedTextField();
+            txt_lableCode.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("HHHH-HHHH-HHHH")));
+        } catch (ParseException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
 //        for (int i = 0; i < airportsList.size(); i++) {
 //            cmb_departureFrom.addItem(airportsList);
 //        }
@@ -52,7 +62,6 @@ public class RegisterLostLuggage extends JPanel {
 //        cmb_weightClass.addItem("10kg - 15kg");
 //        cmb_weightClass.addItem("15kg - 20kg");
 //        cmb_weightClass.addItem("20kg+");
-
     }
 
     public static void setUpdate(int id) {
@@ -99,7 +108,6 @@ public class RegisterLostLuggage extends JPanel {
         cmb_weightClass = new javax.swing.JComboBox();
         cmb_color = new javax.swing.JComboBox();
         lbl_color = new javax.swing.JLabel();
-        lbl_brand = new javax.swing.JLabel();
         txt_brand = new javax.swing.JTextField();
         lbl_loadingMessage = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -111,8 +119,10 @@ public class RegisterLostLuggage extends JPanel {
         lbl_material = new javax.swing.JLabel();
         txt_material = new javax.swing.JTextField();
         lbl_lableCode = new javax.swing.JLabel();
-        txt_lableCode = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        lbltest = new javax.swing.JLabel();
+        txt_lableCode = new javax.swing.JTextField();
+        lbl_brand1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -154,7 +164,7 @@ public class RegisterLostLuggage extends JPanel {
                 clearJButtonActionPerformed(evt);
             }
         });
-        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 130, 30));
+        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 130, 30));
 
         lbl_firstname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_firstname.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,7 +307,7 @@ public class RegisterLostLuggage extends JPanel {
                 cmb_weightClassActionPerformed(evt);
             }
         });
-        add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 160, -1));
+        add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 190, -1));
 
         cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_color.addActionListener(new java.awt.event.ActionListener() {
@@ -305,17 +315,12 @@ public class RegisterLostLuggage extends JPanel {
                 cmb_colorActionPerformed(evt);
             }
         });
-        add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 160, -1));
+        add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 190, -1));
 
         lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_color.setForeground(new java.awt.Color(255, 255, 255));
         lbl_color.setText("Color:");
         add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
-
-        lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_brand.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_brand.setText("Brand:");
-        add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
         txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_brand.addActionListener(new java.awt.event.ActionListener() {
@@ -323,20 +328,20 @@ public class RegisterLostLuggage extends JPanel {
                 txt_brandActionPerformed(evt);
             }
         });
-        add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 160, -1));
+        add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 190, -1));
 
         lbl_loadingMessage.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lbl_loadingMessage.setForeground(new java.awt.Color(255, 255, 255));
         lbl_loadingMessage.setText("Loading message..");
-        add(lbl_loadingMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, 10));
-        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 340, 20));
+        add(lbl_loadingMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, 10));
+        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 370, 20));
 
         txt_otherDetails.setColumns(20);
         txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_otherDetails.setRows(5);
         jScrollPane4.setViewportView(txt_otherDetails);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 340, 60));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 370, 60));
 
         lbl_otherDetails.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_otherDetails.setForeground(new java.awt.Color(255, 255, 255));
@@ -349,7 +354,7 @@ public class RegisterLostLuggage extends JPanel {
                 cmb_departureFromActionPerformed(evt);
             }
         });
-        add(cmb_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 160, -1));
+        add(cmb_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 190, -1));
 
         lbl_departureFrom.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_departureFrom.setForeground(new java.awt.Color(255, 255, 255));
@@ -367,24 +372,35 @@ public class RegisterLostLuggage extends JPanel {
                 txt_materialActionPerformed(evt);
             }
         });
-        add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 160, -1));
+        add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 190, -1));
 
         lbl_lableCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_lableCode.setForeground(new java.awt.Color(255, 255, 255));
         lbl_lableCode.setText("lable code");
         add(lbl_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Currently logged in as: [username]");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
+
+        lbltest.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbltest.setForeground(new java.awt.Color(255, 255, 255));
+        lbltest.setText("jLabel2");
+        add(lbltest, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+
         txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_lableCode.setText("1234-5");
         txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_lableCodeActionPerformed(evt);
             }
         });
-        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, -1));
+        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 190, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
+        lbl_brand1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_brand1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_brand1.setText("Brand:");
+        add(lbl_brand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -432,7 +448,7 @@ public class RegisterLostLuggage extends JPanel {
         Luggage luggage = new Luggage(brand, lableCode, material,
                 otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
-        
+
         //  COMMENT
         if (updateMode > 1) {
             FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
@@ -448,8 +464,7 @@ public class RegisterLostLuggage extends JPanel {
         try {
             Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger
-        (RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_submitJButtonActionPerformed
@@ -523,12 +538,12 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_materialActionPerformed
 
     private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_lableCodeActionPerformed
 
-    public static void setText(Luggage luggage) {
-        txt_brand.setText(luggage.getBrand());
-    }
+//    public static void setText(Luggage luggage) {
+//        txt_brand.setText(luggage.getBrand());
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
@@ -540,7 +555,7 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_address;
-    private javax.swing.JLabel lbl_brand;
+    private javax.swing.JLabel lbl_brand1;
     private javax.swing.JLabel lbl_city;
     private javax.swing.JLabel lbl_color;
     private javax.swing.JLabel lbl_country;
@@ -559,6 +574,7 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbl_state;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_zipCode;
+    private javax.swing.JLabel lbltest;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton submitJButton;
     private javax.swing.JTextField txt_address;
