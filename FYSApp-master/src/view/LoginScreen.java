@@ -212,12 +212,14 @@ public class LoginScreen extends javax.swing.JPanel {
                     switch (role) {
                         case "manager":
                             FYSApp.getUserManager().setUserName(userName);
+                            FYSApp.getUserManager().setAirPort();
                             main.FYSApp.getInstance().showPanel(new ManagerLuggageFound());
                             FYSApp.shutdown();
                             main.Frame.ManagerFrame();
                             break;
                         case "employee":
                             FYSApp.getUserManager().setUserName(userName);
+                            FYSApp.getUserManager().setAirPort();
                             main.FYSApp.getInstance().showPanel(new FoundLuggageOverview());
                             
                             FYSApp.shutdown();
@@ -225,6 +227,7 @@ public class LoginScreen extends javax.swing.JPanel {
                             break;
                         case "admin":
                             FYSApp.getUserManager().setUserName(userName);
+                            FYSApp.getUserManager().setAirPort();
                             main.FYSApp.getInstance().showPanel(new AdminLuggageFound());
 
                             FYSApp.shutdown();

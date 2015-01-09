@@ -24,6 +24,7 @@ public class UserManager {
     private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
     private String userName;
+    private String airPort;
 
     public void addUser(User user) {
         String sql = "INSERT INTO user (username,password,role,firstname"
@@ -149,15 +150,40 @@ public class UserManager {
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, userName);
             rs = pst.executeQuery();
-            int exists = rs.getInt(1);
-            if (exists == 1) {
-                userExists = true;
-                return userExists;
+            if (rs.next()) {
+                int exists = rs.getInt(1);
+                if (exists == 1) {
+                    userExists = true;
+                    return userExists;
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
         return userExists;
+    }
+
+    public void setAirPort() {
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT airportname FROM user WHERE username=?";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, userName);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                airPort = rs.getString(1);
+                System.out.println(airPort);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+    }
+
+    public String getAirPort() {
+        return airPort;
     }
 }
