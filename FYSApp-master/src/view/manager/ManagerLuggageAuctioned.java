@@ -101,6 +101,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         auctionedJTable = new javax.swing.JTable();
         searchJButton1 = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 0));
@@ -253,6 +254,14 @@ public class ManagerLuggageAuctioned extends JPanel {
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 410, 30));
 
+        jButton1.setText("Solved");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 140, 40));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 650));
@@ -362,12 +371,17 @@ public class ManagerLuggageAuctioned extends JPanel {
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Frame.getInstance().showPanel(new ManagerLuggageSolved());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JTable auctionedJTable;
     private javax.swing.JButton foundJButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

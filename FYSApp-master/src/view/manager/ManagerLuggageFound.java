@@ -115,6 +115,7 @@ public class ManagerLuggageFound extends JPanel {
         statisticsJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
         btn_print = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -269,6 +270,14 @@ public class ManagerLuggageFound extends JPanel {
         });
         add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 490, 150, 40));
 
+        jButton1.setText("Solved");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 140, 40));
+
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -405,12 +414,17 @@ public class ManagerLuggageFound extends JPanel {
 
     }//GEN-LAST:event_btn_printActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Frame.getInstance().showPanel(new ManagerLuggageSolved());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JButton btn_print;
     private javax.swing.JButton foundJButton;
     private javax.swing.JTable foundLuggageJTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
