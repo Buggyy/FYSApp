@@ -29,7 +29,7 @@ import main.Frame;
  */
 public class ManagerLuggageSolved extends javax.swing.JPanel {
     
-    // Always declare first..!
+     // Always declare first..!
     DatabaseManager dbmanager;
     Connection conn = null;
     ResultSet rs = null;
@@ -37,12 +37,52 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     public String input;
     ResultSetMetaData rsmetadata = null;
     public int columns = 0;
-    
-    /**
-     * Creates new form ManagerLuggageSolved
-     */
-    public ManagerLuggageSolved() {
+
+    public ManagerLuggageSolved() throws ClassNotFoundException, SQLException {
         initComponents();
+        getSolvedLuggage();
+    }
+
+    /**
+     * Creates new form AdminSolvedLuggage
+     */
+    private void getSolvedLuggage() throws ClassNotFoundException, SQLException {
+        rs = FYSApp.getTableManager().getManagerSolvedOverview();
+        try {
+            updateTable(rs);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+
+        rsmetadata = rs.getMetaData();
+
+        columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        auctionedJTable.setModel(dtm);
+        auctionedJTable.repaint();
     }
 
     /**
@@ -269,7 +309,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
             // TODO add your handling code here:
             Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
@@ -278,7 +318,13 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
@@ -293,7 +339,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = FYSApp.getSearchManager().searchTableAuctioned(input);
+                rs = FYSApp.getSearchManager().searchTableSolved(input); // nog maken
 
                 if (input == null) {
                     auctionedJTable.repaint();
@@ -309,7 +355,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
                 }
 
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
@@ -321,7 +367,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
             input = searchJTextField.getText();
-            rs = FYSApp.getSearchManager().searchTableAuctioned(input);
+            rs = FYSApp.getSearchManager().searchTableSolved(input);
 
             if (input == null) {
                 auctionedJTable.repaint();
@@ -337,7 +383,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_searchJButton1ActionPerformed
@@ -357,43 +403,5 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     private javax.swing.JButton statisticsJButton;
     // End of variables declaration//GEN-END:variables
     
-    // nog invullen
-    private void getSolvedLuggage() throws ClassNotFoundException, SQLException {
-        rs = FYSApp.getTableManager().getManagerAuctionedOverview();
-        try {
-            updateTable(rs);
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    // nog invullen
-     public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
-
-        rsmetadata = rs.getMetaData();
-
-        columns = rsmetadata.getColumnCount();
-
-        DefaultTableModel dtm = new DefaultTableModel();
-
-        Vector columns_name = new Vector();
-        Vector data_rows = new Vector();
-
-        for (int i = 1; i < columns; i++) {
-            columns_name.addElement(rsmetadata.getColumnName(i));
-        }
-        dtm.setColumnIdentifiers(columns_name);
-
-        while (rs.next()) {
-
-            data_rows = new Vector();
-
-            for (int j = 1; j < columns; j++) {
-                data_rows.addElement(rs.getString(j));
-            }
-            dtm.addRow(data_rows);
-        }
-
-        auctionedJTable.setModel(dtm);
-        auctionedJTable.repaint();
-    }
+    
 }

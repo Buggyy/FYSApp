@@ -139,7 +139,7 @@ public class LuggageManager {
      * @param id of the luggage
      *
      */
-    public void updateLostLuggage(Luggage luggage, int id) {
+    public void updateLuggage(Luggage luggage, int id) {
         String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
                 + " color=?, material=?, otherDetails=?, weightClass=?,"
                 + "status=?, lastupdated=?, departureFrom=? WHERE luggageid=?";
@@ -154,7 +154,7 @@ public class LuggageManager {
             pst.setString(4, luggage.getMaterial());            //  Material
             pst.setString(5, luggage.getOtherDetails());        //  Other Details
             pst.setString(6, luggage.getWeightClass());         //  Weightclass
-            pst.setString(7, "Lost");                           //  Status
+            pst.setString(7, luggage.getStatus());              //  Status
             pst.setString(8, FYSApp.getDate());                 //  Date of creation
             pst.setString(9, luggage.getDepartureFrom());       //  Client Departure
             //  pst.setString(9, user.getAirport());            //  Airport from user
@@ -171,7 +171,7 @@ public class LuggageManager {
     }
 
     /**
-     * @description fasfsa
+     * @description 
      * @param luggage
      * @param id
      */

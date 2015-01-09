@@ -150,6 +150,39 @@ public class SearchManager {
         dbManager.closeConnection();
         return rs;
     }
+    
+    public ResultSet searchTableSolved(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'solved' AND (luggageid LIKE ? "
+                    + " created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? "
+                    + "OR airportname LIKE ?))";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, "%" + input + "%");
+            pst.setString(2, "%" + input + "%");
+            pst.setString(3, "%" + input + "%");
+            pst.setString(4, "%" + input + "%");
+            pst.setString(5, "%" + input + "%");
+            pst.setString(6, "%" + input + "%");
+            pst.setString(7, "%" + input + "%");
+
+            rs = pst.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
 
     /**
      *
