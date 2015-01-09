@@ -1,6 +1,9 @@
 package view.employee;
 
 import com.sun.webkit.dom.EventImpl;
+import java.awt.Font;
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -10,8 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import static jdk.nashorn.internal.runtime.JSType.isNumber;
 import main.FYSApp;
 import main.Frame;
 import model.Client;
@@ -34,36 +40,31 @@ public class RegisterLostLuggage extends JPanel {
 
         initComponents();
 
-        try {
-            JFormattedTextField txt_lableCode = new JFormattedTextField();
-            txt_lableCode.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("HHH-HHH-HHH")));
+        //        for (int i = 0; i < airportsList.size(); i++) {
+        //            cmb_departureFrom.addItem(airportsList);
+        //        }
+        //
+        //  These items should be stored in an array
+        cmb_color.addItem("other..");
+        cmb_color.addItem("red");
+        cmb_color.addItem("blue");
+        cmb_color.addItem("cyan");
+        cmb_color.addItem("yellow");
+        cmb_color.addItem("pink");
+        cmb_color.addItem("magenta");
+        cmb_color.addItem("green");
+        cmb_color.addItem("black");
+        cmb_color.addItem("white");
+        cmb_color.addItem("orange");
+        cmb_color.addItem("grey");
+        cmb_color.addItem("brown");
 
-//        for (int i = 0; i < airportsList.size(); i++) {
-//            cmb_departureFrom.addItem(airportsList);
-//        }
-//
-//        //  These items should be stored in an array
-//        cmb_color.addItem("red");
-//        cmb_color.addItem("blue");
-//        cmb_color.addItem("yellow");
-//        cmb_color.addItem("pink");
-//        cmb_color.addItem("purple");
-//        cmb_color.addItem("green");
-//        cmb_color.addItem("black");
-//        cmb_color.addItem("white");
-//        cmb_color.addItem("orange");
-//        cmb_color.addItem("grey");
-//        cmb_color.addItem("brown");
-//        cmb_color.addItem("other..");
-//
-//        cmb_weightClass.addItem("0kg - 5kg");
-//        cmb_weightClass.addItem("5kg - 10kg");
-//        cmb_weightClass.addItem("10kg - 15kg");
-//        cmb_weightClass.addItem("15kg - 20kg");
-//        cmb_weightClass.addItem("20kg+");
-        } catch (ParseException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        cmb_weightClass.addItem("other..");
+        cmb_weightClass.addItem("0kg - 5kg");
+        cmb_weightClass.addItem("5kg - 10kg");
+        cmb_weightClass.addItem("10kg - 15kg");
+        cmb_weightClass.addItem("15kg - 20kg");
+        cmb_weightClass.addItem("20kg+");
     }
 
     public static void setUpdate(int id) {
@@ -81,376 +82,140 @@ public class RegisterLostLuggage extends JPanel {
     private void initComponents() {
 
         canvas1 = new java.awt.Canvas();
-        lbl_rightTitle = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        backJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
-        lbl_leftTitle = new javax.swing.JLabel();
-        submitJButton = new javax.swing.JButton();
-        clearJButton = new javax.swing.JButton();
-        lbl_firstname = new javax.swing.JLabel();
-        txt_firstname = new javax.swing.JTextField();
-        txt_middlename = new javax.swing.JTextField();
-        lbl_middlename = new javax.swing.JLabel();
-        txt_lastName = new javax.swing.JTextField();
-        lbl_lastname = new javax.swing.JLabel();
-        txt_phoneNumber = new javax.swing.JTextField();
-        lbl_phoneNumber = new javax.swing.JLabel();
-        lbl_email = new javax.swing.JLabel();
-        txt_city = new javax.swing.JTextField();
-        lbl_address = new javax.swing.JLabel();
-        lbl_city = new javax.swing.JLabel();
-        txt_address = new javax.swing.JTextField();
-        lbl_state = new javax.swing.JLabel();
-        lbl_zipCode = new javax.swing.JLabel();
-        txt_email = new javax.swing.JTextField();
-        txt_zipcode = new javax.swing.JTextField();
-        lbldefaultvaluezipcode = new javax.swing.JLabel();
-        txt_state = new javax.swing.JTextField();
-        lbl_country = new javax.swing.JLabel();
-        txt_country = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        lbl_color = new javax.swing.JLabel();
+        txt_brand = new javax.swing.JTextField();
+        cmb_departureFrom = new javax.swing.JComboBox();
+        lbl_departureFrom = new javax.swing.JLabel();
+        lbl_material1 = new javax.swing.JLabel();
+        txt_material = new javax.swing.JTextField();
+        lbl_brand1 = new javax.swing.JLabel();
+        lbl_lableCode1 = new javax.swing.JLabel();
+        txt_lableCode = new javax.swing.JTextField();
         lbl_weightClass = new javax.swing.JLabel();
         cmb_weightClass = new javax.swing.JComboBox();
         cmb_color = new javax.swing.JComboBox();
-        lbl_color = new javax.swing.JLabel();
-        txt_brand = new javax.swing.JTextField();
-        lbl_loadingMessage = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        lbl_otherDetails = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txt_otherDetails = new javax.swing.JTextArea();
-        lbl_otherDetails = new javax.swing.JLabel();
-        cmb_departureFrom = new javax.swing.JComboBox();
-        lbl_departureFrom = new javax.swing.JLabel();
-        lbl_material = new javax.swing.JLabel();
-        txt_material = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        lbl_brand1 = new javax.swing.JLabel();
-        lbl_lableCode1 = new javax.swing.JLabel();
         lbldefaultvaluemiddlename = new javax.swing.JLabel();
-        lbldefaultvaluecode = new javax.swing.JLabel();
-        txt_lableCode = new javax.swing.JTextField();
         lbldefaultvalueemail = new javax.swing.JLabel();
+        lbldefaultvaluezipcode = new javax.swing.JLabel();
+        lbldefaultvaluecode = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btn_clear = new javax.swing.JButton();
+        btn_submit1 = new javax.swing.JButton();
+        lbl_state = new javax.swing.JLabel();
+        lbl_middlename = new javax.swing.JLabel();
+        txt_email = new javax.swing.JTextField();
+        txt_phoneNumber = new javax.swing.JTextField();
+        txt_address = new javax.swing.JTextField();
+        lbl_lastname = new javax.swing.JLabel();
+        lbl_email = new javax.swing.JLabel();
+        lbl_firstname = new javax.swing.JLabel();
+        lbl_country = new javax.swing.JLabel();
+        lbl_phoneNumber = new javax.swing.JLabel();
+        txt_firstname = new javax.swing.JTextField();
+        txt_lastName = new javax.swing.JTextField();
+        txt_state = new javax.swing.JTextField();
+        txt_city = new javax.swing.JTextField();
+        txt_zipcode = new javax.swing.JTextField();
+        lbl_city = new javax.swing.JLabel();
+        lbl_zipCode = new javax.swing.JLabel();
+        lbl_address = new javax.swing.JLabel();
+        txt_middlename = new javax.swing.JTextField();
+        txt_country = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(156, 10, 13));
+        setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_rightTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        lbl_rightTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_rightTitle.setText("Contact details");
-        add(lbl_rightTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 230, 30));
+        jPanel2.setBackground(new java.awt.Color(255, 241, 234));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
+        backJButton.setText(" ");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
-        logoutJButton.setText("Logout");
+        logoutJButton.setText(" ");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
 
-        lbl_leftTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        lbl_leftTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_leftTitle.setText("Register Lost Luggage");
-        add(lbl_leftTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 360, 30));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(backJButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoutJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(backJButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
-        submitJButton.setText("SUBMIT");
-        submitJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitJButtonActionPerformed(evt);
-            }
-        });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 130, 30));
+        jPanel3.setBackground(new java.awt.Color(255, 241, 234));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
-        clearJButton.setText("CANCEL");
-        clearJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearJButtonActionPerformed(evt);
-            }
-        });
-        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 130, 30));
+        lbl_color.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_color.setText("Color");
 
-        lbl_firstname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_firstname.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_firstname.setText("Firstname");
-        add(lbl_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
-
-        txt_firstname.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_firstname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_firstnameActionPerformed(evt);
-            }
-        });
-        add(txt_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 190, -1));
-
-        txt_middlename.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_middlename.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_middlenameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_middlenameFocusLost(evt);
-            }
-        });
-        txt_middlename.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_middlenameActionPerformed(evt);
-            }
-        });
-        txt_middlename.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_middlenameKeyPressed(evt);
-            }
-        });
-        add(txt_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, 190, -1));
-
-        lbl_middlename.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_middlename.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_middlename.setText("Middlename");
-        add(lbl_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
-
-        txt_lastName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_lastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_lastNameActionPerformed(evt);
-            }
-        });
-        add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 190, -1));
-
-        lbl_lastname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_lastname.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_lastname.setText("Lastname");
-        add(lbl_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, -1, -1));
-
-        txt_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_phoneNumberActionPerformed(evt);
-            }
-        });
-        add(txt_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 190, -1));
-
-        lbl_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_phoneNumber.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_phoneNumber.setText("Phonenumber");
-        add(lbl_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, -1, -1));
-
-        lbl_email.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_email.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_email.setText("Email");
-        add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
-
-        txt_city.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_city.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cityActionPerformed(evt);
-            }
-        });
-        add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 190, 20));
-
-        lbl_address.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_address.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_address.setText("Address");
-        add(lbl_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, 20));
-
-        lbl_city.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_city.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_city.setText("City");
-        add(lbl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, -1, 20));
-
-        txt_address.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_addressActionPerformed(evt);
-            }
-        });
-        add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 190, 20));
-
-        lbl_state.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_state.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_state.setText("State");
-        add(lbl_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, -1, 20));
-
-        lbl_zipCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_zipCode.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_zipCode.setText("Zipcode");
-        add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, -1, 20));
-
-        txt_email.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_emailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_emailFocusLost(evt);
-            }
-        });
-        txt_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_emailActionPerformed(evt);
-            }
-        });
-        txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_emailKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_emailKeyTyped(evt);
-            }
-        });
-        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 190, -1));
-
-        txt_zipcode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_zipcode.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_zipcodeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_zipcodeFocusLost(evt);
-            }
-        });
-        txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_zipcodeActionPerformed(evt);
-            }
-        });
-        txt_zipcode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_zipcodeKeyPressed(evt);
-            }
-        });
-        add(txt_zipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 110, 20));
-
-        lbldefaultvaluezipcode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluezipcode.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluezipcode.setText("1234 AB");
-        add(lbldefaultvaluezipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 490, -1, 40));
-
-        txt_state.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_state.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_stateActionPerformed(evt);
-            }
-        });
-        add(txt_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 190, 20));
-
-        lbl_country.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_country.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_country.setText("Country ");
-        add(lbl_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, 20));
-
-        txt_country.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_country.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_countryActionPerformed(evt);
-            }
-        });
-        add(txt_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, 190, 20));
-
-        lbl_weightClass.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_weightClass.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_weightClass.setText("Weight class:");
-        add(lbl_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
-
-        cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_weightClassActionPerformed(evt);
-            }
-        });
-        add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 190, -1));
-
-        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmb_color.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_colorActionPerformed(evt);
-            }
-        });
-        add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 190, -1));
-
-        lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_color.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_color.setText("Color:");
-        add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
-
-        txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_brand.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_brand.setName("txtBrand"); // NOI18N
         txt_brand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_brandActionPerformed(evt);
             }
         });
-        add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 190, -1));
 
-        lbl_loadingMessage.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        lbl_loadingMessage.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_loadingMessage.setText("Loading message..");
-        add(lbl_loadingMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, 10));
-        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 370, 20));
-
-        txt_otherDetails.setColumns(20);
-        txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txt_otherDetails.setRows(5);
-        jScrollPane4.setViewportView(txt_otherDetails);
-
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 370, 60));
-
-        lbl_otherDetails.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_otherDetails.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_otherDetails.setText("Other details:");
-        add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
-
-        cmb_departureFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_departureFrom.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmb_departureFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_departureFromActionPerformed(evt);
             }
         });
-        add(cmb_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 190, -1));
 
-        lbl_departureFrom.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_departureFrom.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_departureFrom.setText("Departure from:");
-        add(lbl_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
+        lbl_departureFrom.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_departureFrom.setText("Departure from");
 
-        lbl_material.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_material.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_material.setText("Material:");
-        add(lbl_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
+        lbl_material1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_material1.setText("Material");
 
-        txt_material.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_material.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_material.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_materialActionPerformed(evt);
             }
         });
-        add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 190, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
+        lbl_brand1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_brand1.setText("Brand");
 
-        lbl_brand1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_brand1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_brand1.setText("Brand:");
-        add(lbl_brand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+        lbl_lableCode1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_lableCode1.setText("Lable Code");
 
-        lbl_lableCode1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_lableCode1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_lableCode1.setText("lable code");
-        add(lbl_lableCode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
-
-        lbldefaultvaluemiddlename.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluemiddlename.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluemiddlename.setText("optional");
-        add(lbldefaultvaluemiddlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 140, -1, 40));
-
-        lbldefaultvaluecode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluecode.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluecode.setText("123-456-789");
-        add(lbldefaultvaluecode, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, 40));
-
-        txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_lableCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_lableCode.setText(" ");
         txt_lableCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -470,21 +235,558 @@ public class RegisterLostLuggage extends JPanel {
                 txt_lableCodeKeyPressed(evt);
             }
         });
-        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 190, 20));
+
+        lbl_weightClass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_weightClass.setText("Weight class");
+
+        cmb_weightClass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_weightClassActionPerformed(evt);
+            }
+        });
+
+        cmb_color.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmb_color.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_colorActionPerformed(evt);
+            }
+        });
+
+        lbl_otherDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_otherDetails.setText("Other details");
+
+        txt_otherDetails.setColumns(20);
+        txt_otherDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_otherDetails.setRows(5);
+        jScrollPane4.setViewportView(txt_otherDetails);
+
+        lbldefaultvaluemiddlename.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluemiddlename.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluemiddlename.setText("optional");
 
         lbldefaultvalueemail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lbldefaultvalueemail.setForeground(new java.awt.Color(204, 204, 204));
         lbldefaultvalueemail.setText("example@email.com");
-        add(lbldefaultvalueemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, -1, 40));
+
+        lbldefaultvaluezipcode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluezipcode.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluezipcode.setText("1234 AB");
+
+        lbldefaultvaluecode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluecode.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluecode.setText("123A-456B-789C");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(lbldefaultvalueemail)
+                                .addGap(36, 36, 36)
+                                .addComponent(lbldefaultvaluecode))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane4)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_departureFrom)
+                                        .addComponent(lbl_material1)
+                                        .addComponent(lbl_lableCode1)
+                                        .addComponent(lbl_weightClass)
+                                        .addComponent(lbl_color)
+                                        .addComponent(lbl_brand1)
+                                        .addComponent(lbl_otherDetails))
+                                    .addGap(19, 19, 19)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(cmb_departureFrom, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cmb_weightClass, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(cmb_color, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txt_brand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(38, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lbldefaultvaluemiddlename)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbldefaultvaluezipcode)
+                        .addGap(70, 70, 70))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_brand1)
+                    .addComponent(txt_brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_color)
+                    .addComponent(cmb_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_weightClass)
+                    .addComponent(cmb_weightClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_departureFrom)
+                    .addComponent(cmb_departureFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_material1)
+                    .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lableCode1)
+                    .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(lbl_otherDetails)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbldefaultvaluemiddlename, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbldefaultvaluezipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbldefaultvalueemail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbldefaultvaluecode, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("CONTACT DETAILS");
+
+        jPanel4.setBackground(new java.awt.Color(255, 241, 234));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btn_clear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btn_clear.setText("CLEAR ALL");
+        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
+
+        btn_submit1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_submit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
+        btn_submit1.setText("SUBMIT");
+        btn_submit1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_submit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_submit1ActionPerformed(evt);
+            }
+        });
+
+        lbl_state.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_state.setText("State");
+
+        lbl_middlename.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_middlename.setText("Middlename");
+
+        txt_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_email.setText(" ");
+        txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_emailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_emailFocusLost(evt);
+            }
+        });
+        txt_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emailActionPerformed(evt);
+            }
+        });
+        txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emailKeyPressed(evt);
+            }
+        });
+
+        txt_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_phoneNumberActionPerformed(evt);
+            }
+        });
+        txt_phoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_phoneNumberKeyTyped(evt);
+            }
+        });
+
+        txt_address.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_addressActionPerformed(evt);
+            }
+        });
+
+        lbl_lastname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_lastname.setText("Lastname");
+
+        lbl_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_email.setText("Email");
+
+        lbl_firstname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_firstname.setText("Firstname");
+
+        lbl_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_country.setText("Country ");
+
+        lbl_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_phoneNumber.setText("Phonenumber");
+
+        txt_firstname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_firstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_firstnameActionPerformed(evt);
+            }
+        });
+
+        txt_lastName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_lastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lastNameActionPerformed(evt);
+            }
+        });
+
+        txt_state.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_state.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_stateActionPerformed(evt);
+            }
+        });
+
+        txt_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_city.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cityActionPerformed(evt);
+            }
+        });
+
+        txt_zipcode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_zipcode.setText(" ");
+        txt_zipcode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_zipcodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_zipcodeFocusLost(evt);
+            }
+        });
+        txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_zipcodeActionPerformed(evt);
+            }
+        });
+        txt_zipcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_zipcodeKeyPressed(evt);
+            }
+        });
+
+        lbl_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_city.setText("City");
+
+        lbl_zipCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_zipCode.setText("Zipcode");
+
+        lbl_address.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_address.setText("Address");
+
+        txt_middlename.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_middlename.setText(" ");
+        txt_middlename.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_middlenameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_middlenameFocusLost(evt);
+            }
+        });
+        txt_middlename.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_middlenameActionPerformed(evt);
+            }
+        });
+        txt_middlename.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_middlenameKeyPressed(evt);
+            }
+        });
+
+        txt_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_country.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_countryActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_lastname)
+                    .addComponent(lbl_phoneNumber)
+                    .addComponent(lbl_email)
+                    .addComponent(lbl_country)
+                    .addComponent(lbl_address)
+                    .addComponent(lbl_city)
+                    .addComponent(lbl_state)
+                    .addComponent(lbl_zipCode)
+                    .addComponent(lbl_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_middlename)
+                    .addComponent(btn_submit1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_firstname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_lastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_phoneNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_country, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_city, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_state, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_zipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_clear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_middlename, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_firstname)
+                    .addComponent(lbl_firstname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_middlename)
+                    .addComponent(txt_middlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lastname)
+                    .addComponent(txt_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_phoneNumber)
+                    .addComponent(txt_phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_email)
+                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_country, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_address, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_city, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_state, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_zipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_submit1))
+                .addContainerGap())
+        );
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("REGISTER LOST LUGGAGE");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(174, 174, 174))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
+    }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
+    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_brandActionPerformed
 
-    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+    private void cmb_departureFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureFromActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_departureFromActionPerformed
+
+    private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_materialActionPerformed
+
+    private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
+        lbldefaultvaluecode.setText("");
+    }//GEN-LAST:event_txt_lableCodeFocusGained
+
+    private void txt_lableCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusLost
+        lbldefaultvaluecode.setText("123A-456B-789C");
+    }//GEN-LAST:event_txt_lableCodeFocusLost
+
+    private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lableCodeActionPerformed
+
+    private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
+        lbldefaultvaluecode.setText("");
+    }//GEN-LAST:event_txt_lableCodeKeyPressed
+
+    private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_weightClassActionPerformed
+
+    private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_colorActionPerformed
+
+    private void txt_countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_countryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_countryActionPerformed
+
+    private void txt_middlenameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middlenameKeyPressed
+        lbldefaultvaluemiddlename.setText("");
+    }//GEN-LAST:event_txt_middlenameKeyPressed
+
+    private void txt_middlenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middlenameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_middlenameActionPerformed
+
+    private void txt_middlenameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusLost
+        lbldefaultvaluemiddlename.setText("optional");
+    }//GEN-LAST:event_txt_middlenameFocusLost
+
+    private void txt_middlenameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusGained
+        lbldefaultvaluemiddlename.setText("");
+    }//GEN-LAST:event_txt_middlenameFocusGained
+
+    private void txt_zipcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_zipcodeKeyPressed
+        lbldefaultvaluezipcode.setText("");
+    }//GEN-LAST:event_txt_zipcodeKeyPressed
+
+    private void txt_zipcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipcodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_zipcodeActionPerformed
+
+    private void txt_zipcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusLost
+        lbldefaultvaluezipcode.setText("1234 AB");
+    }//GEN-LAST:event_txt_zipcodeFocusLost
+
+    private void txt_zipcodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusGained
+        lbldefaultvaluezipcode.setText("");
+    }//GEN-LAST:event_txt_zipcodeFocusGained
+
+    private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cityActionPerformed
+
+    private void txt_stateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_stateActionPerformed
+
+    private void txt_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lastNameActionPerformed
+
+    private void txt_firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_firstnameActionPerformed
+
+    private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_addressActionPerformed
+
+    private void txt_phoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_phoneNumberKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+            //  A sound.. lol
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_phoneNumberKeyTyped
+
+    private void txt_phoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_phoneNumberActionPerformed
+
+    private void txt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyPressed
+        lbldefaultvalueemail.setText("");
+    }//GEN-LAST:event_txt_emailKeyPressed
+
+    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
+        //
+    }//GEN-LAST:event_txt_emailActionPerformed
+
+    private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
+        lbldefaultvalueemail.setText("example@email.com");
+    }//GEN-LAST:event_txt_emailFocusLost
+
+    private void txt_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusGained
+        lbldefaultvalueemail.setText("");
+    }//GEN-LAST:event_txt_emailFocusGained
+
+    private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
 
         //  Create client
         String firstName = txt_firstname.getText();
@@ -500,6 +802,10 @@ public class RegisterLostLuggage extends JPanel {
         String state = txt_state.getText();
         String zipCode = txt_zipcode.getText();
 
+        //        if (areAllNotEmpty(firstName, middleName, lastName, phone, email,
+        //                country, address, city, state, zipCode)) {
+        //            JOptionPane.showMessageDialog(null, "No data entered");
+        //        }
         //  Calling client constructor from the client class
         Client newClient = new Client(firstName, middleName, lastName, phone,
                 email, country, address, city, state, zipCode);
@@ -513,7 +819,7 @@ public class RegisterLostLuggage extends JPanel {
         String departureFrom
                 = String.valueOf(cmb_departureFrom.getSelectedItem());
         String material = txt_material.getText();
-        String lableCode = txt_lableCode.getText();
+        String lableCode = txt_email.getText();
         String otherDetails = txt_otherDetails.getText();
         String status = "Lost";
         String whenFound = "";
@@ -524,166 +830,51 @@ public class RegisterLostLuggage extends JPanel {
                 otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
 
-        //  COMMENT
-        if (updateMode > 1) {
-            FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
-        } else {
-            //  If this is not the case, then we call the addLuggage Query +
-            //  the add client luggage
-            FYSApp.getClientManager().addClient(newClient);
-            int id = FYSApp.getClientManager().getClientid();
-            FYSApp.getLuggageManager().addLostLuggage(luggage, id);
-        }
-
-        //  COMMENT
         try {
+            if (updateMode > 1) {
+                FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
+            } else {
+                //  Show user succes message
+                JOptionPane.showMessageDialog(null, "Information is saved");
+                //  If this is not the case, then we call the addLuggage Query +
+                //  the add client luggage
+                FYSApp.getClientManager().addClient(newClient);
+                int id = FYSApp.getClientManager().getClientid();
+                FYSApp.getLuggageManager().addLostLuggage(luggage, id);
+            }
+
             Frame.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
+    }//GEN-LAST:event_btn_submit1ActionPerformed
 
-    }//GEN-LAST:event_submitJButtonActionPerformed
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        //clear all the fields
+        txt_brand.setText("");
+        cmb_color.setSelectedIndex(0);
+        cmb_weightClass.setSelectedIndex(0);
 
-    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
-        try {
-            Frame.getInstance().showPanel(new LostLuggageOverview());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_clearJButtonActionPerformed
-
-    private void txt_firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_firstnameActionPerformed
-
-    private void txt_middlenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middlenameActionPerformed
-        if (Integer.parseInt(txt_middlename.getText()) <= 0) {
-            JOptionPane.showMessageDialog(null,
-                    "Error: Please enter number bigger than 0", "Error Massage",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_txt_middlenameActionPerformed
-
-    private void txt_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_lastNameActionPerformed
-
-    private void txt_phoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_phoneNumberActionPerformed
-
-    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emailActionPerformed
-
-    private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cityActionPerformed
-
-    private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_addressActionPerformed
-
-    private void txt_zipcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipcodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_zipcodeActionPerformed
-
-    private void txt_stateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_stateActionPerformed
-
-    private void txt_countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_countryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_countryActionPerformed
-
-    private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_weightClassActionPerformed
-
-    private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_colorActionPerformed
-
-    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_brandActionPerformed
-
-    private void cmb_departureFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureFromActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_departureFromActionPerformed
-
-    private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_materialActionPerformed
-
-    private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
-
-    }//GEN-LAST:event_txt_lableCodeActionPerformed
-
-    private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
-        lbldefaultvaluecode.setText("");
-    }//GEN-LAST:event_txt_lableCodeKeyPressed
-
-    private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
-        lbldefaultvaluecode.setText("");
-    }//GEN-LAST:event_txt_lableCodeFocusGained
-
-    private void txt_lableCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusLost
-        lbldefaultvaluecode.setText("123-456-789");
-    }//GEN-LAST:event_txt_lableCodeFocusLost
-
-    private void txt_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusGained
-        lbldefaultvalueemail.setText("");
-    }//GEN-LAST:event_txt_emailFocusGained
-
-    private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
-        lbldefaultvalueemail.setText("example@email.com");
-    }//GEN-LAST:event_txt_emailFocusLost
-
-    private void txt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyPressed
-        lbldefaultvalueemail.setText("");
-    }//GEN-LAST:event_txt_emailKeyPressed
-
-    private void txt_zipcodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusGained
-        lbldefaultvaluezipcode.setText("");
-    }//GEN-LAST:event_txt_zipcodeFocusGained
-
-    private void txt_zipcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusLost
-        lbldefaultvaluezipcode.setText("1234 AB");
-    }//GEN-LAST:event_txt_zipcodeFocusLost
-
-    private void txt_zipcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_zipcodeKeyPressed
-        lbldefaultvaluezipcode.setText("");
-    }//GEN-LAST:event_txt_zipcodeKeyPressed
-
-    private void txt_middlenameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middlenameKeyPressed
-        lbldefaultvaluemiddlename.setText("");
-    }//GEN-LAST:event_txt_middlenameKeyPressed
-
-    private void txt_middlenameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusLost
-        lbldefaultvaluemiddlename.setText("optional");
-    }//GEN-LAST:event_txt_middlenameFocusLost
-
-    private void txt_middlenameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusGained
-        lbldefaultvaluemiddlename.setText("");
-    }//GEN-LAST:event_txt_middlenameFocusGained
-
-    private void txt_emailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyTyped
-        lbldefaultvalueemail.setText("");
-    }//GEN-LAST:event_txt_emailKeyTyped
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     public static void setText(Luggage luggage) {
         txt_brand.setText(luggage.getBrand());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_submit1;
     private java.awt.Canvas canvas1;
-    private javax.swing.JButton clearJButton;
     private static javax.swing.JComboBox cmb_color;
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_weightClass;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_address;
     private javax.swing.JLabel lbl_brand1;
@@ -695,13 +886,10 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbl_firstname;
     private javax.swing.JLabel lbl_lableCode1;
     private javax.swing.JLabel lbl_lastname;
-    private javax.swing.JLabel lbl_leftTitle;
-    private javax.swing.JLabel lbl_loadingMessage;
-    private javax.swing.JLabel lbl_material;
+    private javax.swing.JLabel lbl_material1;
     private javax.swing.JLabel lbl_middlename;
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_phoneNumber;
-    private javax.swing.JLabel lbl_rightTitle;
     private javax.swing.JLabel lbl_state;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_zipCode;
@@ -710,20 +898,19 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbldefaultvaluemiddlename;
     private javax.swing.JLabel lbldefaultvaluezipcode;
     private javax.swing.JButton logoutJButton;
-    private javax.swing.JButton submitJButton;
     private javax.swing.JTextField txt_address;
     private static javax.swing.JTextField txt_brand;
     private javax.swing.JTextField txt_city;
     private javax.swing.JTextField txt_country;
-    private javax.swing.JTextField txt_email;
+    private static javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_firstname;
     private static javax.swing.JTextField txt_lableCode;
     private javax.swing.JTextField txt_lastName;
     private static javax.swing.JTextField txt_material;
-    private javax.swing.JTextField txt_middlename;
+    private static javax.swing.JTextField txt_middlename;
     private static javax.swing.JTextArea txt_otherDetails;
     private javax.swing.JTextField txt_phoneNumber;
     private javax.swing.JTextField txt_state;
-    private javax.swing.JTextField txt_zipcode;
+    private static javax.swing.JTextField txt_zipcode;
     // End of variables declaration//GEN-END:variables
 }

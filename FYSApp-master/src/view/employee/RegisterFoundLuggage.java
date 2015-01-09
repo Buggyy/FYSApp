@@ -1,15 +1,12 @@
 package view.employee;
 
-import java.awt.event.ActionEvent;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import main.FYSApp;
 import static main.FYSApp.airportsList;
 import main.Frame;
 import model.Luggage;
-import view.LoginScreen;
 
 /**
  *
@@ -19,37 +16,35 @@ public class RegisterFoundLuggage extends JPanel {
 
     private static int updateMode = 0;
     private static int luggageid;
-
+    
     /**
      * Creates new form AddUser
      */
     public RegisterFoundLuggage() {
         initComponents();
 
-//        for (int i = 0; i < airportsList.size(); i++) {
-//            cmb_foundAt.addItem(airportsList);
-//        }
-
-        //  These items should be stored in an array
+       
+//  These items should be stored in an array
+        cmb_color.addItem("other..");
         cmb_color.addItem("red");
         cmb_color.addItem("blue");
+        cmb_color.addItem("cyan");
         cmb_color.addItem("yellow");
-//        cmb_color.addItem("pink");
-//        cmb_color.addItem("purple");
-//        cmb_color.addItem("green");
-//        cmb_color.addItem("black");
-//        cmb_color.addItem("white");
-//        cmb_color.addItem("orange");
-//        cmb_color.addItem("grey");
-//        cmb_color.addItem("brown");
-//        cmb_color.addItem("other..");
-        
-//
-//        cmb_weightClass.addItem("0kg - 5kg");
-//        cmb_weightClass.addItem("5kg - 10kg");
-//        cmb_weightClass.addItem("10kg - 15kg");
-//        cmb_weightClass.addItem("15kg - 20kg");
-//        cmb_weightClass.addItem("20kg+");
+        cmb_color.addItem("pink");
+        cmb_color.addItem("magenta");
+        cmb_color.addItem("green");
+        cmb_color.addItem("black");
+        cmb_color.addItem("white");
+        cmb_color.addItem("orange");
+        cmb_color.addItem("grey");
+        cmb_color.addItem("brown");
+
+        cmb_weightClass.addItem("other..");
+        cmb_weightClass.addItem("0kg - 5kg");
+        cmb_weightClass.addItem("5kg - 10kg");
+        cmb_weightClass.addItem("10kg - 15kg");
+        cmb_weightClass.addItem("15kg - 20kg");
+        cmb_weightClass.addItem("20kg+");
     }
 
     // this method does not belong here..
@@ -68,132 +63,126 @@ public class RegisterFoundLuggage extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel1 = new java.awt.Panel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        txt_material = new javax.swing.JTextField();
         txt_brand = new javax.swing.JTextField();
-        btn_clear = new javax.swing.JButton();
+        lbl_whenFound = new javax.swing.JLabel();
         lbl_color = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txt_otherDetails = new javax.swing.JTextArea();
+        cmb_color = new javax.swing.JComboBox();
         lbl_brand = new javax.swing.JLabel();
+        dc_whenFound = new com.toedter.calendar.JDateChooser();
         lbl_weightClass = new javax.swing.JLabel();
         cmb_weightClass = new javax.swing.JComboBox();
         lbl_foundAt = new javax.swing.JLabel();
         cmb_foundAt = new javax.swing.JComboBox();
-        txt_whenFound = new javax.swing.JTextField();
         lbl_material = new javax.swing.JLabel();
-        lbl_otherDetails = new javax.swing.JLabel();
-        btn_submit = new javax.swing.JButton();
         lbl_code = new javax.swing.JLabel();
         txt_lableCode = new javax.swing.JTextField();
-        txt_material = new javax.swing.JTextField();
-        lbl_whenFound = new javax.swing.JLabel();
-        cmb_color = new javax.swing.JComboBox();
-        logoutJButton = new javax.swing.JButton();
+        btn_submit = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_otherDetails = new javax.swing.JTextArea();
+        lbldefaultvaluecode = new javax.swing.JLabel();
+        lbl_otherDetails = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         backJButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        logoutJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
 
-        panel1.setBackground(new java.awt.Color(255, 102, 102));
-        panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panel1.setName("Register Found Luggage"); // NOI18N
-        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Register Found Luggage - Employee");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 380, 40));
+        jLabel2.setText("REGISTER FOUND LUGGAGE");
 
-        txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(255, 241, 234));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        txt_material.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_material.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_materialActionPerformed(evt);
+            }
+        });
+
+        txt_brand.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_brand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_brandActionPerformed(evt);
             }
         });
-        panel1.add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 160, -1));
 
-        btn_clear.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
-        btn_clear.setText("CLEAR ALL");
-        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
-        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+        lbl_whenFound.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_whenFound.setText("When found:");
+
+        lbl_color.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_color.setText("Color:");
+
+        cmb_color.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmb_color.setMaximumRowCount(15);
+        cmb_color.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clearActionPerformed(evt);
+                cmb_colorActionPerformed(evt);
             }
         });
-        panel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 130, 30));
 
-        lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_color.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_color.setText("Color:");
-        panel1.add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
-
-        txt_otherDetails.setColumns(20);
-        txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txt_otherDetails.setRows(5);
-        jScrollPane2.setViewportView(txt_otherDetails);
-
-        panel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 340, 90));
-
-        lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_brand.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_brand.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_brand.setText("Brand:");
-        panel1.add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, -1, -1));
 
-        lbl_weightClass.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_weightClass.setForeground(new java.awt.Color(255, 255, 255));
+        dc_whenFound.setDateFormatString("dd-MM-yyyy");
+        dc_whenFound.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        lbl_weightClass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_weightClass.setText("Weight class:");
-        panel1.add(lbl_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
-        cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_weightClass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_weightClassActionPerformed(evt);
             }
         });
-        panel1.add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 160, -1));
 
-        lbl_foundAt.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_foundAt.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_foundAt.setText("Found at");
-        panel1.add(lbl_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
+        lbl_foundAt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_foundAt.setText("Found at:");
 
-        cmb_foundAt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_foundAt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmb_foundAt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_foundAtActionPerformed(evt);
             }
         });
-        panel1.add(cmb_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 160, -1));
 
-        txt_whenFound.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_whenFound.setText("dd-MM-yyyy");
-        txt_whenFound.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_whenFoundActionPerformed(evt);
+        lbl_material.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_material.setText("Material:");
+
+        lbl_code.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_code.setText("Lable code:");
+
+        txt_lableCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_lableCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_lableCodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_lableCodeFocusLost(evt);
             }
         });
-        panel1.add(txt_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 160, -1));
+        txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lableCodeActionPerformed(evt);
+            }
+        });
+        txt_lableCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_lableCodeKeyPressed(evt);
+            }
+        });
 
-        lbl_material.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_material.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_material.setText("Material:");
-        panel1.add(lbl_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
-
-        lbl_otherDetails.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_otherDetails.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_otherDetails.setText("Other details:");
-        panel1.add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
-
-        btn_submit.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btn_submit.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         btn_submit.setText("SUBMIT");
         btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,83 +195,186 @@ public class RegisterFoundLuggage extends JPanel {
                 btn_submitActionPerformed(evt);
             }
         });
-        panel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 30));
 
-        lbl_code.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_code.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_code.setText("lable code");
-        panel1.add(lbl_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
-
-        txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_lableCode.setText("0000-2222-3333");
-        txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
+        btn_clear.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        btn_clear.setText("CLEAR ALL");
+        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_lableCodeActionPerformed(evt);
+                btn_clearActionPerformed(evt);
             }
         });
-        panel1.add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 160, -1));
 
-        txt_material.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_material.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_materialActionPerformed(evt);
-            }
-        });
-        panel1.add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 160, -1));
+        txt_otherDetails.setColumns(20);
+        txt_otherDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_otherDetails.setRows(5);
+        jScrollPane2.setViewportView(txt_otherDetails);
 
-        lbl_whenFound.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_whenFound.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_whenFound.setText("When found:");
-        panel1.add(lbl_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
+        lbldefaultvaluecode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluecode.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluecode.setText("123A-456B-789C");
 
-        cmb_color.setMaximumRowCount(15);
-        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] {}));
-        cmb_color.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_colorActionPerformed(evt);
-            }
-        });
-        panel1.add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 160, -1));
+        lbl_otherDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_otherDetails.setText("Other details:");
 
-        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
-        logoutJButton.setText("Logout");
-        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutJButtonActionPerformed(evt);
-            }
-        });
-        panel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 110, 40));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbldefaultvaluecode)
+                    .addComponent(lbl_otherDetails)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(btn_submit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbl_brand)
+                                .addComponent(lbl_color)
+                                .addComponent(lbl_code)
+                                .addComponent(lbl_material)
+                                .addComponent(lbl_whenFound)
+                                .addComponent(lbl_foundAt)
+                                .addComponent(lbl_weightClass))
+                            .addGap(63, 63, 63)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_lableCode)
+                                .addComponent(cmb_foundAt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmb_weightClass, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmb_color, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_material)
+                                .addComponent(dc_whenFound, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                .addComponent(txt_brand)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_brand)
+                    .addComponent(txt_brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_color)
+                    .addComponent(cmb_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_weightClass)
+                    .addComponent(cmb_weightClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_foundAt)
+                    .addComponent(cmb_foundAt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_code)
+                    .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_material)
+                    .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_whenFound)
+                    .addComponent(dc_whenFound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lbl_otherDetails)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbldefaultvaluecode)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 241, 234));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
-        backJButton.setText(" BACK");
+        backJButton.setText(" ");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        panel1.add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, 100, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
+        logoutJButton.setText(" ");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutJButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(logoutJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(backJButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoutJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(backJButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(347, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(242, 242, 242)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
-        // TODO add your handling code here:
+    private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
 
-    }//GEN-LAST:event_txt_brandActionPerformed
+    }//GEN-LAST:event_submitJButtonMouseClicked
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
+    }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+        Frame.shutdown();
+        FYSApp.logout();
+    }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
         //clear all the fields
@@ -291,110 +383,92 @@ public class RegisterFoundLuggage extends JPanel {
         cmb_weightClass.setSelectedIndex(0);
         txt_material.setText("");
         cmb_foundAt.setSelectedIndex(0);
-        txt_whenFound.setText("");
+        // dc_whenFound.setDateFormatString("00-january-0000");
         txt_material.setText("");
-
     }//GEN-LAST:event_btn_clearActionPerformed
-
-    private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
-        // Get de input van de user in de textfields en stopt dit
-        // in variabelen, vervolgens geeft ie deze mee aan de addLuggage
-        // methode zodat de koffer geregistreerd wordt. :D
-/*
-        String brand = brandJTextField.getText();
-        String description = txtfld_description.getText();
-        String status = "found";
-
-     //   Luggage luggage = new Luggage(brand, description, status);
-
-        if (updateMode > 1) {
-            Frame.getQueryManager().updateLuggage(luggage, luggageid);
-        } else {
-            Frame.getQueryManager().addFoundLuggage(luggage);
-        }
-
-        try {
-            Frame.getInstance().showPanel(new FoundLuggageOverview());
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-    }//GEN-LAST:event_submitJButtonMouseClicked
-                                  
-
-    private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_weightClassActionPerformed
-
-    private void cmb_foundAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_foundAtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_foundAtActionPerformed
-
-    private void txt_whenFoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_whenFoundActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_whenFoundActionPerformed
-
-    private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_submitMouseClicked
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
 
         //  store user input in variables
-        String brand            = txt_brand.getText();
-        
+        String brand = txt_brand.getText();
+
         String color
                 = String.valueOf(cmb_color.getSelectedItem());
         String weightClass
                 = String.valueOf(cmb_weightClass.getSelectedItem());
         String foundAt
                 = String.valueOf(cmb_foundAt.getSelectedItem());
-        
-        String lableCode        = txt_lableCode.getText();
-        String material         = txt_material.getText();
-        String whenFound        = txt_whenFound.getText();
-        String otherDetails     = txt_otherDetails.getText();
-        String status           = "Found";
-        String departureFrom    = "";
+
+        String lableCode = txt_lableCode.getText();
+        String material = txt_material.getText();
+        String whenFound = ((JTextField) dc_whenFound.getDateEditor().getUiComponent()).getText();
+        String otherDetails = txt_otherDetails.getText();
+        String status = "Found";
+        String departureFrom = "";
+        //  store airport where employee is working at
+        // String airport
 
         //  Create lost luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, color,
                 otherDetails, status, material, weightClass, whenFound, foundAt,
                 departureFrom);
 
-        if (updateMode > 1) {
-            FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
-            
-        } else {
-//            int id = FYSApp.getClientManager().getClientid();
-            
-            FYSApp.getLuggageManager().addFoundLuggage(luggage);
+        try {
+
+            if (updateMode > 1) {
+                FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Information is saved");
+                FYSApp.getLuggageManager().addFoundLuggage(luggage);
+            }
+
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-
-        Frame.getInstance().showPanel(new FoundLuggageOverview());
-
     }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_submitMouseClicked
 
     private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_lableCodeActionPerformed
 
-    private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
+    private void cmb_foundAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_foundAtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_materialActionPerformed
+    }//GEN-LAST:event_cmb_foundAtActionPerformed
+
+    private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_weightClassActionPerformed
 
     private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_colorActionPerformed
 
-    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.shutdown();
-        FYSApp.logout();
-    }//GEN-LAST:event_logoutJButtonActionPerformed
+    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_brandActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new FoundLuggageOverview());
-    }//GEN-LAST:event_backJButtonActionPerformed
+    private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_materialActionPerformed
+
+    private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
+        lbldefaultvaluecode.setText("");
+    }//GEN-LAST:event_txt_lableCodeFocusGained
+
+    private void txt_lableCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusLost
+        lbldefaultvaluecode.setText("123A-456B-789C");
+    }//GEN-LAST:event_txt_lableCodeFocusLost
+
+    private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
+        lbldefaultvaluecode.setText("");
+    }//GEN-LAST:event_txt_lableCodeKeyPressed
 
     public static void setText(Luggage luggage) {
 //        txt_brand.setText(luggage.getBrand());
@@ -405,12 +479,13 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_submit;
-    private static javax.swing.JComboBox cmb_color;
-    private static javax.swing.JComboBox cmb_foundAt;
-    private static javax.swing.JComboBox cmb_weightClass;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox cmb_color;
+    private javax.swing.JComboBox cmb_foundAt;
+    private javax.swing.JComboBox cmb_weightClass;
+    private com.toedter.calendar.JDateChooser dc_whenFound;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_brand;
     private javax.swing.JLabel lbl_code;
@@ -420,13 +495,12 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_whenFound;
+    private javax.swing.JLabel lbldefaultvaluecode;
     private javax.swing.JButton logoutJButton;
-    private java.awt.Panel panel1;
-    private static javax.swing.JTextField txt_brand;
-    private static javax.swing.JTextField txt_lableCode;
-    private static javax.swing.JTextField txt_material;
-    private static javax.swing.JTextArea txt_otherDetails;
-    private static javax.swing.JTextField txt_whenFound;
+    private javax.swing.JTextField txt_brand;
+    private javax.swing.JTextField txt_lableCode;
+    private javax.swing.JTextField txt_material;
+    private javax.swing.JTextArea txt_otherDetails;
     // End of variables declaration//GEN-END:variables
 
 }
