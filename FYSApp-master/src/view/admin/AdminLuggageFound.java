@@ -38,6 +38,7 @@ public class AdminLuggageFound extends JPanel {
     public AdminLuggageFound() {
         initComponents();
         getFoundLuggage();
+        setLoggedInAs();
     }
 
     /**
@@ -107,10 +108,11 @@ public class AdminLuggageFound extends JPanel {
         editJButton = new javax.swing.JButton();
         deleteJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLWarning = new javax.swing.JLabel();
         overviewJButton = new javax.swing.JButton();
         foundJButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -230,10 +232,6 @@ public class AdminLuggageFound extends JPanel {
         jLabel2.setText("   Found Luggage Overview - Admin");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 380, 33));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Currently logged in as: [username]");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
-
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 410, 30));
@@ -256,6 +254,14 @@ public class AdminLuggageFound extends JPanel {
             }
         });
         add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 40));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -334,6 +340,7 @@ public class AdminLuggageFound extends JPanel {
             Frame.getInstance().showPanel(new EditLostLuggage());
 
             EditLostLuggage.setLuggageId(id);
+            EditLostLuggage.setStatus("Found");
             EditLostLuggage.setText(luggage);
             
         } else {
@@ -448,6 +455,11 @@ public class AdminLuggageFound extends JPanel {
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        System.out.println(userName);
+        loggedInAs.setText(userName);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteJButton;
@@ -457,8 +469,9 @@ public class AdminLuggageFound extends JPanel {
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     private javax.swing.JButton overviewJButton;
