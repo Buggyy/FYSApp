@@ -55,7 +55,7 @@ public class LuggageManager {
             pst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Could nuts complete task, please contact your Administrator!",
+                    "Could not complete task, please contact your Administrator!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
@@ -170,6 +170,40 @@ public class LuggageManager {
         dbManager.closeConnection();
     }
 
+    /**
+     * @description fasfsa
+     * @param luggage
+     * @param id
+     */
+    public void updateSolvedLuggage(Luggage luggage, int id) {
+        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
+                + " color=?, material=?, otherDetails=?, weightClass=?,"
+                + "status=?, created=?, departureFrom=? WHERE luggageid=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(updateLuggage);
+            pst.setString(1, luggage.getBrand());
+            pst.setString(2, luggage.getLableCode());
+            pst.setString(3, luggage.getColor());
+            pst.setString(4, luggage.getMaterial());
+            pst.setString(5, luggage.getOtherDetails());
+            pst.setString(6, luggage.getWeightClass());
+            pst.setString(7, "Solved");
+            pst.setString(8, FYSApp.getDate());
+            pst.setString(9, luggage.getDepartureFrom());
+            // + Airport where user is working at
+            pst.setInt(10, id);
+            pst.executeUpdate();
+
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        dbManager.closeConnection();
+    }
 
     /**
      *

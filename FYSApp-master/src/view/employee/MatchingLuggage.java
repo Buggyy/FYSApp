@@ -10,8 +10,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
 import model.Luggage;
@@ -37,6 +42,53 @@ public class MatchingLuggage extends JPanel {
      */
     public MatchingLuggage() {
         initComponents();
+        getMatchingLuggage();
+    }
+    
+    /**
+     * employeefoundluggage??
+     */
+    private void getMatchingLuggage() {
+        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+        try {
+            updateTable(rs);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Creates new form ML
+     */
+    private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+
+        rsmetadata = rs.getMetaData();
+
+        columns = rsmetadata.getColumnCount();
+
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Vector columns_name = new Vector();
+        Vector data_rows = new Vector();
+
+        for (int i = 1; i < columns; i++) {
+            columns_name.addElement(rsmetadata.getColumnName(i));
+        }
+        dtm.setColumnIdentifiers(columns_name);
+
+        while (rs.next()) {
+
+            data_rows = new Vector();
+
+            for (int j = 1; j < columns; j++) {
+                data_rows.addElement(rs.getString(j));
+            }
+            dtm.addRow(data_rows);
+        }
+
+        matchingLuggageTable.setModel(dtm);
+
+        matchingLuggageTable.repaint();
     }
 
     /**
@@ -49,7 +101,7 @@ public class MatchingLuggage extends JPanel {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        foundLuggageTable = new javax.swing.JTable();
+        matchingLuggageTable = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         registerJButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -61,8 +113,8 @@ public class MatchingLuggage extends JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        foundLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        foundLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
+        matchingLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        matchingLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -103,15 +155,15 @@ public class MatchingLuggage extends JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(foundLuggageTable);
+        jScrollPane2.setViewportView(matchingLuggageTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 790, 380));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 790, 380));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         jLabel5.setText("  Matching Luggage");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 410, 33));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 410, 33));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
         registerJButton.setText(" REGISTER FOUND LUGGAGE");
@@ -120,12 +172,12 @@ public class MatchingLuggage extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 210, 40));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText(" Luggage found?");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 130, 33));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 130, 33));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -134,7 +186,7 @@ public class MatchingLuggage extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 110, 40));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 110, 40));
 
         matchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         matchJButton.setText(" MATCH");
@@ -143,16 +195,16 @@ public class MatchingLuggage extends JPanel {
                 matchJButtonActionPerformed(evt);
             }
         });
-        add(matchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 110, 40));
+        add(matchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 110, 40));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Luggage not found?");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 33));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 170, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -171,17 +223,17 @@ public class MatchingLuggage extends JPanel {
 
     private void matchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchJButtonActionPerformed
 
-        if (foundLuggageTable.getSelectedRow() >= 0) {
-            int row = foundLuggageTable.getSelectedRow();
+        if (matchingLuggageTable.getSelectedRow() >= 0) {
+            int row = matchingLuggageTable.getSelectedRow();
             int col = 0;
-            int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
+            int id = Integer.parseInt((String) matchingLuggageTable.getModel().getValueAt(row, col));
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
-            Frame.getInstance().showPanel(new RegisterFoundLuggage());
-            RegisterFoundLuggage.setUpdate(id);
-            RegisterFoundLuggage.setText(luggage);
+            Frame.getInstance().showPanel(new RegisterSolvesLuggage());
+            RegisterSolvesLuggage.setUpdate(id);
+            RegisterSolvesLuggage.setText(luggage);
         } else {
             JOptionPane.showMessageDialog(null,
-                "Please select a row before editing!",
+                "Please select a row!",
                 "Error",
                 JOptionPane.WARNING_MESSAGE);
         }
@@ -189,7 +241,6 @@ public class MatchingLuggage extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable foundLuggageTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -198,6 +249,9 @@ public class MatchingLuggage extends JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton matchJButton;
+    private javax.swing.JTable matchingLuggageTable;
     private javax.swing.JButton registerJButton;
     // End of variables declaration//GEN-END:variables
+
+    
 }
