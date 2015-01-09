@@ -18,12 +18,12 @@ import main.Frame;
 import model.Luggage;
 
 /**
- *
+ * 
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class AdminLuggageFound extends JPanel {
 
-    // Always declare first..!
+    // Variables declared first here, before using them further in this file.
     DatabaseManager dbmanager;
     Connection conn = null;
     ResultSet rs = null;
@@ -33,7 +33,7 @@ public class AdminLuggageFound extends JPanel {
     public int columns = 0;
 
     /**
-     * Constructor
+     * Basic Constructor
      */
     public AdminLuggageFound() {
         initComponents();
@@ -41,7 +41,8 @@ public class AdminLuggageFound extends JPanel {
     }
 
     /**
-     * Method that gets the found luggage
+     * Method that gets the found luggage, then updates the table by calling
+     * the updateTable() method.
      */
     private void getFoundLuggage() {
         rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
@@ -54,7 +55,7 @@ public class AdminLuggageFound extends JPanel {
 
     /**
      *
-     * @param rs
+     * @param rs resultset for filling the foundLuggageJTable with its data.
      * @throws ClassNotFoundException
      * @throws SQLException
      */
@@ -269,7 +270,8 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldActionPerformed
     /**
      *
-     * @param evt
+     * @param evt actionlistener for searching specific data
+     * in the foundLuggageJTable
      */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
@@ -295,13 +297,18 @@ public class AdminLuggageFound extends JPanel {
 
     }//GEN-LAST:event_searchJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt actionlistener that shuts down the Frame and calls the 
+     * FYSApp frame.
+     */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
     /**
      *
-     * @param evt
+     * @param evt actionlistener that shows the AdminLuggageLost panel.
      */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
@@ -311,6 +318,11 @@ public class AdminLuggageFound extends JPanel {
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt actionlistener that gets the row thats selected, then 
+     * shows the EditLostLuggage panel and fills it with the selected content.
+     */
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         //  If there is no row selected to edit
         if (foundLuggageJTable.getSelectedRow() >= 0) {
@@ -329,6 +341,11 @@ public class AdminLuggageFound extends JPanel {
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt actionlistener that selects a row from the jTable, 
+     * then deletes the content from the database.
+     */
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
 
         if (foundLuggageJTable.getSelectedRow() >= 0) {
@@ -379,6 +396,10 @@ public class AdminLuggageFound extends JPanel {
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
+    /**
+     * 
+     * @param evt actionlistener that shows the AdminUsers panel.
+     */
     private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
         try {
             Frame.getInstance().showPanel(new AdminUsers());
@@ -388,10 +409,20 @@ public class AdminLuggageFound extends JPanel {
 
     }//GEN-LAST:event_overviewJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt actionlistener that shows the AdminLuggageFound panel.
+     */
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
         Frame.getInstance().showPanel(new AdminLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
+    /**
+     * 
+     * @param evt actionlistener that gets the content typed in by the user
+     * from the searchJTextField, then searches the content in the database
+     * and updates the table with its content.
+     */
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {

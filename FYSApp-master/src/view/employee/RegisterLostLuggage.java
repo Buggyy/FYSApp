@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.DefaultFormatterFactory;
@@ -14,6 +15,7 @@ import javax.swing.text.MaskFormatter;
 import main.FYSApp;
 import main.Frame;
 import model.Client;
+import model.Luggage;
 
 /**
  *
@@ -34,10 +36,7 @@ public class RegisterLostLuggage extends JPanel {
 
         try {
             JFormattedTextField txt_lableCode = new JFormattedTextField();
-            txt_lableCode.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("HHHH-HHHH-HHHH")));
-        } catch (ParseException ex) {
-            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            txt_lableCode.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter("HHH-HHH-HHH")));
 
 //        for (int i = 0; i < airportsList.size(); i++) {
 //            cmb_departureFrom.addItem(airportsList);
@@ -62,6 +61,9 @@ public class RegisterLostLuggage extends JPanel {
 //        cmb_weightClass.addItem("10kg - 15kg");
 //        cmb_weightClass.addItem("15kg - 20kg");
 //        cmb_weightClass.addItem("20kg+");
+        } catch (ParseException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void setUpdate(int id) {
@@ -93,14 +95,15 @@ public class RegisterLostLuggage extends JPanel {
         txt_phoneNumber = new javax.swing.JTextField();
         lbl_phoneNumber = new javax.swing.JLabel();
         lbl_email = new javax.swing.JLabel();
-        txt_email = new javax.swing.JTextField();
         txt_city = new javax.swing.JTextField();
         lbl_address = new javax.swing.JLabel();
         lbl_city = new javax.swing.JLabel();
         txt_address = new javax.swing.JTextField();
-        txt_zipcode = new javax.swing.JTextField();
         lbl_state = new javax.swing.JLabel();
         lbl_zipCode = new javax.swing.JLabel();
+        txt_email = new javax.swing.JTextField();
+        txt_zipcode = new javax.swing.JTextField();
+        lbldefaultvaluezipcode = new javax.swing.JLabel();
         txt_state = new javax.swing.JTextField();
         lbl_country = new javax.swing.JLabel();
         txt_country = new javax.swing.JTextField();
@@ -118,11 +121,13 @@ public class RegisterLostLuggage extends JPanel {
         lbl_departureFrom = new javax.swing.JLabel();
         lbl_material = new javax.swing.JLabel();
         txt_material = new javax.swing.JTextField();
-        lbl_lableCode = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lbltest = new javax.swing.JLabel();
-        txt_lableCode = new javax.swing.JTextField();
         lbl_brand1 = new javax.swing.JLabel();
+        lbl_lableCode1 = new javax.swing.JLabel();
+        lbldefaultvaluemiddlename = new javax.swing.JLabel();
+        lbldefaultvaluecode = new javax.swing.JLabel();
+        txt_lableCode = new javax.swing.JTextField();
+        lbldefaultvalueemail = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -180,9 +185,22 @@ public class RegisterLostLuggage extends JPanel {
         add(txt_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 190, -1));
 
         txt_middlename.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_middlename.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_middlenameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_middlenameFocusLost(evt);
+            }
+        });
         txt_middlename.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_middlenameActionPerformed(evt);
+            }
+        });
+        txt_middlename.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_middlenameKeyPressed(evt);
             }
         });
         add(txt_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, 190, -1));
@@ -223,14 +241,6 @@ public class RegisterLostLuggage extends JPanel {
         lbl_email.setText("Email");
         add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, -1, -1));
 
-        txt_email.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_emailActionPerformed(evt);
-            }
-        });
-        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 190, -1));
-
         txt_city.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,14 +267,6 @@ public class RegisterLostLuggage extends JPanel {
         });
         add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, 190, 20));
 
-        txt_zipcode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_zipcodeActionPerformed(evt);
-            }
-        });
-        add(txt_zipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 110, 20));
-
         lbl_state.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_state.setForeground(new java.awt.Color(255, 255, 255));
         lbl_state.setText("State");
@@ -274,6 +276,56 @@ public class RegisterLostLuggage extends JPanel {
         lbl_zipCode.setForeground(new java.awt.Color(255, 255, 255));
         lbl_zipCode.setText("Zipcode");
         add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, -1, 20));
+
+        txt_email.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_emailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_emailFocusLost(evt);
+            }
+        });
+        txt_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emailActionPerformed(evt);
+            }
+        });
+        txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emailKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emailKeyTyped(evt);
+            }
+        });
+        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 190, -1));
+
+        txt_zipcode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_zipcode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_zipcodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_zipcodeFocusLost(evt);
+            }
+        });
+        txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_zipcodeActionPerformed(evt);
+            }
+        });
+        txt_zipcode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_zipcodeKeyPressed(evt);
+            }
+        });
+        add(txt_zipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 110, 20));
+
+        lbldefaultvaluezipcode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluezipcode.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluezipcode.setText("1234 AB");
+        add(lbldefaultvaluezipcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 490, -1, 40));
 
         txt_state.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_state.addActionListener(new java.awt.event.ActionListener() {
@@ -374,33 +426,56 @@ public class RegisterLostLuggage extends JPanel {
         });
         add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 190, -1));
 
-        lbl_lableCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        lbl_lableCode.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_lableCode.setText("lable code");
-        add(lbl_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
-
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
-
-        lbltest.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbltest.setForeground(new java.awt.Color(255, 255, 255));
-        lbltest.setText("jLabel2");
-        add(lbltest, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
-
-        txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_lableCode.setText("1234-5");
-        txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_lableCodeActionPerformed(evt);
-            }
-        });
-        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 190, -1));
 
         lbl_brand1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_brand1.setForeground(new java.awt.Color(255, 255, 255));
         lbl_brand1.setText("Brand:");
         add(lbl_brand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+
+        lbl_lableCode1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        lbl_lableCode1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_lableCode1.setText("lable code");
+        add(lbl_lableCode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
+
+        lbldefaultvaluemiddlename.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluemiddlename.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluemiddlename.setText("optional");
+        add(lbldefaultvaluemiddlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 140, -1, 40));
+
+        lbldefaultvaluecode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvaluecode.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvaluecode.setText("123-456-789");
+        add(lbldefaultvaluecode, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, 40));
+
+        txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txt_lableCode.setText(" ");
+        txt_lableCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_lableCodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_lableCodeFocusLost(evt);
+            }
+        });
+        txt_lableCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lableCodeActionPerformed(evt);
+            }
+        });
+        txt_lableCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_lableCodeKeyPressed(evt);
+            }
+        });
+        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 190, 20));
+
+        lbldefaultvalueemail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lbldefaultvalueemail.setForeground(new java.awt.Color(204, 204, 204));
+        lbldefaultvalueemail.setText("example@email.com");
+        add(lbldefaultvalueemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -482,7 +557,11 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_firstnameActionPerformed
 
     private void txt_middlenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middlenameActionPerformed
-        // TODO add your handling code here:
+        if (Integer.parseInt(txt_middlename.getText()) <= 0) {
+            JOptionPane.showMessageDialog(null,
+                    "Error: Please enter number bigger than 0", "Error Massage",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_txt_middlenameActionPerformed
 
     private void txt_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastNameActionPerformed
@@ -541,9 +620,61 @@ public class RegisterLostLuggage extends JPanel {
 
     }//GEN-LAST:event_txt_lableCodeActionPerformed
 
-//    public static void setText(Luggage luggage) {
-//        txt_brand.setText(luggage.getBrand());
-//    }
+    private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
+        lbldefaultvaluecode.setText("");
+    }//GEN-LAST:event_txt_lableCodeKeyPressed
+
+    private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
+        lbldefaultvaluecode.setText("");
+    }//GEN-LAST:event_txt_lableCodeFocusGained
+
+    private void txt_lableCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusLost
+        lbldefaultvaluecode.setText("123-456-789");
+    }//GEN-LAST:event_txt_lableCodeFocusLost
+
+    private void txt_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusGained
+        lbldefaultvalueemail.setText("");
+    }//GEN-LAST:event_txt_emailFocusGained
+
+    private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
+        lbldefaultvalueemail.setText("example@email.com");
+    }//GEN-LAST:event_txt_emailFocusLost
+
+    private void txt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyPressed
+        lbldefaultvalueemail.setText("");
+    }//GEN-LAST:event_txt_emailKeyPressed
+
+    private void txt_zipcodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusGained
+        lbldefaultvaluezipcode.setText("");
+    }//GEN-LAST:event_txt_zipcodeFocusGained
+
+    private void txt_zipcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusLost
+        lbldefaultvaluezipcode.setText("1234 AB");
+    }//GEN-LAST:event_txt_zipcodeFocusLost
+
+    private void txt_zipcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_zipcodeKeyPressed
+        lbldefaultvaluezipcode.setText("");
+    }//GEN-LAST:event_txt_zipcodeKeyPressed
+
+    private void txt_middlenameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middlenameKeyPressed
+        lbldefaultvaluemiddlename.setText("");
+    }//GEN-LAST:event_txt_middlenameKeyPressed
+
+    private void txt_middlenameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusLost
+        lbldefaultvaluemiddlename.setText("optional");
+    }//GEN-LAST:event_txt_middlenameFocusLost
+
+    private void txt_middlenameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusGained
+        lbldefaultvaluemiddlename.setText("");
+    }//GEN-LAST:event_txt_middlenameFocusGained
+
+    private void txt_emailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyTyped
+        lbldefaultvalueemail.setText("");
+    }//GEN-LAST:event_txt_emailKeyTyped
+
+    public static void setText(Luggage luggage) {
+        txt_brand.setText(luggage.getBrand());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
@@ -562,7 +693,7 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbl_departureFrom;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_firstname;
-    private javax.swing.JLabel lbl_lableCode;
+    private javax.swing.JLabel lbl_lableCode1;
     private javax.swing.JLabel lbl_lastname;
     private javax.swing.JLabel lbl_leftTitle;
     private javax.swing.JLabel lbl_loadingMessage;
@@ -574,7 +705,10 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbl_state;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_zipCode;
-    private javax.swing.JLabel lbltest;
+    private javax.swing.JLabel lbldefaultvaluecode;
+    private javax.swing.JLabel lbldefaultvalueemail;
+    private javax.swing.JLabel lbldefaultvaluemiddlename;
+    private javax.swing.JLabel lbldefaultvaluezipcode;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton submitJButton;
     private javax.swing.JTextField txt_address;

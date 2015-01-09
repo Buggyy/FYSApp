@@ -64,7 +64,7 @@ public class UserManager {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, userName);
-            
+
             pst.executeUpdate();
             dbManager.closeConnection();
 
@@ -108,7 +108,7 @@ public class UserManager {
         return user;
 
     }
-    
+
     public void updateUser(User user, int id) {
         try {
             String sql = "UPDATE user SET username=?, password=?, role=?, "
@@ -131,12 +131,33 @@ public class UserManager {
         }
         dbManager.closeConnection();
     }
-    
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
- 
+
     public String getUserName() {
         return userName;
+    }
+
+    public boolean userExists(String userName) {
+        ResultSet rs = null;
+        boolean userExists = false;
+        try {
+            String sql = "SELECT EXISTS(SELECT * FROM user WHERE username=?)";
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(sql);
+            pst.setString(1, userName);
+            rs = pst.executeQuery();
+            int exists = rs.getInt(1);
+            if (exists == 1) {
+                userExists = true;
+                return userExists;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return userExists;
     }
 }

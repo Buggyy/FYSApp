@@ -197,9 +197,11 @@ public class LoginScreen extends javax.swing.JPanel {
             String passWord = passJTextField.getText();
             
             rs = FYSApp.getTableManager().getUserLoginfo(userName);
-           
+            boolean exists = FYSApp.getUserManager().userExists(userName);
 
             //  Down here we need to check the user on its role..
+            if (exists = true){
+            
             if (rs.next()) {
                 String pass = rs.getString("password");
                 String role = rs.getString("role");
@@ -229,6 +231,7 @@ public class LoginScreen extends javax.swing.JPanel {
                             main.Frame.AdminFrame();
                             break;
                     }
+                }
             } else {
                 jLabel1.setText("Wrong Username/Password - Please try again");
             }

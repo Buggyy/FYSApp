@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,8 +34,8 @@ public class PDFGenerator {
     ResultSet rs = null;
     ResultSetMetaData rsmetadata = null;
     public int columns = 0;
-    ArrayList<String> columns_name = new ArrayList<String>();
-    ArrayList<String> rows_name = new ArrayList<String>();
+    Vector columns_name = new Vector();
+    Vector rows_name = new Vector();
 
     public PDFGenerator() {
         
@@ -57,25 +58,36 @@ public class PDFGenerator {
      * @param a
      * @param b 
      */
-    public void generatePDF(ArrayList<String> a, ArrayList<String> b) {
+    public void generatePDF(Vector a, Vector b) {
        
         try {
             this.contentStream.beginText();
-            this.contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
-            this.contentStream.moveTextPositionByAmount(100, 360);
-            int y = -20;
-            for (int i = 0; i < a.size(); i++) {
-                this.contentStream.drawString(a.get(i)+ "");
-                this.contentStream.moveTextPositionByAmount(0, y - 5);
-            }
+            this.contentStream.setFont(PDType1Font.HELVETICA, 10);
             
-            this.contentStream.moveTextPositionByAmount(100, 360);
-            y = -20;
-            for (int i = 0; i < b.size(); i++) {
-                this.contentStream.drawString(b.get(i)+ "");
-                this.contentStream.moveTextPositionByAmount(0, y - 5);
-                
+            this.contentStream.moveTextPositionByAmount(30, 700);
+            this.contentStream.drawString((String) a.elementAt(0));
+            
+            for(int i = 1; i <= a.size(); i++){
+                this.contentStream.moveTextPositionByAmount(30, 0);
+                this.contentStream.drawString((String) a.elementAt(1));
             }
+         
+            
+            
+//            this.contentStream.moveTextPositionByAmount(100, 360);
+//            int y = -20;
+//            for (int i = 0; i < a.size(); i++) {
+//                this.contentStream.drawString(a.get(i)+ "");
+//                this.contentStream.moveTextPositionByAmount(0, y - 5);
+//            }
+//            
+//            this.contentStream.moveTextPositionByAmount(100, 360);
+//            y = -20;
+//            for (int i = 0; i < b.size(); i++) {
+//                this.contentStream.drawString(b.get(i)+ "");
+//                this.contentStream.moveTextPositionByAmount(0, y - 5);
+//                
+//            }
             this.contentStream.endText();
         } catch (IOException ex) {
             Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,14 +154,16 @@ public class PDFGenerator {
      * to the pdf generator, after this a pdf is created with the information
      * from the database
      */
-    public void generateOverviewPDF(ResultSet rs) throws SQLException, IOException{
-//        
+    public void generateOverviewPDF(ResultSet rs) throws SQLException, IOException{  
         rsmetadata = rs.getMetaData();
 
         columns = rsmetadata.getColumnCount();
+        
+        // reserve an array for the table heading
+        String[] tableHead = new String[columns];
 
-        columns_name = new ArrayList<String>();
-        rows_name = new ArrayList<String>();
+        Vector columns_name = new Vector();
+        Vector rows_name = new Vector();
 
         for (int i = 1; i < columns; i++) {
             columns_name.add(rsmetadata.getColumnName(i));
@@ -157,7 +171,7 @@ public class PDFGenerator {
         
         while (rs.next()) {
 
-            rows_name = new ArrayList<String>();
+            //Vector rows_name = new Vector();
 
             for (int j = 1; j < columns; j++) {
                 rows_name.add(rs.getString(j));
