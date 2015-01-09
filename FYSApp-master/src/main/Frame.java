@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -50,7 +51,9 @@ public class Frame {
     public static final String EMPLOYEE_NAME = "Employee View";
 
     private static JFrame mainWindow;
-    private JMenuBar menuBar = new JMenuBar();
+//    private static JMenuBar menuBar = new JMenuBar();
+    JMenu optionsMenu;
+    JMenu helpMenu; 
 
     private static Frame instance = new Frame();
 
@@ -140,7 +143,7 @@ public class Frame {
         shutdown();
     }
 
-    //Database shutdown moet hierin nog toegevoegd worden
+    //Database shutdown moet hierin nog toegevoegd worden, nee?????
     public static void shutdown() {
         mainWindow.dispose();
     }
@@ -150,13 +153,14 @@ public class Frame {
     }
 
     public void menu() {
+        JMenuBar menuBar = new JMenuBar();
         UIManager.put("PopupMenu.border",
                 BorderFactory.createLineBorder(Color.black, 1));
 
         JSeparator sep = new JSeparator();
 
-        JMenu optionsMenu = new JMenu("Options");
-        JMenu helpMenu = new JMenu("Help");
+        optionsMenu = new JMenu("Options");
+        helpMenu = new JMenu("Help");
         optionsMenu.setMnemonic(KeyEvent.VK_F);
         menuBar.add(optionsMenu);
         menuBar.add(helpMenu);
@@ -279,7 +283,7 @@ public class Frame {
                     .exec("rundll32 url.dll, FileProtocolHandler "
                             + absolutePath);
             process.waitFor();
-        } catch (Exception e) {
+        } catch (IOException | InterruptedException e) {
             System.out.println(":: -----Exception---- ::\n" + e);
         }
     }

@@ -175,7 +175,6 @@ public class UserManager {
 
             if (rs.next()) {
                 airPort = rs.getString(1);
-                System.out.println(airPort);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
