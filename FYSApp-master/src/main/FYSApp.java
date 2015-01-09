@@ -43,8 +43,8 @@ public final class FYSApp {
     /**
      * Define frame width, height and name
      */
-    public static final int MAIN_WIDTH = 376;
-    public static final int MAIN_HEIGHT = 225;
+    public static final int MAIN_WIDTH = 340;
+    public static final int MAIN_HEIGHT = 600;
     public static final String MAIN_NAME = "Zoek juh köffer";
 
     /**
