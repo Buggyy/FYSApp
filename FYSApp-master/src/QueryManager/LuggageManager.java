@@ -266,4 +266,35 @@ public class LuggageManager {
 
         dbManager.closeConnection();
     }
+    
+    /**
+     * 
+     * @param status the status of a luggage item (lost, found, auctioned or solved)
+     * @return ResultSet
+     */
+    public Luggage getStatus(String status) {
+        Luggage luggage = new Luggage();
+        ResultSet rs = null;
+        String getStatus = "SELECT status FROM luggage WHERE status=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(getStatus);
+
+            pst.setString(1, status);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                luggage.setStatus(rs.getString("status"));
+            }
+            return luggage;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return luggage;
+    }
 }

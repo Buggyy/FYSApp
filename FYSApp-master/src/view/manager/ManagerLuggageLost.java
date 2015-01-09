@@ -360,7 +360,13 @@ public class ManagerLuggageLost extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Frame.getInstance().showPanel(new ManagerLuggageSolved());
+        try {
+            Frame.getInstance().showPanel(new ManagerLuggageSolved());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
