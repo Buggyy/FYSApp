@@ -8,17 +8,20 @@ package QueryManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Client;
+import view.LoginScreen;
 
 /**
  *
  * @author Rafael
  */
 public class ClientManager {
-     private DatabaseManager dbManager = new DatabaseManager();
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
     
-       // Method om een user toe te voegen aan de database.
+    // Method om een user toe te voegen aan de database.
     /**
      *
      * @param client
@@ -78,6 +81,45 @@ public class ClientManager {
         return ownerid;
     }
     
+     /**
+     *
+     * @param i
+     * @return
+     */
+    public Client getSelectedClient(int i) {
+        Client client = new Client();
+        ResultSet rs = null;
+        String getSelectedClient = "SELECT * FROM owner WHERE ownerid=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(getSelectedClient);
+
+            pst.setInt(1, i);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                client.setFirstName(rs.getString("firstname"));
+                client.setMiddleName(rs.getString("middlename"));
+                client.setLastName(rs.getString("lastname"));
+                client.setPhone(rs.getString("country"));
+                client.setEmail(rs.getString("phonenumber"));
+                client.setCountry(rs.getString("email"));
+                client.setAddress(rs.getString("address"));
+                client.setCity(rs.getString("city"));
+                client.setState(rs.getString("state"));
+                client.setZipCode(rs.getString("zipcode"));
+            }
+            return client;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return client;
+    }
     
       public void updateClient(Client client, int id) {
         try {
@@ -93,7 +135,7 @@ public class ClientManager {
             pst.setString(7, client.getAddress());
             pst.setString(8, client.getCity());
             pst.setString(9, client.getState());
-            //pst.setString(10, client.getZipCode());
+            pst.setString(10, client.getZipCode());
             pst.setInt(4, id);
             pst.executeUpdate();
         } catch (SQLException e) {

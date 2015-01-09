@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
+import model.Client;
 import model.Luggage;
 
 /**
@@ -36,26 +37,41 @@ public class MatchingLuggage extends JPanel {
     ResultSetMetaData rsmetadata;
     public int columns = 0;
     private static final int UPDATE_MODE_FALSE = 0;
+    public int WHICH_STATUS = 0;
 
      /**
      * Creates new form Match
      */
     public MatchingLuggage() {
         initComponents();
-        getMatchingLuggage();
+        getMatchingLuggageLost();
+//        getMatchingLuggageFound();  komt zo
     }
     
     /**
-     * employeefoundluggage??
+     * Lost
      */
-    private void getMatchingLuggage() {
-        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+    private void getMatchingLuggageLost() {
+        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+//    /**
+//     * Found komt zo
+//     */
+//    private void getMatchingLuggageFound() {
+//        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+//        
+//        try {
+//            updateTable(rs);
+//        } catch (SQLException | ClassNotFoundException ex) {
+//            Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
     /**
      * Creates new form ML
@@ -228,15 +244,18 @@ public class MatchingLuggage extends JPanel {
             int col = 0;
             int id = Integer.parseInt((String) matchingLuggageTable.getModel().getValueAt(row, col));
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
+            Client client = FYSApp.getClientManager().getSelectedClient(id);
             Frame.getInstance().showPanel(new RegisterSolvesLuggage());
             RegisterSolvesLuggage.setUpdate(id);
-            RegisterSolvesLuggage.setText(luggage);
+            RegisterSolvesLuggage.setTextLuggage(luggage);
+            RegisterSolvesLuggage.setTextClient(client);
         } else {
             JOptionPane.showMessageDialog(null,
                 "Please select a row!",
                 "Error",
                 JOptionPane.WARNING_MESSAGE);
         }
+        
     }//GEN-LAST:event_matchJButtonActionPerformed
 
 

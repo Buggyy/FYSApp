@@ -28,7 +28,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
      * Creates new form RegisterSolvesLuggage
      * @param luggage
      */
-    public static void setText(Luggage luggage) {
+    public static void setTextLuggage(Luggage luggage) {
         txt_brand.setText(luggage.getBrand());
         txt_lableCode.setText(luggage.getLableCode());
         txt_material.setText(luggage.getMaterial());
@@ -37,7 +37,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         cmb_departureFrom.setSelectedItem(luggage.getDepartureFrom());
         cmb_weightClass.setSelectedItem(luggage.getWeightClass());
        }
-    public static void setText(Client client) {
+    public static void setTextClient(Client client) {
         txt_firstName.setText(client.getFirstName());
         txt_middleName.setText(client.getMiddleName());
         txt_lastName.setText(client.getLastName());
@@ -64,41 +64,8 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
      */
     public RegisterSolvesLuggage() {
         initComponents();
-
-//        //Dingen moeten gevuld worden met de selected match
-//        cmb_color.addItem("red");
-//
-//        //  Create lost luggage item with user input
-//        Luggage luggage = new Luggage(brand, lableCode, color,
-//                otherDetails, status, material, weightClass, whenFound, foundAt,
-//                departureFrom);
-//
-//        txt_brand.setText(FYSApp.getLuggageManager().getSelectedLuggage(luggage, luggageid));
-//
-//        cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
-//        cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
-//        cmb_foundAt.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
-//        txt_lableCode.setText("Enter keywords");
-//        txt_material.setText("Enter keywords");
-//        txt_whenFound.setText("Enter keywords");
     }
 
-    
-    
-//    /**
-//     * Method that gets the found luggage
-//     */
-//    private void getFoundLuggage() {
-//        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
-//        try {
-//            updateTable(rs);
-//        } catch (SQLException | ClassNotFoundException ex) {
-//            Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -299,7 +266,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
-        jLabel7.setText("  Found Luggage");
+        jLabel7.setText("  Luggage");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 200, 33));
 
         lbl_firstname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -525,10 +492,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 otherDetails, status, material, weightClass, whenFound, foundAt,
                 departureFrom);
 
-            FYSApp.getLuggageManager().updateSolvedLuggage(luggage, luggageid);
-       
-
-        Frame.getInstance().showPanel(new FoundLuggageOverview());
         //Custom button text
         Object[] options = {"Yes",
             "No"};
@@ -539,13 +502,11 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 options,
-                options[1]);
+                null);
         if (n == JOptionPane.YES_OPTION) {
             FYSApp.getLuggageManager().updateSolvedLuggage(luggage, luggageid);
             Frame.getInstance().showPanel(new MatchingLuggage());
-        } else {
-            Frame.getInstance().showPanel(new RegisterSolvesLuggage());
-        }
+        } 
     }//GEN-LAST:event_btn_submitActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

@@ -6,7 +6,6 @@ import static main.FYSApp.*;
  * @author Team 1 IS106 ZoekJeKoffer
  *
  */
-
 public class Client {
 
     private String firstName = NO_VALUE;
@@ -19,11 +18,14 @@ public class Client {
     private String city = NO_VALUE;
     private String state = NO_VALUE;
     private String zipCode = NO_VALUE;
-    
-    public Client(String firstName, String middleName, String lastName, 
-            String phone, String email, String country, String address, 
+
+    public Client() {
+    }
+
+    public Client(String firstName, String middleName, String lastName,
+            String phone, String email, String country, String address,
             String city, String state, String zipCode) {
-        
+
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
