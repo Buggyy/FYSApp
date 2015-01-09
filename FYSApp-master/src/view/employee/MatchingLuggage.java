@@ -182,7 +182,7 @@ public class MatchingLuggage extends JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 410, 33));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
-        registerJButton.setText(" REGISTER FOUND LUGGAGE");
+        registerJButton.setText(" REGISTER LUGGAGE");
         registerJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerJButtonActionPerformed(evt);

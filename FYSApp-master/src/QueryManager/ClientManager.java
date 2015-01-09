@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Client;
 import view.LoginScreen;
 
@@ -89,7 +90,7 @@ public class ClientManager {
     public Client getSelectedClient(int i) {
         Client client = new Client();
         ResultSet rs = null;
-        String getSelectedClient = "SELECT * FROM owner WHERE ownerid=?";
+        String getSelectedClient = "SELECT * FROM client WHERE ownerid=?";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection()
@@ -122,10 +123,12 @@ public class ClientManager {
     }
     
       public void updateClient(Client client, int id) {
-        try {
-            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
+            String updateClient = "UPDATE client SET firstname=?, middlename=?, "
+                    + "lastname=?, country=?, phonenumber=?, email=?, "
+                    + "address=?, city=?, state=?, zipcode=? WHERE ownerid=?";
+            try {
             dbManager.openConnection();
-            pst = dbManager.getConnection().prepareStatement(sql);
+            pst = dbManager.getConnection().prepareStatement(updateClient);
             pst.setString(1, client.getFirstName());
             pst.setString(2, client.getMiddleName());
             pst.setString(3, client.getLastName());
@@ -136,9 +139,13 @@ public class ClientManager {
             pst.setString(8, client.getCity());
             pst.setString(9, client.getState());
             pst.setString(10, client.getZipCode());
-            pst.setInt(4, id);
+            pst.setInt(11, id);
             pst.executeUpdate();
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         dbManager.closeConnection();
     }

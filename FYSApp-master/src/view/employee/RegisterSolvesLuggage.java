@@ -23,6 +23,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
 
     private static int updateMode = 0;
     private static int luggageid;
+    private static int clientid;
     
     /**
      * Creates new form RegisterSolvesLuggage
@@ -57,6 +58,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
     public static void setUpdate(int id) {
         updateMode = id;
         luggageid = id;
+        clientid = id;
     }
     
     /**
@@ -486,12 +488,28 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         
         String departureFrom    = 
                 String.valueOf(cmb_departureFrom.getSelectedItem()); 
+        
+        String firstName         = txt_firstName.getText();
+        String middleName        = txt_middleName.getText();
+        String lastName          = txt_lastName.getText();
+        String phoneNumber       = txt_phoneNumber.getText();
+        String email             = txt_email.getText();
+        String country           = txt_country.getText();
+        String address           = txt_address.getText();
+        String city              = txt_city.getText();
+        String state             = txt_state.getText();
+        String zipCode           = txt_zipCode.getText();
+        
 
-        //  Create lost luggage item with user input
+        //  Create solved luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, color,
                 otherDetails, status, material, weightClass, whenFound, foundAt,
                 departureFrom);
 
+        // Create solved client item with user input
+        Client client = new Client(firstName, middleName, lastName, phoneNumber,
+                email, country, address, city, state, zipCode);
+        
         //Custom button text
         Object[] options = {"Yes",
             "No"};
@@ -505,7 +523,8 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 null);
         if (n == JOptionPane.YES_OPTION) {
             FYSApp.getLuggageManager().updateSolvedLuggage(luggage, luggageid);
-            Frame.getInstance().showPanel(new MatchingLuggage());
+            FYSApp.getClientManager().updateClient(client, clientid);
+//            Frame.getInstance().showPanel(new MatchingLuggage());
         } 
     }//GEN-LAST:event_btn_submitActionPerformed
 
