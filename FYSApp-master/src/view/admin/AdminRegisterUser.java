@@ -31,6 +31,7 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("admin");
        
         setAirports();
+        setLoggedInAs();
     }
 
     /**
@@ -56,7 +57,6 @@ public class AdminRegisterUser extends JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         emailJTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         userNameJTextField = new javax.swing.JTextField();
         passJTextField = new javax.swing.JTextField();
@@ -65,6 +65,8 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox = new javax.swing.JComboBox();
         airportJComboBox = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -178,10 +180,6 @@ public class AdminRegisterUser extends JPanel {
         });
         add(emailJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 190, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
-
         jLabel16.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Username");
@@ -234,6 +232,14 @@ public class AdminRegisterUser extends JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Airport");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 80, 20));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -342,6 +348,12 @@ public class AdminRegisterUser extends JPanel {
         }
     }
     
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        System.out.println(userName);
+        loggedInAs.setText(userName);
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox airportJComboBox;
@@ -349,18 +361,19 @@ public class AdminRegisterUser extends JPanel {
     private javax.swing.JButton clearJButton;
     private static javax.swing.JTextField emailJTextField;
     private static javax.swing.JTextField firstNameJTextField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private static javax.swing.JTextField lastNameJTextField;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private static javax.swing.JTextField middleNameJTextField;
     private static javax.swing.JTextField passJTextField;

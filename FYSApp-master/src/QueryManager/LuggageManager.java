@@ -55,7 +55,7 @@ public class LuggageManager {
             pst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Could nuts complete task, please contact your Administrator!",
+                    "Could not complete task, please contact your Administrator!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
@@ -139,7 +139,7 @@ public class LuggageManager {
      * @param id of the luggage
      *
      */
-    public void updateLostLuggage(Luggage luggage, int id) {
+    public void updateLuggage(Luggage luggage, int id) {
         String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
                 + " color=?, material=?, otherDetails=?, weightClass=?,"
                 + "status=?, lastupdated=?, departureFrom=? WHERE luggageid=?";
@@ -154,7 +154,7 @@ public class LuggageManager {
             pst.setString(4, luggage.getMaterial());            //  Material
             pst.setString(5, luggage.getOtherDetails());        //  Other Details
             pst.setString(6, luggage.getWeightClass());         //  Weightclass
-            pst.setString(7, "Lost");                           //  Status
+            pst.setString(7, luggage.getStatus());              //  Status
             pst.setString(8, FYSApp.getDate());                 //  Date of creation
             pst.setString(9, luggage.getDepartureFrom());       //  Client Departure
             //  pst.setString(9, user.getAirport());            //  Airport from user
@@ -170,6 +170,40 @@ public class LuggageManager {
         dbManager.closeConnection();
     }
 
+    /**
+     * @description 
+     * @param luggage
+     * @param id
+     */
+    public void updateSolvedLuggage(Luggage luggage, int id) {
+        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
+                + " color=?, material=?, otherDetails=?, weightClass=?,"
+                + "status=?, created=?, departureFrom=? WHERE luggageid=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection().prepareStatement(updateLuggage);
+            pst.setString(1, luggage.getBrand());
+            pst.setString(2, luggage.getLableCode());
+            pst.setString(3, luggage.getColor());
+            pst.setString(4, luggage.getMaterial());
+            pst.setString(5, luggage.getOtherDetails());
+            pst.setString(6, luggage.getWeightClass());
+            pst.setString(7, "Solved");
+            pst.setString(8, FYSApp.getDate());
+            pst.setString(9, luggage.getDepartureFrom());
+            // + Airport where user is working at
+            pst.setInt(10, id);
+            pst.executeUpdate();
+
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        dbManager.closeConnection();
+    }
 
     /**
      *
@@ -231,5 +265,36 @@ public class LuggageManager {
         }
 
         dbManager.closeConnection();
+    }
+    
+    /**
+     * 
+     * @param status the status of a luggage item (lost, found, auctioned or solved)
+     * @return ResultSet
+     */
+    public Luggage getStatus(String status) {
+        Luggage luggage = new Luggage();
+        ResultSet rs = null;
+        String getStatus = "SELECT status FROM luggage WHERE status=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(getStatus);
+
+            pst.setString(1, status);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                luggage.setStatus(rs.getString("status"));
+            }
+            return luggage;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return luggage;
     }
 }

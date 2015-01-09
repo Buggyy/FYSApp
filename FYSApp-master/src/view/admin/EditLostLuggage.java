@@ -22,16 +22,23 @@ import view.employee.RegisterLostLuggage;
 public class EditLostLuggage extends javax.swing.JPanel {
 
     private static int luggageid;
+    private static String status;
     
     /**
      * Creates new form EditLostLuggage
      */
     public EditLostLuggage() {
         initComponents();
+        setLoggedInAs();
+        
     }
     
     public static void setLuggageId(int id) {
         EditLostLuggage.luggageid = id;
+    }
+    
+    public static void setStatus(String status) {
+        EditLostLuggage.status = status;
     }
     
     public static void setText(Luggage luggage) {
@@ -75,6 +82,7 @@ public class EditLostLuggage extends javax.swing.JPanel {
         logoutJButton = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         lbl_loadingMessage = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -193,7 +201,7 @@ public class EditLostLuggage extends javax.swing.JPanel {
         add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
+        jLabel1.setText("Currently logged in as: ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
@@ -210,6 +218,10 @@ public class EditLostLuggage extends javax.swing.JPanel {
         lbl_loadingMessage.setForeground(new java.awt.Color(255, 255, 255));
         lbl_loadingMessage.setText("Loading message..");
         add(lbl_loadingMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, 10));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -232,17 +244,17 @@ public class EditLostLuggage extends javax.swing.JPanel {
         String material = txt_material.getText();
         String lableCode = txt_lableCode.getText();
         String otherDetails = txt_otherDetails.getText();
-        String status = "Lost";
         String whenFound = "";
         String foundAt = "";
+        String statuss = status;
 
         //  Create lost luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, material,
-            otherDetails, status, color, weightClass, whenFound, foundAt,
+            otherDetails, statuss, color, weightClass, whenFound, foundAt,
             departureFrom);
 
         //  COMMENT
-            FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
+            FYSApp.getLuggageManager().updateLuggage(luggage, luggageid); // werkt pas na chris zijn push.
 
         try {
             //  COMMENT
@@ -292,6 +304,12 @@ public class EditLostLuggage extends javax.swing.JPanel {
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
+    
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        System.out.println(userName);
+        loggedInAs.setText(userName);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearJButton;
@@ -299,7 +317,7 @@ public class EditLostLuggage extends javax.swing.JPanel {
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_weightClass;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private static javax.swing.JLabel jLabel3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_brand;
@@ -311,6 +329,7 @@ public class EditLostLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_material;
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton submitJButton;
     private static javax.swing.JTextField txt_brand;

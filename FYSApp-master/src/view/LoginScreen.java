@@ -176,9 +176,11 @@ public class LoginScreen extends javax.swing.JPanel {
             String passWord = passJTextField.getText();
             
             rs = FYSApp.getTableManager().getUserLoginfo(userName);
-           
+            boolean exists = FYSApp.getUserManager().userExists(userName);
 
             //  Down here we need to check the user on its role..
+            if (exists = true){
+            
             if (rs.next()) {
                 String pass = rs.getString("password");
                 String role = rs.getString("role");
@@ -189,12 +191,14 @@ public class LoginScreen extends javax.swing.JPanel {
                     switch (role) {
                         case "manager":
                             FYSApp.getUserManager().setUserName(userName);
+                            FYSApp.getUserManager().setAirPort();
                             main.FYSApp.getInstance().showPanel(new ManagerLuggageFound());
                             FYSApp.shutdown();
                             main.Frame.ManagerFrame();
                             break;
                         case "employee":
                             FYSApp.getUserManager().setUserName(userName);
+                            FYSApp.getUserManager().setAirPort();
                             main.FYSApp.getInstance().showPanel(new FoundLuggageOverview());
                             
                             FYSApp.shutdown();
@@ -202,12 +206,14 @@ public class LoginScreen extends javax.swing.JPanel {
                             break;
                         case "admin":
                             FYSApp.getUserManager().setUserName(userName);
+                            FYSApp.getUserManager().setAirPort();
                             main.FYSApp.getInstance().showPanel(new AdminLuggageFound());
 
                             FYSApp.shutdown();
                             main.Frame.AdminFrame();
                             break;
                     }
+                }
             } else {
                 lbl_defaultvaluepassword.setText("Wrong Username/Password - Please try again");
             }

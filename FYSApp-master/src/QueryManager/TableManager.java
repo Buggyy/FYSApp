@@ -65,6 +65,30 @@ public class TableManager {
         dbManager.closeConnection();
         return rs;
     }
+    
+    /**
+     * 
+     * @return Resultset all solved luggage for overview
+     */
+    public ResultSet getManagerSolvedOverview() {
+        ResultSet rs = null;
+        try {
+
+            dbManager.openConnection();
+
+                String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'solved';";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+            return rs;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QueryManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dbManager.closeConnection();
+        return rs;
+    }
 
     /**
      *

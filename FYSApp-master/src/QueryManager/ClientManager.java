@@ -8,17 +8,21 @@ package QueryManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Client;
+import view.LoginScreen;
 
 /**
  *
  * @author Rafael
  */
 public class ClientManager {
-     private DatabaseManager dbManager = new DatabaseManager();
+    private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
     
-       // Method om een user toe te voegen aan de database.
+    // Method om een user toe te voegen aan de database.
     /**
      *
      * @param client
@@ -78,12 +82,53 @@ public class ClientManager {
         return ownerid;
     }
     
+     /**
+     *
+     * @param i
+     * @return
+     */
+    public Client getSelectedClient(int i) {
+        Client client = new Client();
+        ResultSet rs = null;
+        String getSelectedClient = "SELECT * FROM client WHERE ownerid=?";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(getSelectedClient);
+
+            pst.setInt(1, i);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                client.setFirstName(rs.getString("firstname"));
+                client.setMiddleName(rs.getString("middlename"));
+                client.setLastName(rs.getString("lastname"));
+                client.setPhone(rs.getString("country"));
+                client.setEmail(rs.getString("phonenumber"));
+                client.setCountry(rs.getString("email"));
+                client.setAddress(rs.getString("address"));
+                client.setCity(rs.getString("city"));
+                client.setState(rs.getString("state"));
+                client.setZipCode(rs.getString("zipcode"));
+            }
+            return client;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return client;
+    }
     
       public void updateClient(Client client, int id) {
-        try {
-            String sql = "UPDATE luggage SET brand=?, weight=?, description=? WHERE luggageid=?";
+            String updateClient = "UPDATE client SET firstname=?, middlename=?, "
+                    + "lastname=?, country=?, phonenumber=?, email=?, "
+                    + "address=?, city=?, state=?, zipcode=? WHERE ownerid=?";
+            try {
             dbManager.openConnection();
-            pst = dbManager.getConnection().prepareStatement(sql);
+            pst = dbManager.getConnection().prepareStatement(updateClient);
             pst.setString(1, client.getFirstName());
             pst.setString(2, client.getMiddleName());
             pst.setString(3, client.getLastName());
@@ -93,10 +138,14 @@ public class ClientManager {
             pst.setString(7, client.getAddress());
             pst.setString(8, client.getCity());
             pst.setString(9, client.getState());
-            //pst.setString(10, client.getZipCode());
-            pst.setInt(4, id);
+            pst.setString(10, client.getZipCode());
+            pst.setInt(11, id);
             pst.executeUpdate();
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Could not complete task, please contact your Administrator!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         dbManager.closeConnection();
     }
