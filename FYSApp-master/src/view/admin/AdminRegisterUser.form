@@ -125,7 +125,6 @@
           <Image iconType="3" name="/Images/delete-icon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="CLEAR"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearJButtonActionPerformed"/>

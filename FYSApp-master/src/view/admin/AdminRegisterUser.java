@@ -120,7 +120,6 @@ public class AdminRegisterUser extends JPanel {
 
         clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         clearJButton.setText("CLEAR");
-        clearJButton.setEnabled(false);
         clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearJButtonActionPerformed(evt);
@@ -285,7 +284,14 @@ public class AdminRegisterUser extends JPanel {
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
-        // TODO add your handling code here:
+        //clear all the fields
+        userNameJTextField.setText("");
+        passJTextField.setText("");
+        roleJComboBox.setSelectedIndex(0);
+        firstNameJTextField.setText("");
+        middleNameJTextField.setText("");
+        emailJTextField.setText("");
+        airportJComboBox.setSelectedIndex(0);
     }//GEN-LAST:event_clearJButtonActionPerformed
 
     private void firstNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameJTextFieldActionPerformed
