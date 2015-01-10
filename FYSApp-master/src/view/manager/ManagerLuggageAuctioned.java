@@ -101,6 +101,7 @@ public class ManagerLuggageAuctioned extends JPanel {
         auctionedJTable = new javax.swing.JTable();
         jLWarning = new javax.swing.JLabel();
         searchJButton1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 0));
@@ -125,7 +126,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 statisticsJButtonActionPerformed(evt);
             }
         });
-        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 140, 40));
+        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 150, 40));
 
         auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
@@ -137,7 +138,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 auctionedJButtonActionPerformed(evt);
             }
         });
-        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, 40));
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 150, 40));
 
         foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
@@ -148,7 +149,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 140, 40));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 40));
 
         lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
@@ -159,7 +160,7 @@ public class ManagerLuggageAuctioned extends JPanel {
                 lostJButtonActionPerformed(evt);
             }
         });
-        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 140, 40));
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -252,6 +253,15 @@ public class ManagerLuggageAuctioned extends JPanel {
             }
         });
         add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 120, 40));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
+        jButton1.setText("Solved Luggage");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 150, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -364,7 +374,7 @@ public class ManagerLuggageAuctioned extends JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
+            Frame.getInstance().showPanel(new ManagerLuggageSolved());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -378,6 +388,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JTable auctionedJTable;
     private javax.swing.JButton foundJButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLWarning;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

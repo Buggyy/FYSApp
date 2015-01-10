@@ -39,15 +39,74 @@ public class MatchingLuggage extends JPanel {
     private static final int UPDATE_MODE_FALSE = 0;
     public int WHICH_STATUS = 0;
     public boolean lost;
+    private static String brand;
+    public static String lableCode;
+    public static String material;
+    public static String otherDetails;
+    public static String color;
+    public static String departureFrom;
+    public static String weightClass;
+    public static String firstName;
+    public static String middleName;
+    public static String lastName;
+    public static String phoneNumber;
+    public static String email;
+    public static String country;
+    public static String address;
+    public static String city;
+    public static String state;
+    public static String zipCode;
+    public static String whenFound;
+    public static String foundAt;
+    private static int updateMode = 0;
+    private static int luggageid;
+    private static int clientid;
 
-     /**
+    /**
      * Creates new form Match
      */
     public MatchingLuggage() {
         initComponents();
         getMatchingLuggage();
     }
-    
+
+    public static void setTextLuggage(Luggage luggage) {
+        brand = luggage.getBrand();
+        lableCode = luggage.getLableCode();
+        material = luggage.getMaterial();
+        otherDetails = luggage.getOtherDetails();
+        color = luggage.getColor();
+        departureFrom = luggage.getDepartureFrom();
+        weightClass = luggage.getWeightClass();
+        whenFound = luggage.getWhenFound();
+        foundAt = luggage.getFoundAt();
+
+    }
+//      Bij Lost koffers nodig
+//    public static void setTextClient(Client client) {
+//        firstName = client.getFirstName();
+//        middleName = client.getMiddleName();
+//        lastName = client.getLastName();
+//        phoneNumber = client.getPhone();
+//        email = client.getEmail();
+//        country = client.getCountry();
+//        address = client.getAddress();
+//        city = client.getCity();
+//        state = client.getState();
+//        zipCode = client.getZipCode();
+//    }
+
+    /**
+     * Creates new form RegisterSolvesLuggage
+     *
+     * @param id
+     */
+    public static void setUpdate(int id) {
+        updateMode = id;
+        luggageid = id;
+        clientid = id;
+    }
+
     /**
      * Matched luggage
      */
@@ -59,7 +118,7 @@ public class MatchingLuggage extends JPanel {
             Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Creates new form ML
      */
@@ -215,8 +274,21 @@ public class MatchingLuggage extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
+        //  Create solved luggage item with user input
+        Luggage luggage = new Luggage(brand, lableCode, color,
+                otherDetails, "Found", material, weightClass, whenFound, foundAt,
+                departureFrom);
+
+        // Create solved client item with user input
+        Client client = new Client(firstName, middleName, lastName, phoneNumber,
+                email, country, address, city, state, zipCode);
+        
+        FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
+        FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
+            FYSApp.getClientManager().updateClient(client, clientid);
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+            JOptionPane.showMessageDialog(null, "Information is saved");
         Frame.getInstance().showPanel(new RegisterFoundLuggage());
-        RegisterFoundLuggage.setUpdate(UPDATE_MODE_FALSE);
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -238,11 +310,11 @@ public class MatchingLuggage extends JPanel {
             RegisterSolvesLuggage.setTextClient(client);
         } else {
             JOptionPane.showMessageDialog(null,
-                "Please select a row!",
-                "Error",
-                JOptionPane.WARNING_MESSAGE);
+                    "Please select a row!",
+                    "Error",
+                    JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_matchJButtonActionPerformed
 
 
@@ -259,5 +331,4 @@ public class MatchingLuggage extends JPanel {
     private javax.swing.JButton registerJButton;
     // End of variables declaration//GEN-END:variables
 
-    
 }

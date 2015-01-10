@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.nio.channels.SelectionKey;
 import java.sql.*;
 import main.FYSApp;
+import static main.FYSApp.shutdown;
 import view.admin.AdminLuggageFound;
 import view.employee.FoundLuggageOverview;
 import view.manager.ManagerLuggageFound;
@@ -54,9 +55,9 @@ public class LoginScreen extends javax.swing.JPanel {
         userNameJTextField = new javax.swing.JTextField();
         loginJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        btn_cantlogin = new javax.swing.JButton();
-        lbl_defaultvaluepassword = new javax.swing.JLabel();
         lbl_defaultvalueusername1 = new javax.swing.JLabel();
+        lbl_defaultvaluepassword = new javax.swing.JLabel();
+        btn_cantlogin = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -111,6 +112,19 @@ public class LoginScreen extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setText("EXIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lbl_defaultvalueusername1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_defaultvalueusername1.setForeground(new java.awt.Color(204, 204, 204));
+        lbl_defaultvalueusername1.setText("Username");
+
+        lbl_defaultvaluepassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lbl_defaultvaluepassword.setForeground(new java.awt.Color(204, 204, 204));
+        lbl_defaultvaluepassword.setText("Password");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,21 +132,28 @@ public class LoginScreen extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(passJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userNameJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_defaultvaluepassword)
+                    .addComponent(lbl_defaultvalueusername1)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(userNameJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(lbl_defaultvalueusername1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(userNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(10, 10, 10)
+                .addComponent(lbl_defaultvaluepassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -152,16 +173,6 @@ public class LoginScreen extends javax.swing.JPanel {
             }
         });
         add(btn_cantlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 525, 110, 30));
-
-        lbl_defaultvaluepassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lbl_defaultvaluepassword.setForeground(new java.awt.Color(204, 204, 204));
-        lbl_defaultvaluepassword.setText("password");
-        add(lbl_defaultvaluepassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
-
-        lbl_defaultvalueusername1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lbl_defaultvalueusername1.setForeground(new java.awt.Color(204, 204, 204));
-        lbl_defaultvalueusername1.setText("username");
-        add(lbl_defaultvalueusername1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameJTextFieldActionPerformed
@@ -239,6 +250,10 @@ public class LoginScreen extends javax.swing.JPanel {
             passJTextField.setFocusTraversalKeysEnabled(true);
         }
     }//GEN-LAST:event_userNameJTextFieldKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        shutdown();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

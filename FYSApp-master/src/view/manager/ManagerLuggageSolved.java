@@ -170,6 +170,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
         statisticsJButton.setText("STATISTICS");
+        statisticsJButton.setEnabled(false);
         statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statisticsJButtonActionPerformed(evt);

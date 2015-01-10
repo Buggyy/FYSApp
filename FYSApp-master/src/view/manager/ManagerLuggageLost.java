@@ -252,7 +252,8 @@ public class ManagerLuggageLost extends JPanel {
         });
         add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 40));
 
-        jButton1.setText("Solved");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
+        jButton1.setText("Solved Luggage");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
