@@ -197,6 +197,7 @@ public class TableManager {
                 luggageList.add(luggage);
             }
 
+            dbManager.closeConnection();
             return luggageList;
 
         } catch (SQLException ex) {
