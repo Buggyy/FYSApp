@@ -124,7 +124,7 @@ public class PDFGenerator {
         // current date using timestamp
         String currentDate = FYSApp.getDateTime();
         //name of pdf file
-        pdf.save("Lost luggage receipt " + currentDate);
+        pdf.save("Lost luggage receipt " + currentDate + ".pdf");
         JOptionPane.showMessageDialog(null, "PDF saved as: Lost luggage receipt"
                 + " " + currentDate + "\n in the root folder of the app" );
     }
@@ -135,16 +135,56 @@ public class PDFGenerator {
             this.contentStream.setFont(PDType1Font.HELVETICA, 10);
             
             this.contentStream.moveTextPositionByAmount(30, 700);
-            this.contentStream.drawString(a);
+            // Add client data to receipt
+            this.contentStream.drawString("Firstname: " + b.getFirstName());
+            this.contentStream.moveTextPositionByAmount(0, -10);
             
-            for(int i = 1; i <= a.length; i++){
-                this.contentStream.moveTextPositionByAmount(30, 0);
-                this.contentStream.drawString(a[i]);
+            if(b.getMiddleName() != " "){
+                this.contentStream.drawString("Middlename: " + b.getMiddleName());
+                this.contentStream.moveTextPositionByAmount(0, -10);
             }
-            this.contentStream.moveTextPositionByAmount(30, 0);
+            
+            this.contentStream.drawString("Lastname: " + b.getLastName());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Address: " + b.getAddress());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Zipcode: " + b.getZipCode());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("City: " + b.getCity());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("State: " + b.getState());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Country: " + b.getCountry());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Phone number: " + b.getPhone());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Email: " + b.getEmail());
+            this.contentStream.moveTextPositionByAmount(140, 90);
+            
+            //this.contentStream.moveTextPositionByAmount(50, -700);
+            // Add lost luggage data to receipt
+            this.contentStream.drawString("Departure from: " + a.getDepartureFrom());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Label code" + a.getLableCode());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Brand: " + a.getBrand());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            this.contentStream.drawString("Color: " + a.getColor());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            
+            if(a.getMaterial() != ""){
+                this.contentStream.drawString("Material: " + a.getMaterial());
+                this.contentStream.moveTextPositionByAmount(0, -10);
+            }
+            this.contentStream.drawString("Weight class: " + a.getWeightClass());
+            this.contentStream.moveTextPositionByAmount(0, -10);
+            
+            if(a.getOtherDetails() != ""){
+                this.contentStream.drawString("Other details: " + a.getOtherDetails());
+                this.contentStream.moveTextPositionByAmount(0, -10);
+            }
             
             
-
             this.contentStream.endText();
         } catch (IOException ex) {
             Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
