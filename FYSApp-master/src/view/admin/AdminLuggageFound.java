@@ -261,7 +261,7 @@ public class AdminLuggageFound extends JPanel {
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -457,7 +457,6 @@ public class AdminLuggageFound extends JPanel {
 
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
-        System.out.println(userName);
         loggedInAs.setText(userName);
     }
 

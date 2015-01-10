@@ -103,7 +103,6 @@ public class SearchManager {
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
             pst.setString(14, "%" + input + "%");
-            pst.setString(15, "%" + input + "%");
 
 
             rs = pst.executeQuery();
@@ -153,7 +152,6 @@ public class SearchManager {
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
             pst.setString(14, "%" + input + "%");
-            pst.setString(15, "%" + input + "%");
 
 
             rs = pst.executeQuery();
@@ -197,7 +195,6 @@ public class SearchManager {
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
             pst.setString(14, "%" + input + "%");
-            pst.setString(15, "%" + input + "%");
 
             rs = pst.executeQuery();
             return rs;

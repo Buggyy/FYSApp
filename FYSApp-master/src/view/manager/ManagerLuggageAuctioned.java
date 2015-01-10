@@ -99,8 +99,8 @@ public class ManagerLuggageAuctioned extends JPanel {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         auctionedJTable = new javax.swing.JTable();
-        searchJButton1 = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
+        searchJButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 0));
@@ -240,6 +240,10 @@ public class ManagerLuggageAuctioned extends JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 590, 340));
 
+        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 410, 30));
+
         searchJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton1.setText("SEARCH");
         searchJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -248,10 +252,6 @@ public class ManagerLuggageAuctioned extends JPanel {
             }
         });
         add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 120, 40));
-
-        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 410, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");

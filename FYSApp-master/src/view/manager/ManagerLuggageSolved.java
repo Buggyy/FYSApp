@@ -28,8 +28,8 @@ import main.Frame;
  * @description class to show the solved luggage overview
  */
 public class ManagerLuggageSolved extends javax.swing.JPanel {
-    
-     // Always declare first..!
+
+    // Always declare first..!
     DatabaseManager dbmanager;
     Connection conn = null;
     ResultSet rs = null;
@@ -81,8 +81,8 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
             dtm.addRow(data_rows);
         }
 
-        auctionedJTable.setModel(dtm);
-        auctionedJTable.repaint();
+        solvedLuggageTable.setModel(dtm);
+        solvedLuggageTable.repaint();
     }
 
     /**
@@ -95,7 +95,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        auctionedJTable = new javax.swing.JTable();
+        solvedLuggageTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
         statisticsJButton = new javax.swing.JButton();
@@ -107,6 +107,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         jLWarning = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLWarning2 = new javax.swing.JLabel();
         JButtonPrint = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -114,8 +115,8 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1030, 610));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        auctionedJTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        auctionedJTable.setModel(new javax.swing.table.DefaultTableModel(
+        solvedLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        solvedLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -149,7 +150,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(auctionedJTable);
+        jScrollPane2.setViewportView(solvedLuggageTable);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 590, 340));
 
@@ -229,7 +230,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
 
         searchJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton1.setText("SEARCH");
@@ -238,7 +239,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
                 searchJButton1ActionPerformed(evt);
             }
         });
-        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 110, 40));
+        add(searchJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 110, 40));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,6 +260,10 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 140, 40));
 
+        jLWarning2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLWarning2.setForeground(new java.awt.Color(255, 255, 255));
+        add(jLWarning2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 410, 30));
+
         JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
         JButtonPrint.setText("PRINT");
         JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -266,14 +271,14 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
                 JButtonPrintActionPerformed(evt);
             }
         });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 130, 40));
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 130, 40));
 
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -40, 1050, 670));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -30, 1050, 670));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -320,21 +325,23 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
-                rs = FYSApp.getSearchManager().searchTableSolved(input); // nog maken
+                rs = FYSApp.getSearchManager().searchTableSolved(input);
+                if (rs != null) {
+                    rs = FYSApp.getSearchManager().searchTableSolved(input);
 
-                if (input == null) {
-                    auctionedJTable.repaint();
+                    if (input == null) {
+                        solvedLuggageTable.repaint();
+                    }
+                    if (!rs.next()) {
+                        jLWarning2.setText("No matches found!");
+                        getSolvedLuggage();
+                        updateTable(rs);
+                    } else {
+                        jLWarning2.setText("");
+                        rs.beforeFirst();
+                        updateTable(rs);
+                    }
                 }
-                if (!rs.next()) {
-                    jLWarning.setText("No matches found!");
-                    getSolvedLuggage();
-                    updateTable(rs);
-                } else {
-                    jLWarning.setText("");
-                    rs.beforeFirst();
-                    updateTable(rs);
-                }
-
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -351,14 +358,14 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
             rs = FYSApp.getSearchManager().searchTableSolved(input);
 
             if (input == null) {
-                auctionedJTable.repaint();
+                solvedLuggageTable.repaint();
             }
             if (!rs.next()) {
-                jLWarning.setText("No matches found!");
+                jLWarning2.setText("No matches found!");
                 getSolvedLuggage();
                 updateTable(rs);
             } else {
-                jLWarning.setText("");
+                jLWarning2.setText("");
                 rs.beforeFirst();
                 updateTable(rs);
             }
@@ -381,15 +388,10 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
 
-        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
-
-        try {
-            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //Voor de PDF boys
+//        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
+//
+//        FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
 
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
@@ -397,10 +399,10 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
-    private javax.swing.JTable auctionedJTable;
     private javax.swing.JButton foundJButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLWarning;
+    private javax.swing.JLabel jLWarning2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -409,8 +411,8 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     private javax.swing.JButton lostJButton;
     private javax.swing.JButton searchJButton1;
     private javax.swing.JTextField searchJTextField;
+    private javax.swing.JTable solvedLuggageTable;
     private javax.swing.JButton statisticsJButton;
     // End of variables declaration//GEN-END:variables
-    
-    
+
 }

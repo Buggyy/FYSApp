@@ -524,7 +524,8 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         if (n == JOptionPane.YES_OPTION) {
             FYSApp.getLuggageManager().updateSolvedLuggage(luggage, luggageid);
             FYSApp.getClientManager().updateClient(client, clientid);
-//            Frame.getInstance().showPanel(new MatchingLuggage());
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+            JOptionPane.showMessageDialog(null, "Information is saved");
         } 
     }//GEN-LAST:event_btn_submitActionPerformed
 

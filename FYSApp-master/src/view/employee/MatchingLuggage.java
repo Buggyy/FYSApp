@@ -38,20 +38,20 @@ public class MatchingLuggage extends JPanel {
     public int columns = 0;
     private static final int UPDATE_MODE_FALSE = 0;
     public int WHICH_STATUS = 0;
+    public boolean lost;
 
      /**
      * Creates new form Match
      */
     public MatchingLuggage() {
         initComponents();
-        getMatchingLuggageLost();
-//        getMatchingLuggageFound();  komt zo
+        getMatchingLuggage();
     }
     
     /**
-     * Lost
+     * Matched luggage
      */
-    private void getMatchingLuggageLost() {
+    private void getMatchingLuggage() {
         rs = FYSApp.getTableManager().getEmployeeLostLuggage();
         try {
             updateTable(rs);
@@ -59,19 +59,6 @@ public class MatchingLuggage extends JPanel {
             Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-//    /**
-//     * Found komt zo
-//     */
-//    private void getMatchingLuggageFound() {
-//        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
-//        
-//        try {
-//            updateTable(rs);
-//        } catch (SQLException | ClassNotFoundException ex) {
-//            Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     
     /**
      * Creates new form ML

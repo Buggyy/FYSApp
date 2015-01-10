@@ -155,7 +155,6 @@ public class TableManager {
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
 
-            dbManager.closeConnection();
             return rs;
 
         } catch (SQLException ex) {
@@ -197,14 +196,12 @@ public class TableManager {
                 luggageList.add(luggage);
             }
 
-            dbManager.closeConnection();
             return luggageList;
 
         } catch (SQLException ex) {
             Logger.getLogger(TableManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
-
         return luggageList;
     }
 }

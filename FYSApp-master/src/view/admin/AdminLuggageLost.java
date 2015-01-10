@@ -250,7 +250,7 @@ public class AdminLuggageLost extends JPanel {
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
-        jPanel1.add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        jPanel1.add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Currently logged in as: ");
@@ -270,20 +270,22 @@ public class AdminLuggageLost extends JPanel {
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
+            if (rs != null) {
+                rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
-            if (input == null) {
-                lostLuggageTable.repaint();
+                if (input == null) {
+                    lostLuggageTable.repaint();
+                }
+                if (!rs.next()) {
+                    jLWarning.setText("No matches found!");
+                    getLostLuggage();
+                    updateTable(rs);
+                } else {
+                    jLWarning.setText("");
+                    rs.beforeFirst();
+                    updateTable(rs);
+                }
             }
-            if (!rs.next()) {
-                jLWarning.setText("No matches found!");
-                getLostLuggage();
-                updateTable(rs);
-            } else {
-                jLWarning.setText("");
-                rs.beforeFirst();
-                updateTable(rs);
-            }
-
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -329,7 +331,7 @@ public class AdminLuggageLost extends JPanel {
                     Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         } else {
             //custom title, warning icon
             JOptionPane.showMessageDialog(null,
@@ -339,14 +341,6 @@ public class AdminLuggageLost extends JPanel {
 
         }
 
-        //  Wat is dit? leg uit.
-//        try {
-//            Frame.getInstance().showPanel(new AdminLuggageLost());
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }//GEN-LAST:event_deleteJButtonActionPerformed
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
@@ -359,7 +353,7 @@ public class AdminLuggageLost extends JPanel {
 //        } else {
 //            JOptionPane.showMessageDialog(null, "Please select a row before editing!");
 //        }
-        
+
         //  If there is no row selected to edit
         if (lostLuggageTable.getSelectedRow() >= 0) {
             int row = lostLuggageTable.getSelectedRow();
@@ -372,11 +366,10 @@ public class AdminLuggageLost extends JPanel {
             EditLostLuggage.setLuggageId(id);
             EditLostLuggage.setStatus("Lost");
             EditLostLuggage.setText(luggage);
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
         }
-
 
 
     }//GEN-LAST:event_editJButtonActionPerformed
@@ -390,20 +383,22 @@ public class AdminLuggageLost extends JPanel {
             try {
                 input = searchJTextField.getText();
                 rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
+                if (rs != null) {
+                    rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
-                if (input == null) {
-                    lostLuggageTable.repaint();
+                    if (input == null) {
+                        lostLuggageTable.repaint();
+                    }
+                    if (!rs.next()) {
+                        jLWarning.setText("No matches found!");
+                        getLostLuggage();
+                        updateTable(rs);
+                    } else {
+                        jLWarning.setText("");
+                        rs.beforeFirst();
+                        updateTable(rs);
+                    }
                 }
-                if (!rs.next()) {
-                    jLWarning.setText("No matches found!");
-                    getLostLuggage();
-                    updateTable(rs);
-                } else {
-                    jLWarning.setText("");
-                    rs.beforeFirst();
-                    updateTable(rs);
-                }
-
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -432,7 +427,6 @@ public class AdminLuggageLost extends JPanel {
 
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
-        System.out.println(userName);
         loggedInAs.setText(userName);
     }
 

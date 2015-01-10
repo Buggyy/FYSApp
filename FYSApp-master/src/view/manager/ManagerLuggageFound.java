@@ -352,16 +352,16 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {
-        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
-
-       
-        try {
-            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+//
+//     
+//        try {
+//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
@@ -393,15 +393,15 @@ public class ManagerLuggageFound extends JPanel {
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
 
-        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
-
-        try {
-            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
+//
+//        try {
+//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_btn_printActionPerformed
 

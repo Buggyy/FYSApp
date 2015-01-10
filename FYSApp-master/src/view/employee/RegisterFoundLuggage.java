@@ -1,5 +1,7 @@
 package view.employee;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -16,14 +18,14 @@ public class RegisterFoundLuggage extends JPanel {
 
     private static int updateMode = 0;
     private static int luggageid;
-    
+    private static boolean lost = false;
+
     /**
      * Creates new form AddUser
      */
     public RegisterFoundLuggage() {
         initComponents();
 
-       
 //  These items should be stored in an array
         cmb_color.addItem("other..");
         cmb_color.addItem("red");
@@ -414,20 +416,29 @@ public class RegisterFoundLuggage extends JPanel {
                 departureFrom);
 
         try {
+            FYSApp.getSearchManager().searchSimilarities(luggage, lost);
+            JOptionPane.showMessageDialog(null, "Possible match found!");
+            JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
+            Frame.getInstance().showPanel(new MatchingLuggage());
+        } catch (ClassNotFoundException ex) {
+            try {
 
-            if (updateMode > 1) {
-                FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
+                if (updateMode > 1) {
+                    FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Information is saved");
-                FYSApp.getLuggageManager().addFoundLuggage(luggage);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Information is saved");
+                    FYSApp.getLuggageManager().addFoundLuggage(luggage);
+                }
+
+                Frame.getInstance().showPanel(new FoundLuggageOverview());
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
             }
-
-            Frame.getInstance().showPanel(new FoundLuggageOverview());
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
         }
+
+
     }//GEN-LAST:event_btn_submitActionPerformed
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
