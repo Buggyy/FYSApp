@@ -832,7 +832,7 @@ public class RegisterLostLuggage extends JPanel {
 
         try {
             if (updateMode > 1) {
-                FYSApp.getLuggageManager().updateLostLuggage(luggage, luggageid);
+                FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
             } else {
                 //  Show user succes message
                 JOptionPane.showMessageDialog(null, "Information is saved");
