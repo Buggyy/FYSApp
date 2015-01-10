@@ -352,7 +352,7 @@ public class LuggageManager {
         try {
             dbManager.openConnection();
 
-            String sql = "SELECT lastupdated FROM zoekjekoffer.luggage WHERE luggageid = ?";
+            String sql = "SELECT lastupdated FROM zoekjekoffer.luggage";
 
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
