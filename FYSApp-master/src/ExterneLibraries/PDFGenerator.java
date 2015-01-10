@@ -38,7 +38,10 @@ public class PDFGenerator {
     public int columns = 0;
     Vector columns_name = new Vector();
     Vector rows_name = new Vector();
-
+    
+    /**
+     * Constructor
+     */
     public PDFGenerator() {
         
         this.document = new PDDocument();
@@ -51,9 +54,7 @@ public class PDFGenerator {
         }
     }
     
-    public void getFoundData(){
-        
-    }
+    
     // parameters meegeven en basisopmaak maken 
     /**
      * 
@@ -96,6 +97,12 @@ public class PDFGenerator {
 //        }
 //    }
     
+    /**
+     * 
+     * @param luggage an array of lost luggage info
+     * @param client  an array of client info regarding lost luggage
+     * @description creates a pdf file
+     */
     public void getReceiptPDF(Luggage luggage, Client client ){
    
         // create object for pdf generator
@@ -109,7 +116,12 @@ public class PDFGenerator {
         JOptionPane.showMessageDialog(null, "PDF saved as: Lost luggage receipt"
                 + " " + currentDate + "\n in the root folder of the app" );
     }
-    
+    /**
+     * 
+     * @param a an array of lost luggage info
+     * @param b  an array of client info regarding lost luggage
+     * @description creates the layout of the pdf
+     */
     public void generatePDFReceipt(Luggage a, Client b) {
         try {
             this.contentStream.beginText();
@@ -171,6 +183,11 @@ public class PDFGenerator {
         }
     }
     
+    /**
+     * 
+     * @param filename  name of the pdf file
+     * @description saves a pdf file
+     */
     public void save(String filename) {
         try {
             // Make sure that the content stream is closed:
@@ -183,7 +200,14 @@ public class PDFGenerator {
             ex.printStackTrace();
         }
     }
-
+    /**
+     * 
+     * @param s
+     * @param font
+     * @param fontSize
+     * @return
+     * @throws IOException 
+     */
     public static int stringWidth(String s, PDFont font, double fontSize) throws IOException {
         // ignore, but return 0
         
