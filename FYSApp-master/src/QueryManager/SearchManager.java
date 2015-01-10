@@ -6,10 +6,11 @@
 package QueryManager;
 
 import java.sql.*;
+import model.Luggage;
 
 /**
  *
- * @author Rafael
+ * @author Team 1
  */
 public class SearchManager {
 
@@ -87,7 +88,7 @@ public class SearchManager {
                     + "created LIKE ? OR lastupdated LIKE ?)";
 
             pst = dbManager.getConnection().prepareStatement(sql);
-            
+
             pst.setString(1, "%" + input + "%");
             pst.setString(2, "%" + input + "%");
             pst.setString(3, "%" + input + "%");
@@ -126,11 +127,13 @@ public class SearchManager {
             dbManager.openConnection();
 
             String sql
-                    = "SELECT * FROM luggage WHERE ("
-                    + "status = 'auctioned' AND (luggageid LIKE ? "
-                    + "OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
-                    + "OR description LIKE ? OR ownerid LIKE ? "
-                    + "OR airportname LIKE ?))";
+                    = "SELECT * FROM luggage WHERE "
+                    + "status = 'Auctioned' AND (luggageid LIKE ? OR ownerid LIKE ?"
+                    + " OR airportname LIKE ? OR brand LIKE ? "
+                    + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
+                    + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
+                    + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
+                    + "created LIKE ? OR lastupdated LIKE ?)";
 
             pst = dbManager.getConnection().prepareStatement(sql);
 
@@ -150,7 +153,7 @@ public class SearchManager {
         dbManager.closeConnection();
         return rs;
     }
-    
+
     public ResultSet searchTableSolved(String input) throws ClassNotFoundException {
 
         ResultSet rs = null;
@@ -159,11 +162,13 @@ public class SearchManager {
             dbManager.openConnection();
 
             String sql
-                    = "SELECT * FROM luggage WHERE ("
-                    + "status = 'solved' AND (luggageid LIKE ? "
-                    + "OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
-                    + "OR description LIKE ? OR ownerid LIKE ? "
-                    + "OR airportname LIKE ?))";
+                    = "SELECT * FROM luggage WHERE "
+                    + "status = 'Solved' AND (luggageid LIKE ? OR ownerid LIKE ?"
+                    + " OR airportname LIKE ? OR brand LIKE ? "
+                    + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
+                    + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
+                    + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
+                    + "created LIKE ? OR lastupdated LIKE ?)";
 
             pst = dbManager.getConnection().prepareStatement(sql);
 
@@ -225,30 +230,48 @@ public class SearchManager {
         return rs;
     }
 
-     public ResultSet searchSimilarities(String input) throws ClassNotFoundException {
+    /**
+     *
+     * @param luggage
+     * @param lostOrFound
+     * @return rs
+     * @throws ClassNotFoundException
+     */
+    public ResultSet searchSimilarities(Luggage luggage, boolean lostOrFound) throws ClassNotFoundException {
 
         ResultSet rs = null;
+        boolean lost = lostOrFound;
 
         try {
             dbManager.openConnection();
-
-            String sql
-                    = "SELECT * FROM luggage WHERE ("
-                    + "status = 'Lost' OR status = 'Found' AND (luggageid LIKE ? "
-                    + "OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
-                    + "OR description LIKE ? OR ownerid LIKE ? "
-                    + "OR airportname LIKE ?))";
-
+            String sql;
+            if (lost = true) {
+                sql
+                        = "SELECT * FROM luggage WHERE ("
+                        + "status = 'Lost' AND ("
+                        + "brand LIKE ? OR lablecode LIKE ? OR material LIKE ? OR weightclass LIKE ? "
+                        + "OR color LIKE ? "
+                        + "OR whenfound LIKE ? OR foundat LIKE ? OR departurefrom))";
+            } else {
+                sql
+                        = "SELECT * FROM luggage WHERE ("
+                        + "status = 'Found' AND ("
+                        + "brand LIKE ? OR lablecode LIKE ? OR material LIKE ? OR weightclass LIKE ? "
+                        + "OR color LIKE ? "
+                        + "OR whenfound LIKE ? OR foundat LIKE ? OR departurefrom))";
+            }
             pst = dbManager.getConnection().prepareStatement(sql);
 
-            pst.setString(1, input);
-            pst.setString(2, input);
-            pst.setString(3, input);
-            pst.setString(4, input);
-            pst.setString(5, input);
-            pst.setString(6, input);
-            pst.setString(7, input);
-
+            pst.setString(1, luggage.getBrand());
+            pst.setString(2, luggage.getLableCode());
+            pst.setString(3, luggage.getMaterial());
+            pst.setString(4, luggage.getWeightClass());
+            pst.setString(5, luggage.getColor());
+            pst.setString(6, luggage.getWhenFound());
+            pst.setString(7, luggage.getFoundAt());
+            pst.setString(8, luggage.getDepartureFrom());
+            pst.setString(9, luggage.getWhenFound());
+            
             rs = pst.executeQuery();
             return rs;
 
