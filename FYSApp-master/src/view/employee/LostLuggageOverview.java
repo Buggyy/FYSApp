@@ -42,7 +42,7 @@ public class LostLuggageOverview extends JPanel {
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LostLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

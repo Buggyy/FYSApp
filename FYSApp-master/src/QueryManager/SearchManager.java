@@ -32,7 +32,7 @@ public class SearchManager {
 
             String sql
                     = "SELECT * FROM luggage WHERE "
-                    + "status = 'Found' AND (luggageid LIKE ? OR ownerid LIKE ?"
+                    + "status = 'found' AND (luggageid LIKE ? OR ownerid LIKE ?"
                     + " OR airportname LIKE ? OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
@@ -80,7 +80,7 @@ public class SearchManager {
 
             String sql
                     = "SELECT * FROM luggage WHERE "
-                    + "status = 'Lost' AND (luggageid LIKE ? OR ownerid LIKE ?"
+                    + "status = 'lost' AND (luggageid LIKE ? OR ownerid LIKE ?"
                     + " OR airportname LIKE ? OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
@@ -103,6 +103,8 @@ public class SearchManager {
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
             pst.setString(14, "%" + input + "%");
+            pst.setString(15, "%" + input + "%");
+
 
             rs = pst.executeQuery();
             return rs;
@@ -128,7 +130,7 @@ public class SearchManager {
 
             String sql
                     = "SELECT * FROM luggage WHERE "
-                    + "status = 'Auctioned' AND (luggageid LIKE ? OR ownerid LIKE ?"
+                    + "status = 'auctioned' AND (luggageid LIKE ? OR ownerid LIKE ?"
                     + " OR airportname LIKE ? OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
@@ -144,6 +146,15 @@ public class SearchManager {
             pst.setString(5, "%" + input + "%");
             pst.setString(6, "%" + input + "%");
             pst.setString(7, "%" + input + "%");
+            pst.setString(8, "%" + input + "%");
+            pst.setString(9, "%" + input + "%");
+            pst.setString(10, "%" + input + "%");
+            pst.setString(11, "%" + input + "%");
+            pst.setString(12, "%" + input + "%");
+            pst.setString(13, "%" + input + "%");
+            pst.setString(14, "%" + input + "%");
+            pst.setString(15, "%" + input + "%");
+
 
             rs = pst.executeQuery();
             return rs;
@@ -179,6 +190,14 @@ public class SearchManager {
             pst.setString(5, "%" + input + "%");
             pst.setString(6, "%" + input + "%");
             pst.setString(7, "%" + input + "%");
+            pst.setString(8, "%" + input + "%");
+            pst.setString(9, "%" + input + "%");
+            pst.setString(10, "%" + input + "%");
+            pst.setString(11, "%" + input + "%");
+            pst.setString(12, "%" + input + "%");
+            pst.setString(13, "%" + input + "%");
+            pst.setString(14, "%" + input + "%");
+            pst.setString(15, "%" + input + "%");
 
             rs = pst.executeQuery();
             return rs;
