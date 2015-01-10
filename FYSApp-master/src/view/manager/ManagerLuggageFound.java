@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
+import model.Luggage;
 import view.admin.AdminLuggageFound;
 
 /**
@@ -351,6 +353,30 @@ public class ManagerLuggageFound extends JPanel {
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
 
+        //Hier probeer ik de data te verzalemen voor de graph. loopt door de 
+        //luggage list en checkt de status telt t erbij op. moet ook nog if komen
+        //voor maand periodes
+        
+//        System.out.println(FYSApp.getLuggageManager().getMonth());
+        
+        ArrayList<Luggage> luggageList = FYSApp.getTableManager().getLuggage();
+        
+        int totalFound = 0;
+        int totalLost = 0;
+        int totalAuctioned = 0;
+        int totalMatched = 0;
+        for (int i = 0; i < luggageList.size(); i++) {
+            if (luggageList.get(i).getStatus().equalsIgnoreCase("found")) {
+                totalFound++;
+                System.out.println(totalFound);
+            } else if (luggageList.get(i).getStatus().equalsIgnoreCase("lost")) {
+                totalLost++;
+            } else if (luggageList.get(i).getStatus().equalsIgnoreCase("auctioned")) {
+                totalAuctioned++;
+            } else if (luggageList.get(i).getStatus().equalsIgnoreCase("matched")) {
+                totalMatched++;
+            }
+        }
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked

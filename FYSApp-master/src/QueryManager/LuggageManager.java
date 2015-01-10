@@ -8,6 +8,9 @@ package QueryManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -296,5 +299,82 @@ public class LuggageManager {
         }
         dbManager.closeConnection();
         return luggage;
+    }
+    
+    /**
+     * alle luggages in arraylist stoppen en returnen
+     * @return 
+     */
+     public ArrayList<Luggage> getLuggage() {
+
+        ResultSet rs = null;
+        ArrayList<Luggage> luggageList = new ArrayList<>();
+        Luggage luggage = new Luggage();
+
+        try {
+
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM zoekjekoffer.luggage";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            while (rs.next()) {
+                luggage.setStatus(rs.getString("status"));
+                luggageList.add(luggage);
+            }
+
+            return luggageList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TableManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+
+        return luggageList;
+    }
+
+     /**
+      * zit hier vast. idee was om date uit db te halen voor elke luggage en
+      * dan converten naar month int van 2 getallen bv 01 voor jan 02 voor feb.
+      * t converten lukt maar lukt maar voor 1 positie.
+      * @return 
+      */
+    public String getMonth() {
+
+        ResultSet rs = null;
+        String month = "";
+        Luggage luggage = new Luggage();
+        Date updated;
+
+        try {
+            dbManager.openConnection();
+
+            String sql = "SELECT lastupdated FROM zoekjekoffer.luggage WHERE luggageid = ?";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            if(rs.next()){
+            updated = rs.getDate("lastupdated");
+            
+            //Dit convert date naar string en haalt alleen maand eruit
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            String date = df.format(updated);
+            
+            String dateParts[] = date.split("/");
+            month = dateParts[0];
+        
+         
+
+            return month;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LuggageManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return month;
     }
 }
