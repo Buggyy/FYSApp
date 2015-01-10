@@ -328,16 +328,16 @@ public class ManagerLuggageLost extends JPanel {
 
     private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
 
-        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
-
-       
-        try {
-            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
+//
+//       
+//        try {
+//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+//        }
        
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
