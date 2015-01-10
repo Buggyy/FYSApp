@@ -35,7 +35,7 @@ public class SearchManager {
                     + " OR airportname LIKE ? OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
-                    + " LIKE ? OR foundat LIKE ? or departurefrom LIKE ? OR "
+                    + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
                     + "created LIKE ? OR lastupdated LIKE ?)";
 
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -83,7 +83,7 @@ public class SearchManager {
                     + " OR airportname LIKE ? OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
-                    + " LIKE ? OR foundat LIKE ? or departurefrom LIKE ? OR "
+                    + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
                     + "created LIKE ? OR lastupdated LIKE ?)";
 
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -128,7 +128,7 @@ public class SearchManager {
             String sql
                     = "SELECT * FROM luggage WHERE ("
                     + "status = 'auctioned' AND (luggageid LIKE ? "
-                    + " created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
                     + "OR description LIKE ? OR ownerid LIKE ? "
                     + "OR airportname LIKE ?))";
 
@@ -161,7 +161,7 @@ public class SearchManager {
             String sql
                     = "SELECT * FROM luggage WHERE ("
                     + "status = 'solved' AND (luggageid LIKE ? "
-                    + " created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
                     + "OR description LIKE ? OR ownerid LIKE ? "
                     + "OR airportname LIKE ?))";
 
@@ -225,4 +225,36 @@ public class SearchManager {
         return rs;
     }
 
+     public ResultSet searchSimilarities(String input) throws ClassNotFoundException {
+
+        ResultSet rs = null;
+
+        try {
+            dbManager.openConnection();
+
+            String sql
+                    = "SELECT * FROM luggage WHERE ("
+                    + "status = 'Lost' OR status = 'Found' AND (luggageid LIKE ? "
+                    + "OR created LIKE ? OR brand LIKE ? OR weight LIKE ? "
+                    + "OR description LIKE ? OR ownerid LIKE ? "
+                    + "OR airportname LIKE ?))";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+
+            pst.setString(1, input);
+            pst.setString(2, input);
+            pst.setString(3, input);
+            pst.setString(4, input);
+            pst.setString(5, input);
+            pst.setString(6, input);
+            pst.setString(7, input);
+
+            rs = pst.executeQuery();
+            return rs;
+
+        } catch (SQLException e) {
+        }
+        dbManager.closeConnection();
+        return rs;
+    }
 }

@@ -270,7 +270,6 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
 
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
-        jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
