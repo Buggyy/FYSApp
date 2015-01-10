@@ -6,8 +6,11 @@
 package QueryManager;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Luggage;
 import view.LoginScreen;
 
 /**
@@ -18,6 +21,7 @@ public class TableManager {
 
     private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
+    private ResultSet rs = null;
 
     /**
      * @description HERE
@@ -25,8 +29,8 @@ public class TableManager {
      * @return
      */
     public ResultSet getUserLoginfo(String username) {
+
         String sql = "SELECT password,role FROM user WHERE username=?";
-        ResultSet rs = null;
 
         try {
             dbManager.openConnection();
@@ -47,7 +51,7 @@ public class TableManager {
      * @return
      */
     public ResultSet getManagerAuctionedOverview() {
-        ResultSet rs = null;
+
         try {
 
             dbManager.openConnection();
@@ -65,18 +69,18 @@ public class TableManager {
         dbManager.closeConnection();
         return rs;
     }
-    
+
     /**
-     * 
+     *
      * @return Resultset all solved luggage for overview
      */
     public ResultSet getManagerSolvedOverview() {
-        ResultSet rs = null;
+
         try {
 
             dbManager.openConnection();
 
-                String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'solved';";
+            String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status = 'solved';";
 
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
@@ -95,7 +99,6 @@ public class TableManager {
      * @return
      */
     public ResultSet getAdminUsersOverview() {
-        ResultSet rs = null;
 
         try {
             dbManager.openConnection();
@@ -119,7 +122,6 @@ public class TableManager {
      */
     public ResultSet getEmployeeFoundLuggage() {
 
-        ResultSet rs = null;
         try {
 
             dbManager.openConnection();
@@ -145,8 +147,6 @@ public class TableManager {
      */
     public ResultSet getEmployeeLostLuggage() {
 
-        ResultSet rs = null;
-
         try {
 
             dbManager.openConnection();
@@ -155,6 +155,7 @@ public class TableManager {
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
 
+            dbManager.closeConnection();
             return rs;
 
         } catch (SQLException ex) {
@@ -162,5 +163,47 @@ public class TableManager {
         }
         dbManager.closeConnection();
         return rs;
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public ArrayList<Luggage> getLuggage() {
+
+        ArrayList<Luggage> luggageList = new ArrayList<>();
+        Luggage luggage = new Luggage();
+
+        try {
+
+            dbManager.openConnection();
+
+            String sql = "SELECT * FROM zoekjekoffer.luggage";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            while (rs.next()) {
+                luggage.setBrand(rs.getString("brand"));
+                luggage.setColor(rs.getString("color"));
+                luggage.setWeightClass(rs.getString("weightclass"));
+                luggage.setFoundAt(rs.getString("foundat"));
+                luggage.setLableCode(rs.getString("LableCode"));
+                luggage.setMaterial(rs.getString("material"));
+                luggage.setWhenFound(rs.getString("whenfound"));
+                luggage.setOtherDetails(rs.getString("otherDetails"));
+                luggage.setStatus(rs.getString("status"));
+                luggage.setDepartureFrom(rs.getString("departureFrom"));
+                luggageList.add(luggage);
+            }
+
+            return luggageList;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TableManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+
+        return luggageList;
     }
 }

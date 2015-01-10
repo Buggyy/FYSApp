@@ -31,10 +31,12 @@ public class Graph extends ApplicationFrame {
      * @param seriesName Name of the series
      * @param colName Names of the columns
      */
-    public void addSeries(int[] rowValue, String seriesName, String[] colName) {
+    public void addSeries(int[] rowValue, String seriesName) {
 
+        String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",  "Oct", "Nov", "Dec" };
+        
         for (int i = 0; i < rowValue.length; i++) {
-            this.dataset.addValue(rowValue[i], seriesName, colName[i]);
+            this.dataset.addValue(rowValue[i], seriesName, months[i]);
         }
 
 // See http://www.java2s.com/Code/Java/Chart/JFreeChartLineChartDemo1.htm
