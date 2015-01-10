@@ -22,6 +22,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.FYSApp;
 import main.Frame;
+import model.Client;
+import model.Luggage;
 
 /**
  *
@@ -93,8 +95,8 @@ public class PDFGenerator {
             Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void generateReceiptPDF(){
+    
+    public void getReceiptPDF(Luggage luggage, Client client ){
 //        rsmetadata = rs.getMetaData();
 //
 //        columns = rsmetadata.getColumnCount();
@@ -118,7 +120,7 @@ public class PDFGenerator {
         // create object for pdf generator
         PDFGenerator pdf = new PDFGenerator();
         // create own content through arrays using querymanager
-        pdf.generatePDF(columns_name, rows_name);
+        pdf.generatePDFReceipt(luggage, client);
         // current date using timestamp
         String currentDate = FYSApp.getDateTime();
         //name of pdf file
@@ -126,6 +128,29 @@ public class PDFGenerator {
         JOptionPane.showMessageDialog(null, "PDF saved as: Lost luggage receipt"
                 + " " + currentDate + "\n in the root folder of the app" );
     }
+    
+    public void generatePDFReceipt(Luggage a, Client b) {
+        try {
+            this.contentStream.beginText();
+            this.contentStream.setFont(PDType1Font.HELVETICA, 10);
+            
+            this.contentStream.moveTextPositionByAmount(30, 700);
+            this.contentStream.drawString(a);
+            
+            for(int i = 1; i <= a.length; i++){
+                this.contentStream.moveTextPositionByAmount(30, 0);
+                this.contentStream.drawString(a[i]);
+            }
+            this.contentStream.moveTextPositionByAmount(30, 0);
+            
+            
+
+            this.contentStream.endText();
+        } catch (IOException ex) {
+            Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void save(String filename) {
         try {
             // Make sure that the content stream is closed:
