@@ -215,7 +215,7 @@ public class AdminLuggageFound extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 90, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 90, 40));
 
         deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
@@ -224,7 +224,7 @@ public class AdminLuggageFound extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, -1, 40));
+        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

@@ -89,7 +89,8 @@ public class EditLostLuggage extends javax.swing.JPanel {
 
         lbl_leftTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         lbl_leftTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_leftTitle.setText("Edit Lost Luggage");
+        lbl_leftTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
+        lbl_leftTitle.setText("   Edit Lost Luggage");
         add(lbl_leftTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 360, 30));
 
         lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N

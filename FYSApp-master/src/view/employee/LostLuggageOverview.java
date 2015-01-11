@@ -137,7 +137,7 @@ public class LostLuggageOverview extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, 140, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 40));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");

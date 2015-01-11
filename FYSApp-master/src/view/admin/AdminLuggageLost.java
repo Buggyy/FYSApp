@@ -141,7 +141,7 @@ public class AdminLuggageLost extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, -1, 40));
+        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, 40));
 
         foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         foundJButton.setText("Found Luggage");
@@ -159,7 +159,7 @@ public class AdminLuggageLost extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 90, 40));
+        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 90, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -184,7 +184,7 @@ public class AdminLuggageLost extends JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         jLabel2.setText("   Lost Luggage Overview - Admin");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 360, 33));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 360, 33));
 
         lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(

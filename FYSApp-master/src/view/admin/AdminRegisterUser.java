@@ -102,7 +102,8 @@ public class AdminRegisterUser extends JPanel {
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Register new user");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
+        jLabel3.setText("   Register new user");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 230, 30));
 
         submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N

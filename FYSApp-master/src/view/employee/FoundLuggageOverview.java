@@ -243,7 +243,7 @@ public class FoundLuggageOverview extends JPanel {
                 lostJButton1ActionPerformed(evt);
             }
         });
-        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, 140, 50));
+        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
