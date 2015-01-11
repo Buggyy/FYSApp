@@ -666,7 +666,11 @@ public class RegisterLostLuggage extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new FoundLuggageOverview());
+        try {
+            Frame.getInstance().showPanel(new LostLuggageOverview());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -815,7 +819,6 @@ public class RegisterLostLuggage extends JPanel {
         //                country, address, city, state, zipCode)) {
         //            JOptionPane.showMessageDialog(null, "No data entered");
         //        }
-        
         //  Calling client constructor from the client class
         Client newClient = new Client(firstName, middleName, lastName, phone,
                 email, country, address, city, state, zipCode);
@@ -834,19 +837,20 @@ public class RegisterLostLuggage extends JPanel {
         String status = "Lost";
         String whenFound = "";
         String foundAt = "";
-        
+
         //  Create lost luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, material,
                 otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
-           
-        if(checkPDF.isSelected()){
+
+        if (checkPDF.isSelected()) {
             FYSApp.getInstance().getPDFGenerator().getReceiptPDF(luggage, newClient);
         }
-        
+
         try {
             if (updateMode > 1) {
                 FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
+                            Frame.getInstance().showPanel(new LostLuggageOverview());
             } else {
                 //  Show user succes message
                 JOptionPane.showMessageDialog(null, "Information is saved");
@@ -865,7 +869,7 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_btn_submit1ActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-       //clear all the fields
+        //clear all the fields
         txt_brand.setText("");
         cmb_color.setSelectedIndex(0);
         cmb_weightClass.setSelectedIndex(0);
@@ -886,6 +890,12 @@ public class RegisterLostLuggage extends JPanel {
 
     public static void setText(Luggage luggage) {
         txt_brand.setText(luggage.getBrand());
+        cmb_color.setSelectedItem(luggage.getColor());
+        cmb_weightClass.setSelectedItem(luggage.getWeightClass());
+        cmb_departureFrom.setSelectedItem(luggage.getDepartureFrom());
+        txt_material.setText(luggage.getMaterial());
+        txt_lableCode.setText(luggage.getLableCode());
+        txt_otherDetails.setText(luggage.getOtherDetails());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

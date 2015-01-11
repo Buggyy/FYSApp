@@ -11,6 +11,7 @@ import main.FYSApp;
 import static main.FYSApp.airportsList;
 import main.Frame;
 import model.Luggage;
+import view.employee.FoundLuggageOverview;
 
 /**
  *
@@ -428,30 +429,26 @@ public class RegisterFoundLuggage extends JPanel {
                 otherDetails, status, material, weightClass, whenFound, foundAt,
                 departureFrom);
 
-        try {
-            if (checkIfExists(luggage)) {
-
-                FYSApp.getSearchManager().searchSimilarities(luggage, lost);
-                JOptionPane.showMessageDialog(null, "Possible match found!");
-                JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
-                Frame.getInstance().showPanel(new MatchingLuggage());
-            }
-        } catch (ClassNotFoundException ex) {
+        if (updateMode > 1) {
+            FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+        } else {
             try {
+                if (checkIfExists(luggage)) {
 
-                if (updateMode > 1) {
-                    FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
-
+                    FYSApp.getSearchManager().searchSimilarities(luggage, lost);
+                    JOptionPane.showMessageDialog(null, "Possible match found!");
+                    JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
+                    Frame.getInstance().showPanel(new MatchingLuggage());
                 } else {
                     JOptionPane.showMessageDialog(null, "Information is saved");
                     FYSApp.getLuggageManager().addFoundLuggage(luggage);
+                    Frame.getInstance().showPanel(new FoundLuggageOverview());
                 }
-
-                Frame.getInstance().showPanel(new FoundLuggageOverview());
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegisterFoundLuggage.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
 
 
@@ -505,7 +502,7 @@ public class RegisterFoundLuggage extends JPanel {
         txt_material.setText(luggage.getMaterial());
         txt_lableCode.setText(luggage.getLableCode());
         txt_otherDetails.setText(luggage.getOtherDetails());
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import main.FYSApp;
 import main.Frame;
@@ -11,14 +12,15 @@ import model.User;
 
 /**
  * @version 1
- * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato, jerryrump, larsvanalphen,
- * marijnbakker, danielstern Doel: Het maken van een kofferapplicatie.
+ * @author Team 1 IS106 ZoekJeKoffer: chrisverra, amrishheddes, stefanlobato,
+ * jerryrump, larsvanalphen, marijnbakker, danielstern Doel: Het maken van een
+ * kofferapplicatie.
  */
-
 public class AdminRegisterUser extends JPanel {
+
     private static int updateMode = 0;
     private static int userId = 0;
-    
+
     /**
      * Creates new form UserOverview
      */
@@ -29,7 +31,7 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("employee");
         roleJComboBox.addItem("manager");
         roleJComboBox.addItem("admin");
-       
+
         setAirports();
         setLoggedInAs();
     }
@@ -255,31 +257,38 @@ public class AdminRegisterUser extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        
+
         // Zorgt dat de method addUser wordt aangeroepen en zo een
         // nieuwe gebruiker wordt toegevoegd aan de database.
-        
-        String userName = userNameJTextField.getText(); 
-        String pass = passJTextField.getText(); 
+        String userName = userNameJTextField.getText();
+        String pass = passJTextField.getText();
         String role = String.valueOf(roleJComboBox.getSelectedItem());
-        String firstName = firstNameJTextField.getText(); 
-        String middleName = middleNameJTextField.getText(); 
-        String lastName = lastNameJTextField.getText(); 
-        String email = emailJTextField.getText(); 
+        String firstName = firstNameJTextField.getText();
+        String middleName = middleNameJTextField.getText();
+        String lastName = lastNameJTextField.getText();
+        String email = emailJTextField.getText();
         String airport = String.valueOf(airportJComboBox.getSelectedItem());
-        
-        User user = new User(userName,pass,role,firstName,middleName,lastName,email,airport);
-        
-        if (updateMode > 1) {
-            FYSApp.getUserManager().updateUser(user,userId);
+
+        if (userName.equalsIgnoreCase("") || pass.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Username and Password should be filled.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            Frame.getInstance().showPanel(new AdminRegisterUser());
         } else {
-            FYSApp.getUserManager().addUser(user);
-        }
-        
-        try {
-            Frame.getInstance().showPanel(new AdminUsers());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+
+            User user = new User(userName, pass, role, firstName, middleName, lastName, email, airport);
+
+            if (updateMode > 1) {
+                FYSApp.getUserManager().updateUser(user, userId);
+            } else {
+                FYSApp.getUserManager().addUser(user);
+            }
+            try {
+                Frame.getInstance().showPanel(new AdminUsers());
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
@@ -323,7 +332,7 @@ public class AdminRegisterUser extends JPanel {
     }//GEN-LAST:event_roleJComboBoxActionPerformed
 
     private void submitJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitJButtonMouseClicked
-        
+
     }//GEN-LAST:event_submitJButtonMouseClicked
 
     private void airportJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airportJComboBoxActionPerformed
@@ -349,26 +358,26 @@ public class AdminRegisterUser extends JPanel {
         emailJTextField.setText(user.getEmail());
         airportJComboBox.setSelectedItem(user.getAirport());
     }
-    
-    public static void setUpdate(int update, int userId){
+
+    public static void setUpdate(int update, int userId) {
         AdminRegisterUser.updateMode = update;
         AdminRegisterUser.userId = userId;
     }
-    
-    public void setAirports(){
+
+    public void setAirports() {
         ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
         for (String fgt1 : fgt) {
             airportJComboBox.addItem(fgt1);
         }
     }
-    
+
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         System.out.println(userName);
         loggedInAs.setText(userName);
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JComboBox airportJComboBox;
     private javax.swing.JButton backJButton;

@@ -5,7 +5,6 @@
  */
 package main;
 
-import QueryManager.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -39,15 +38,15 @@ public class Frame {
             + "Phone: +31623451212 or +29693399339";
 
     public static final int MANAGER_WIDTH = 1024;
-    public static final int MANAGER_HEIGHT = 600;
+    public static final int MANAGER_HEIGHT = 650;
     public static final String MANAGER_NAME = "Manager View";
 
     public static final int ADMIN_WIDTH = 1024;
-    public static final int ADMIN_HEIGHT = 600;
+    public static final int ADMIN_HEIGHT = 650;
     public static final String ADMIN_NAME = "Admin View";
 
     public static final int EMPLOYEE_WIDTH = 1024;
-    public static final int EMPLOYEE_HEIGHT = 600;
+    public static final int EMPLOYEE_HEIGHT = 650;
     public static final String EMPLOYEE_NAME = "Employee View";
 
     private static JFrame mainWindow;

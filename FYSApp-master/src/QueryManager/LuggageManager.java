@@ -148,9 +148,13 @@ public class LuggageManager {
      *
      */
     public void updateLuggage(Luggage luggage, int id) {
-        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
+//        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
+//                + " color=?, material=?, otherDetails=?, weightClass=?,"
+//                + "status=?, lastupdated=?, departureFrom=? WHERE luggageid=?";
+//        
+                String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
                 + " color=?, material=?, otherDetails=?, weightClass=?,"
-                + "status=?, lastupdated=?, departureFrom=?, lastupdated WHERE luggageid=?";
+                + "status=?, departureFrom=? WHERE luggageid=?";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection()
@@ -163,11 +167,11 @@ public class LuggageManager {
             pst.setString(5, luggage.getOtherDetails());        //  Other Details
             pst.setString(6, luggage.getWeightClass());         //  Weightclass
             pst.setString(7, luggage.getStatus());              //  Status
-            pst.setString(8, FYSApp.getDate());                 //  Date of creation
-            pst.setString(9, luggage.getDepartureFrom());       //  Client Departure
+ //           pst.setString(8, FYSApp.getDate());                 //  Date of creation
+            pst.setString(8, luggage.getDepartureFrom());       //  Client Departure
             //  pst.setString(9, user.getAirport());            //  Airport from user
-            pst.setString(10, FYSApp.getDateTime());            // timestramp for lastupdated
-            pst.setInt(11, id);                                 //  id from luggage
+            //pst.setString(10, FYSApp.getDateTime());            // timestramp for lastupdated
+            pst.setInt(9, id);                                 //  id from luggage
             pst.executeUpdate();
 
         } catch (SQLException e) {
