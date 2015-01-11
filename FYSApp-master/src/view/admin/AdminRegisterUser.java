@@ -67,6 +67,7 @@ public class AdminRegisterUser extends JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         loggedInAs = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 255));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -83,7 +84,7 @@ public class AdminRegisterUser extends JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 100, 30));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 140, 40));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -92,7 +93,7 @@ public class AdminRegisterUser extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 100, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 140, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,7 +117,7 @@ public class AdminRegisterUser extends JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 130, 60));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 130, 40));
 
         clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         clearJButton.setText("CLEAR");
@@ -125,7 +126,7 @@ public class AdminRegisterUser extends JPanel {
                 clearJButtonActionPerformed(evt);
             }
         });
-        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 130, 60));
+        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 400, 130, 40));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,15 +240,13 @@ public class AdminRegisterUser extends JPanel {
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
         add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        try {
-            Frame.getInstance().showPanel(new AdminUsers());
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_backJButtonActionPerformed
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1024, 600));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
@@ -330,6 +329,14 @@ public class AdminRegisterUser extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_airportJComboBoxActionPerformed
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        try {
+            Frame.getInstance().showPanel(new AdminUsers());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(AdminRegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_backJButtonActionPerformed
+
     //  Edit method
     public static void setText(User user) {
         userNameJTextField.setText(user.getUserName());
@@ -367,6 +374,7 @@ public class AdminRegisterUser extends JPanel {
     private javax.swing.JButton clearJButton;
     private static javax.swing.JTextField emailJTextField;
     private static javax.swing.JTextField firstNameJTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;

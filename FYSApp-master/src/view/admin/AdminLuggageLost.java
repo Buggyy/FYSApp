@@ -123,7 +123,7 @@ public class AdminLuggageLost extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 120, 40));
+        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 140, 40));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -132,7 +132,7 @@ public class AdminLuggageLost extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 100, 30));
+        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 140, 40));
 
         deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
@@ -141,7 +141,7 @@ public class AdminLuggageLost extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 40));
+        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 150, 40));
 
         foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         foundJButton.setText("Found Luggage");
@@ -159,7 +159,7 @@ public class AdminLuggageLost extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 100, 40));
+        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 140, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -178,13 +178,13 @@ public class AdminLuggageLost extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 150, -1));
+        jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 150, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         jLabel2.setText("   Lost Luggage Overview - Admin");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 360, 33));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 360, 33));
 
         lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -223,7 +223,7 @@ public class AdminLuggageLost extends JPanel {
         });
         jScrollPane2.setViewportView(lostLuggageTable);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 590, 340));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,7 +250,7 @@ public class AdminLuggageLost extends JPanel {
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
-        jPanel1.add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        jPanel1.add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Currently logged in as: ");
@@ -261,7 +261,7 @@ public class AdminLuggageLost extends JPanel {
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents

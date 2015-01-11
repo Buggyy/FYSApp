@@ -179,7 +179,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 150, 40));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -188,7 +188,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 120, -1));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 140, 40));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -197,7 +197,7 @@ public class AdminLuggageFound extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 100, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 140, 40));
 
         lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton.setText("Lost Luggage");
@@ -215,7 +215,7 @@ public class AdminLuggageFound extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 110, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 140, 40));
 
         deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
@@ -224,7 +224,7 @@ public class AdminLuggageFound extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 110, 40));
+        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 150, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,7 +261,7 @@ public class AdminLuggageFound extends JPanel {
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");

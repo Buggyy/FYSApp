@@ -123,7 +123,7 @@ public class AdminUsers extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 110, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 140, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -142,7 +142,7 @@ public class AdminUsers extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 150, 40));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -151,7 +151,7 @@ public class AdminUsers extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 60, 110, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 140, 40));
 
         userTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         userTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -175,7 +175,7 @@ public class AdminUsers extends JPanel {
         });
         jScrollPane2.setViewportView(userTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 590, 340));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -184,7 +184,7 @@ public class AdminUsers extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 90, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 140, 40));
 
         deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
         deleteJButton.setText("DELETE");
@@ -193,13 +193,13 @@ public class AdminUsers extends JPanel {
                 deleteJButtonActionPerformed(evt);
             }
         });
-        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, -1, 40));
+        add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, 150, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
         jLabel2.setText("   Users Overview - Admin");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 290, 33));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 290, 33));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
         registerJButton.setText("REGISTER NEW USER");
@@ -208,7 +208,7 @@ public class AdminUsers extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 210, 40));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -248,14 +248,14 @@ public class AdminUsers extends JPanel {
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1030, 610));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
