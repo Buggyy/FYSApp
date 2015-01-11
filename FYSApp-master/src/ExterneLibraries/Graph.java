@@ -77,7 +77,7 @@ public class Graph extends ApplicationFrame {
      * @param height height of the graph
      * @param bgColor background color of the graph
      */
-    public void createChart(String title, String xAxisString, String yAxisString, int width, int height, Paint bgColor) {
+    public ChartPanel createChart(String title, String xAxisString, String yAxisString, int width, int height, Paint bgColor) {
 
         this.chart = ChartFactory.createLineChart(title, xAxisString, yAxisString, this.dataset,
                 PlotOrientation.VERTICAL, true, true, false);
@@ -86,7 +86,7 @@ public class Graph extends ApplicationFrame {
         chartPanel.setPreferredSize(new Dimension(width, height));
         setContentPane(chartPanel);
         pack();
-        RefineryUtilities.centerFrameOnScreen(this);
+        return chartPanel;
 
 // See http://www.java2s.com/Code/Java/Chart/JFreeChartLineChartDemo1.htm
         // See http://www.java2s.com/Code/Java/Chart/CatalogChart.htm
