@@ -279,26 +279,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
-        Graph examGraph = new Graph("Monthly overview of Luggage status");
-
-        examGraph.addSeries();
-        
-        
-        examGraph.createChart("Luggage overview", "Month", "Amount", 1024, 600, Color.LIGHT_GRAY);
-
-        examGraph.setSeriesThickness(0, 2);
-        examGraph.setSeriesThickness(1, 2);
-        examGraph.setSeriesThickness(2, 2);
-        examGraph.setSeriesThickness(3, 2);
-
-        examGraph.setSeriesColor(0, Color.GREEN);
-        examGraph.setSeriesColor(1, Color.RED);
-        examGraph.setSeriesColor(2, Color.BLACK);
-        examGraph.setSeriesColor(3, Color.YELLOW);
-        
-        examGraph.setGraphBackgroundColors(Color.WHITE, Color.GRAY);
-
-        examGraph.setVisible(true);
+        Frame.getInstance().showPanel(new GraphOverview());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
@@ -333,31 +314,31 @@ public class ManagerLuggageAuctioned extends JPanel {
 //        } catch (IOException ex) {
 //            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        
+
     }//GEN-LAST:event_JButtonPrintActionPerformed
 
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
-                input = searchJTextField.getText();
-                rs = FYSApp.getSearchManager().searchTableAuctioned(input);
+            input = searchJTextField.getText();
+            rs = FYSApp.getSearchManager().searchTableAuctioned(input);
 
-                if (input == null) {
-                    auctionedJTable.repaint();
-                }
-                if (!rs.next()) {
-                    jLWarning.setText("No matches found!");
-                    getAuctionedLuggage();
-                    updateTable(rs);
-                } else {
-                    jLWarning.setText("");
-                    rs.beforeFirst();
-                    updateTable(rs);
-                }
-
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
+            if (input == null) {
+                auctionedJTable.repaint();
             }
-        
+            if (!rs.next()) {
+                jLWarning.setText("No matches found!");
+                getAuctionedLuggage();
+                updateTable(rs);
+            } else {
+                jLWarning.setText("");
+                rs.beforeFirst();
+                updateTable(rs);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ManagerLuggageAuctioned.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_searchJButton1ActionPerformed
 
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
@@ -365,7 +346,7 @@ public class ManagerLuggageAuctioned extends JPanel {
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
     private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
-        
+
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed

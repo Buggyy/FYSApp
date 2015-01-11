@@ -133,7 +133,6 @@ public class GraphOverview extends javax.swing.JPanel {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         jButton1.setText("Solved Luggage");
-        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

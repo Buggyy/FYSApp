@@ -160,7 +160,6 @@
           <Image iconType="3" name="/Images/match-icon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Solved Luggage"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

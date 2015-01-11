@@ -290,26 +290,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
-        Graph examGraph = new Graph("Monthly overview of Luggage status");
-
-        examGraph.addSeries();
-        
-        
-        examGraph.createChart("Luggage overview", "Month", "Amount", 1024, 600, Color.LIGHT_GRAY);
-
-        examGraph.setSeriesThickness(0, 2);
-        examGraph.setSeriesThickness(1, 2);
-        examGraph.setSeriesThickness(2, 2);
-        examGraph.setSeriesThickness(3, 2);
-
-        examGraph.setSeriesColor(0, Color.GREEN);
-        examGraph.setSeriesColor(1, Color.RED);
-        examGraph.setSeriesColor(2, Color.BLACK);
-        examGraph.setSeriesColor(3, Color.YELLOW);
-        
-        examGraph.setGraphBackgroundColors(Color.WHITE, Color.GRAY);
-
-        examGraph.setVisible(true);
+        Frame.getInstance().showPanel(new GraphOverview());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
