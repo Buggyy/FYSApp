@@ -21,6 +21,8 @@ public class Luggage {
     private String whenFound = NO_VALUE;
     private String foundAt = NO_VALUE;
     private String departureFrom = NO_VALUE;
+    //haal magic number later weg!
+    private int monthNumber = 0;
 
     public Luggage() {
 
@@ -134,4 +136,11 @@ public class Luggage {
         return otherDetails;
     }
 
+    public void setMonthNumber(int monthNumber){
+        this.monthNumber = monthNumber;
+    }
+    
+    public int getMonthNumber(){
+        return monthNumber;
+    }
 }

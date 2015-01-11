@@ -251,7 +251,6 @@ public class ManagerLuggageFound extends JPanel {
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
         statisticsJButton.setText("STATISTICS");
-        statisticsJButton.setEnabled(false);
         statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statisticsJButtonActionPerformed(evt);
@@ -357,8 +356,6 @@ public class ManagerLuggageFound extends JPanel {
         //luggage list en checkt de status telt t erbij op. moet ook nog if komen
         //voor maand periodes
         
-//        System.out.println(FYSApp.getLuggageManager().getMonth());
-        
         ArrayList<Luggage> luggageList = FYSApp.getTableManager().getLuggage();
         
         int totalFound = 0;
@@ -368,7 +365,6 @@ public class ManagerLuggageFound extends JPanel {
         for (int i = 0; i < luggageList.size(); i++) {
             if (luggageList.get(i).getStatus().equalsIgnoreCase("found")) {
                 totalFound++;
-                System.out.println(totalFound);
             } else if (luggageList.get(i).getStatus().equalsIgnoreCase("lost")) {
                 totalLost++;
             } else if (luggageList.get(i).getStatus().equalsIgnoreCase("auctioned")) {

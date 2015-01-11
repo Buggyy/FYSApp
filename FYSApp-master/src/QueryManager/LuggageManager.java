@@ -342,40 +342,26 @@ public class LuggageManager {
       * t converten lukt maar lukt maar voor 1 positie.
       * @return 
       */
-    public String getMonth() {
+    public void getMonthNumber() {
 
         ResultSet rs = null;
-        String month = "";
         Luggage luggage = new Luggage();
-        Date updated;
 
         try {
             dbManager.openConnection();
 
-            String sql = "SELECT lastupdated FROM zoekjekoffer.luggage";
+            String sql = "SELECT month(lastupdated) AS month FROM zoekjekoffer.luggage;";
 
             pst = dbManager.getConnection().prepareStatement(sql);
             rs = pst.executeQuery(sql);
 
             if(rs.next()){
-            updated = rs.getDate("lastupdated");
-            
-            //Dit convert date naar string en haalt alleen maand eruit
-            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-            String date = df.format(updated);
-            
-            String dateParts[] = date.split("/");
-            month = dateParts[0];
-        
-         
-
-            return month;
+            luggage.setMonthNumber(rs.getInt("month"));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(LuggageManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
-        return month;
     }
 }
