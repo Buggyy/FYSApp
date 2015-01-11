@@ -2,6 +2,11 @@ package view.manager;
 
 import externelibraries.Graph;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import main.FYSApp;
+import main.Frame;
 
 /**
  *
@@ -22,7 +27,7 @@ public class GraphOverview extends javax.swing.JPanel {
 
         examGraph.addSeries();
         
-        graphJLabel.add(examGraph.createChart("Luggage overview", "Month", "Amount", 700, 400, Color.LIGHT_GRAY));
+        graphJLabel.add(examGraph.createChart("Luggage overview", "Month", "Amount", 590, 340, Color.WHITE));
 
         examGraph.setSeriesThickness(0, 2);
         examGraph.setSeriesThickness(1, 2);
@@ -34,7 +39,7 @@ public class GraphOverview extends javax.swing.JPanel {
         examGraph.setSeriesColor(2, Color.BLACK);
         examGraph.setSeriesColor(3, Color.YELLOW);
         
-        examGraph.setGraphBackgroundColors(Color.WHITE, Color.GRAY);
+        examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
     }
 
     
@@ -48,6 +53,13 @@ public class GraphOverview extends javax.swing.JPanel {
     private void initComponents() {
 
         graphJLabel = new javax.swing.JLabel();
+        logoutJButton = new javax.swing.JButton();
+        JButtonPrint = new javax.swing.JButton();
+        auctionedJButton = new javax.swing.JButton();
+        foundJButton = new javax.swing.JButton();
+        lostJButton = new javax.swing.JButton();
+        statisticsJButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -55,16 +67,147 @@ public class GraphOverview extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         graphJLabel.setText("jLabel2");
-        add(graphJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 700, 400));
+        add(graphJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
+
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
+        logoutJButton.setText("Logout");
+        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutJButtonActionPerformed(evt);
+            }
+        });
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
+
+        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
+        JButtonPrint.setText("PRINT");
+        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonPrintActionPerformed(evt);
+            }
+        });
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 90, 40));
+
+        auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
+        auctionedJButton.setText("Auctioned Luggage");
+        auctionedJButton.setBorder(null);
+        auctionedJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                auctionedJButtonActionPerformed(evt);
+            }
+        });
+        add(auctionedJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, 40));
+
+        foundJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
+        foundJButton.setText("Found Luggage");
+        foundJButton.setBorder(null);
+        foundJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foundJButtonActionPerformed(evt);
+            }
+        });
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, 40));
+
+        lostJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
+        lostJButton.setText("Lost Luggage");
+        lostJButton.setBorder(null);
+        lostJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lostJButtonActionPerformed(evt);
+            }
+        });
+        add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 40));
+
+        statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
+        statisticsJButton.setText("STATISTICS");
+        statisticsJButton.setEnabled(false);
+        statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statisticsJButtonActionPerformed(evt);
+            }
+        });
+        add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, 40));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
+        jButton1.setText("Solved Luggage");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 600));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+        Frame.shutdown();
+        FYSApp.logout();
+    }//GEN-LAST:event_logoutJButtonActionPerformed
+
+    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
+
+        //Voor de PDF boys
+        //        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
+        //
+        //        FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
+    }//GEN-LAST:event_JButtonPrintActionPerformed
+
+    private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
+        
+        try {
+            Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GraphOverview.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GraphOverview.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+    }//GEN-LAST:event_auctionedJButtonActionPerformed
+
+    private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
+        Frame.getInstance().showPanel(new ManagerLuggageFound());
+    }//GEN-LAST:event_foundJButtonActionPerformed
+
+    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+            Frame.getInstance().showPanel(new ManagerLuggageLost());
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lostJButtonActionPerformed
+
+    private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
+        
+    }//GEN-LAST:event_statisticsJButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Frame.getInstance().showPanel(new ManagerLuggageSolved());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonPrint;
+    private javax.swing.JButton auctionedJButton;
+    private javax.swing.JButton foundJButton;
     private javax.swing.JLabel graphJLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton logoutJButton;
+    private javax.swing.JButton lostJButton;
+    private javax.swing.JButton statisticsJButton;
     // End of variables declaration//GEN-END:variables
 }
