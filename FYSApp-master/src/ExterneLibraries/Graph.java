@@ -1,7 +1,10 @@
 package externelibraries;
 
+import QueryManager.LuggageManager;
 import java.awt.Dimension;
 import java.awt.Paint;
+import java.util.ArrayList;
+import main.FYSApp;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -31,12 +34,30 @@ public class Graph extends ApplicationFrame {
      * @param seriesName Name of the series
      * @param colName Names of the columns
      */
-    public void addSeries(int[] rowValue, String seriesName) {
+    public void addSeries() {
 
         String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",  "Oct", "Nov", "Dec" };
+        ArrayList<Integer> nbrOfFoundByMonth = new  ArrayList<>();
+        ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
+        ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
+        ArrayList<Integer> nbrOfAuctionedByMonth = new ArrayList<>();
         
-        for (int i = 0; i < rowValue.length; i++) {
-            this.dataset.addValue(rowValue[i], seriesName, months[i]);
+        
+        LuggageManager luggageMgr =  FYSApp.getLuggageManager();
+        
+        for (int i = 0 ; i < months.length ; i ++)
+        {
+            nbrOfFoundByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Found"));
+            nbrOfLostByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Lost"));
+            nbrOfSolvedByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Solved"));
+            nbrOfAuctionedByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Auctioned"));
+        }
+        
+        for (int i = 0; i < months.length; i++) {
+            this.dataset.addValue(nbrOfFoundByMonth.get(i), "Found", months[i]);
+            this.dataset.addValue(nbrOfLostByMonth.get(i), "Lost", months[i]);
+            this.dataset.addValue(nbrOfSolvedByMonth.get(i), "Solved", months[i]);
+            this.dataset.addValue(nbrOfAuctionedByMonth.get(i), "Auctioned", months[i]);
         }
 
 // See http://www.java2s.com/Code/Java/Chart/JFreeChartLineChartDemo1.htm

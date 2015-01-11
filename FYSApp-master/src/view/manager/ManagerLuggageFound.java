@@ -2,6 +2,8 @@ package view.manager;
 
 import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
+import externelibraries.Graph;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.Connection;
@@ -351,28 +353,30 @@ public class ManagerLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
+        
+        
+        
+        
+        Graph examGraph = new Graph("Monthly overview of Luggage status");
 
-        //Hier probeer ik de data te verzalemen voor de graph. loopt door de 
-        //luggage list en checkt de status telt t erbij op. moet ook nog if komen
-        //voor maand periodes
+        examGraph.addSeries();
         
-        ArrayList<Luggage> luggageList = FYSApp.getTableManager().getLuggage();
         
-        int totalFound = 0;
-        int totalLost = 0;
-        int totalAuctioned = 0;
-        int totalMatched = 0;
-        for (int i = 0; i < luggageList.size(); i++) {
-            if (luggageList.get(i).getStatus().equalsIgnoreCase("found")) {
-                totalFound++;
-            } else if (luggageList.get(i).getStatus().equalsIgnoreCase("lost")) {
-                totalLost++;
-            } else if (luggageList.get(i).getStatus().equalsIgnoreCase("auctioned")) {
-                totalAuctioned++;
-            } else if (luggageList.get(i).getStatus().equalsIgnoreCase("matched")) {
-                totalMatched++;
-            }
-        }
+        examGraph.createChart("Luggage overview", "Month", "Amount", 1024, 600, Color.LIGHT_GRAY);
+
+        examGraph.setSeriesThickness(0, 2);
+        examGraph.setSeriesThickness(1, 2);
+        examGraph.setSeriesThickness(2, 2);
+        examGraph.setSeriesThickness(3, 2);
+
+        examGraph.setSeriesColor(0, Color.GREEN);
+        examGraph.setSeriesColor(1, Color.RED);
+        examGraph.setSeriesColor(2, Color.BLACK);
+        examGraph.setSeriesColor(3, Color.YELLOW);
+        
+        examGraph.setGraphBackgroundColors(Color.WHITE, Color.GRAY);
+
+        examGraph.setVisible(true);
     }//GEN-LAST:event_statisticsJButtonActionPerformed
 
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked

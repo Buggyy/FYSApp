@@ -12,6 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -37,7 +38,7 @@ public class LuggageManager {
                 + ",otherdetails, weightclass, status, created, departurefrom,"
                 + " whenfound) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?)";
-        
+
 //        INSERT INTO luggage (brand,lablecode,color,material
 //,otherdetails, weightclass, status, created, departurefrom)
 //VALUES ('gutti',123456, 'noob', 'letather','lelijke sht','dik','Found','gister','chris roelvink')
@@ -54,7 +55,7 @@ public class LuggageManager {
             pst.setString(7, "Found");
             pst.setString(8, FYSApp.getDate());
             pst.setString(9, luggage.getDepartureFrom());
-            pst.setString(10,luggage.getWhenFound());
+            pst.setString(10, luggage.getWhenFound());
             // + Airport where user is working at
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -90,7 +91,6 @@ public class LuggageManager {
             // + Airport where user is working at
             pst.setInt(10, id);
             pst.executeUpdate();
-
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
@@ -175,8 +175,7 @@ public class LuggageManager {
     }
 
     /**
-     * @description 
-     * @param luggage
+     * @description @param luggage
      * @param id
      */
     public void updateSolvedLuggage(Luggage luggage, int id) {
@@ -198,7 +197,6 @@ public class LuggageManager {
             // + Airport where user is working at
             pst.setInt(10, id);
             pst.executeUpdate();
-
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
@@ -270,10 +268,11 @@ public class LuggageManager {
 
         dbManager.closeConnection();
     }
-    
+
     /**
-     * 
-     * @param status the status of a luggage item (lost, found, auctioned or solved)
+     *
+     * @param status the status of a luggage item (lost, found, auctioned or
+     * solved)
      * @return ResultSet
      */
     public Luggage getStatus(String status) {
@@ -301,12 +300,13 @@ public class LuggageManager {
         dbManager.closeConnection();
         return luggage;
     }
-    
+
     /**
      * alle luggages in arraylist stoppen en returnen
-     * @return 
+     *
+     * @return
      */
-     public ArrayList<Luggage> getLuggage() {
+    public ArrayList<Luggage> getLuggage() {
 
         ResultSet rs = null;
         ArrayList<Luggage> luggageList = new ArrayList<>();
@@ -335,33 +335,120 @@ public class LuggageManager {
 
         return luggageList;
     }
-
-     /**
-      * zit hier vast. idee was om date uit db te halen voor elke luggage en
-      * dan converten naar month int van 2 getallen bv 01 voor jan 02 voor feb.
-      * t converten lukt maar lukt maar voor 1 positie.
-      * @return 
-      */
-    public void getMonthNumber() {
-
+    
+    /**
+     * 
+     * @param month the month you want the data of
+     * @param status the status you want to count
+     * @return amount of defined status by month
+     */
+    public int FindNumberOfStatusByMonth(int month, String status )
+    {
+        
+        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where luggage.status='" + status +"' AND month(luggage.lastupdated)=" + month +" ;";
+        
+        return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
+    }
+    
+    private ArrayList<Luggage> ExecuteQueryAndPutResultsInArrayList(String query)
+    {
+        ArrayList<Luggage> luggages = new ArrayList<>();
         ResultSet rs = null;
-        Luggage luggage = new Luggage();
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(query);
+
+            rs = pst.executeQuery();
+
+            do {
+                Luggage luggage = new Luggage();
+                luggage.setBrand(rs.getString("brand"));
+                luggage.setColor(rs.getString("color"));
+                luggage.setWeightClass(rs.getString("weightclass"));
+                luggage.setFoundAt(rs.getString("foundat"));
+                luggage.setLableCode(rs.getString("LableCode"));
+                luggage.setMaterial(rs.getString("material"));
+                luggage.setWhenFound(rs.getString("whenfound"));
+                luggage.setOtherDetails(rs.getString("otherDetails"));
+                luggage.setStatus(rs.getString("status"));
+                luggage.setDepartureFrom(rs.getString("departureFrom"));
+                luggage.setLastUpdated(rs.getString("lastupdated"));
+
+                luggages.add(luggage);
+            } while (rs.next());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return luggages;
+    }
+    
+    private int ExecuteQueryAndReturnNumberOfElements(String query)
+    {
+        ArrayList<Luggage> luggages = new ArrayList<>();
+        ResultSet rs = null;
+        int ammount = 0;
 
         try {
             dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(query);
 
-            String sql = "SELECT month(lastupdated) AS month FROM zoekjekoffer.luggage;";
-
-            pst = dbManager.getConnection().prepareStatement(sql);
-            rs = pst.executeQuery(sql);
-
-            if(rs.next()){
-            luggage.setMonthNumber(rs.getInt("month"));
-            }
+            rs = pst.executeQuery();
+            do {
+            ammount ++;
+            } while (rs.next());
 
         } catch (SQLException ex) {
-            Logger.getLogger(LuggageManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         dbManager.closeConnection();
+        return ammount;
+    }
+    
+    
+    /**
+     *
+     * @return Vector of Luggage objects
+     */
+    public Vector getAllLuggage() {
+        Vector luggageVector = new Vector();
+
+        ResultSet rs = null;
+        String getSelectedLuggage = "SELECT * FROM luggage";
+        try {
+            dbManager.openConnection();
+            pst = dbManager.getConnection()
+                    .prepareStatement(getSelectedLuggage);
+
+            rs = pst.executeQuery();
+
+            do {
+                Luggage luggage = new Luggage();
+                luggage.setBrand(rs.getString("brand"));
+                luggage.setColor(rs.getString("color"));
+                luggage.setWeightClass(rs.getString("weightclass"));
+                luggage.setFoundAt(rs.getString("foundat"));
+                luggage.setLableCode(rs.getString("LableCode"));
+                luggage.setMaterial(rs.getString("material"));
+                luggage.setWhenFound(rs.getString("whenfound"));
+                luggage.setOtherDetails(rs.getString("otherDetails"));
+                luggage.setStatus(rs.getString("status"));
+                luggage.setDepartureFrom(rs.getString("departureFrom"));
+                luggage.setLastUpdated(rs.getString("lastupdated"));
+
+                luggageVector.add(luggage);
+            } while (rs.next());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        dbManager.closeConnection();
+        return luggageVector;
     }
 }

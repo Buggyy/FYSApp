@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import main.FYSApp;
 import static main.FYSApp.*;
 
@@ -22,7 +23,7 @@ public class Luggage {
     private String foundAt = NO_VALUE;
     private String departureFrom = NO_VALUE;
     //haal magic number later weg!
-    private int monthNumber = 0;
+    private String lastUpdated = NO_VALUE;
 
     public Luggage() {
 
@@ -136,11 +137,11 @@ public class Luggage {
         return otherDetails;
     }
 
-    public void setMonthNumber(int monthNumber){
-        this.monthNumber = monthNumber;
+    public void setLastUpdated(String lastUpdated){
+        this.lastUpdated = lastUpdated;
     }
     
-    public int getMonthNumber(){
-        return monthNumber;
+    public String getLastUpdated(){
+        return lastUpdated;
     }
 }
