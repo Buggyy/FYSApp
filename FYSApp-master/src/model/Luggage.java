@@ -57,6 +57,51 @@ public class Luggage {
         this.departureFrom = departureFrom;
     }
 
+    /**
+     *
+     * @param b
+     * @param a Other Luggage
+     * @return bool
+     */
+    @Override
+    public boolean equals(Object b) {
+        int nbrOfEqual = 0;
+        boolean equals = false;
+
+        Luggage a = (Luggage) b;
+
+        // check information
+        if (this.brand == null ? a.getBrand() == null : this.brand.equals(a.getBrand())) {
+            nbrOfEqual++;
+        }
+
+        if (this.color == null ? a.getColor() == null : this.color.equals(a.getColor())) {
+            nbrOfEqual++;
+        }
+
+        if (this.weightClass == null ? a.getWeightClass() == null : this.weightClass.equals(a.getWeightClass())) {
+            nbrOfEqual++;
+        }
+        /*
+         if(this.foundAt == null ? a.getFoundAt() == null : this.foundAt.equals(a.getFoundAt()))
+         nbrOfEqual++;
+         */
+        if (this.lableCode == null ? a.getLableCode() == null : this.lableCode.equals(a.getLableCode())) {
+            nbrOfEqual++;
+        }
+
+        if (this.material == null ? a.getMaterial() == null : this.material.equals(a.getMaterial())) {
+            nbrOfEqual++;
+        }
+
+        // if 2 or more cases are equal return true
+        if (nbrOfEqual >= 2) {
+            equals = true;
+        }
+
+        return equals;
+    }
+
     public void setDepartureFrom(String departureFrom) {
         this.departureFrom = departureFrom;
     }
@@ -137,11 +182,11 @@ public class Luggage {
         return otherDetails;
     }
 
-    public void setLastUpdated(String lastUpdated){
+    public void setLastUpdated(String lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
-    
-    public String getLastUpdated(){
+
+    public String getLastUpdated() {
         return lastUpdated;
     }
 }

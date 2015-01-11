@@ -286,12 +286,11 @@ public class MatchingLuggage extends JPanel {
         // Create solved client item with user input
         Client client = new Client(firstName, middleName, lastName, phoneNumber,
                 email, country, address, city, state, zipCode);
-        
-        FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
+
         FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
-            FYSApp.getClientManager().updateClient(client, clientid);
-            Frame.getInstance().showPanel(new FoundLuggageOverview());
-            JOptionPane.showMessageDialog(null, "Information is saved");
+        FYSApp.getClientManager().updateClient(client, clientid);
+        Frame.getInstance().showPanel(new FoundLuggageOverview());
+        JOptionPane.showMessageDialog(null, "Information is saved");
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed

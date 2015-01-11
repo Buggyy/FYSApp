@@ -27,7 +27,7 @@ public class LuggageManager {
 
     private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
-    
+
     /**
      * @description HERE
      * @param luggage
@@ -37,7 +37,7 @@ public class LuggageManager {
                 + ",otherdetails, weightclass, status, created, departurefrom,"
                 + " whenfound) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?)";
-        
+
 //        INSERT INTO luggage (brand,lablecode,color,material
 //,otherdetails, weightclass, status, created, departurefrom)
 //VALUES ('gutti',123456, 'noob', 'letather','lelijke sht','dik','Found','gister','chris roelvink')
@@ -104,7 +104,6 @@ public class LuggageManager {
 //        }
 //        dbManager.closeConnection();
 //    }
-
     /**
      * @description Add a LOST luggage item
      * @param luggage
@@ -342,6 +341,13 @@ public class LuggageManager {
         return luggageList;
     }
 
+    public ArrayList<Luggage> getLostLuggage() {
+
+        String sql = "SELECT * FROM zoekjekoffer.luggage WHERE status='Lost'";
+        return ExecuteQueryAndPutResultsInArrayList(sql);
+
+    }
+
     /**
      *
      * @param month the month you want the data of
@@ -364,7 +370,7 @@ public class LuggageManager {
                     .prepareStatement(query);
 
             rs = pst.executeQuery();
-
+            rs.next();
             do {
                 Luggage luggage = new Luggage();
                 luggage.setBrand(rs.getString("brand"));

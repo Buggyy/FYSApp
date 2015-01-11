@@ -1,5 +1,7 @@
 package view.employee;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -53,7 +55,7 @@ public class RegisterFoundLuggage extends JPanel {
     public static void setUpdate(int id) {
         updateMode = id;
         luggageid = id;
-        
+
     }
 
     /**
@@ -392,8 +394,13 @@ public class RegisterFoundLuggage extends JPanel {
         cmb_weightClass.setSelectedIndex(0);
         txt_material.setText("");
         txt_otherDetails.setText("");
-       
+
     }//GEN-LAST:event_btn_clearActionPerformed
+
+    private boolean checkIfExists(Luggage lug) {
+        ArrayList<Luggage> list = FYSApp.getLuggageManager().getLostLuggage();
+        return list.contains(lug);
+    }
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
 
@@ -422,10 +429,13 @@ public class RegisterFoundLuggage extends JPanel {
                 departureFrom);
 
         try {
-            FYSApp.getSearchManager().searchSimilarities(luggage, lost);
-            JOptionPane.showMessageDialog(null, "Possible match found!");
-            JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
-            Frame.getInstance().showPanel(new MatchingLuggage());
+            if (checkIfExists(luggage)) {
+
+                FYSApp.getSearchManager().searchSimilarities(luggage, lost);
+                JOptionPane.showMessageDialog(null, "Possible match found!");
+                JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
+                Frame.getInstance().showPanel(new MatchingLuggage());
+            }
         } catch (ClassNotFoundException ex) {
             try {
 
