@@ -53,7 +53,7 @@ public class RegisterFoundLuggage extends JPanel {
     public static void setUpdate(int id) {
         updateMode = id;
         luggageid = id;
-        // object aanmaken voor de edit
+        
     }
 
     /**
@@ -385,8 +385,14 @@ public class RegisterFoundLuggage extends JPanel {
         cmb_weightClass.setSelectedIndex(0);
         txt_material.setText("");
         cmb_foundAt.setSelectedIndex(0);
-        // dc_whenFound.setDateFormatString("00-january-0000");
+        dc_whenFound.setDateFormatString("00-january-0000");
+        //clear all the fields
+        txt_brand.setText("");
+        cmb_color.setSelectedIndex(0);
+        cmb_weightClass.setSelectedIndex(0);
         txt_material.setText("");
+        txt_otherDetails.setText("");
+       
     }//GEN-LAST:event_btn_clearActionPerformed
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed

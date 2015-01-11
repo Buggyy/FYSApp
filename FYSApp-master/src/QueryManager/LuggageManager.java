@@ -107,24 +107,25 @@ public class LuggageManager {
      * @param id
      */
     public void addLostLuggage(Luggage luggage, int id) {
-        String sql = "INSERT INTO luggage (brand,weightclass,lablecode,"
-                + "color, material, otherdetails, status, created,"
-                + "departurefrom, ownerid) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO luggage (brand, lablecode,"
+                + " material, otherdetails, status, color, weightclass, created,"
+                + " whenfound, foundat, departurefrom, ownerid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
 
             pst.setString(1, luggage.getBrand());
-            pst.setString(2, luggage.getWeightClass());
-            pst.setString(3, luggage.getLableCode());
-            pst.setString(4, luggage.getColor());
-            pst.setString(5, luggage.getMaterial());
-            pst.setString(6, luggage.getOtherDetails());
-            pst.setString(7, "Lost");
+            pst.setString(2, luggage.getLableCode());
+            pst.setString(3, luggage.getMaterial());
+            pst.setString(4, luggage.getOtherDetails());
+            pst.setString(5, "Lost");
+            pst.setString(6, luggage.getColor());
+            pst.setString(7, luggage.getWeightClass());
             pst.setString(8, FYSApp.getDate());
-            pst.setString(9, luggage.getDepartureFrom());
-            // + Airport where user is working at
-            pst.setInt(10, id);
+            pst.setString(9, "");
+            pst.setString(10, "");
+            pst.setString(11, "");
+            pst.setInt(12, id);
             pst.executeUpdate();
 
         } catch (Exception e) {
@@ -335,23 +336,21 @@ public class LuggageManager {
 
         return luggageList;
     }
-    
+
     /**
-     * 
+     *
      * @param month the month you want the data of
      * @param status the status you want to count
      * @return amount of defined status by month
      */
-    public int FindNumberOfStatusByMonth(int month, String status )
-    {
-        
-        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where luggage.status='" + status +"' AND month(luggage.lastupdated)=" + month +" ;";
-        
+    public int FindNumberOfStatusByMonth(int month, String status) {
+
+        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where luggage.status='" + status + "' AND month(luggage.lastupdated)=" + month + " ;";
+
         return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
     }
-    
-    private ArrayList<Luggage> ExecuteQueryAndPutResultsInArrayList(String query)
-    {
+
+    private ArrayList<Luggage> ExecuteQueryAndPutResultsInArrayList(String query) {
         ArrayList<Luggage> luggages = new ArrayList<>();
         ResultSet rs = null;
         try {
@@ -385,9 +384,8 @@ public class LuggageManager {
         dbManager.closeConnection();
         return luggages;
     }
-    
-    private int ExecuteQueryAndReturnNumberOfElements(String query)
-    {
+
+    private int ExecuteQueryAndReturnNumberOfElements(String query) {
         ArrayList<Luggage> luggages = new ArrayList<>();
         ResultSet rs = null;
         int ammount = 0;
@@ -399,7 +397,7 @@ public class LuggageManager {
 
             rs = pst.executeQuery();
             do {
-            ammount ++;
+                ammount++;
             } while (rs.next());
 
         } catch (SQLException ex) {
@@ -409,8 +407,7 @@ public class LuggageManager {
         dbManager.closeConnection();
         return ammount;
     }
-    
-    
+
     /**
      *
      * @return Vector of Luggage objects

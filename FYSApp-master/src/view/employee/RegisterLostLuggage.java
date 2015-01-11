@@ -40,10 +40,6 @@ public class RegisterLostLuggage extends JPanel {
 
         initComponents();
 
-        //        for (int i = 0; i < airportsList.size(); i++) {
-        //            cmb_departureFrom.addItem(airportsList);
-        //        }
-        //
         //  These items should be stored in an array
         cmb_color.addItem("other..");
         cmb_color.addItem("red");
@@ -68,8 +64,8 @@ public class RegisterLostLuggage extends JPanel {
     }
 
     public static void setUpdate(int id) {
-        RegisterLostLuggage.updateMode = id;
-        RegisterLostLuggage.luggageid = id;
+        updateMode = id;
+        luggageid = id;
     }
 
     /**
@@ -107,7 +103,6 @@ public class RegisterLostLuggage extends JPanel {
         lbldefaultvaluecode = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btn_clear = new javax.swing.JButton();
         lbl_state = new javax.swing.JLabel();
         lbl_middlename = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
@@ -118,19 +113,20 @@ public class RegisterLostLuggage extends JPanel {
         lbl_firstname = new javax.swing.JLabel();
         lbl_country = new javax.swing.JLabel();
         lbl_phoneNumber = new javax.swing.JLabel();
-        txt_firstname = new javax.swing.JTextField();
+        txt_firstName = new javax.swing.JTextField();
         txt_lastName = new javax.swing.JTextField();
         txt_state = new javax.swing.JTextField();
         txt_city = new javax.swing.JTextField();
-        txt_zipcode = new javax.swing.JTextField();
+        txt_zipCode = new javax.swing.JTextField();
         lbl_city = new javax.swing.JLabel();
         lbl_zipCode = new javax.swing.JLabel();
         lbl_address = new javax.swing.JLabel();
-        txt_middlename = new javax.swing.JTextField();
+        txt_middleName = new javax.swing.JTextField();
         txt_country = new javax.swing.JTextField();
         checkPDF = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         btn_submit1 = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -367,15 +363,6 @@ public class RegisterLostLuggage extends JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 241, 234));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btn_clear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btn_clear.setText("CLEAR ALL");
-        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
-        btn_clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clearActionPerformed(evt);
-            }
-        });
-
         lbl_state.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_state.setText("State");
 
@@ -437,10 +424,10 @@ public class RegisterLostLuggage extends JPanel {
         lbl_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_phoneNumber.setText("Phonenumber");
 
-        txt_firstname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_firstname.addActionListener(new java.awt.event.ActionListener() {
+        txt_firstName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_firstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_firstnameActionPerformed(evt);
+                txt_firstNameActionPerformed(evt);
             }
         });
 
@@ -465,24 +452,24 @@ public class RegisterLostLuggage extends JPanel {
             }
         });
 
-        txt_zipcode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_zipcode.setText(" ");
-        txt_zipcode.addFocusListener(new java.awt.event.FocusAdapter() {
+        txt_zipCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_zipCode.setText(" ");
+        txt_zipCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_zipcodeFocusGained(evt);
+                txt_zipCodeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_zipcodeFocusLost(evt);
+                txt_zipCodeFocusLost(evt);
             }
         });
-        txt_zipcode.addActionListener(new java.awt.event.ActionListener() {
+        txt_zipCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_zipcodeActionPerformed(evt);
+                txt_zipCodeActionPerformed(evt);
             }
         });
-        txt_zipcode.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_zipCode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_zipcodeKeyPressed(evt);
+                txt_zipCodeKeyPressed(evt);
             }
         });
 
@@ -495,24 +482,24 @@ public class RegisterLostLuggage extends JPanel {
         lbl_address.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_address.setText("Address");
 
-        txt_middlename.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_middlename.setText(" ");
-        txt_middlename.addFocusListener(new java.awt.event.FocusAdapter() {
+        txt_middleName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_middleName.setText(" ");
+        txt_middleName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_middlenameFocusGained(evt);
+                txt_middleNameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_middlenameFocusLost(evt);
+                txt_middleNameFocusLost(evt);
             }
         });
-        txt_middlename.addActionListener(new java.awt.event.ActionListener() {
+        txt_middleName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_middlenameActionPerformed(evt);
+                txt_middleNameActionPerformed(evt);
             }
         });
-        txt_middlename.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_middleName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_middlenameKeyPressed(evt);
+                txt_middleNameKeyPressed(evt);
             }
         });
 
@@ -549,16 +536,15 @@ public class RegisterLostLuggage extends JPanel {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_firstname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_firstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_lastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_phoneNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_country, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_city, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_state, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_zipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_clear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txt_middlename, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_middleName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(62, 62, 62))
         );
         jPanel4Layout.setVerticalGroup(
@@ -567,12 +553,12 @@ public class RegisterLostLuggage extends JPanel {
                 .addComponent(checkPDF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_firstname)
+                    .addComponent(txt_firstName)
                     .addComponent(lbl_firstname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_middlename)
-                    .addComponent(txt_middlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_middleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_lastname)
@@ -604,10 +590,8 @@ public class RegisterLostLuggage extends JPanel {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_zipcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(txt_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
@@ -624,22 +608,34 @@ public class RegisterLostLuggage extends JPanel {
             }
         });
 
+        btn_clear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
+        btn_clear.setText("CLEAR ALL");
+        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(81, 81, 81)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150)
+                .addGap(199, 199, 199)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_submit1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_submit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -649,8 +645,8 @@ public class RegisterLostLuggage extends JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -661,9 +657,11 @@ public class RegisterLostLuggage extends JPanel {
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(btn_submit1)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addGap(177, 177, 177)
+                        .addComponent(btn_submit1)
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -716,37 +714,37 @@ public class RegisterLostLuggage extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_countryActionPerformed
 
-    private void txt_middlenameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middlenameKeyPressed
+    private void txt_middleNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middleNameKeyPressed
         lbldefaultvaluemiddlename.setText("");
-    }//GEN-LAST:event_txt_middlenameKeyPressed
+    }//GEN-LAST:event_txt_middleNameKeyPressed
 
-    private void txt_middlenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middlenameActionPerformed
+    private void txt_middleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middleNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_middlenameActionPerformed
+    }//GEN-LAST:event_txt_middleNameActionPerformed
 
-    private void txt_middlenameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusLost
+    private void txt_middleNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middleNameFocusLost
         lbldefaultvaluemiddlename.setText("optional");
-    }//GEN-LAST:event_txt_middlenameFocusLost
+    }//GEN-LAST:event_txt_middleNameFocusLost
 
-    private void txt_middlenameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middlenameFocusGained
+    private void txt_middleNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middleNameFocusGained
         lbldefaultvaluemiddlename.setText("");
-    }//GEN-LAST:event_txt_middlenameFocusGained
+    }//GEN-LAST:event_txt_middleNameFocusGained
 
-    private void txt_zipcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_zipcodeKeyPressed
+    private void txt_zipCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_zipCodeKeyPressed
         lbldefaultvaluezipcode.setText("");
-    }//GEN-LAST:event_txt_zipcodeKeyPressed
+    }//GEN-LAST:event_txt_zipCodeKeyPressed
 
-    private void txt_zipcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipcodeActionPerformed
+    private void txt_zipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipCodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_zipcodeActionPerformed
+    }//GEN-LAST:event_txt_zipCodeActionPerformed
 
-    private void txt_zipcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusLost
+    private void txt_zipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipCodeFocusLost
         lbldefaultvaluezipcode.setText("1234 AB");
-    }//GEN-LAST:event_txt_zipcodeFocusLost
+    }//GEN-LAST:event_txt_zipCodeFocusLost
 
-    private void txt_zipcodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipcodeFocusGained
+    private void txt_zipCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipCodeFocusGained
         lbldefaultvaluezipcode.setText("");
-    }//GEN-LAST:event_txt_zipcodeFocusGained
+    }//GEN-LAST:event_txt_zipCodeFocusGained
 
     private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
         // TODO add your handling code here:
@@ -760,9 +758,9 @@ public class RegisterLostLuggage extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_lastNameActionPerformed
 
-    private void txt_firstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstnameActionPerformed
+    private void txt_firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_firstnameActionPerformed
+    }//GEN-LAST:event_txt_firstNameActionPerformed
 
     private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
         // TODO add your handling code here:
@@ -800,8 +798,8 @@ public class RegisterLostLuggage extends JPanel {
     private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
 
         //  Create client
-        String firstName = txt_firstname.getText();
-        String middleName = txt_middlename.getText();
+        String firstName = txt_firstName.getText();
+        String middleName = txt_middleName.getText();
         String lastName = txt_lastName.getText();
 
         String phone = txt_phoneNumber.getText();
@@ -811,12 +809,13 @@ public class RegisterLostLuggage extends JPanel {
         String address = txt_address.getText();
         String city = txt_city.getText();
         String state = txt_state.getText();
-        String zipCode = txt_zipcode.getText();
+        String zipCode = txt_zipCode.getText();
 
         //        if (areAllNotEmpty(firstName, middleName, lastName, phone, email,
         //                country, address, city, state, zipCode)) {
         //            JOptionPane.showMessageDialog(null, "No data entered");
         //        }
+        
         //  Calling client constructor from the client class
         Client newClient = new Client(firstName, middleName, lastName, phone,
                 email, country, address, city, state, zipCode);
@@ -830,7 +829,7 @@ public class RegisterLostLuggage extends JPanel {
         String departureFrom
                 = String.valueOf(cmb_departureFrom.getSelectedItem());
         String material = txt_material.getText();
-        String lableCode = txt_email.getText();
+        String lableCode = txt_lableCode.getText();
         String otherDetails = txt_otherDetails.getText();
         String status = "Lost";
         String whenFound = "";
@@ -866,11 +865,23 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_btn_submit1ActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        //clear all the fields
+       //clear all the fields
         txt_brand.setText("");
         cmb_color.setSelectedIndex(0);
         cmb_weightClass.setSelectedIndex(0);
-
+//        cmb_departureFrom.setSelectedIndex(0);
+        txt_material.setText("");
+        txt_otherDetails.setText("");
+        txt_firstName.setText("");
+        txt_middleName.setText("");
+        txt_lastName.setText("");
+        txt_phoneNumber.setText("");
+        txt_email.setText("");
+        txt_country.setText("");
+        txt_address.setText("");
+        txt_city.setText("");
+        txt_state.setText("");
+        txt_zipCode.setText("");
     }//GEN-LAST:event_btn_clearActionPerformed
 
     public static void setText(Luggage luggage) {
@@ -919,14 +930,14 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JTextField txt_city;
     private javax.swing.JTextField txt_country;
     private static javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_firstname;
+    private javax.swing.JTextField txt_firstName;
     private static javax.swing.JTextField txt_lableCode;
     private javax.swing.JTextField txt_lastName;
     private static javax.swing.JTextField txt_material;
-    private static javax.swing.JTextField txt_middlename;
+    private static javax.swing.JTextField txt_middleName;
     private static javax.swing.JTextArea txt_otherDetails;
     private javax.swing.JTextField txt_phoneNumber;
     private javax.swing.JTextField txt_state;
-    private static javax.swing.JTextField txt_zipcode;
+    private static javax.swing.JTextField txt_zipCode;
     // End of variables declaration//GEN-END:variables
 }

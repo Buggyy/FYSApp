@@ -227,7 +227,7 @@ public class AdminLuggageLost extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 410, 30));
+        jPanel1.add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 30));
 
         lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton.setText("Lost Luggage");
