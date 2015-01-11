@@ -130,41 +130,41 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_brand.setForeground(new java.awt.Color(255, 255, 255));
         lbl_brand.setText("Brand:");
-        add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
 
         lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_color.setForeground(new java.awt.Color(255, 255, 255));
         lbl_color.setText("Color:");
-        add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        add(lbl_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
         lbl_weightClass.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_weightClass.setForeground(new java.awt.Color(255, 255, 255));
         lbl_weightClass.setText("Weight class:");
-        add(lbl_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+        add(lbl_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         lbl_foundAt.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_foundAt.setForeground(new java.awt.Color(255, 255, 255));
         lbl_foundAt.setText("Found at");
-        add(lbl_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+        add(lbl_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
         lbl_code.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_code.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_code.setText("lable code");
-        add(lbl_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        lbl_code.setText("Lable code");
+        add(lbl_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
 
         lbl_material.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_material.setForeground(new java.awt.Color(255, 255, 255));
         lbl_material.setText("Material:");
-        add(lbl_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
+        add(lbl_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
         txt_whenFound.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        txt_whenFound.setText("dd-MM-yyyy");
+        txt_whenFound.setText("dd-mm-yyyy");
         txt_whenFound.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_whenFoundActionPerformed(evt);
             }
         });
-        add(txt_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 160, -1));
+        add(txt_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 160, -1));
 
         txt_material.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_material.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_materialActionPerformed(evt);
             }
         });
-        add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 160, 20));
+        add(txt_material, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 160, 20));
 
         txt_lableCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_lableCode.setText("0000-2222-3333");
@@ -181,7 +181,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_lableCodeActionPerformed(evt);
             }
         });
-        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 160, 20));
+        add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 160, 20));
 
         cmb_foundAt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_foundAt.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 cmb_foundAtActionPerformed(evt);
             }
         });
-        add(cmb_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 160, -1));
+        add(cmb_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 160, -1));
 
         cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +197,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 cmb_weightClassActionPerformed(evt);
             }
         });
-        add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 160, -1));
+        add(cmb_weightClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 160, -1));
 
         cmb_color.setMaximumRowCount(15);
         cmb_color.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"red", "green", "yellow", "gray"}));
@@ -206,7 +206,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 cmb_colorActionPerformed(evt);
             }
         });
-        add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 160, -1));
+        add(cmb_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 160, -1));
 
         txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_brand.addActionListener(new java.awt.event.ActionListener() {
@@ -214,7 +214,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_brandActionPerformed(evt);
             }
         });
-        add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 160, -1));
+        add(txt_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 160, -1));
 
         btn_submit.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn_submit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
@@ -229,7 +229,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 btn_submitActionPerformed(evt);
             }
         });
-        add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, 160, 30));
+        add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 160, 30));
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
         backJButton.setText(" BACK");
@@ -247,34 +247,34 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 logoutJButton1ActionPerformed(evt);
             }
         });
-        add(logoutJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 110, 40));
+        add(logoutJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
         jLabel5.setText("  Owner");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 200, 33));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 200, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         jLabel6.setText("  Register Solved Luggage");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 410, 33));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 410, 33));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         jLabel7.setText("  Luggage");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 200, 33));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 200, 33));
 
         lbl_firstname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_firstname.setForeground(new java.awt.Color(255, 255, 255));
         lbl_firstname.setText("Firstname");
-        add(lbl_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
+        add(lbl_firstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
 
         txt_firstName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_firstName.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +282,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_firstNameActionPerformed(evt);
             }
         });
-        add(txt_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 190, -1));
+        add(txt_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 190, -1));
 
         txt_middleName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_middleName.addActionListener(new java.awt.event.ActionListener() {
@@ -290,17 +290,17 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_middleNameActionPerformed(evt);
             }
         });
-        add(txt_middleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 190, -1));
+        add(txt_middleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 190, -1));
 
         lbl_middlename.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_middlename.setForeground(new java.awt.Color(255, 255, 255));
         lbl_middlename.setText("Middlename");
-        add(lbl_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
+        add(lbl_middlename, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, -1, -1));
 
         lbl_lastname.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_lastname.setForeground(new java.awt.Color(255, 255, 255));
         lbl_lastname.setText("Lastname");
-        add(lbl_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
+        add(lbl_lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
 
         txt_lastName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_lastName.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +308,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_lastNameActionPerformed(evt);
             }
         });
-        add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 190, -1));
+        add(txt_lastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 190, -1));
 
         txt_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
@@ -316,17 +316,17 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_phoneNumberActionPerformed(evt);
             }
         });
-        add(txt_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 190, -1));
+        add(txt_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 190, -1));
 
         lbl_phoneNumber.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_phoneNumber.setForeground(new java.awt.Color(255, 255, 255));
         lbl_phoneNumber.setText("Phonenumber");
-        add(lbl_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, -1, -1));
+        add(lbl_phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, -1, -1));
 
         lbl_email.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_email.setForeground(new java.awt.Color(255, 255, 255));
         lbl_email.setText("Email");
-        add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, -1));
+        add(lbl_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
 
         txt_email.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_email.addActionListener(new java.awt.event.ActionListener() {
@@ -334,12 +334,12 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_emailActionPerformed(evt);
             }
         });
-        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 190, -1));
+        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 190, -1));
 
         lbl_country.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_country.setForeground(new java.awt.Color(255, 255, 255));
         lbl_country.setText("Country ");
-        add(lbl_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, -1, -1));
+        add(lbl_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, -1, -1));
 
         txt_country.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_country.addActionListener(new java.awt.event.ActionListener() {
@@ -347,12 +347,12 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_countryActionPerformed(evt);
             }
         });
-        add(txt_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 190, -1));
+        add(txt_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 190, -1));
 
         lbl_address.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_address.setForeground(new java.awt.Color(255, 255, 255));
         lbl_address.setText("Address");
-        add(lbl_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
+        add(lbl_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, -1, -1));
 
         txt_address.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_address.addActionListener(new java.awt.event.ActionListener() {
@@ -360,12 +360,12 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_addressActionPerformed(evt);
             }
         });
-        add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 190, -1));
+        add(txt_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 190, -1));
 
         lbl_city.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_city.setForeground(new java.awt.Color(255, 255, 255));
         lbl_city.setText("City");
-        add(lbl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, -1, -1));
+        add(lbl_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
 
         txt_city.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_city.addActionListener(new java.awt.event.ActionListener() {
@@ -373,12 +373,12 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_cityActionPerformed(evt);
             }
         });
-        add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 190, -1));
+        add(txt_city, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 190, -1));
 
         lbl_state.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_state.setForeground(new java.awt.Color(255, 255, 255));
         lbl_state.setText("State");
-        add(lbl_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, -1, -1));
+        add(lbl_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, -1, -1));
 
         txt_state.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_state.addActionListener(new java.awt.event.ActionListener() {
@@ -386,12 +386,12 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_stateActionPerformed(evt);
             }
         });
-        add(txt_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 370, 190, -1));
+        add(txt_state, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 410, 190, -1));
 
         lbl_zipCode.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_zipCode.setForeground(new java.awt.Color(255, 255, 255));
         lbl_zipCode.setText("Zipcode");
-        add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, -1, -1));
+        add(lbl_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, -1, -1));
 
         txt_zipCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_zipCode.addActionListener(new java.awt.event.ActionListener() {
@@ -399,24 +399,24 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 txt_zipCodeActionPerformed(evt);
             }
         });
-        add(txt_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 110, -1));
+        add(txt_zipCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, 110, -1));
 
         lbl_whenFound1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_whenFound1.setForeground(new java.awt.Color(255, 255, 255));
         lbl_whenFound1.setText("When found:");
-        add(lbl_whenFound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
+        add(lbl_whenFound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, -1));
 
         txt_otherDetails.setColumns(20);
         txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_otherDetails.setRows(5);
         jScrollPane2.setViewportView(txt_otherDetails);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 340, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 340, 90));
 
         lbl_otherDetails1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_otherDetails1.setForeground(new java.awt.Color(255, 255, 255));
         lbl_otherDetails1.setText("Other details:");
-        add(lbl_otherDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
+        add(lbl_otherDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, -1));
 
         cmb_departureFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_departureFrom.addActionListener(new java.awt.event.ActionListener() {
@@ -424,15 +424,19 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 cmb_departureFromActionPerformed(evt);
             }
         });
-        add(cmb_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 160, -1));
+        add(cmb_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 160, -1));
 
         lbl_departureFrom.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_departureFrom.setForeground(new java.awt.Color(255, 255, 255));
         lbl_departureFrom.setText("Departure from:");
-        add(lbl_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
+        add(lbl_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setName(""); // NOI18N
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

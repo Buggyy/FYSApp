@@ -128,7 +128,7 @@ public class LostLuggageOverview extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, -1, 30));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
 
         foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         foundJButton.setText("Found Luggage");
@@ -137,7 +137,7 @@ public class LostLuggageOverview extends JPanel {
                 foundJButtonActionPerformed(evt);
             }
         });
-        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, 140, 50));
+        add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, 140, 50));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -146,7 +146,7 @@ public class LostLuggageOverview extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, 100, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, 90, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -174,7 +174,7 @@ public class LostLuggageOverview extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 210, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -184,7 +184,7 @@ public class LostLuggageOverview extends JPanel {
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -231,10 +231,11 @@ public class LostLuggageOverview extends JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed

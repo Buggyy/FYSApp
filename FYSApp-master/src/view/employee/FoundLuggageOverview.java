@@ -137,13 +137,13 @@ public class FoundLuggageOverview extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 110, 40));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         jLabel2.setText("   Found Luggage Overview - Employee");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 410, 33));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 410, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(" matches");
@@ -158,7 +158,7 @@ public class FoundLuggageOverview extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 110, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -177,7 +177,7 @@ public class FoundLuggageOverview extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
         registerJButton.setText("REGISTER FOUND LUGGAGE");
@@ -186,7 +186,7 @@ public class FoundLuggageOverview extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 210, 40));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
@@ -195,7 +195,7 @@ public class FoundLuggageOverview extends JPanel {
                 editJButtonActionPerformed(evt);
             }
         });
-        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 90, 40));
+        add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, 90, 40));
 
         foundLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         foundLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -241,7 +241,7 @@ public class FoundLuggageOverview extends JPanel {
         });
         jScrollPane2.setViewportView(foundLuggageTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,7 +250,7 @@ public class FoundLuggageOverview extends JPanel {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Currently logged in as: [username]");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("There are currently:");
@@ -267,10 +267,13 @@ public class FoundLuggageOverview extends JPanel {
                 lostJButton1ActionPerformed(evt);
             }
         });
-        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 130, 50));
+        add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, 140, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

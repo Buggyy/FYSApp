@@ -219,13 +219,13 @@ public class MatchingLuggage extends JPanel {
         });
         jScrollPane2.setViewportView(matchingLuggageTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 790, 380));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 790, 380));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         jLabel5.setText("  Matching Luggage");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 410, 33));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 410, 33));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
         registerJButton.setText(" REGISTER LUGGAGE");
@@ -234,12 +234,12 @@ public class MatchingLuggage extends JPanel {
                 registerJButtonActionPerformed(evt);
             }
         });
-        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 210, 40));
+        add(registerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 490, 210, 40));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText(" Luggage found?");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 130, 33));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 130, 33));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -248,7 +248,7 @@ public class MatchingLuggage extends JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 110, 40));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
 
         matchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         matchJButton.setText(" MATCH");
@@ -257,19 +257,23 @@ public class MatchingLuggage extends JPanel {
                 matchJButtonActionPerformed(evt);
             }
         });
-        add(matchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 110, 40));
+        add(matchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 110, 40));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Luggage not found?");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 170, 33));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setAutoscrolls(true);
+        jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1024, 600));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
