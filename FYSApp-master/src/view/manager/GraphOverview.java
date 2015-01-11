@@ -60,6 +60,8 @@ public class GraphOverview extends javax.swing.JPanel {
         lostJButton = new javax.swing.JButton();
         statisticsJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -85,7 +87,7 @@ public class GraphOverview extends javax.swing.JPanel {
                 JButtonPrintActionPerformed(evt);
             }
         });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 90, 40));
+        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 90, 40));
 
         auctionedJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         auctionedJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/auctioned-icon.png"))); // NOI18N
@@ -122,7 +124,7 @@ public class GraphOverview extends javax.swing.JPanel {
 
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
-        statisticsJButton.setText("STATISTICS");
+        statisticsJButton.setText("Statistics");
         statisticsJButton.setEnabled(false);
         statisticsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +141,16 @@ public class GraphOverview extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 40));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
+        jLabel2.setText("   Graph Luggage Overview");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 310, 33));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Currently logged in as: [username]");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -205,6 +217,8 @@ public class GraphOverview extends javax.swing.JPanel {
     private javax.swing.JLabel graphJLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     private javax.swing.JButton statisticsJButton;
