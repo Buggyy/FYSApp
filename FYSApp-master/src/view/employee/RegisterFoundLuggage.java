@@ -490,9 +490,9 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_submit;
-    private javax.swing.JComboBox cmb_color;
-    private javax.swing.JComboBox cmb_foundAt;
-    private javax.swing.JComboBox cmb_weightClass;
+    private static javax.swing.JComboBox cmb_color;
+    private static javax.swing.JComboBox cmb_foundAt;
+    private static javax.swing.JComboBox cmb_weightClass;
     private com.toedter.calendar.JDateChooser dc_whenFound;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -508,10 +508,10 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JLabel lbl_whenFound;
     private javax.swing.JLabel lbldefaultvaluecode;
     private javax.swing.JButton logoutJButton;
-    private javax.swing.JTextField txt_brand;
-    private javax.swing.JTextField txt_lableCode;
-    private javax.swing.JTextField txt_material;
-    private javax.swing.JTextArea txt_otherDetails;
+    private static javax.swing.JTextField txt_brand;
+    private static javax.swing.JTextField txt_lableCode;
+    private static javax.swing.JTextField txt_material;
+    private static javax.swing.JTextArea txt_otherDetails;
     // End of variables declaration//GEN-END:variables
 
 }

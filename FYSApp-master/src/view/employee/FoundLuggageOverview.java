@@ -99,10 +99,8 @@ public class FoundLuggageOverview extends JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        matchesJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         searchJButton = new javax.swing.JButton();
         searchJTextField = new javax.swing.JTextField();
         registerJButton = new javax.swing.JButton();
@@ -111,8 +109,6 @@ public class FoundLuggageOverview extends JPanel {
         foundLuggageTable = new javax.swing.JTable();
         jLWarning = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         lostJButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -121,14 +117,6 @@ public class FoundLuggageOverview extends JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        matchesJButton.setText("Matches");
-        matchesJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matchesJButtonActionPerformed(evt);
-            }
-        });
-        add(matchesJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, 100, 20));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -144,10 +132,6 @@ public class FoundLuggageOverview extends JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
         jLabel2.setText("   Found Luggage Overview - Employee");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 410, 33));
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText(" matches");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 190, -1, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -251,14 +235,6 @@ public class FoundLuggageOverview extends JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Currently logged in as: [username]");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("There are currently:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 150, -1, -1));
-
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("[ number ]");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 170, -1, -1));
 
         lostJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton1.setText("Lost Luggage");
@@ -378,25 +354,17 @@ public class FoundLuggageOverview extends JPanel {
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
-    private void matchesJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchesJButtonActionPerformed
-        Frame.getInstance().showPanel(new MatchingLuggage());
-    }//GEN-LAST:event_matchesJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editJButton;
     private javax.swing.JTable foundLuggageTable;
     private javax.swing.JLabel jLWarning;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton1;
-    private javax.swing.JButton matchesJButton;
     private javax.swing.JButton registerJButton;
     private javax.swing.JButton searchJButton;
     private javax.swing.JTextField searchJTextField;
