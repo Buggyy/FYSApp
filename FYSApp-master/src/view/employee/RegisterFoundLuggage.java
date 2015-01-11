@@ -498,8 +498,14 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_txt_lableCodeKeyPressed
 
     public static void setText(Luggage luggage) {
-//        txt_brand.setText(luggage.getBrand());
-//        txt_otherDetails.setText(luggage.getDescription());
+        txt_brand.setText(luggage.getBrand());
+        cmb_color.setSelectedItem(luggage.getColor());
+        cmb_weightClass.setSelectedItem(luggage.getWeightClass());
+        cmb_foundAt.setSelectedItem(luggage.getFoundAt());
+        txt_material.setText(luggage.getMaterial());
+        txt_lableCode.setText(luggage.getLableCode());
+        txt_otherDetails.setText(luggage.getOtherDetails());
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
