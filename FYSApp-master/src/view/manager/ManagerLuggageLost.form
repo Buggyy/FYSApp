@@ -230,7 +230,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="STATISTICS"/>
         <Property name="actionCommand" type="java.lang.String" value="Statistics"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statisticsJButtonActionPerformed"/>

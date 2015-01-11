@@ -292,7 +292,6 @@ public class MatchingLuggage extends JPanel {
             FYSApp.getClientManager().updateClient(client, clientid);
             Frame.getInstance().showPanel(new FoundLuggageOverview());
             JOptionPane.showMessageDialog(null, "Information is saved");
-        Frame.getInstance().showPanel(new RegisterFoundLuggage());
     }//GEN-LAST:event_registerJButtonActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed

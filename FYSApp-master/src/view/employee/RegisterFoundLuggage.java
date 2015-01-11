@@ -430,7 +430,7 @@ public class RegisterFoundLuggage extends JPanel {
             try {
 
                 if (updateMode > 1) {
-                    FYSApp.getLuggageManager().updateFoundLuggage(luggage, luggageid);
+                    FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Information is saved");

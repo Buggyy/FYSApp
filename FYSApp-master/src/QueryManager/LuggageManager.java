@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +27,7 @@ public class LuggageManager {
 
     private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
-
+    
     /**
      * @description HERE
      * @param luggage
@@ -38,7 +37,7 @@ public class LuggageManager {
                 + ",otherdetails, weightclass, status, created, departurefrom,"
                 + " whenfound) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?)";
-
+        
 //        INSERT INTO luggage (brand,lablecode,color,material
 //,otherdetails, weightclass, status, created, departurefrom)
 //VALUES ('gutti',123456, 'noob', 'letather','lelijke sht','dik','Found','gister','chris roelvink')
@@ -67,39 +66,44 @@ public class LuggageManager {
         dbManager.closeConnection();
     }
 
-    /**
-     * @description fasfsa
-     * @param luggage
-     * @param id
-     */
-    public void updateFoundLuggage(Luggage luggage, int id) {
-        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
-                + " color=?, material=?, otherDetails=?, weightClass=?,"
-                + "status=?, created=?, departureFrom=? WHERE luggageid=?";
-        try {
-            dbManager.openConnection();
-            pst = dbManager.getConnection().prepareStatement(updateLuggage);
-            pst.setString(1, luggage.getBrand());
-            pst.setString(2, luggage.getLableCode());
-            pst.setString(3, luggage.getColor());
-            pst.setString(4, luggage.getMaterial());
-            pst.setString(5, luggage.getOtherDetails());
-            pst.setString(6, luggage.getWeightClass());
-            pst.setString(7, "Found");
-            pst.setString(8, FYSApp.getDate());
-            pst.setString(9, luggage.getDepartureFrom());
-            // + Airport where user is working at
-            pst.setInt(10, id);
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Could not complete task, please contact your Administrator!",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        dbManager.closeConnection();
-    }
+//    /**
+//     * @description fasfsa
+//     * @param luggage
+//     * @param id
+//     */
+//    public void updateFoundLuggage(Luggage luggage, int id) {
+//        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
+//                + " color=?, material=?, otherDetails=?, weightClass=?,"
+//                + "status=?, created=?, departureFrom=?, lastupdated=? WHERE luggageid=?";
+//        try {
+//            dbManager.openConnection();
+//            pst = dbManager.getConnection().prepareStatement(updateLuggage);
+//            pst.setString(1, luggage.getBrand());
+//            pst.setString(2, luggage.getLableCode());
+//            pst.setString(3, luggage.getColor());
+//            pst.setString(4, luggage.getMaterial());
+//            pst.setString(5, luggage.getOtherDetails());
+//            pst.setString(6, luggage.getWeightClass());
+//            pst.setString(7, "Found");
+//            pst.setString(8, FYSApp.getDate());
+//            pst.setString(9, luggage.getDepartureFrom());
+//            // + Airport where user is working at
+//            pst.setString(10, FYSApp.getDateTime());
+//            pst.setInt(11, id);
+//            Calendar cal = Calendar.getInstance();
+//            
+//            
+//
+//            pst.executeUpdate();
+//
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null,
+//                    "Could not complete task, please contact your Administrator!",
+//                    "Error",
+//                    JOptionPane.ERROR_MESSAGE);
+//        }
+//        dbManager.closeConnection();
+//    }
 
     /**
      * @description Add a LOST luggage item
@@ -139,7 +143,7 @@ public class LuggageManager {
     }
 
     /**
-     * @description Update existing LOST luggage item
+     * @description Update existing luggage item
      * @param luggage item
      * @param id of the luggage
      *
@@ -147,7 +151,7 @@ public class LuggageManager {
     public void updateLuggage(Luggage luggage, int id) {
         String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
                 + " color=?, material=?, otherDetails=?, weightClass=?,"
-                + "status=?, lastupdated=?, departureFrom=? WHERE luggageid=?";
+                + "status=?, lastupdated=?, departureFrom=?, lastupdated WHERE luggageid=?";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection()
@@ -163,7 +167,8 @@ public class LuggageManager {
             pst.setString(8, FYSApp.getDate());                 //  Date of creation
             pst.setString(9, luggage.getDepartureFrom());       //  Client Departure
             //  pst.setString(9, user.getAirport());            //  Airport from user
-            pst.setInt(10, id);                                 //  id from luggage
+            pst.setString(10, FYSApp.getDateTime());            // timestramp for lastupdated
+            pst.setInt(11, id);                                 //  id from luggage
             pst.executeUpdate();
 
         } catch (SQLException e) {
