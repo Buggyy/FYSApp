@@ -211,7 +211,7 @@ public class EditLostLuggage extends javax.swing.JPanel {
                 logoutJButtonActionPerformed(evt);
             }
         });
-        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 140, 40));
+        add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
         add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 340, 20));
 
         lbl_loadingMessage.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
