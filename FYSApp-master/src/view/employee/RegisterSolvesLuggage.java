@@ -66,6 +66,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
      */
     public RegisterSolvesLuggage() {
         initComponents();
+        setLoggedInAs();
     }
 
     /**
@@ -94,7 +95,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         logoutJButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbl_firstname = new javax.swing.JLabel();
@@ -123,6 +123,8 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         lbl_otherDetails1 = new javax.swing.JLabel();
         cmb_departureFrom = new javax.swing.JComboBox();
         lbl_departureFrom = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -254,10 +256,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
         jLabel5.setText("  Owner");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 200, 33));
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -431,6 +429,14 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         lbl_departureFrom.setText("Departure from:");
         add(lbl_departureFrom, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -586,6 +592,10 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_departureFromActionPerformed
 
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        loggedInAs.setText(userName);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -594,8 +604,8 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_foundAt;
     private static javax.swing.JComboBox cmb_weightClass;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -619,6 +629,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_whenFound1;
     private javax.swing.JLabel lbl_zipCode;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton1;
     private static javax.swing.JTextField txt_address;
     private static javax.swing.JTextField txt_brand;

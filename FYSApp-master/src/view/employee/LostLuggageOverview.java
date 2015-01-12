@@ -36,6 +36,7 @@ public class LostLuggageOverview extends JPanel {
     public LostLuggageOverview() throws ClassNotFoundException, SQLException {
         initComponents();
         getLostLuggage();
+        setLoggedInAs();
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
@@ -100,10 +101,11 @@ public class LostLuggageOverview extends JPanel {
         searchJTextField = new javax.swing.JTextField();
         registerJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lostLuggageTable = new javax.swing.JTable();
         jLWarning = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
@@ -183,10 +185,6 @@ public class LostLuggageOverview extends JPanel {
         jLabel2.setText("   Lost Luggage Overview - Employee");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 400, 33));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         lostLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -230,6 +228,14 @@ public class LostLuggageOverview extends JPanel {
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 410, 30));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -336,15 +342,20 @@ public class LostLuggageOverview extends JPanel {
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        loggedInAs.setText(userName);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JLabel jLWarning;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JTable lostLuggageTable;
     private javax.swing.JButton registerJButton;
