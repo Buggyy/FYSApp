@@ -68,7 +68,8 @@ public class MatchingLuggage extends JPanel {
      */
     public MatchingLuggage() {
         initComponents();
-//        getMatchingLuggage();
+
+        setLoggedInAs();
     }
 
     public static void setLostOrFound(String lostOrFound) {
@@ -179,7 +180,8 @@ public class MatchingLuggage extends JPanel {
         logoutJButton = new javax.swing.JButton();
         matchJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -274,9 +276,13 @@ public class MatchingLuggage extends JPanel {
         jLabel6.setText("Luggage not found?");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 33));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Currently logged in as: ");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -340,14 +346,19 @@ public class MatchingLuggage extends JPanel {
 
     }//GEN-LAST:event_matchJButtonActionPerformed
 
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        loggedInAs.setText(userName);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton matchJButton;
     private static javax.swing.JTable matchingLuggageTable;

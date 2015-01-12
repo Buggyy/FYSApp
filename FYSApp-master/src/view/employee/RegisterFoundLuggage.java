@@ -26,6 +26,7 @@ public class RegisterFoundLuggage extends JPanel {
      */
     public RegisterFoundLuggage() {
         initComponents();
+        setLoggedInAs();
         lbl_foundAt.setVisible(false);
         cmb_foundAt.setVisible(false);
 
@@ -93,6 +94,8 @@ public class RegisterFoundLuggage extends JPanel {
         jPanel1 = new javax.swing.JPanel();
         backJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        loggedInAs = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -341,6 +344,14 @@ public class RegisterFoundLuggage extends JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(919, 45, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
@@ -497,6 +508,10 @@ public class RegisterFoundLuggage extends JPanel {
         }
     }
 
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        loggedInAs.setText(userName);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btn_clear;
@@ -507,6 +522,7 @@ public class RegisterFoundLuggage extends JPanel {
     private com.toedter.calendar.JDateChooser dc_whenFound;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
@@ -518,6 +534,7 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_whenFound;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private static javax.swing.JTextField txt_brand;
     private static javax.swing.JTextField txt_lableCode;
