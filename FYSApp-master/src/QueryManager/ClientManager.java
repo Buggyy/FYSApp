@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package QueryManager;
 
 import java.sql.PreparedStatement;
@@ -19,11 +14,12 @@ import view.LoginScreen;
  * @author Rafael
  */
 public class ClientManager {
+
     private DatabaseManager dbManager = new DatabaseManager();
     private PreparedStatement pst;
-    
-    // Method om een user toe te voegen aan de database.
+
     /**
+     * Method om een user toe te voegen aan de database.
      *
      * @param client
      */
@@ -32,12 +28,13 @@ public class ClientManager {
         String date = main.FYSApp.getDate();
 
         try {
+
             String sql = "INSERT INTO client (firstname,middlename,lastname, "
                     + "country, phonenumber, email ,address, city, state,"
                     + "zipcode) VALUES (?,?,?,?,?,?,?,?,?,?)";
+
             dbManager.openConnection();
 
-            // Gebruik de getters en setters van de user object
             pst = dbManager.getConnection().prepareStatement(sql);
 
             pst.setString(1, client.getFirstName());
@@ -56,17 +53,23 @@ public class ClientManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         dbManager.closeConnection();
     }
-    
-    
-    
+
+    /**
+     *
+     * @return
+     */
     public int getClientid() {
 
         int ownerid = 0;
 
         try {
-            String sql = "SELECT ownerid FROM client ORDER BY ownerid DESC LIMIT 0 , 1";
+
+            String sql = "SELECT ownerid FROM client ORDER BY ownerid DESC "
+                    + "LIMIT 0 , 1";
+
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
@@ -74,24 +77,25 @@ public class ClientManager {
             while (rs.next()) {
                 ownerid = rs.getInt(1);
             }
-
         } catch (Exception e) {
-            //  ERROR-MESSAGE
         }
         dbManager.closeConnection();
         return ownerid;
     }
-    
-     /**
+
+    /**
      *
      * @param i
      * @return
      */
     public Client getSelectedClient(int i) {
+
         Client client = new Client();
         ResultSet rs = null;
         String getSelectedClient = "SELECT * FROM client WHERE ownerid=?";
+
         try {
+
             dbManager.openConnection();
             pst = dbManager.getConnection()
                     .prepareStatement(getSelectedClient);
@@ -101,6 +105,7 @@ public class ClientManager {
             rs = pst.executeQuery();
 
             if (rs.next()) {
+
                 client.setFirstName(rs.getString("firstname"));
                 client.setMiddleName(rs.getString("middlename"));
                 client.setLastName(rs.getString("lastname"));
@@ -112,23 +117,33 @@ public class ClientManager {
                 client.setState(rs.getString("state"));
                 client.setZipCode(rs.getString("zipcode"));
             }
+
             return client;
 
         } catch (SQLException ex) {
             Logger.getLogger(LoginScreen.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
+
         dbManager.closeConnection();
         return client;
     }
-    
-      public void updateClient(Client client, int id) {
-            String updateClient = "UPDATE client SET firstname=?, middlename=?, "
-                    + "lastname=?, country=?, phonenumber=?, email=?, "
-                    + "address=?, city=?, state=?, zipcode=? WHERE ownerid=?";
-            try {
+
+    /**
+     *
+     * @param client
+     * @param id
+     */
+    public void updateClient(Client client, int id) {
+
+        String updateClient = "UPDATE client SET firstname=?, middlename=?, "
+                + "lastname=?, country=?, phonenumber=?, email=?, "
+                + "address=?, city=?, state=?, zipcode=? WHERE ownerid=?";
+        try {
+
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(updateClient);
+
             pst.setString(1, client.getFirstName());
             pst.setString(2, client.getMiddleName());
             pst.setString(3, client.getLastName());
@@ -140,11 +155,13 @@ public class ClientManager {
             pst.setString(9, client.getState());
             pst.setString(10, client.getZipCode());
             pst.setInt(11, id);
+
             pst.executeUpdate();
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Could not complete task, please contact your Administrator!",
-                    "Error",
+                    "Could not complete task, please contact your "
+                    + "Administrator!", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
         dbManager.closeConnection();
