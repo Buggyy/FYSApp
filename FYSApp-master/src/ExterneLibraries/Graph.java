@@ -39,7 +39,7 @@ public class Graph extends ApplicationFrame {
      * @param listName3
      * @param listName4 
      */
-    public void addSeries(String[] dateRange, ArrayList<Integer> list1, 
+    public void addSeriesMonths(String dateType, int beginMonth, String[] dateRange, ArrayList<Integer> list1, 
             ArrayList<Integer> list2, ArrayList<Integer> list3, 
             ArrayList<Integer> list4, String listName1, String listName2,
             String listName3, String listName4) {
@@ -49,10 +49,34 @@ public class Graph extends ApplicationFrame {
         
         for (int i = 0 ; i < dateRange.length ; i ++) {
             
-            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName1));
-            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName2));
-            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName3));
-            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName4));
+            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName1));
+            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName2));
+            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName3));
+            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName4));
+        }
+        
+        for (int i = 0; i < dateRange.length; i++) {
+            
+            this.dataset.addValue(list1.get(i), listName1, dateRange[i]);
+            this.dataset.addValue(list2.get(i), listName2, dateRange[i]);
+            this.dataset.addValue(list3.get(i), listName3, dateRange[i]);
+            this.dataset.addValue(list4.get(i), listName4, dateRange[i]);
+        }
+    }
+    public void addSeriesDays(String dateType, int beginMonth, String[] dateRange, ArrayList<Integer> list1, 
+            ArrayList<Integer> list2, ArrayList<Integer> list3, 
+            ArrayList<Integer> list4, String listName1, String listName2,
+            String listName3, String listName4) {
+
+        
+        LuggageManager luggageMgr =  FYSApp.getLuggageManager();
+        
+        for (int i = 0 ; i < dateRange.length ; i ++) {
+            
+            list1.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName1));
+            list2.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName2));
+            list3.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName3));
+            list4.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName4));
         }
         
         for (int i = 0; i < dateRange.length; i++) {
