@@ -205,7 +205,7 @@ public class RegisterLostLuggage extends JPanel {
         lbl_lableCode1.setText("Lable Code");
 
         txt_lableCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_lableCode.setText(" ");
+        txt_lableCode.setToolTipText("");
         txt_lableCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_lableCodeFocusGained(evt);
@@ -301,6 +301,7 @@ public class RegisterLostLuggage extends JPanel {
         lbl_zipCode.setText("Zipcode");
 
         txt_firstName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_firstName.setToolTipText("");
         txt_firstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_firstNameActionPerformed(evt);
@@ -308,7 +309,6 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_middleName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_middleName.setText(" ");
         txt_middleName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_middleNameFocusGained(evt);
@@ -348,7 +348,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_email.setText(" ");
+        txt_email.setToolTipText("");
         txt_email.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_emailFocusGained(evt);
@@ -369,6 +369,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_country.setToolTipText("");
         txt_country.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_countryActionPerformed(evt);
@@ -376,6 +377,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_address.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_address.setToolTipText("");
         txt_address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_addressActionPerformed(evt);
@@ -383,6 +385,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_city.setToolTipText("");
         txt_city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cityActionPerformed(evt);
@@ -390,6 +393,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_state.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_state.setToolTipText("");
         txt_state.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_stateActionPerformed(evt);
@@ -397,7 +401,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         txt_zipCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_zipCode.setText(" ");
+        txt_zipCode.setToolTipText("");
         txt_zipCode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_zipCodeFocusGained(evt);
@@ -419,6 +423,11 @@ public class RegisterLostLuggage extends JPanel {
 
         checkPDF.setSelected(true);
         checkPDF.setText("Create PDF");
+        checkPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkPDFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -750,43 +759,43 @@ public class RegisterLostLuggage extends JPanel {
 
         if (checkPDF.isSelected()) {
             FYSApp.getInstance().getPDFGenerator().getReceiptPDF(luggage, newClient);
+        }
+        if (updateMode > 1) {
+            FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
+            try {
+                Frame.getInstance().showPanel(new LostLuggageOverview());
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            if (updateMode > 1) {
-                FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
-                try {
-                    Frame.getInstance().showPanel(new LostLuggageOverview());
-                } catch (ClassNotFoundException | SQLException ex) {
-                    Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                try {
-                    if (checkIfExists(luggage)) {
+            try {
+                if (checkIfExists(luggage)) {
 
-                        ResultSet rs = FYSApp.getSearchManager().searchSimilarities(luggage, false);
-                        JOptionPane.showMessageDialog(null, "Possible match found!");
-                        JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
-                        Frame.getInstance().showPanel(new MatchingLuggage());
-                        MatchingLuggage.getMatchingLuggage(rs);
-                        MatchingLuggage.setLostOrFound(status);
-                        MatchingLuggage.setTextLuggage(luggage);
-                        MatchingLuggage.setTextClient(newClient);
+                    ResultSet rs = FYSApp.getSearchManager().searchSimilarities(luggage, false);
+                    JOptionPane.showMessageDialog(null, "Possible match found!");
+                    JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
+                    Frame.getInstance().showPanel(new MatchingLuggage());
+                    MatchingLuggage.getMatchingLuggage(rs);
+                    MatchingLuggage.setLostOrFound(status);
+                    MatchingLuggage.setTextLuggage(luggage);
+                    MatchingLuggage.setTextClient(newClient);
 
-                    } else {
-                        //  Show user succes message
-                        JOptionPane.showMessageDialog(null, "Information is saved");
+                } else {
+                    //  Show user succes message
+                    JOptionPane.showMessageDialog(null, "Information is saved");
                         //  If this is not the case, then we call the addLuggage Query +
-                        //  the add client luggage
-                        FYSApp.getClientManager().addClient(newClient);
-                        int id = FYSApp.getClientManager().getClientid();
-                        FYSApp.getLuggageManager().addLostLuggage(luggage, id);
-                        Frame.getInstance().showPanel(new LostLuggageOverview());
-                    }
-
-                } catch (HeadlessException | ClassNotFoundException | SQLException e) {
-                    JOptionPane.showMessageDialog(null, e);
+                    //  the add client luggage
+                    FYSApp.getClientManager().addClient(newClient);
+                    int id = FYSApp.getClientManager().getClientid();
+                    FYSApp.getLuggageManager().addLostLuggage(luggage, id);
+                    Frame.getInstance().showPanel(new LostLuggageOverview());
                 }
+
+            } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
             }
         }
+
 
     }//GEN-LAST:event_btn_submit1ActionPerformed
 
@@ -816,7 +825,11 @@ public class RegisterLostLuggage extends JPanel {
         txt_lableCode.setText("");
     }//GEN-LAST:event_btn_clearActionPerformed
 
-    public static void setText(Luggage luggage, Client client){
+    private void checkPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPDFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkPDFActionPerformed
+
+    public static void setText(Luggage luggage, Client client) {
         txt_brand.setText(luggage.getBrand());
         cmb_color.setSelectedItem(luggage.getColor());
         cmb_weightClass.setSelectedItem(luggage.getWeightClass());
@@ -824,7 +837,7 @@ public class RegisterLostLuggage extends JPanel {
         txt_material.setText(luggage.getMaterial());
         txt_lableCode.setText(luggage.getLableCode());
         txt_otherDetails.setText(luggage.getOtherDetails());
-        
+
         txt_firstName.setText(client.getFirstName());
         txt_middleName.setText(client.getMiddleName());
         txt_lastName.setText(client.getLastName());
