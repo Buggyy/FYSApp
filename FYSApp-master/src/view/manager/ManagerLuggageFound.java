@@ -1,26 +1,19 @@
 package view.manager;
 
-import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
-import externelibraries.Graph;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
-import model.Luggage;
 import view.admin.AdminLuggageFound;
 
 /**
@@ -118,7 +111,6 @@ public class ManagerLuggageFound extends JPanel {
         foundLuggageJTable = new javax.swing.JTable();
         statisticsJButton = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
-        btn_print = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -265,15 +257,6 @@ public class ManagerLuggageFound extends JPanel {
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 410, 30));
 
-        btn_print.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
-        btn_print.setText("PRINT");
-        btn_print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_printActionPerformed(evt);
-            }
-        });
-        add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 90, 40));
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         jButton1.setText("Solved Luggage");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -405,20 +388,6 @@ public class ManagerLuggageFound extends JPanel {
 
     }
 
-    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
-
-//        rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
-//
-//        try {
-//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ManagerLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }//GEN-LAST:event_btn_printActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Frame.getInstance().showPanel(new ManagerLuggageSolved());
@@ -432,7 +401,6 @@ public class ManagerLuggageFound extends JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton auctionedJButton;
-    private javax.swing.JButton btn_print;
     private javax.swing.JButton foundJButton;
     private javax.swing.JTable foundLuggageJTable;
     private javax.swing.JButton jButton1;

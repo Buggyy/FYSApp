@@ -1,11 +1,7 @@
 package view.manager;
 
-import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
-import externelibraries.Graph;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
-import view.LoginScreen;
 import view.admin.AdminLuggageLost;
 
 /**
@@ -100,7 +95,6 @@ public class ManagerLuggageLost extends JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         lostLuggageJTable = new javax.swing.JTable();
         statisticsJButton = new javax.swing.JButton();
-        JButtonPrint = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -244,15 +238,6 @@ public class ManagerLuggageLost extends JPanel {
         });
         add(statisticsJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, 40));
 
-        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
-        JButtonPrint.setText("PRINT");
-        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JButtonPrintActionPerformed(evt);
-            }
-        });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 90, 40));
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/match-icon.png"))); // NOI18N
         jButton1.setText("Solved Luggage");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -335,21 +320,6 @@ public class ManagerLuggageLost extends JPanel {
 
     }//GEN-LAST:event_searchJTextFieldKeyTyped
 
-    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-
-//        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
-//
-//       
-//        try {
-//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }//GEN-LAST:event_JButtonPrintActionPerformed
-
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
@@ -387,7 +357,6 @@ public class ManagerLuggageLost extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JButton jButton1;

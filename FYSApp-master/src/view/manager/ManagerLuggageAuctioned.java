@@ -1,11 +1,7 @@
 package view.manager;
 
-import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
-import externelibraries.Graph;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -96,7 +92,6 @@ public class ManagerLuggageAuctioned extends JPanel {
         foundJButton = new javax.swing.JButton();
         lostJButton = new javax.swing.JButton();
         searchJTextField = new javax.swing.JTextField();
-        JButtonPrint = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -184,15 +179,6 @@ public class ManagerLuggageAuctioned extends JPanel {
             }
         });
         add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
-
-        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
-        JButtonPrint.setText("PRINT");
-        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JButtonPrintActionPerformed(evt);
-            }
-        });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 90, 40));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Currently logged in as: [username]");
@@ -303,20 +289,6 @@ public class ManagerLuggageAuctioned extends JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
-    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-//        rs = FYSApp.getTableManager().getEmployeeAuctionedLuggage();
-//
-//       
-//        try {
-//            FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }//GEN-LAST:event_JButtonPrintActionPerformed
-
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
             input = searchJTextField.getText();
@@ -386,7 +358,6 @@ public class ManagerLuggageAuctioned extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JTable auctionedJTable;
     private javax.swing.JButton foundJButton;

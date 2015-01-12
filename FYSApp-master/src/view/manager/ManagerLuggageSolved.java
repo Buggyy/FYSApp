@@ -5,12 +5,8 @@
  */
 package view.manager;
 
-import ExterneLibraries.PDFGenerator;
 import QueryManager.DatabaseManager;
-import externelibraries.Graph;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +15,6 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
@@ -110,7 +105,6 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLWarning2 = new javax.swing.JLabel();
-        JButtonPrint = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -267,15 +261,6 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         jLWarning2.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 410, 30));
 
-        JButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/printer-icon.png"))); // NOI18N
-        JButtonPrint.setText("PRINT");
-        JButtonPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JButtonPrintActionPerformed(evt);
-            }
-        });
-        add(JButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 90, 40));
-
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -389,18 +374,8 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void JButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonPrintActionPerformed
-
-        //Voor de PDF boys
-//        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
-//
-//        FYSApp.getInstance().getPDFGenerator().generateOverviewPDF(rs);
-
-    }//GEN-LAST:event_JButtonPrintActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JButtonPrint;
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JButton jButton1;
