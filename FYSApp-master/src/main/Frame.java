@@ -145,7 +145,6 @@ public class Frame {
     //Database shutdown moet hierin nog toegevoegd worden, nee?????
     public static void shutdown() {
         mainWindow.dispose();
-        System.exit(0);
     }
 
     public static Frame getInstance() {
