@@ -352,9 +352,22 @@ public class LuggageManager {
      * @param status the status you want to count
      * @return amount of defined status by month
      */
-    public int FindNumberOfStatusByMonth(int month, String status) {
+    /**
+     *
+     * @param month the month you want the data of
+     * @param status the status you want to count
+     * @return amount of defined status by month
+     */
+    public int FindNumberOfStatusByMonth(int monthNumber, String status) {
 
-        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where luggage.status='" + status + "' AND month(luggage.lastupdated)=" + month + " ;";
+        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where luggage.status='" + status + "' AND  month(luggage.lastupdated)=" + monthNumber + ";";
+
+        return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
+    }
+
+    public int FindNumberOfStatusByDay(int dayNumber, int monthNumber, String status) {
+
+        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where luggage.status='" + status + "' AND day(luggage.lastupdated)=" + dayNumber + " AND month(luggage.lastupdated) = " + monthNumber + ";";
 
         return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
     }
