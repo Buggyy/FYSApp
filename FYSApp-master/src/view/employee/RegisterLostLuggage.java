@@ -800,7 +800,7 @@ public class RegisterLostLuggage extends JPanel {
         txt_brand.setText("");
         cmb_color.setSelectedIndex(0);
         cmb_weightClass.setSelectedIndex(0);
-//        cmb_departureFrom.setSelectedIndex(0);
+        cmb_departureFrom.setSelectedIndex(0);
         txt_material.setText("");
         txt_otherDetails.setText("");
         txt_firstName.setText("");
@@ -813,9 +813,10 @@ public class RegisterLostLuggage extends JPanel {
         txt_city.setText("");
         txt_state.setText("");
         txt_zipCode.setText("");
+        txt_lableCode.setText("");
     }//GEN-LAST:event_btn_clearActionPerformed
 
-    public static void setText(Luggage luggage) {
+    public static void setText(Luggage luggage, Client client){
         txt_brand.setText(luggage.getBrand());
         cmb_color.setSelectedItem(luggage.getColor());
         cmb_weightClass.setSelectedItem(luggage.getWeightClass());
@@ -823,6 +824,17 @@ public class RegisterLostLuggage extends JPanel {
         txt_material.setText(luggage.getMaterial());
         txt_lableCode.setText(luggage.getLableCode());
         txt_otherDetails.setText(luggage.getOtherDetails());
+        
+        txt_firstName.setText(client.getFirstName());
+        txt_middleName.setText(client.getMiddleName());
+        txt_lastName.setText(client.getLastName());
+        txt_phoneNumber.setText(client.getPhone());
+        txt_email.setText(client.getEmail());
+        txt_country.setText(client.getCountry());
+        txt_address.setText(client.getAddress());
+        txt_city.setText(client.getCity());
+        txt_state.setText(client.getState());
+        txt_zipCode.setText(client.getZipCode());
     }
 
     public static void setAirports() {
@@ -865,19 +877,19 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_zipCode;
     private javax.swing.JButton logoutJButton;
-    private javax.swing.JTextField txt_address;
+    private static javax.swing.JTextField txt_address;
     private static javax.swing.JTextField txt_brand;
-    private javax.swing.JTextField txt_city;
-    private javax.swing.JTextField txt_country;
+    private static javax.swing.JTextField txt_city;
+    private static javax.swing.JTextField txt_country;
     private static javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_firstName;
+    private static javax.swing.JTextField txt_firstName;
     private static javax.swing.JTextField txt_lableCode;
-    private javax.swing.JTextField txt_lastName;
+    private static javax.swing.JTextField txt_lastName;
     private static javax.swing.JTextField txt_material;
     private static javax.swing.JTextField txt_middleName;
     private static javax.swing.JTextArea txt_otherDetails;
-    private javax.swing.JTextField txt_phoneNumber;
-    private javax.swing.JTextField txt_state;
+    private static javax.swing.JTextField txt_phoneNumber;
+    private static javax.swing.JTextField txt_state;
     private static javax.swing.JTextField txt_zipCode;
     // End of variables declaration//GEN-END:variables
 }

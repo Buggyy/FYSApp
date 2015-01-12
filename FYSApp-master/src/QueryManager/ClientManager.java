@@ -104,9 +104,9 @@ public class ClientManager {
                 client.setFirstName(rs.getString("firstname"));
                 client.setMiddleName(rs.getString("middlename"));
                 client.setLastName(rs.getString("lastname"));
-                client.setPhone(rs.getString("country"));
-                client.setEmail(rs.getString("phonenumber"));
-                client.setCountry(rs.getString("email"));
+                client.setPhone(rs.getString("phonenumber"));
+                client.setEmail(rs.getString("email"));
+                client.setCountry(rs.getString("country"));
                 client.setAddress(rs.getString("address"));
                 client.setCity(rs.getString("city"));
                 client.setState(rs.getString("state"));
