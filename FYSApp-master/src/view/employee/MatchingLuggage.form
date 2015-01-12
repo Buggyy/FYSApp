@@ -188,7 +188,13 @@
         </Property>
         <Property name="text" type="java.lang.String" value="CANCEL"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
+          <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+            <CompoundBorder>
+              <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </CompoundBorder>
+          </Border>
         </Property>
       </Properties>
       <Events>
