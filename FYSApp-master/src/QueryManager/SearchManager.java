@@ -265,28 +265,21 @@ public class SearchManager {
                 sql
                         = "SELECT * FROM luggage WHERE ("
                         + "status = 'Lost' AND ("
-                        + "brand LIKE ? OR lablecode LIKE ? OR material LIKE ? OR weightclass LIKE ? "
-                        + "OR color LIKE ? "
-                        + "OR whenfound LIKE ? OR foundat LIKE ? OR departurefrom))";
+                        + "brand LIKE ? OR lablecode LIKE ? OR material LIKE ? "
+                        + "OR color LIKE ?))";
             } else {
                 sql
                         = "SELECT * FROM luggage WHERE ("
                         + "status = 'Found' AND ("
-                        + "brand LIKE ? OR lablecode LIKE ? OR material LIKE ? OR weightclass LIKE ? "
-                        + "OR color LIKE ? "
-                        + "OR whenfound LIKE ? OR foundat LIKE ? OR departurefrom))";
+                        + "brand LIKE ? OR lablecode LIKE ? OR material LIKE ? "
+                        + "OR color LIKE ?))";
             }
             pst = dbManager.getConnection().prepareStatement(sql);
 
             pst.setString(1, luggage.getBrand());
             pst.setString(2, luggage.getLableCode());
             pst.setString(3, luggage.getMaterial());
-            pst.setString(4, luggage.getWeightClass());
-            pst.setString(5, luggage.getColor());
-            pst.setString(6, luggage.getWhenFound());
-            pst.setString(7, luggage.getFoundAt());
-            pst.setString(8, luggage.getDepartureFrom());
-            pst.setString(9, luggage.getWhenFound());
+            pst.setString(4, luggage.getColor());
             
             rs = pst.executeQuery();
             return rs;

@@ -79,13 +79,15 @@ public class Luggage {
             nbrOfEqual++;
         }
 
-        if (this.weightClass == null ? a.getWeightClass() == null : this.weightClass.equals(a.getWeightClass())) {
-            nbrOfEqual++;
-        }
+//        if (this.weightClass == null ? a.getWeightClass() == null : this.weightClass.equals(a.getWeightClass())) {
+//            nbrOfEqual++;
+//        }
+        
         /*
          if(this.foundAt == null ? a.getFoundAt() == null : this.foundAt.equals(a.getFoundAt()))
          nbrOfEqual++;
          */
+        
         if (this.lableCode == null ? a.getLableCode() == null : this.lableCode.equals(a.getLableCode())) {
             nbrOfEqual++;
         }
