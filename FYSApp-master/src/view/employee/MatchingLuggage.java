@@ -282,7 +282,7 @@ public class MatchingLuggage extends JPanel {
         backJButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
         backJButton2.setText("CANCEL");
-        backJButton2.setBorder(null);
+        backJButton2.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), null));
         backJButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButton2ActionPerformed(evt);
@@ -366,8 +366,6 @@ public class MatchingLuggage extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
-    private javax.swing.JButton backJButton1;
     private javax.swing.JButton backJButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
