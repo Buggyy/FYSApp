@@ -187,6 +187,7 @@ public class LostLuggageOverview extends JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+        lostLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

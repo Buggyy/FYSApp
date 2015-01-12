@@ -178,6 +178,7 @@ public class FoundLuggageOverview extends JPanel {
         });
         add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 90, 40));
 
+        foundLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         foundLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         foundLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

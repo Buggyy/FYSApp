@@ -120,6 +120,7 @@ public class AdminLuggageFound extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        foundLuggageJTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         foundLuggageJTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         foundLuggageJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -186,6 +186,7 @@ public class AdminLuggageLost extends JPanel {
         jLabel2.setText("   Lost Luggage Overview - Admin");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 360, 33));
 
+        lostLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

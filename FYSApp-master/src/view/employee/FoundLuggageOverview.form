@@ -256,6 +256,10 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="foundLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

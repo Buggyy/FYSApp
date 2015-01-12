@@ -153,6 +153,7 @@ public class AdminUsers extends JPanel {
         });
         add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
 
+        userTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         userTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

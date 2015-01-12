@@ -184,6 +184,7 @@ public class MatchingLuggage extends JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        matchingLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         matchingLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         matchingLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
