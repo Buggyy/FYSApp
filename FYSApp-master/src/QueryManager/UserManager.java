@@ -28,8 +28,8 @@ public class UserManager {
 
     public void addUser(User user) {
         String sql = "INSERT INTO user (username,password,role,firstname"
-                + ",middlename,lastname,email,created,airportname) "
-                + "VALUES (?,?,?,?,?,?,?,?,?)";
+                + ",middlename,lastname,email,created,airportname,updated) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             dbManager.openConnection();
 
@@ -44,6 +44,7 @@ public class UserManager {
             pst.setString(7, user.getEmail());
             pst.setString(8, FYSApp.getDate());
             pst.setString(9, user.getAirport());
+            pst.setString(10, FYSApp.getDate());
 
             pst.executeUpdate();
 
@@ -114,7 +115,7 @@ public class UserManager {
         try {
             String sql = "UPDATE user SET username=?, password=?, role=?, "
                     + "firstName=?, middlename=?, lastname=?, email=?, "
-                    + "airportname=?  WHERE userid=?";
+                    + "airportname=?, updated=?  WHERE userid=?";
 
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -126,7 +127,8 @@ public class UserManager {
             pst.setString(6, user.getLastName());
             pst.setString(7, user.getEmail());
             pst.setString(8, user.getAirport());
-            pst.setInt(9, id);
+            pst.setString(9, FYSApp.getDate());
+            pst.setInt(10, id);
             pst.executeUpdate();
         } catch (SQLException e) {
         }

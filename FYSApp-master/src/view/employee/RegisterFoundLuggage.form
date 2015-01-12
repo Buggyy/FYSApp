@@ -31,7 +31,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="347" max="32767" attributes="0"/>
+              <EmptySpace pref="339" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel2" pref="338" max="32767" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
@@ -52,7 +52,7 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,8 +85,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbl_whenFound" min="-2" max="-2" attributes="0"/>
                       <Component id="lbldefaultvaluecode" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_otherDetails" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -101,22 +102,21 @@
                                   <Component id="lbl_color" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_code" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_material" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_whenFound" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_foundAt" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_weightClass" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txt_lableCode" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cmb_foundAt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cmb_foundAt" alignment="0" pref="125" max="32767" attributes="0"/>
                                   <Component id="cmb_weightClass" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cmb_color" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txt_material" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dc_whenFound" alignment="0" pref="125" max="32767" attributes="0"/>
                                   <Component id="txt_brand" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dc_whenFound" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="272" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -141,27 +141,27 @@
                       <Component id="lbl_weightClass" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmb_weightClass" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_foundAt" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmb_foundAt" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_code" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_lableCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_material" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_material" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_whenFound" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="dc_whenFound" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_code" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_lableCode" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbl_material" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_material" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lbl_whenFound" min="-2" max="-2" attributes="0"/>
+                      <Component id="dc_whenFound" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmb_foundAt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_foundAt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="lbl_otherDetails" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="56" max="-2" attributes="0"/>
@@ -207,14 +207,6 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_whenFound">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="When found:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="lbl_color">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -245,14 +237,6 @@
             <Property name="text" type="java.lang.String" value="Brand:"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dc_whenFound">
-          <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="14" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="lbl_weightClass">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -281,6 +265,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Found at:"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_foundAt">
           <Properties>
@@ -394,6 +381,22 @@
               <Font name="Arial" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Other details:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_whenFound">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="When found:"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="dc_whenFound">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="0"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

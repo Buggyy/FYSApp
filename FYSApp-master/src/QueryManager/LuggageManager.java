@@ -35,12 +35,8 @@ public class LuggageManager {
     public void addFoundLuggage(Luggage luggage) {
         String sql = "INSERT INTO luggage (brand,lablecode,color,material"
                 + ",otherdetails, weightclass, status, created, departurefrom,"
-                + " whenfound) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
-
-//        INSERT INTO luggage (brand,lablecode,color,material
-//,otherdetails, weightclass, status, created, departurefrom)
-//VALUES ('gutti',123456, 'noob', 'letather','lelijke sht','dik','Found','gister','chris roelvink')
+                + " whenfound,foundat) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -55,7 +51,7 @@ public class LuggageManager {
             pst.setString(8, FYSApp.getDate());
             pst.setString(9, luggage.getDepartureFrom());
             pst.setString(10, luggage.getWhenFound());
-            // + Airport where user is working at
+            pst.setString(11, FYSApp.getUserManager().getAirPort());
             pst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,

@@ -28,6 +28,8 @@ public class RegisterFoundLuggage extends JPanel {
      */
     public RegisterFoundLuggage() {
         initComponents();
+        lbl_foundAt.setVisible(false);
+        cmb_foundAt.setVisible(false);
 
 //  These items should be stored in an array
         cmb_color.addItem("other..");
@@ -50,6 +52,7 @@ public class RegisterFoundLuggage extends JPanel {
         cmb_weightClass.addItem("10kg - 15kg");
         cmb_weightClass.addItem("15kg - 20kg");
         cmb_weightClass.addItem("20kg+");
+
     }
 
     // this method does not belong here..
@@ -72,11 +75,9 @@ public class RegisterFoundLuggage extends JPanel {
         jPanel2 = new javax.swing.JPanel();
         txt_material = new javax.swing.JTextField();
         txt_brand = new javax.swing.JTextField();
-        lbl_whenFound = new javax.swing.JLabel();
         lbl_color = new javax.swing.JLabel();
         cmb_color = new javax.swing.JComboBox();
         lbl_brand = new javax.swing.JLabel();
-        dc_whenFound = new com.toedter.calendar.JDateChooser();
         lbl_weightClass = new javax.swing.JLabel();
         cmb_weightClass = new javax.swing.JComboBox();
         lbl_foundAt = new javax.swing.JLabel();
@@ -90,6 +91,8 @@ public class RegisterFoundLuggage extends JPanel {
         txt_otherDetails = new javax.swing.JTextArea();
         lbldefaultvaluecode = new javax.swing.JLabel();
         lbl_otherDetails = new javax.swing.JLabel();
+        lbl_whenFound = new javax.swing.JLabel();
+        dc_whenFound = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         backJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
@@ -121,9 +124,6 @@ public class RegisterFoundLuggage extends JPanel {
             }
         });
 
-        lbl_whenFound.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_whenFound.setText("When found:");
-
         lbl_color.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_color.setText("Color:");
 
@@ -137,9 +137,6 @@ public class RegisterFoundLuggage extends JPanel {
 
         lbl_brand.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_brand.setText("Brand:");
-
-        dc_whenFound.setDateFormatString("dd-MM-yyyy");
-        dc_whenFound.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lbl_weightClass.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_weightClass.setText("Weight class:");
@@ -222,13 +219,20 @@ public class RegisterFoundLuggage extends JPanel {
         lbl_otherDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_otherDetails.setText("Other details:");
 
+        lbl_whenFound.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_whenFound.setText("When found:");
+
+        dc_whenFound.setDateFormatString("dd-MM-yyyy");
+        dc_whenFound.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_whenFound)
                     .addComponent(lbldefaultvaluecode)
                     .addComponent(lbl_otherDetails)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -242,19 +246,18 @@ public class RegisterFoundLuggage extends JPanel {
                                 .addComponent(lbl_color)
                                 .addComponent(lbl_code)
                                 .addComponent(lbl_material)
-                                .addComponent(lbl_whenFound)
                                 .addComponent(lbl_foundAt)
                                 .addComponent(lbl_weightClass))
                             .addGap(63, 63, 63)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txt_lableCode)
-                                .addComponent(cmb_foundAt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmb_foundAt, 0, 125, Short.MAX_VALUE)
                                 .addComponent(cmb_weightClass, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cmb_color, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txt_material)
-                                .addComponent(dc_whenFound, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                .addComponent(txt_brand)))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addComponent(txt_brand)
+                                .addComponent(dc_whenFound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -272,23 +275,23 @@ public class RegisterFoundLuggage extends JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_weightClass)
                     .addComponent(cmb_weightClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_foundAt)
-                    .addComponent(cmb_foundAt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_code)
                     .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_material)
                     .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_whenFound)
                     .addComponent(dc_whenFound, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmb_foundAt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_foundAt))
+                .addGap(19, 19, 19)
                 .addComponent(lbl_otherDetails)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,7 +349,7 @@ public class RegisterFoundLuggage extends JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(347, Short.MAX_VALUE)
+                .addContainerGap(339, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -363,7 +366,7 @@ public class RegisterFoundLuggage extends JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -495,6 +498,9 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_txt_lableCodeKeyPressed
 
     public static void setText(Luggage luggage) {
+        lbl_foundAt.setVisible(true);
+        cmb_foundAt.setVisible(true);
+        setAirports();
         txt_brand.setText(luggage.getBrand());
         cmb_color.setSelectedItem(luggage.getColor());
         cmb_weightClass.setSelectedItem(luggage.getWeightClass());
@@ -503,6 +509,13 @@ public class RegisterFoundLuggage extends JPanel {
         txt_lableCode.setText(luggage.getLableCode());
         txt_otherDetails.setText(luggage.getOtherDetails());
 
+    }
+
+    public static void setAirports() {
+        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
+        for (String fgt1 : fgt) {
+            cmb_foundAt.addItem(fgt1);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -520,7 +533,7 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JLabel lbl_brand;
     private javax.swing.JLabel lbl_code;
     private javax.swing.JLabel lbl_color;
-    private javax.swing.JLabel lbl_foundAt;
+    private static javax.swing.JLabel lbl_foundAt;
     private javax.swing.JLabel lbl_material;
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
