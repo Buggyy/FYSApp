@@ -49,7 +49,6 @@ public class GraphOverview extends javax.swing.JPanel {
         
         examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
