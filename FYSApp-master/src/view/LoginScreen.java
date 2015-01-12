@@ -48,7 +48,6 @@ public class LoginScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         passJTextField = new javax.swing.JPasswordField();
@@ -67,10 +66,6 @@ public class LoginScreen extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
-        jLabel2.setText("Where the match gets a date");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 150, -1));
 
         jLabel4.setFont(new java.awt.Font("Gabriola", 0, 36)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/zjk logo.png"))); // NOI18N
@@ -275,7 +270,6 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JButton btn_cantlogin;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
