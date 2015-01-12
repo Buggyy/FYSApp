@@ -151,7 +151,9 @@ public class PDFGenerator {
             this.contentStream.drawString("Phone number: " + b.getPhone());
             this.contentStream.moveTextPositionByAmount(0, -10);
             this.contentStream.drawString("Email: " + b.getEmail());
-            this.contentStream.moveTextPositionByAmount(140, 90);
+            this.contentStream.moveTextPositionByAmount(0, -30);
+            this.contentStream.drawString("Client Signature: ");
+            this.contentStream.moveTextPositionByAmount(140, 110);
             
             // Add lost luggage data to receipt
             this.contentStream.drawString("Departure from: " + a.getDepartureFrom());
@@ -174,6 +176,8 @@ public class PDFGenerator {
                 this.contentStream.drawString("Other details: " + a.getOtherDetails());
                 this.contentStream.moveTextPositionByAmount(0, -10);
             }
+            this.contentStream.moveTextPositionByAmount(0, -40);
+            this.contentStream.drawString("Corendon Signature: ");
             
             // end of pdf
             this.contentStream.endText();
