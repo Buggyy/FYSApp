@@ -264,7 +264,7 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
 
         jLWarning2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning2.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 410, 30));
+        add(jLWarning2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 30));
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
