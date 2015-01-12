@@ -110,9 +110,9 @@ public class PDFGenerator {
         // create own content through arrays using querymanager
         pdf.generatePDFReceipt(luggage, client);
         // current date using timestamp
-        String currentDate = FYSApp.getDateTime();
+        String currentDate = FYSApp.getDate();
         //name of pdf file
-        pdf.save("Lost luggage receipt " + currentDate + ".pdf");
+        pdf.save("Lost luggage receipt " + client.getFirstName() + " " + client.getLastName() + " " + currentDate + ".pdf");
         JOptionPane.showMessageDialog(null, "PDF saved as: Lost luggage receipt"
                 + " " + currentDate + "\n in the root folder of the app" );
     }
