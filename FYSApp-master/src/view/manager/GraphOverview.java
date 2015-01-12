@@ -19,9 +19,9 @@ public class GraphOverview extends javax.swing.JPanel {
      * Creates new form GraphOverview
      */
     public GraphOverview() {
+
         initComponents();
         setLoggedInAs();
-
     }
 
     /**
@@ -153,6 +153,7 @@ public class GraphOverview extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
@@ -162,9 +163,11 @@ public class GraphOverview extends javax.swing.JPanel {
         try {
             Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GraphOverview.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GraphOverview.class.getName()).log(Level.SEVERE,
+                    null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(GraphOverview.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GraphOverview.class.getName()).log(Level.SEVERE,
+                    null, ex);
         }
 
     }//GEN-LAST:event_auctionedJButtonActionPerformed
@@ -175,10 +178,10 @@ public class GraphOverview extends javax.swing.JPanel {
 
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
-            // TODO add your handling code here:
             Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
 
@@ -190,9 +193,11 @@ public class GraphOverview extends javax.swing.JPanel {
         try {
             Frame.getInstance().showPanel(new ManagerLuggageSolved());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(
+                    Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -205,6 +210,7 @@ public class GraphOverview extends javax.swing.JPanel {
         for (int i = 0; i < days.length; i++) {
             days[i] += i;
         }
+
         ArrayList<Integer> nbrOfFoundByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
@@ -214,14 +220,17 @@ public class GraphOverview extends javax.swing.JPanel {
         String listName3 = "Solved";
         String listName4 = "Auctioned";
         int beginMonth = jMonthChooser1.getMonth();
-        
+
         String dateType = "day";
 
-        examGraph.addSeriesDays(dateType, beginMonth, days, nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth, listName1, listName2, listName3, listName4);
+        examGraph.addSeriesDays(dateType, beginMonth, days, nbrOfFoundByMonth,
+                nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth,
+                listName1, listName2, listName3, listName4);
 
         graphJPanel.removeAll();
 
-        graphJPanel.add(examGraph.createChart("Luggage overview", "Days", "Amount", 590, 340, Color.WHITE));
+        graphJPanel.add(examGraph.createChart("Luggage overview", "Days",
+                "Amount", 590, 340, Color.WHITE));
 
         graphJPanel.revalidate();
 
@@ -236,14 +245,15 @@ public class GraphOverview extends javax.swing.JPanel {
         examGraph.setSeriesColor(3, Color.YELLOW);
 
         examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
-
-
     }//GEN-LAST:event_jMonthChooser1PropertyChange
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         Graph examGraph = new Graph("Monthly overview of Luggage status");
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct", "Nov", "Dec"};
+
         ArrayList<Integer> nbrOfFoundByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
@@ -255,11 +265,15 @@ public class GraphOverview extends javax.swing.JPanel {
         int beginMonth = 0;
         String dateType = "month";
 
-        examGraph.addSeriesMonths(dateType, beginMonth, months, nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth, listName1, listName2, listName3, listName4);
+        examGraph.addSeriesMonths(dateType, beginMonth, months,
+                nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth,
+                nbrOfAuctionedByMonth, listName1, listName2, listName3,
+                listName4);
 
         graphJPanel.removeAll();
 
-        graphJPanel.add(examGraph.createChart("Luggage overview", "Month", "Amount", 590, 340, Color.WHITE));
+        graphJPanel.add(examGraph.createChart("Luggage overview", "Month",
+                "Amount", 590, 340, Color.WHITE));
 
         graphJPanel.revalidate();
 
@@ -276,7 +290,10 @@ public class GraphOverview extends javax.swing.JPanel {
         examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-private void setLoggedInAs() {
+    /**
+     * @description Shows who is logged in at the moment.
+     */
+    private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
     }
