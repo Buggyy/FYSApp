@@ -123,7 +123,7 @@ public class AdminLuggageLost extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
+        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 110, 40));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -178,7 +178,7 @@ public class AdminLuggageLost extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
+        jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,7 +224,7 @@ public class AdminLuggageLost extends JPanel {
         });
         jScrollPane2.setViewportView(lostLuggageTable);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 710, 340));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
