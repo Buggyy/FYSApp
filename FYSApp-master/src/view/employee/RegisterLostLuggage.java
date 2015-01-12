@@ -1,24 +1,14 @@
 package view.employee;
 
-import com.sun.webkit.dom.EventImpl;
-import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
-import static jdk.nashorn.internal.runtime.JSType.isNumber;
 import main.FYSApp;
 import main.Frame;
 import model.Client;
@@ -62,6 +52,8 @@ public class RegisterLostLuggage extends JPanel {
         cmb_weightClass.addItem("10kg - 15kg");
         cmb_weightClass.addItem("15kg - 20kg");
         cmb_weightClass.addItem("20kg+");
+
+        setAirports();
     }
 
     public static void setUpdate(int id) {
@@ -98,40 +90,37 @@ public class RegisterLostLuggage extends JPanel {
         lbl_otherDetails = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txt_otherDetails = new javax.swing.JTextArea();
-        lbldefaultvaluemiddlename = new javax.swing.JLabel();
-        lbldefaultvalueemail = new javax.swing.JLabel();
-        lbldefaultvaluezipcode = new javax.swing.JLabel();
-        lbldefaultvaluecode = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        lbl_state = new javax.swing.JLabel();
-        lbl_middlename = new javax.swing.JLabel();
-        txt_email = new javax.swing.JTextField();
-        txt_phoneNumber = new javax.swing.JTextField();
-        txt_address = new javax.swing.JTextField();
-        lbl_lastname = new javax.swing.JLabel();
-        lbl_email = new javax.swing.JLabel();
-        lbl_firstname = new javax.swing.JLabel();
-        lbl_country = new javax.swing.JLabel();
-        lbl_phoneNumber = new javax.swing.JLabel();
-        txt_firstName = new javax.swing.JTextField();
-        txt_lastName = new javax.swing.JTextField();
-        txt_state = new javax.swing.JTextField();
-        txt_city = new javax.swing.JTextField();
-        txt_zipCode = new javax.swing.JTextField();
-        lbl_city = new javax.swing.JLabel();
-        lbl_zipCode = new javax.swing.JLabel();
-        lbl_address = new javax.swing.JLabel();
-        txt_middleName = new javax.swing.JTextField();
-        txt_country = new javax.swing.JTextField();
-        checkPDF = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
         btn_submit1 = new javax.swing.JButton();
         btn_clear = new javax.swing.JButton();
+        lbl_firstname = new javax.swing.JLabel();
+        lbl_middlename = new javax.swing.JLabel();
+        lbl_lastname = new javax.swing.JLabel();
+        lbl_phoneNumber = new javax.swing.JLabel();
+        lbl_email = new javax.swing.JLabel();
+        lbl_country = new javax.swing.JLabel();
+        lbl_address = new javax.swing.JLabel();
+        lbl_city = new javax.swing.JLabel();
+        lbl_state = new javax.swing.JLabel();
+        lbl_zipCode = new javax.swing.JLabel();
+        txt_firstName = new javax.swing.JTextField();
+        txt_middleName = new javax.swing.JTextField();
+        txt_lastName = new javax.swing.JTextField();
+        txt_phoneNumber = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
+        txt_country = new javax.swing.JTextField();
+        txt_address = new javax.swing.JTextField();
+        txt_city = new javax.swing.JTextField();
+        txt_state = new javax.swing.JTextField();
+        txt_zipCode = new javax.swing.JTextField();
+        checkPDF = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 241, 234));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -173,7 +162,9 @@ public class RegisterLostLuggage extends JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 241, 234));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbl_color.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -259,116 +250,102 @@ public class RegisterLostLuggage extends JPanel {
         txt_otherDetails.setRows(5);
         jScrollPane4.setViewportView(txt_otherDetails);
 
-        lbldefaultvaluemiddlename.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluemiddlename.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluemiddlename.setText("optional");
+        btn_submit1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_submit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
+        btn_submit1.setText("SUBMIT");
+        btn_submit1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_submit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_submit1ActionPerformed(evt);
+            }
+        });
 
-        lbldefaultvalueemail.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvalueemail.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvalueemail.setText("example@email.com");
+        btn_clear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
+        btn_clear.setText("CLEAR ALL");
+        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
 
-        lbldefaultvaluezipcode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluezipcode.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluezipcode.setText("1234 AB");
+        lbl_firstname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_firstname.setText("Firstname");
 
-        lbldefaultvaluecode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluecode.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluecode.setText("123A-456B-789C");
+        lbl_middlename.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_middlename.setText("Middlename");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lbldefaultvalueemail)
-                                .addGap(36, 36, 36)
-                                .addComponent(lbldefaultvaluecode))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane4)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_departureFrom)
-                                        .addComponent(lbl_material1)
-                                        .addComponent(lbl_lableCode1)
-                                        .addComponent(lbl_weightClass)
-                                        .addComponent(lbl_color)
-                                        .addComponent(lbl_brand1)
-                                        .addComponent(lbl_otherDetails))
-                                    .addGap(19, 19, 19)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(cmb_departureFrom, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cmb_weightClass, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cmb_color, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txt_brand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(38, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lbldefaultvaluemiddlename)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbldefaultvaluezipcode)
-                        .addGap(70, 70, 70))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_brand1)
-                    .addComponent(txt_brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_color)
-                    .addComponent(cmb_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_weightClass)
-                    .addComponent(cmb_weightClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_departureFrom)
-                    .addComponent(cmb_departureFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_material1)
-                    .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_lableCode1)
-                    .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(lbl_otherDetails)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbldefaultvaluemiddlename, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbldefaultvaluezipcode, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbldefaultvalueemail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbldefaultvaluecode, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lbl_lastname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_lastname.setText("Lastname");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("CONTACT DETAILS");
+        lbl_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_phoneNumber.setText("Phonenumber");
 
-        jPanel4.setBackground(new java.awt.Color(255, 241, 234));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbl_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_email.setText("Email");
+
+        lbl_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_country.setText("Country ");
+
+        lbl_address.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_address.setText("Address");
+
+        lbl_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_city.setText("City");
 
         lbl_state.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_state.setText("State");
 
-        lbl_middlename.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_middlename.setText("Middlename");
+        lbl_zipCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lbl_zipCode.setText("Zipcode");
+
+        txt_firstName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_firstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_firstNameActionPerformed(evt);
+            }
+        });
+
+        txt_middleName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_middleName.setText(" ");
+        txt_middleName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_middleNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_middleNameFocusLost(evt);
+            }
+        });
+        txt_middleName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_middleNameActionPerformed(evt);
+            }
+        });
+        txt_middleName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_middleNameKeyPressed(evt);
+            }
+        });
+
+        txt_lastName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_lastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lastNameActionPerformed(evt);
+            }
+        });
+
+        txt_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_phoneNumberActionPerformed(evt);
+            }
+        });
+        txt_phoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_phoneNumberKeyTyped(evt);
+            }
+        });
 
         txt_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_email.setText(" ");
@@ -391,15 +368,10 @@ public class RegisterLostLuggage extends JPanel {
             }
         });
 
-        txt_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_phoneNumber.addActionListener(new java.awt.event.ActionListener() {
+        txt_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_country.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_phoneNumberActionPerformed(evt);
-            }
-        });
-        txt_phoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_phoneNumberKeyTyped(evt);
+                txt_countryActionPerformed(evt);
             }
         });
 
@@ -410,32 +382,10 @@ public class RegisterLostLuggage extends JPanel {
             }
         });
 
-        lbl_lastname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_lastname.setText("Lastname");
-
-        lbl_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_email.setText("Email");
-
-        lbl_firstname.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_firstname.setText("Firstname");
-
-        lbl_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_country.setText("Country ");
-
-        lbl_phoneNumber.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_phoneNumber.setText("Phonenumber");
-
-        txt_firstName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_firstName.addActionListener(new java.awt.event.ActionListener() {
+        txt_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_firstNameActionPerformed(evt);
-            }
-        });
-
-        txt_lastName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_lastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_lastNameActionPerformed(evt);
+                txt_cityActionPerformed(evt);
             }
         });
 
@@ -443,13 +393,6 @@ public class RegisterLostLuggage extends JPanel {
         txt_state.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_stateActionPerformed(evt);
-            }
-        });
-
-        txt_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_city.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cityActionPerformed(evt);
             }
         });
 
@@ -474,196 +417,157 @@ public class RegisterLostLuggage extends JPanel {
             }
         });
 
-        lbl_city.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_city.setText("City");
-
-        lbl_zipCode.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_zipCode.setText("Zipcode");
-
-        lbl_address.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl_address.setText("Address");
-
-        txt_middleName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_middleName.setText(" ");
-        txt_middleName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_middleNameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_middleNameFocusLost(evt);
-            }
-        });
-        txt_middleName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_middleNameActionPerformed(evt);
-            }
-        });
-        txt_middleName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_middleNameKeyPressed(evt);
-            }
-        });
-
-        txt_country.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_country.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_countryActionPerformed(evt);
-            }
-        });
-
         checkPDF.setSelected(true);
         checkPDF.setText("Create PDF");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_lastname)
-                    .addComponent(lbl_phoneNumber)
-                    .addComponent(lbl_email)
-                    .addComponent(lbl_country)
-                    .addComponent(lbl_address)
-                    .addComponent(lbl_city)
-                    .addComponent(lbl_state)
-                    .addComponent(lbl_zipCode)
-                    .addComponent(lbl_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_middlename))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkPDF)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_firstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_lastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_phoneNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_country, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_city, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_state, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txt_middleName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_departureFrom)
+                                    .addComponent(lbl_material1)
+                                    .addComponent(lbl_lableCode1)
+                                    .addComponent(lbl_weightClass)
+                                    .addComponent(lbl_color)
+                                    .addComponent(lbl_brand1)
+                                    .addComponent(lbl_otherDetails))
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(cmb_departureFrom, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmb_weightClass, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmb_color, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txt_brand, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn_submit1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_middlename)
+                                        .addComponent(lbl_lastname)
+                                        .addComponent(lbl_email)
+                                        .addComponent(lbl_country)
+                                        .addComponent(lbl_address)
+                                        .addComponent(lbl_city)
+                                        .addComponent(lbl_state)
+                                        .addComponent(lbl_zipCode))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_zipCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_state, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_city, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_address, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_country, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_lastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_middleName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(lbl_firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(lbl_phoneNumber)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(checkPDF)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_firstName)
-                    .addComponent(lbl_firstname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_brand1)
+                    .addComponent(txt_brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_firstname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_middlename)
-                    .addComponent(txt_middleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_color)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmb_color, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_middlename)
+                        .addComponent(txt_middleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_weightClass)
+                    .addComponent(cmb_weightClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_lastname)
                     .addComponent(txt_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_departureFrom)
+                    .addComponent(cmb_departureFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_phoneNumber)
                     .addComponent(txt_phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_material1)
+                    .addComponent(txt_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_email)
                     .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_lableCode1)
+                    .addComponent(txt_lableCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_country, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_otherDetails)
                     .addComponent(lbl_address, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_city, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_state, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_city, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_state, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_state, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(checkPDF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_submit1))
+                .addGap(54, 54, 54))
         );
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 504));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("CONTACT DETAILS");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 260, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("REGISTER LOST LUGGAGE");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 310, -1));
 
-        btn_submit1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn_submit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
-        btn_submit1.setText("SUBMIT");
-        btn_submit1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_submit1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_submit1ActionPerformed(evt);
-            }
-        });
-
-        btn_clear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btn_clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
-        btn_clear.setText("CLEAR ALL");
-        btn_clear.setMinimumSize(new java.awt.Dimension(70, 25));
-        btn_clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clearActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 199, 199)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_submit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(btn_submit1)
-                        .addGap(55, 55, 55)
-                        .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1020, 640));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -692,11 +596,11 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_materialActionPerformed
 
     private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
-        lbldefaultvaluecode.setText("");
+
     }//GEN-LAST:event_txt_lableCodeFocusGained
 
     private void txt_lableCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusLost
-        lbldefaultvaluecode.setText("123A-456B-789C");
+
     }//GEN-LAST:event_txt_lableCodeFocusLost
 
     private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
@@ -704,7 +608,7 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_lableCodeActionPerformed
 
     private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
-        lbldefaultvaluecode.setText("");
+
     }//GEN-LAST:event_txt_lableCodeKeyPressed
 
     private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
@@ -720,7 +624,7 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_countryActionPerformed
 
     private void txt_middleNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middleNameKeyPressed
-        lbldefaultvaluemiddlename.setText("");
+
     }//GEN-LAST:event_txt_middleNameKeyPressed
 
     private void txt_middleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middleNameActionPerformed
@@ -728,15 +632,15 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_middleNameActionPerformed
 
     private void txt_middleNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middleNameFocusLost
-        lbldefaultvaluemiddlename.setText("optional");
+
     }//GEN-LAST:event_txt_middleNameFocusLost
 
     private void txt_middleNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middleNameFocusGained
-        lbldefaultvaluemiddlename.setText("");
+
     }//GEN-LAST:event_txt_middleNameFocusGained
 
     private void txt_zipCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_zipCodeKeyPressed
-        lbldefaultvaluezipcode.setText("");
+
     }//GEN-LAST:event_txt_zipCodeKeyPressed
 
     private void txt_zipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipCodeActionPerformed
@@ -744,11 +648,11 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_zipCodeActionPerformed
 
     private void txt_zipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipCodeFocusLost
-        lbldefaultvaluezipcode.setText("1234 AB");
+
     }//GEN-LAST:event_txt_zipCodeFocusLost
 
     private void txt_zipCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipCodeFocusGained
-        lbldefaultvaluezipcode.setText("");
+
     }//GEN-LAST:event_txt_zipCodeFocusGained
 
     private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
@@ -785,7 +689,7 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_phoneNumberActionPerformed
 
     private void txt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyPressed
-        lbldefaultvalueemail.setText("");
+
     }//GEN-LAST:event_txt_emailKeyPressed
 
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
@@ -793,11 +697,11 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
-        lbldefaultvalueemail.setText("example@email.com");
+
     }//GEN-LAST:event_txt_emailFocusLost
 
     private void txt_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusGained
-        lbldefaultvalueemail.setText("");
+
     }//GEN-LAST:event_txt_emailFocusGained
 
     private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
@@ -856,31 +760,34 @@ public class RegisterLostLuggage extends JPanel {
                 }
             } else {
                 try {
-                if (checkIfExists(luggage)) {
+                    if (checkIfExists(luggage)) {
 
-                    FYSApp.getSearchManager().searchSimilarities(luggage, false);
-                    JOptionPane.showMessageDialog(null, "Possible match found!");
-                    JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
-                    Frame.getInstance().showPanel(new MatchingLuggage());
-                } else {
-                //  Show user succes message
-                JOptionPane.showMessageDialog(null, "Information is saved");
-                //  If this is not the case, then we call the addLuggage Query +
-                //  the add client luggage
-                FYSApp.getClientManager().addClient(newClient);
-                int id = FYSApp.getClientManager().getClientid();
-                FYSApp.getLuggageManager().addLostLuggage(luggage, id);
-                            Frame.getInstance().showPanel(new LostLuggageOverview());
+                        ResultSet rs = FYSApp.getSearchManager().searchSimilarities(luggage, false);
+                        JOptionPane.showMessageDialog(null, "Possible match found!");
+                        JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
+                        Frame.getInstance().showPanel(new MatchingLuggage());
+                        MatchingLuggage.getMatchingLuggage(rs);
+                        MatchingLuggage.setLostOrFound(status);
+                        MatchingLuggage.setTextLuggage(luggage);
+                        MatchingLuggage.setTextClient(newClient);
+
+                    } else {
+                        //  Show user succes message
+                        JOptionPane.showMessageDialog(null, "Information is saved");
+                        //  If this is not the case, then we call the addLuggage Query +
+                        //  the add client luggage
+                        FYSApp.getClientManager().addClient(newClient);
+                        int id = FYSApp.getClientManager().getClientid();
+                        FYSApp.getLuggageManager().addLostLuggage(luggage, id);
+                        Frame.getInstance().showPanel(new LostLuggageOverview());
+                    }
+
+                } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+                    JOptionPane.showMessageDialog(null, e);
                 }
-            
-
-                
-        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
             }
         }
-            
+
     }//GEN-LAST:event_btn_submit1ActionPerformed
 
     private boolean checkIfExists(Luggage lug) {
@@ -918,6 +825,13 @@ public class RegisterLostLuggage extends JPanel {
         txt_otherDetails.setText(luggage.getOtherDetails());
     }
 
+    public static void setAirports() {
+        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
+        for (String fgt1 : fgt) {
+            cmb_departureFrom.addItem(fgt1);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btn_clear;
@@ -927,11 +841,11 @@ public class RegisterLostLuggage extends JPanel {
     private static javax.swing.JComboBox cmb_color;
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_weightClass;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_address;
     private javax.swing.JLabel lbl_brand1;
@@ -950,10 +864,6 @@ public class RegisterLostLuggage extends JPanel {
     private javax.swing.JLabel lbl_state;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_zipCode;
-    private javax.swing.JLabel lbldefaultvaluecode;
-    private javax.swing.JLabel lbldefaultvalueemail;
-    private javax.swing.JLabel lbldefaultvaluemiddlename;
-    private javax.swing.JLabel lbldefaultvaluezipcode;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JTextField txt_address;
     private static javax.swing.JTextField txt_brand;

@@ -108,7 +108,7 @@ public class LuggageManager {
     public void addLostLuggage(Luggage luggage, int id) {
         String sql = "INSERT INTO luggage (brand, lablecode,"
                 + " material, otherdetails, status, color, weightclass, created,"
-                + " whenfound, foundat, departurefrom, ownerid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                + " departurefrom, ownerid) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -121,10 +121,8 @@ public class LuggageManager {
             pst.setString(6, luggage.getColor());
             pst.setString(7, luggage.getWeightClass());
             pst.setString(8, FYSApp.getDate());
-            pst.setString(9, "");
-            pst.setString(10, "");
-            pst.setString(11, "");
-            pst.setInt(12, id);
+            pst.setString(9, luggage.getDepartureFrom());
+            pst.setInt(10, id);
             pst.executeUpdate();
 
         } catch (Exception e) {

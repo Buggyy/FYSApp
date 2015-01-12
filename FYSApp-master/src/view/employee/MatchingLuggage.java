@@ -31,11 +31,11 @@ public class MatchingLuggage extends JPanel {
     // Always declare first..!
     DatabaseManager dbmanager = new DatabaseManager();
     Connection conn = null;
-    ResultSet rs = null;
+    public static ResultSet rs = null;
     PreparedStatement pst = null;
     public String input;
-    ResultSetMetaData rsmetadata;
-    public int columns = 0;
+    public static ResultSetMetaData rsmetadata;
+    public static int columns = 0;
     private static final int UPDATE_MODE_FALSE = 0;
     public int WHICH_STATUS = 0;
     public boolean lost;
@@ -61,13 +61,18 @@ public class MatchingLuggage extends JPanel {
     private static int updateMode = 0;
     private static int luggageid;
     private static int clientid;
+    private static String lostOrFound = "";
 
     /**
      * Creates new form Match
      */
     public MatchingLuggage() {
         initComponents();
-        getMatchingLuggage();
+//        getMatchingLuggage();
+    }
+
+    public static void setLostOrFound(String lostOrFound) {
+        MatchingLuggage.lostOrFound = lostOrFound;
     }
 
     public static void setTextLuggage(Luggage luggage) {
@@ -82,19 +87,21 @@ public class MatchingLuggage extends JPanel {
         foundAt = luggage.getFoundAt();
 
     }
-//      Bij Lost koffers nodig
-//    public static void setTextClient(Client client) {
-//        firstName = client.getFirstName();
-//        middleName = client.getMiddleName();
-//        lastName = client.getLastName();
-//        phoneNumber = client.getPhone();
-//        email = client.getEmail();
-//        country = client.getCountry();
-//        address = client.getAddress();
-//        city = client.getCity();
-//        state = client.getState();
-//        zipCode = client.getZipCode();
-//    }
+
+    //Bij Lost koffers nodig
+
+    public static void setTextClient(Client client) {
+        firstName = client.getFirstName();
+        middleName = client.getMiddleName();
+        lastName = client.getLastName();
+        phoneNumber = client.getPhone();
+        email = client.getEmail();
+        country = client.getCountry();
+        address = client.getAddress();
+        city = client.getCity();
+        state = client.getState();
+        zipCode = client.getZipCode();
+    }
 
     /**
      * Creates new form RegisterSolvesLuggage
@@ -109,9 +116,11 @@ public class MatchingLuggage extends JPanel {
 
     /**
      * Matched luggage
+     *
+     * @param resultSet
      */
-    private void getMatchingLuggage() {
-        rs = FYSApp.getTableManager().getEmployeeLostLuggage();
+    public static void getMatchingLuggage(ResultSet resultSet) {
+        MatchingLuggage.rs = resultSet;
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -122,7 +131,7 @@ public class MatchingLuggage extends JPanel {
     /**
      * Creates new form ML
      */
-    private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+    private static void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
         rsmetadata = rs.getMetaData();
 
@@ -280,16 +289,27 @@ public class MatchingLuggage extends JPanel {
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         //  Create solved luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, color,
-                otherDetails, "Found", material, weightClass, whenFound, foundAt,
+                otherDetails, lostOrFound, material, weightClass, whenFound, foundAt,
                 departureFrom);
 
         // Create solved client item with user input
         Client client = new Client(firstName, middleName, lastName, phoneNumber,
                 email, country, address, city, state, zipCode);
 
-        FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
-        FYSApp.getClientManager().updateClient(client, clientid);
-        Frame.getInstance().showPanel(new FoundLuggageOverview());
+//        FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
+//        FYSApp.getClientManager().updateClient(client, clientid);
+        FYSApp.getClientManager().addClient(client);
+        int id = FYSApp.getClientManager().getClientid();
+        FYSApp.getLuggageManager().addLostLuggage(luggage, id);
+        if (lostOrFound.equalsIgnoreCase("found")) {
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+        } else {
+            try {
+                Frame.getInstance().showPanel(new LostLuggageOverview());
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         JOptionPane.showMessageDialog(null, "Information is saved");
     }//GEN-LAST:event_registerJButtonActionPerformed
 
@@ -329,7 +349,7 @@ public class MatchingLuggage extends JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton matchJButton;
-    private javax.swing.JTable matchingLuggageTable;
+    private static javax.swing.JTable matchingLuggageTable;
     private javax.swing.JButton registerJButton;
     // End of variables declaration//GEN-END:variables
 

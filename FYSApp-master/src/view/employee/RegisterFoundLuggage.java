@@ -1,17 +1,15 @@
 package view.employee;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import main.FYSApp;
-import static main.FYSApp.airportsList;
 import main.Frame;
 import model.Luggage;
-import view.employee.FoundLuggageOverview;
 
 /**
  *
@@ -89,24 +87,26 @@ public class RegisterFoundLuggage extends JPanel {
         btn_clear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txt_otherDetails = new javax.swing.JTextArea();
-        lbldefaultvaluecode = new javax.swing.JLabel();
         lbl_otherDetails = new javax.swing.JLabel();
         lbl_whenFound = new javax.swing.JLabel();
         dc_whenFound = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         backJButton = new javax.swing.JButton();
         logoutJButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
         setMinimumSize(new java.awt.Dimension(1024, 600));
         setPreferredSize(new java.awt.Dimension(1024, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("REGISTER FOUND LUGGAGE");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 10, 338, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 241, 234));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         txt_material.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -212,10 +212,6 @@ public class RegisterFoundLuggage extends JPanel {
         txt_otherDetails.setRows(5);
         jScrollPane2.setViewportView(txt_otherDetails);
 
-        lbldefaultvaluecode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lbldefaultvaluecode.setForeground(new java.awt.Color(204, 204, 204));
-        lbldefaultvaluecode.setText("123A-456B-789C");
-
         lbl_otherDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbl_otherDetails.setText("Other details:");
 
@@ -230,10 +226,9 @@ public class RegisterFoundLuggage extends JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_whenFound)
-                    .addComponent(lbldefaultvaluecode)
                     .addComponent(lbl_otherDetails)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -258,7 +253,7 @@ public class RegisterFoundLuggage extends JPanel {
                                 .addComponent(txt_brand)
                                 .addComponent(dc_whenFound, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,14 +290,14 @@ public class RegisterFoundLuggage extends JPanel {
                 .addComponent(lbl_otherDetails)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbldefaultvaluecode)
-                .addGap(29, 29, 29)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 45, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 241, 234));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -344,30 +339,11 @@ public class RegisterFoundLuggage extends JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(339, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(242, 242, 242)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(919, 45, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 600));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -439,10 +415,13 @@ public class RegisterFoundLuggage extends JPanel {
             try {
                 if (checkIfExists(luggage)) {
 
-                    FYSApp.getSearchManager().searchSimilarities(luggage, lost);
+                    ResultSet rs = FYSApp.getSearchManager().searchSimilarities(luggage, lost);
                     JOptionPane.showMessageDialog(null, "Possible match found!");
                     JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
                     Frame.getInstance().showPanel(new MatchingLuggage());
+                    MatchingLuggage.getMatchingLuggage(rs);
+                    MatchingLuggage.setLostOrFound(status);
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Information is saved");
                     FYSApp.getLuggageManager().addFoundLuggage(luggage);
@@ -486,15 +465,15 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_txt_materialActionPerformed
 
     private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
-        lbldefaultvaluecode.setText("");
+
     }//GEN-LAST:event_txt_lableCodeFocusGained
 
     private void txt_lableCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusLost
-        lbldefaultvaluecode.setText("123A-456B-789C");
+
     }//GEN-LAST:event_txt_lableCodeFocusLost
 
     private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
-        lbldefaultvaluecode.setText("");
+
     }//GEN-LAST:event_txt_lableCodeKeyPressed
 
     public static void setText(Luggage luggage) {
@@ -526,6 +505,7 @@ public class RegisterFoundLuggage extends JPanel {
     private static javax.swing.JComboBox cmb_foundAt;
     private static javax.swing.JComboBox cmb_weightClass;
     private com.toedter.calendar.JDateChooser dc_whenFound;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -538,7 +518,6 @@ public class RegisterFoundLuggage extends JPanel {
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
     private javax.swing.JLabel lbl_whenFound;
-    private javax.swing.JLabel lbldefaultvaluecode;
     private javax.swing.JButton logoutJButton;
     private static javax.swing.JTextField txt_brand;
     private static javax.swing.JTextField txt_lableCode;
