@@ -192,10 +192,9 @@ public class GraphOverview extends javax.swing.JPanel {
 
     private void jMonthChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jMonthChooser1PropertyChange
 
-        //HIER KOMT GRAPH WEER
         Graph examGraph = new Graph("Monthly overview of Luggage status");
 
-        String[] days = new String[30];
+        String[] days = new String[31];
 
         for (int i = 0; i < days.length; i++) {
             days[i] += i;
