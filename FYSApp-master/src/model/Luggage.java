@@ -55,6 +55,7 @@ public class Luggage {
         this.weightClass = weightClass;
         this.whenFound = whenFound;
         this.departureFrom = departureFrom;
+        this.foundAt = foundAt;
     }
 
     /**

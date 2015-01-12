@@ -16,7 +16,6 @@ import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
 import main.Frame;
 import model.Luggage;
-import view.employee.RegisterLostLuggage;
 
 /**
  *
@@ -362,11 +361,11 @@ public class AdminLuggageLost extends JPanel {
             int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
 
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
-            Frame.getInstance().showPanel(new EditLostLuggage());
+            Frame.getInstance().showPanel(new EditLuggage());
 
-            EditLostLuggage.setLuggageId(id);
-            EditLostLuggage.setStatus("Lost");
-            EditLostLuggage.setText(luggage);
+            EditLuggage.setLuggageId(id);
+            EditLuggage.setStatus("Lost");
+            EditLuggage.setText(luggage);
 
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");

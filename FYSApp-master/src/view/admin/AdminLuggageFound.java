@@ -328,7 +328,7 @@ public class AdminLuggageFound extends JPanel {
     /**
      * 
      * @param evt actionlistener that gets the row thats selected, then 
-     * shows the EditLostLuggage panel and fills it with the selected content.
+ shows the EditLuggage panel and fills it with the selected content.
      */
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         //  If there is no row selected to edit
@@ -338,11 +338,11 @@ public class AdminLuggageFound extends JPanel {
             int id = Integer.parseInt((String) foundLuggageJTable.getModel().getValueAt(row, col));
 
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
-            Frame.getInstance().showPanel(new EditLostLuggage());
+            Frame.getInstance().showPanel(new EditLuggage());
 
-            EditLostLuggage.setLuggageId(id);
-            EditLostLuggage.setStatus("Found");
-            EditLostLuggage.setText(luggage);
+            EditLuggage.setLuggageId(id);
+            EditLuggage.setStatus("Found");
+            EditLuggage.setText(luggage);
             
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
