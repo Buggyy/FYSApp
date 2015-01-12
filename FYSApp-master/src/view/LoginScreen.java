@@ -57,6 +57,7 @@ public class LoginScreen extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         lbl_defaultvalueusername1 = new javax.swing.JLabel();
         lbl_defaultvaluepassword = new javax.swing.JLabel();
+        jWarning = new javax.swing.JLabel();
         btn_cantlogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -128,13 +129,16 @@ public class LoginScreen extends javax.swing.JPanel {
         lbl_defaultvaluepassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lbl_defaultvaluepassword.setText("Password");
 
+        jWarning.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_defaultvaluepassword)
                     .addComponent(lbl_defaultvalueusername1)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -149,7 +153,7 @@ public class LoginScreen extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(lbl_defaultvalueusername1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(userNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +161,9 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addComponent(lbl_defaultvaluepassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jWarning, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,7 +241,7 @@ public class LoginScreen extends javax.swing.JPanel {
                     }
                 }
             } else {
-                lbl_defaultvaluepassword.setText("Wrong Username/Password - Please try again");
+                jWarning.setText("Wrong Username/Password - Please try again");
             }
             }
         } catch (SQLException e) {
@@ -273,6 +279,7 @@ public class LoginScreen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jWarning;
     private javax.swing.JLabel lbl_defaultvaluepassword;
     private javax.swing.JLabel lbl_defaultvalueusername1;
     private javax.swing.JButton loginJButton;
