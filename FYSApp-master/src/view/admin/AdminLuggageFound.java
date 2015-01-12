@@ -158,7 +158,7 @@ public class AdminLuggageFound extends JPanel {
         });
         jScrollPane2.setViewportView(foundLuggageJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 710, 340));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -180,7 +180,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 150, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -189,7 +189,7 @@ public class AdminLuggageFound extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 110, 40));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");

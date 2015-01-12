@@ -142,7 +142,7 @@ public class AdminUsers extends JPanel {
                 searchJTextFieldKeyPressed(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 150, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -151,7 +151,7 @@ public class AdminUsers extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 110, 40));
 
         userTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         userTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -176,7 +176,7 @@ public class AdminUsers extends JPanel {
         });
         jScrollPane2.setViewportView(userTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 710, 340));
 
         editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
         editJButton.setText("EDIT");
