@@ -106,8 +106,8 @@ public class FoundLuggageOverview extends JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         foundLuggageTable = new javax.swing.JTable();
         jLWarning = new javax.swing.JLabel();
-        lostJButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        lostJButton1 = new javax.swing.JButton();
         loggedInAs = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -129,7 +129,7 @@ public class FoundLuggageOverview extends JPanel {
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
-        jLabel2.setText("   Found Luggage Overview - Employee");
+        jLabel2.setText("   Found Luggage Overview");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 410, 33));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
@@ -232,6 +232,10 @@ public class FoundLuggageOverview extends JPanel {
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 410, 30));
         jLWarning.getAccessibleContext().setAccessibleName("jLWarning");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Currently logged in as:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         lostJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
         lostJButton1.setText("Lost Luggage");
         lostJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -240,10 +244,6 @@ public class FoundLuggageOverview extends JPanel {
             }
         });
         add(lostJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 140, 40));
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Currently logged in as: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");

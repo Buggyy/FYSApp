@@ -230,7 +230,7 @@ public class AdminLuggageFound extends JPanel {
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
-        jLabel2.setText("   Found Luggage Overview - Admin");
+        jLabel2.setText("   Found Luggage Overview");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 380, 33));
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

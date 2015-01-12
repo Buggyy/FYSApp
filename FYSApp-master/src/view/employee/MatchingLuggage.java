@@ -68,7 +68,7 @@ public class MatchingLuggage extends JPanel {
      */
     public MatchingLuggage() {
         initComponents();
-//        getMatchingLuggage();
+        setLoggedInAs();
     }
 
     public static void setLostOrFound(String lostOrFound) {
@@ -161,6 +161,11 @@ public class MatchingLuggage extends JPanel {
 
         matchingLuggageTable.repaint();
     }
+    
+    private void setLoggedInAs() {
+        String userName = FYSApp.getUserManager().getUserName();
+        loggedInAs.setText(userName);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,6 +186,7 @@ public class MatchingLuggage extends JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         backJButton2 = new javax.swing.JButton();
+        loggedInAs = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,7 +282,7 @@ public class MatchingLuggage extends JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 170, 33));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: [username]");
+        jLabel1.setText("Currently logged in as:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         backJButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -289,6 +295,10 @@ public class MatchingLuggage extends JPanel {
             }
         });
         add(backJButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 60, 100, 30));
+
+        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
+        loggedInAs.setText("jLabel2");
+        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -373,6 +383,7 @@ public class MatchingLuggage extends JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton matchJButton;
     private static javax.swing.JTable matchingLuggageTable;

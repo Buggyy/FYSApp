@@ -199,7 +199,7 @@ public class AdminUsers extends JPanel {
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
-        jLabel2.setText("   Users Overview - Admin");
+        jLabel2.setText("   Users Overview");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 290, 33));
 
         registerJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add-icon.png"))); // NOI18N
