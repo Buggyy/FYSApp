@@ -133,7 +133,6 @@ public final class FYSApp {
     //Database shutdown moet hierin nog toegevoegd worden
     public static void shutdown() {
         mainWindow.dispose();
-        System.exit(0);
     }
 
     // Gets current date (timestamp)
