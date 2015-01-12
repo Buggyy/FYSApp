@@ -131,13 +131,14 @@ public class GraphOverview extends javax.swing.JPanel {
         graphJPanel.setPreferredSize(new java.awt.Dimension(590, 340));
         add(graphJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
         jButton2.setText("Year Overview");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 110, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 140, 40));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Currently logged in as: ");
