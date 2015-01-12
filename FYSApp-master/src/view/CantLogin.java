@@ -49,7 +49,7 @@ public class CantLogin extends JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setName("Login"); // NOI18N
 
         backJButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -112,7 +112,7 @@ public class CantLogin extends JPanel {
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 110));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon_icon.png"))); // NOI18N
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel8.setText("jLabel1");
