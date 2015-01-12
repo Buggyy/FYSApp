@@ -28,43 +28,40 @@ public class Graph extends ApplicationFrame {
     }
 
     /**
-     * Adds values of an array to the dataset
-     *
-     * @param rowValue Array containing the values (one per column)
-     * @param seriesName Name of the series
-     * @param colName Names of the columns
+     * 
+     * @param dateRange
+     * @param list1
+     * @param list2
+     * @param list3
+     * @param list4
+     * @param listName1
+     * @param listName2
+     * @param listName3
+     * @param listName4 
      */
-    public void addSeries() {
+    public void addSeries(String[] dateRange, ArrayList<Integer> list1, 
+            ArrayList<Integer> list2, ArrayList<Integer> list3, 
+            ArrayList<Integer> list4, String listName1, String listName2,
+            String listName3, String listName4) {
 
-        String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",  "Oct", "Nov", "Dec" };
-        ArrayList<Integer> nbrOfFoundByMonth = new  ArrayList<>();
-        ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
-        ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
-        ArrayList<Integer> nbrOfAuctionedByMonth = new ArrayList<>();
-        
         
         LuggageManager luggageMgr =  FYSApp.getLuggageManager();
         
-        for (int i = 0 ; i < months.length ; i ++)
-        {
-            nbrOfFoundByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Found"));
-            nbrOfLostByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Lost"));
-            nbrOfSolvedByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Solved"));
-            nbrOfAuctionedByMonth.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, "Auctioned"));
+        for (int i = 0 ; i < dateRange.length ; i ++) {
+            
+            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName1));
+            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName2));
+            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName3));
+            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + 1, listName4));
         }
         
-        for (int i = 0; i < months.length; i++) {
-            this.dataset.addValue(nbrOfFoundByMonth.get(i), "Found", months[i]);
-            this.dataset.addValue(nbrOfLostByMonth.get(i), "Lost", months[i]);
-            this.dataset.addValue(nbrOfSolvedByMonth.get(i), "Solved", months[i]);
-            this.dataset.addValue(nbrOfAuctionedByMonth.get(i), "Auctioned", months[i]);
+        for (int i = 0; i < dateRange.length; i++) {
+            
+            this.dataset.addValue(list1.get(i), listName1, dateRange[i]);
+            this.dataset.addValue(list2.get(i), listName2, dateRange[i]);
+            this.dataset.addValue(list3.get(i), listName3, dateRange[i]);
+            this.dataset.addValue(list4.get(i), listName4, dateRange[i]);
         }
-
-// See http://www.java2s.com/Code/Java/Chart/JFreeChartLineChartDemo1.htm
-        // See http://www.java2s.com/Code/Java/Chart/CatalogChart.htm
-        // See http://www.jfree.org/jfreechart/api/javadoc/index.html?overview-summary.html
-        // TODO 1: add series to dataset
-        // hier komt de code van opracht 5
     }
 
     /**

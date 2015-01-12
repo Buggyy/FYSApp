@@ -3,6 +3,7 @@ package view.manager;
 import externelibraries.Graph;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.FYSApp;
@@ -18,15 +19,22 @@ public class GraphOverview extends javax.swing.JPanel {
      * Creates new form GraphOverview
      */
     public GraphOverview() {
-        initComponents();
-        
-        
-                
+        initComponents();    
                    
         Graph examGraph = new Graph("Monthly overview of Luggage status");
-
-        examGraph.addSeries();
         
+        String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",  "Oct", "Nov", "Dec" };
+        ArrayList<Integer> nbrOfFoundByMonth = new  ArrayList<>();
+        ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
+        ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
+        ArrayList<Integer> nbrOfAuctionedByMonth = new ArrayList<>();
+        String listName1 = "Found";
+        String listName2 = "Lost";
+        String listName3 = "Solved";
+        String listName4 = "Auctioned";
+        
+        examGraph.addSeries(months, nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth, listName1, listName2, listName3, listName4);
+                
         graphJLabel.add(examGraph.createChart("Luggage overview", "Month", "Amount", 590, 340, Color.WHITE));
 
         examGraph.setSeriesThickness(0, 2);
