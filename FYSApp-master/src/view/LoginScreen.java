@@ -58,6 +58,8 @@ public class LoginScreen extends javax.swing.JPanel {
         lbl_defaultvalueusername1 = new javax.swing.JLabel();
         lbl_defaultvaluepassword = new javax.swing.JLabel();
         btn_cantlogin = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -70,8 +72,8 @@ public class LoginScreen extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 150, -1));
 
         jLabel4.setFont(new java.awt.Font("Gabriola", 0, 36)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/zjk logo-small.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 120, 110));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/zjk logo.png"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 110));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel2.setName("Login"); // NOI18N
@@ -172,7 +174,14 @@ public class LoginScreen extends javax.swing.JPanel {
                 btn_cantloginActionPerformed(evt);
             }
         });
-        add(btn_cantlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 525, 110, 30));
+        add(btn_cantlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 110, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon_icon.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userNameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameJTextFieldActionPerformed
@@ -259,7 +268,9 @@ public class LoginScreen extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cantlogin;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_defaultvaluepassword;
