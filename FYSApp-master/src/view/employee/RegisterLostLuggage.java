@@ -126,7 +126,7 @@ public class RegisterLostLuggage extends JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Back-2-2-icon.png"))); // NOI18N
-        backJButton.setText(" ");
+        backJButton.setText(" BACK");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
@@ -134,7 +134,7 @@ public class RegisterLostLuggage extends JPanel {
         });
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
-        logoutJButton.setText(" ");
+        logoutJButton.setText(" Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);

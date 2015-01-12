@@ -180,6 +180,7 @@ public class MatchingLuggage extends JPanel {
         matchJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        backJButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -278,6 +279,17 @@ public class MatchingLuggage extends JPanel {
         jLabel1.setText("Currently logged in as: [username]");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+        backJButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        backJButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
+        backJButton2.setText("CANCEL");
+        backJButton2.setBorder(null);
+        backJButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButton2ActionPerformed(evt);
+            }
+        });
+        add(backJButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 60, 100, 30));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setAutoscrolls(true);
@@ -340,8 +352,23 @@ public class MatchingLuggage extends JPanel {
 
     }//GEN-LAST:event_matchJButtonActionPerformed
 
+    private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
+        if (lostOrFound.equalsIgnoreCase("found")) {
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+        } else {
+            try {
+                Frame.getInstance().showPanel(new LostLuggageOverview());
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_backJButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
+    private javax.swing.JButton backJButton1;
+    private javax.swing.JButton backJButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

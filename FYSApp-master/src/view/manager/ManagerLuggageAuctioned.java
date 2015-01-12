@@ -231,7 +231,7 @@ public class ManagerLuggageAuctioned extends JPanel {
 
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 410, 30));
+        add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 30));
 
         searchJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton1.setText("SEARCH");

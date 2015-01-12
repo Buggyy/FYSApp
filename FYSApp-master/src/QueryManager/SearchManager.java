@@ -33,7 +33,7 @@ public class SearchManager {
             String sql
                     = "SELECT * FROM luggage WHERE "
                     + "status = 'found' AND (luggageid LIKE ? OR ownerid LIKE ?"
-                    + " OR airportname LIKE ? OR brand LIKE ? "
+                    + " OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
                     + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
@@ -54,7 +54,6 @@ public class SearchManager {
             pst.setString(11, "%" + input + "%");
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
-            pst.setString(14, "%" + input + "%");
 
             rs = pst.executeQuery();
 
@@ -81,7 +80,7 @@ public class SearchManager {
             String sql
                     = "SELECT * FROM luggage WHERE "
                     + "status = 'lost' AND (luggageid LIKE ? OR ownerid LIKE ?"
-                    + " OR airportname LIKE ? OR brand LIKE ? "
+                    + " OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
                     + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
@@ -102,8 +101,6 @@ public class SearchManager {
             pst.setString(11, "%" + input + "%");
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
-            pst.setString(14, "%" + input + "%");
-
 
             rs = pst.executeQuery();
             return rs;
@@ -130,7 +127,7 @@ public class SearchManager {
             String sql
                     = "SELECT * FROM luggage WHERE "
                     + "status = 'auctioned' AND (luggageid LIKE ? OR ownerid LIKE ?"
-                    + " OR airportname LIKE ? OR brand LIKE ? "
+                    + " OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
                     + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
@@ -151,8 +148,7 @@ public class SearchManager {
             pst.setString(11, "%" + input + "%");
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
-            pst.setString(14, "%" + input + "%");
-
+  
 
             rs = pst.executeQuery();
             return rs;
@@ -172,8 +168,8 @@ public class SearchManager {
 
             String sql
                     = "SELECT * FROM luggage WHERE "
-                    + "status = 'Solved' AND (luggageid LIKE ? OR ownerid LIKE ?"
-                    + " OR airportname LIKE ? OR brand LIKE ? "
+                    + "status = 'solved' AND (luggageid LIKE ? OR ownerid LIKE ?"
+                    + " OR brand LIKE ? "
                     + "OR lablecode LIKE ? OR material LIKE ? OR otherdetails "
                     + "LIKE ? OR weightclass LIKE ? OR color LIKE ? OR whenfound"
                     + " LIKE ? OR foundat LIKE ? OR departurefrom LIKE ? OR "
@@ -194,7 +190,7 @@ public class SearchManager {
             pst.setString(11, "%" + input + "%");
             pst.setString(12, "%" + input + "%");
             pst.setString(13, "%" + input + "%");
-            pst.setString(14, "%" + input + "%");
+       
 
             rs = pst.executeQuery();
             return rs;
@@ -280,7 +276,7 @@ public class SearchManager {
             pst.setString(2, luggage.getLableCode());
             pst.setString(3, luggage.getMaterial());
             pst.setString(4, luggage.getColor());
-            
+
             rs = pst.executeQuery();
             return rs;
 
