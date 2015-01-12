@@ -21,7 +21,7 @@ public class RegisterFoundLuggage extends JPanel {
 
     private static int updateMode = 0;
     private static int luggageid;
-    private static boolean lost = false;
+    private static boolean lost = true;
 
     /**
      * Creates new form AddUser

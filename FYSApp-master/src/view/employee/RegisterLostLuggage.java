@@ -6,6 +6,7 @@ import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
@@ -845,13 +846,23 @@ public class RegisterLostLuggage extends JPanel {
 
         if (checkPDF.isSelected()) {
             FYSApp.getInstance().getPDFGenerator().getReceiptPDF(luggage, newClient);
-        }
-
-        try {
+        } else {
             if (updateMode > 1) {
                 FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
-                            Frame.getInstance().showPanel(new LostLuggageOverview());
+                try {
+                    Frame.getInstance().showPanel(new LostLuggageOverview());
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
+                try {
+                if (checkIfExists(luggage)) {
+
+                    FYSApp.getSearchManager().searchSimilarities(luggage, false);
+                    JOptionPane.showMessageDialog(null, "Possible match found!");
+                    JOptionPane.showMessageDialog(null, "You will now be redirected to the overview of the matched luggage");
+                    Frame.getInstance().showPanel(new MatchingLuggage());
+                } else {
                 //  Show user succes message
                 JOptionPane.showMessageDialog(null, "Information is saved");
                 //  If this is not the case, then we call the addLuggage Query +
@@ -859,14 +870,23 @@ public class RegisterLostLuggage extends JPanel {
                 FYSApp.getClientManager().addClient(newClient);
                 int id = FYSApp.getClientManager().getClientid();
                 FYSApp.getLuggageManager().addLostLuggage(luggage, id);
-            }
+                            Frame.getInstance().showPanel(new LostLuggageOverview());
+                }
+            
 
-            Frame.getInstance().showPanel(new LostLuggageOverview());
-
+                
         } catch (HeadlessException | ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
+            }
+        }
+            
     }//GEN-LAST:event_btn_submit1ActionPerformed
+
+    private boolean checkIfExists(Luggage lug) {
+        ArrayList<Luggage> list = FYSApp.getLuggageManager().getLostLuggage();
+        return list.contains(lug);
+    }
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
         //clear all the fields
