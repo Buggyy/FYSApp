@@ -127,11 +127,11 @@ public class PDFGenerator {
             // start of pdf
             this.contentStream.beginText();
             
-            this.contentStream.setFont(PDType1Font.HELVETICA_BOLD, 14);
+            this.contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
             this.contentStream.moveTextPositionByAmount(30, 750);
-            this.contentStream.drawString("Insurance Receipt");
+            this.contentStream.drawString("Insurance Receipt - Corendon");
             
-            this.contentStream.setFont(PDType1Font.HELVETICA, 10);
+            this.contentStream.setFont(PDType1Font.HELVETICA, 12);
             this.contentStream.moveTextPositionByAmount(0, -50);
             // Add client data to receipt
             this.contentStream.drawString("Firstname: " + b.getFirstName());
