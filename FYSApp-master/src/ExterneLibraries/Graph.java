@@ -28,7 +28,7 @@ public class Graph extends ApplicationFrame {
     }
 
     /**
-     *
+     * 
      * @param dateRange
      * @param list1
      * @param list2
@@ -37,62 +37,54 @@ public class Graph extends ApplicationFrame {
      * @param listName1
      * @param listName2
      * @param listName3
-     * @param listName4
+     * @param listName4 
      */
-    public void addSeriesMonths(String dateType, int beginMonth,
-            String[] dateRange, ArrayList<Integer> list1,
-            ArrayList<Integer> list2, ArrayList<Integer> list3,
+    public void addSeriesMonths(String dateType, int beginMonth, String[] dateRange, ArrayList<Integer> list1, 
+            ArrayList<Integer> list2, ArrayList<Integer> list3, 
             ArrayList<Integer> list4, String listName1, String listName2,
             String listName3, String listName4) {
 
-        LuggageManager luggageMgr = FYSApp.getLuggageManager();
-
-        for (int i = 0; i < dateRange.length; i++) {
-
-            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName1) - 1);
-            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName2) - 1);
-            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName3) - 1);
-            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName4) - 1);
+        
+        LuggageManager luggageMgr =  FYSApp.getLuggageManager();
+        
+        for (int i = 0 ; i < dateRange.length ; i ++) {
+            
+            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName1)-1);
+            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName2)-1);
+            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName3)-1);
+            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName4)-1);
         }
-
+        
         for (int i = 0; i < dateRange.length; i++) {
-
+            
             this.dataset.addValue(list1.get(i), listName1, dateRange[i]);
             this.dataset.addValue(list2.get(i), listName2, dateRange[i]);
             this.dataset.addValue(list3.get(i), listName3, dateRange[i]);
             this.dataset.addValue(list4.get(i), listName4, dateRange[i]);
         }
     }
+    public void addSeriesDays(String dateType, int beginMonth, String[] dateRange, ArrayList<Integer> list1, 
+            ArrayList<Integer> list2, ArrayList<Integer> list3, 
+            ArrayList<Integer> list4, String listName1, String listName2,
+            String listName3, String listName4) {
 
-    public void addSeriesDays(String dateType, int beginMonth,
-            String[] dateRange, int[] array1, int[] array2, int[] array3,
-            int[] array4, String listName1, String listName2, String listName3,
-            String listName4) {
-
-        LuggageManager luggageMgr = FYSApp.getLuggageManager();
-
-        for (int i = 1; i < array1.length; i++) {
-
-            array1[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
-                    listName1) + (array1[i - 1]);
-            array2[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
-                    listName2) + (array2[i - 1]);
-            array3[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
-                    listName3) + (array3[i - 1]);
-            array4[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
-                    listName4) + (array4[i - 1]);
+        
+        LuggageManager luggageMgr =  FYSApp.getLuggageManager();
+        
+        for (int i = 0 ; i < dateRange.length ; i ++) {
+            
+            list1.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName1)-1);
+            list2.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName2)-1);
+            list3.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName3)-1);
+            list4.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName4)-1);
         }
-
-        for (int i = 0; i < array1.length; i++) {
-
-            this.dataset.addValue(array1[i], listName1, dateRange[i]);
-            this.dataset.addValue(array2[i], listName2, dateRange[i]);
-            this.dataset.addValue(array3[i], listName3, dateRange[i]);
-            this.dataset.addValue(array4[i], listName4, dateRange[i]);
+        
+        for (int i = 0; i < dateRange.length; i++) {
+            
+            this.dataset.addValue(list1.get(i), listName1, dateRange[i]);
+            this.dataset.addValue(list2.get(i), listName2, dateRange[i]);
+            this.dataset.addValue(list3.get(i), listName3, dateRange[i]);
+            this.dataset.addValue(list4.get(i), listName4, dateRange[i]);
         }
     }
 
@@ -106,8 +98,7 @@ public class Graph extends ApplicationFrame {
      * @param height height of the graph
      * @param bgColor background color of the graph
      */
-    public ChartPanel createChart(String title, String xAxisString,
-            String yAxisString, int width, int height, Paint bgColor) {
+    public ChartPanel createChart(String title, String xAxisString, String yAxisString, int width, int height, Paint bgColor) {
 
         this.chart = ChartFactory.createLineChart(title, xAxisString, yAxisString, this.dataset,
                 PlotOrientation.VERTICAL, true, true, false);
@@ -116,7 +107,6 @@ public class Graph extends ApplicationFrame {
         chartPanel.setPreferredSize(new Dimension(width, height));
         setContentPane(chartPanel);
         pack();
-
         return chartPanel;
 
 // See http://www.java2s.com/Code/Java/Chart/JFreeChartLineChartDemo1.htm
