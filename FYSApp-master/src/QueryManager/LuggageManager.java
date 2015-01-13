@@ -19,7 +19,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Team 1 IS106 
+ * @author Rafael
  */
 public class LuggageManager {
 
