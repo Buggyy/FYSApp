@@ -33,7 +33,8 @@ import view.manager.ManagerLuggageFound;
  */
 public class Frame {
 
-    public static final String CONTACT_MESSAGE = "Please contact our support at:\n"
+    public static final String CONTACT_MESSAGE = "Please contact our support "
+            + "at:\n"
             + "Email: support@corendon.nl\n"
             + "Phone: +31623451212 or +29693399339";
 
@@ -50,30 +51,37 @@ public class Frame {
     public static final String EMPLOYEE_NAME = "Employee View";
 
     private static JFrame mainWindow;
-//    private static JMenuBar menuBar = new JMenuBar();
     JMenu optionsMenu;
-    JMenu helpMenu; 
+    JMenu helpMenu;
 
     private static Frame instance = new Frame();
 
     private Frame() {
     }
 
+    /**
+     *
+     */
     public void initialize() {
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException |
+                IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.err.println("Error setting LookAndFeelClassName: " + e);
         }
     }
 
+    /**
+     *
+     */
     public void startManager() {
+
         mainWindow = new JFrame(MANAGER_NAME);
         mainWindow.setSize(MANAGER_WIDTH, MANAGER_HEIGHT);
         mainWindow.setResizable(false);
         mainWindow.setLocationRelativeTo(null);
 
-        //method shutdown om applicatie te sluiten.
         mainWindow.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -88,7 +96,11 @@ public class Frame {
         mainWindow.setVisible(true);
     }
 
+    /**
+     *
+     */
     public void startAdmin() {
+
         mainWindow = new JFrame(ADMIN_NAME);
         mainWindow.setSize(ADMIN_WIDTH, ADMIN_HEIGHT);
         mainWindow.setResizable(false);
@@ -109,13 +121,16 @@ public class Frame {
         mainWindow.setVisible(true);
     }
 
+    /**
+     *
+     */
     public void startEmployee() {
+
         mainWindow = new JFrame(EMPLOYEE_NAME);
         mainWindow.setSize(EMPLOYEE_WIDTH, EMPLOYEE_HEIGHT);
         mainWindow.setResizable(false);
         mainWindow.setLocationRelativeTo(null);
 
-        //method shutdown om applicatie te sluiten.
         mainWindow.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -130,28 +145,47 @@ public class Frame {
         mainWindow.setVisible(true);
     }
 
+    /**
+     *
+     * @param panel
+     */
     public void showPanel(JPanel panel) {
+
         mainWindow.getContentPane().removeAll();
         mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
         mainWindow.getContentPane().validate();
         mainWindow.getContentPane().repaint();
     }
 
+    /**
+     *
+     */
     public void exit() {
+
         mainWindow.setVisible(false);
         shutdown();
     }
 
-    //Database shutdown moet hierin nog toegevoegd worden, nee?????
+    /**
+     *
+     */
     public static void shutdown() {
         mainWindow.dispose();
     }
 
+    /**
+     *
+     * @return
+     */
     public static Frame getInstance() {
         return instance;
     }
 
+    /**
+     *
+     */
     public void menu() {
+
         JMenuBar menuBar = new JMenuBar();
         UIManager.put("PopupMenu.border",
                 BorderFactory.createLineBorder(Color.black, 1));
@@ -178,6 +212,7 @@ public class Frame {
         optionsMenu.add(exit);
 
         exit.addActionListener(new java.awt.event.ActionListener() {
+
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
@@ -185,6 +220,7 @@ public class Frame {
         });
 
         logout.addActionListener(new java.awt.event.ActionListener() {
+
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
@@ -192,6 +228,7 @@ public class Frame {
         });
 
         userManual.addActionListener(new java.awt.event.ActionListener() {
+
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userManualActionPerformed(evt);
@@ -199,6 +236,7 @@ public class Frame {
         });
 
         contact.addActionListener(new java.awt.event.ActionListener() {
+
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contactActionPerformed(evt);
@@ -208,16 +246,22 @@ public class Frame {
         mainWindow.setJMenuBar(menuBar);
     }
 
+    /**
+     *
+     */
     public static void ManagerFrame() {
+
         final Frame applicatie = Frame.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
+
                     applicatie.initialize();
                     applicatie.startManager();
                     applicatie.menu();
+
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,
                             "Application failed to launch", "Failure",
@@ -227,16 +271,22 @@ public class Frame {
         });
     }
 
+    /**
+     *
+     */
     public static void AdminFrame() {
+
         final Frame applicatie = Frame.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
+
                     applicatie.initialize();
                     applicatie.startAdmin();
                     applicatie.menu();
+
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null,
                             "Application failed to launch", "Failure",
@@ -246,17 +296,24 @@ public class Frame {
         });
     }
 
+    /**
+     *
+     */
     public static void EmployeeFrame() {
+
         final Frame applicatie = Frame.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
                 try {
+
                     applicatie.initialize();
                     applicatie.startEmployee();
                     applicatie.menu();
+
                 } catch (Exception e) {
+
                     JOptionPane.showMessageDialog(null,
                             "Application failed to launch", "Failure",
                             JOptionPane.WARNING_MESSAGE);
@@ -265,28 +322,49 @@ public class Frame {
         });
     }
 
+    /**
+     *
+     * @param evt
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
     }
 
+    /**
+     *
+     * @param evt
+     */
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {
+
         Frame.shutdown();
         FYSApp.logout();
     }
 
+    /**
+     *
+     * @param evt
+     */
     private void userManualActionPerformed(java.awt.event.ActionEvent evt) {
+
         File filee = new File("Usermanual.pdf");
         String absolutePath = filee.getAbsolutePath();
+
         try {
+
             Process process = Runtime.getRuntime()
                     .exec("rundll32 url.dll, FileProtocolHandler "
                             + absolutePath);
             process.waitFor();
+
         } catch (IOException | InterruptedException e) {
             System.out.println(":: -----Exception---- ::\n" + e);
         }
     }
 
+    /**
+     *
+     * @param evt
+     */
     private void contactActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(mainWindow, CONTACT_MESSAGE);
     }
