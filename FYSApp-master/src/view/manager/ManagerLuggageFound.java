@@ -185,7 +185,7 @@ public class ManagerLuggageFound extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -194,7 +194,7 @@ public class ManagerLuggageFound extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 110, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,7 +239,7 @@ public class ManagerLuggageFound extends JPanel {
         });
         jScrollPane2.setViewportView(foundLuggageJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 700, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
 
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
