@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import static main.FYSApp.NO_VALUE;
@@ -14,14 +8,14 @@ import static main.FYSApp.NO_VALUE;
  */
 public class User {
     
-    private String userName     = NO_VALUE;
-    private String pass         = NO_VALUE;
-    private String role         = NO_VALUE;
-    private String firstName    = NO_VALUE;
-    private String middleName   = NO_VALUE;
-    private String lastName     = NO_VALUE;
-    private String email        = NO_VALUE;
-    private String airport      = NO_VALUE;
+    private String userName = NO_VALUE;
+    private String pass = NO_VALUE;
+    private String role = NO_VALUE;
+    private String firstName = NO_VALUE;
+    private String middleName = NO_VALUE;
+    private String lastName = NO_VALUE;
+    private String email = NO_VALUE;
+    private String airport = NO_VALUE;
 
     public User(){
         
@@ -41,6 +35,7 @@ public class User {
     public User(String userName, String pass, String role, 
             String firstName, String middleName, String lastName, 
             String email, String airport) {
+        
         this.userName       = userName;
         this.pass           = pass;
         this.role           = role;
@@ -114,5 +109,4 @@ public class User {
     public void setAirport(String airport) {
         this.airport = airport;
     }
-
 }

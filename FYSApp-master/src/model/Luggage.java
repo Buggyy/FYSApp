@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
-import main.FYSApp;
 import static main.FYSApp.*;
 
 /**
@@ -22,7 +19,6 @@ public class Luggage {
     private String whenFound = NO_VALUE;
     private String foundAt = NO_VALUE;
     private String departureFrom = NO_VALUE;
-    //haal magic number later weg!
     private String lastUpdated = NO_VALUE;
 
     public Luggage() {
@@ -46,6 +42,7 @@ public class Luggage {
             String material, String otherDetails, String status, String color,
             String weightClass, String whenFound, String foundAt,
             String departureFrom) {
+        
         this.brand = brand;
         this.lableCode = lableCode;
         this.material = material;
@@ -66,34 +63,32 @@ public class Luggage {
      */
     @Override
     public boolean equals(Object b) {
+        
         int nbrOfEqual = 0;
         boolean equals = false;
 
         Luggage a = (Luggage) b;
 
         // check information
-        if (this.brand == null ? a.getBrand() == null : this.brand.equals(a.getBrand())) {
+        if (this.brand == null ? a.getBrand() == null : this.brand
+                .equals(a.getBrand())) {
             nbrOfEqual++;
         }
 
-        if (this.color == null ? a.getColor() == null : this.color.equals(a.getColor())) {
+        if (this.color == null ? a.getColor() == null : this.color
+                .equals(a.getColor())) {
             nbrOfEqual++;
         }
 
-//        if (this.weightClass == null ? a.getWeightClass() == null : this.weightClass.equals(a.getWeightClass())) {
-//            nbrOfEqual++;
-//        }
+//       
         
-        /*
-         if(this.foundAt == null ? a.getFoundAt() == null : this.foundAt.equals(a.getFoundAt()))
-         nbrOfEqual++;
-         */
-        
-        if (this.lableCode == null ? a.getLableCode() == null : this.lableCode.equals(a.getLableCode())) {
+        if (this.lableCode == null ? a.getLableCode() == null : this.lableCode
+                .equals(a.getLableCode())) {
             nbrOfEqual++;
         }
 
-        if (this.material == null ? a.getMaterial() == null : this.material.equals(a.getMaterial())) {
+        if (this.material == null ? a.getMaterial() == null : this.material
+                .equals(a.getMaterial())) {
             nbrOfEqual++;
         }
 
