@@ -14,7 +14,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Team 1 IS106 
+ * @author Team 1 IS106
  */
 public class LuggageManager {
 
@@ -57,7 +57,7 @@ public class LuggageManager {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
+
         dbManager.closeConnection();
     }
 
@@ -95,7 +95,7 @@ public class LuggageManager {
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
+
         dbManager.closeConnection();
     }
 
@@ -136,7 +136,7 @@ public class LuggageManager {
                     + "Administrator!", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
+
         dbManager.closeConnection();
     }
 
@@ -171,7 +171,7 @@ public class LuggageManager {
                     + "please contact your Administrator!", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
+
         dbManager.closeConnection();
     }
 
@@ -214,7 +214,7 @@ public class LuggageManager {
             Logger.getLogger(LoginScreen.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         dbManager.closeConnection();
         return luggage;
     }
@@ -240,7 +240,7 @@ public class LuggageManager {
                     + "Administrator!", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
+
         dbManager.closeConnection();
     }
 
@@ -350,6 +350,36 @@ public class LuggageManager {
                 + monthNumber + ";";
 
         return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
+    }
+
+    public int getTotalStatusByDay(int dayNumber, int monthNumber, String status) {
+
+        int totalStatus = 0;
+
+        try {
+            dbManager.openConnection();
+
+            String sql = "SELECT COUNT(*) from zoekjekoffer.luggage WHERE "
+                    + "luggage.status = '" + status + "' AND month"
+                    + "(luggage.lastupdated) = " + monthNumber + " AND "
+                    + "day(luggage.lastupdated) = " + dayNumber + ";";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            if (rs.next()) {
+
+                totalStatus = rs.getInt("COUNT(*)");
+
+                dbManager.closeConnection();
+                return totalStatus;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LuggageManager.class.getName()).log(Level.SEVERE,
+                    null, ex);
+        }
+        dbManager.closeConnection();
+        return totalStatus;
     }
 
     /**
