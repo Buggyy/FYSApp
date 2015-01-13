@@ -32,7 +32,7 @@ public final class FYSApp {
     public static final String NO_VALUE = "";
     public static final double DOUBLE_ZERO = 0.0;
     public static final double ZERO = 0;
-
+    
     /**
      * Define frame width, height and name
      */
@@ -43,7 +43,7 @@ public final class FYSApp {
     /**
      * static fonts which are used within the application
      */
-    public static final Font FONT_10_PLAIN = new Font("Verdana", Font.PLAIN, 10);
+    public static final Font FONT_10_PLAIN = new Font("Verdana",Font.PLAIN, 10);
     public static final Font FONT_10_BOLD = new Font("Verdana", Font.BOLD, 10);
     public static final Font FONT_12_BOLD = new Font("Verdana", Font.BOLD, 12);
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
@@ -67,12 +67,12 @@ public final class FYSApp {
     }
 
     /**
-     *
+     * 
      */
     public void initialize() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException |
+        } catch (ClassNotFoundException | InstantiationException | 
                 IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.err.println("Error setting LookAndFeelClassName: " + e);
         }
@@ -86,26 +86,27 @@ public final class FYSApp {
     }
 
     /**
-     *
+     * 
      */
     public void setAirports() {
-
+        
         ArrayList<String> airports = FYSApp.getQueryManager().getAirports();
         for (int i = 0; i < airports.size(); i++) {
             airportsList.add(airports.get(i));
         }
     }
 
-    /**
-     *
-     */
+/**
+ * 
+ */
     public void startup() {
-
+        
         mainWindow = new JFrame(MAIN_NAME);
         mainWindow.setSize(MAIN_WIDTH, MAIN_HEIGHT);
         mainWindow.setResizable(false);
         mainWindow.setLocationRelativeTo(null);
 
+       
         mainWindow.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -120,11 +121,11 @@ public final class FYSApp {
     }
 
     /**
-     *
-     * @param panel
+     * 
+     * @param panel 
      */
     public void showPanel(JPanel panel) {
-
+        
         mainWindow.getContentPane().removeAll();
         mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
         mainWindow.getContentPane().validate();
@@ -132,16 +133,16 @@ public final class FYSApp {
     }
 
     /**
-     *
+     * 
      */
     public void exit() {
-
+        
         mainWindow.setVisible(false);
         shutdown();
     }
 
     /**
-     *
+     * 
      */
     public static void shutdown() {
         mainWindow.dispose();
@@ -151,18 +152,17 @@ public final class FYSApp {
      * Gets current date (timestamp)
      */
     public static String getDate() {
-
+        
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         return date;
     }
 
     /**
      * Gets current date and time (timestamp)
-     *
-     * @return
+     * @return 
      */
     public static String getDateTime() {
-
+        
         String dateTime = new SimpleDateFormat("dd-MM-yyyy:k:m")
                 .format(new Date());
         return dateTime;
@@ -176,128 +176,128 @@ public final class FYSApp {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public QueryManager getQm() {
         return qm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public static QueryManager getQueryManager() {
         return getInstance().qm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public LuggageManager getLm() {
         return lm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public static LuggageManager getLuggageManager() {
         return getInstance().lm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public SearchManager getSm() {
         return sm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public static SearchManager getSearchManager() {
         return getInstance().sm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public TableManager getTm() {
         return tm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public static TableManager getTableManager() {
         return getInstance().tm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public UserManager getUm() {
         return um;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public static UserManager getUserManager() {
         return getInstance().um;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public ClientManager getCm() {
         return cm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public static ClientManager getClientManager() {
         return getInstance().cm;
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
     public DatabaseManager getDatabaseManager() {
         return manager;
     }
-
+    
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
-    public PDFGenerator getPDFGenerator() {
+    public PDFGenerator getPDFGenerator(){
         return pdf;
     }
 
     /**
-     *
+     * 
      */
     public static void logout() {
-
+        
         final FYSApp applicatie = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
-
+                
                 try {
                     applicatie.initialize();
                     applicatie.startup();
@@ -308,10 +308,10 @@ public final class FYSApp {
             }
         });
     }
-
+    
     /**
-     *
-     * @param args
+     * 
+     * @param args 
      */
     public static void main(String args[]) {
         final FYSApp applicatie = FYSApp.getInstance();
