@@ -22,17 +22,24 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public final class FYSApp {
 
+    /*
+     *   Styling Conventions:
+     *   Properties of:
+     - Textbox: Calibri 12px plain
+     - Textbox Labels: Calibri 18px plain
+     - Frame title Labels: Calibri 24px bold
+     - Buttons: Calibri 14px plain (UPPERCASE, except for logout/login screen)
+     Dimensions:(X = 530px, Y = 400px)
+     GEEN BORDERS
+     */
     /**
      * Finals for warnings
      */
-    public static final String WARNING_REQUIRED = "Some fields are required to "
-            + "fill in!";
-    public static final String WARNING_MUST_SELECT_SOMETHING = "You must select"
-            + " something!";
+    public static final String WARNING_REQUIRED = "Some fields are required to fill in!";
+    public static final String WARNING_MUST_SELECT_SOMETHING = "You must select something!";
     public static final String NO_VALUE = "";
     public static final double DOUBLE_ZERO = 0.0;
     public static final double ZERO = 0;
-    
     /**
      * Define frame width, height and name
      */
@@ -43,7 +50,7 @@ public final class FYSApp {
     /**
      * static fonts which are used within the application
      */
-    public static final Font FONT_10_PLAIN = new Font("Verdana",Font.PLAIN, 10);
+    public static final Font FONT_10_PLAIN = new Font("Verdana", Font.PLAIN, 10);
     public static final Font FONT_10_BOLD = new Font("Verdana", Font.BOLD, 10);
     public static final Font FONT_12_BOLD = new Font("Verdana", Font.BOLD, 12);
     public static final Font FONT_16_BOLD = new Font("Verdana", Font.BOLD, 16);
@@ -66,14 +73,11 @@ public final class FYSApp {
     private FYSApp() {
     }
 
-    /**
-     * 
-     */
+    //Database en Querymanager moet hierin initialized worden; Vul nog aan.
     public void initialize() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | 
-                IllegalAccessException | UnsupportedLookAndFeelException e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.err.println("Error setting LookAndFeelClassName: " + e);
         }
     }
@@ -85,28 +89,21 @@ public final class FYSApp {
         return airportsList;
     }
 
-    /**
-     * 
-     */
     public void setAirports() {
-        
         ArrayList<String> airports = FYSApp.getQueryManager().getAirports();
         for (int i = 0; i < airports.size(); i++) {
             airportsList.add(airports.get(i));
         }
     }
 
-/**
- * 
- */
+//Start de mainwindow. en include 
     public void startup() {
-        
         mainWindow = new JFrame(MAIN_NAME);
         mainWindow.setSize(MAIN_WIDTH, MAIN_HEIGHT);
         mainWindow.setResizable(false);
         mainWindow.setLocationRelativeTo(null);
 
-       
+        //method shutdown om applicatie te sluiten.
         mainWindow.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -117,52 +114,35 @@ public final class FYSApp {
 
         mainWindow.getContentPane().setLayout(new BorderLayout());
         showPanel(new view.LoginScreen());
+
         mainWindow.setVisible(true);
     }
 
-    /**
-     * 
-     * @param panel 
-     */
     public void showPanel(JPanel panel) {
-        
         mainWindow.getContentPane().removeAll();
         mainWindow.getContentPane().add(panel, BorderLayout.CENTER);
         mainWindow.getContentPane().validate();
         mainWindow.getContentPane().repaint();
     }
 
-    /**
-     * 
-     */
     public void exit() {
-        
         mainWindow.setVisible(false);
         shutdown();
     }
 
-    /**
-     * 
-     */
+    //Database shutdown moet hierin nog toegevoegd worden
     public static void shutdown() {
         mainWindow.dispose();
     }
 
-    /**
-     * Gets current date (timestamp)
-     */
+    // Gets current date (timestamp)
     public static String getDate() {
-        
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         return date;
     }
 
-    /**
-     * Gets current date and time (timestamp)
-     * @return 
-     */
+    // Gets current date and time (timestamp)
     public static String getDateTime() {
-        
         String dateTime = new SimpleDateFormat("dd-MM-yyyy:k:m")
                 .format(new Date());
         return dateTime;
@@ -175,144 +155,77 @@ public final class FYSApp {
         return instance;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public QueryManager getQm() {
         return qm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public static QueryManager getQueryManager() {
         return getInstance().qm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public LuggageManager getLm() {
         return lm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public static LuggageManager getLuggageManager() {
         return getInstance().lm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public SearchManager getSm() {
         return sm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public static SearchManager getSearchManager() {
         return getInstance().sm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public TableManager getTm() {
         return tm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public static TableManager getTableManager() {
         return getInstance().tm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public UserManager getUm() {
         return um;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public static UserManager getUserManager() {
         return getInstance().um;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public ClientManager getCm() {
         return cm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public static ClientManager getClientManager() {
         return getInstance().cm;
     }
 
-    /**
-     * 
-     * @return 
-     */
     public DatabaseManager getDatabaseManager() {
         return manager;
     }
     
-    /**
-     * 
-     * @return 
-     */
     public PDFGenerator getPDFGenerator(){
         return pdf;
     }
 
-    /**
-     * 
-     */
     public static void logout() {
-        
         final FYSApp applicatie = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
             public void run() {
-                
                 try {
                     applicatie.initialize();
                     applicatie.startup();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Application failed to "
-                            + "launch", "Failure", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
     }
-    
-    /**
-     * 
-     * @param args 
-     */
     public static void main(String args[]) {
         final FYSApp applicatie = FYSApp.getInstance();
         SwingUtilities.invokeLater(new Runnable() {
@@ -323,8 +236,7 @@ public final class FYSApp {
                     applicatie.initialize();
                     applicatie.startup();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Application failed to "
-                            + "launch", "Failure", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Application failed to launch", "Failure", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
