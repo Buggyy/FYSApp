@@ -34,7 +34,6 @@ public class ManagerLuggageLost extends JPanel {
     public ManagerLuggageLost() throws ClassNotFoundException, SQLException {
         initComponents();
         getLostLuggage();
-        setLoggedInAs();
     }
 
     private void getLostLuggage() throws ClassNotFoundException, SQLException {
@@ -91,14 +90,13 @@ public class ManagerLuggageLost extends JPanel {
         logoutJButton = new javax.swing.JButton();
         searchJTextField = new javax.swing.JTextField();
         searchJButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lostLuggageJTable = new javax.swing.JTable();
         statisticsJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLWarning = new javax.swing.JLabel();
-        loggedInAs = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(156, 10, 13));
@@ -170,7 +168,7 @@ public class ManagerLuggageLost extends JPanel {
                 searchJTextFieldKeyTyped(evt);
             }
         });
-        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 150, -1));
+        add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 150, -1));
 
         searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
         searchJButton.setText("SEARCH");
@@ -179,7 +177,11 @@ public class ManagerLuggageLost extends JPanel {
                 searchJButtonActionPerformed(evt);
             }
         });
-        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 110, 40));
+        add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 110, 40));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Currently logged in as: [username]");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,7 +226,7 @@ public class ManagerLuggageLost extends JPanel {
         });
         jScrollPane2.setViewportView(lostLuggageJTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 700, 340));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 590, 340));
 
         statisticsJButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         statisticsJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/SEO-icon.png"))); // NOI18N
@@ -248,14 +250,6 @@ public class ManagerLuggageLost extends JPanel {
         jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLWarning.setForeground(new java.awt.Color(255, 255, 255));
         add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 30));
-
-        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
-        loggedInAs.setText("jLabel2");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Currently logged in as: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(156, 10, 13));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
@@ -361,21 +355,16 @@ public class ManagerLuggageLost extends JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void setLoggedInAs() {
-        String userName = FYSApp.getUserManager().getUserName();
-        loggedInAs.setText(userName);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton auctionedJButton;
     private javax.swing.JButton foundJButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLWarning;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     private javax.swing.JTable lostLuggageJTable;

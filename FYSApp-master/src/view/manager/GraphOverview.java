@@ -20,7 +20,6 @@ public class GraphOverview extends javax.swing.JPanel {
      */
     public GraphOverview() {
         initComponents();
-        setLoggedInAs();
 
     }
 
@@ -40,11 +39,10 @@ public class GraphOverview extends javax.swing.JPanel {
         statisticsJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
         graphJPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        loggedInAs = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -119,6 +117,10 @@ public class GraphOverview extends javax.swing.JPanel {
         jLabel2.setText("   Graph Luggage Overview");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 310, 33));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Currently logged in as: [username]");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         jMonthChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jMonthChooser1PropertyChange(evt);
@@ -138,14 +140,6 @@ public class GraphOverview extends javax.swing.JPanel {
             }
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 110, 40));
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Currently logged in as: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
-        loggedInAs.setText("jLabel2");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -276,10 +270,6 @@ public class GraphOverview extends javax.swing.JPanel {
         examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-private void setLoggedInAs() {
-        String userName = FYSApp.getUserManager().getUserName();
-        loggedInAs.setText(userName);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton auctionedJButton;
@@ -289,9 +279,8 @@ private void setLoggedInAs() {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel3;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
-    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton lostJButton;
     private javax.swing.JButton statisticsJButton;
