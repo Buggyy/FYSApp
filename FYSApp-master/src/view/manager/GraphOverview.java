@@ -205,23 +205,27 @@ public class GraphOverview extends javax.swing.JPanel {
         for (int i = 0; i < days.length; i++) {
             days[i] += i;
         }
-        ArrayList<Integer> nbrOfFoundByMonth = new ArrayList<>();
-        ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
-        ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
-        ArrayList<Integer> nbrOfAuctionedByMonth = new ArrayList<>();
+
+        int[] nbrOfFoundByMonth = new int[31];
+        int[] nbrOfLostByMonth = new int[31];
+        int[] nbrOfSolvedByMonth = new int[31];
+        int[] nbrOfAuctionedByMonth = new int[31];
         String listName1 = "Found";
         String listName2 = "Lost";
         String listName3 = "Solved";
         String listName4 = "Auctioned";
         int beginMonth = jMonthChooser1.getMonth();
-        
+
         String dateType = "day";
 
-        examGraph.addSeriesDays(dateType, beginMonth, days, nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth, listName1, listName2, listName3, listName4);
+        examGraph.addSeriesDays(dateType, beginMonth, days, nbrOfFoundByMonth,
+                nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth,
+                listName1, listName2, listName3, listName4);
 
         graphJPanel.removeAll();
 
-        graphJPanel.add(examGraph.createChart("Luggage overview", "Days", "Amount", 590, 340, Color.WHITE));
+        graphJPanel.add(examGraph.createChart("Luggage overview", "Days",
+                "Amount", 590, 340, Color.WHITE));
 
         graphJPanel.revalidate();
 
@@ -243,7 +247,9 @@ public class GraphOverview extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Graph examGraph = new Graph("Monthly overview of Luggage status");
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct", "Nov", "Dec"};
+
         ArrayList<Integer> nbrOfFoundByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
@@ -255,11 +261,15 @@ public class GraphOverview extends javax.swing.JPanel {
         int beginMonth = 0;
         String dateType = "month";
 
-        examGraph.addSeriesMonths(dateType, beginMonth, months, nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth, nbrOfAuctionedByMonth, listName1, listName2, listName3, listName4);
+        examGraph.addSeriesMonths(dateType, beginMonth, months,
+                nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth,
+                nbrOfAuctionedByMonth, listName1, listName2, listName3,
+                listName4);
 
         graphJPanel.removeAll();
 
-        graphJPanel.add(examGraph.createChart("Luggage overview", "Month", "Amount", 590, 340, Color.WHITE));
+        graphJPanel.add(examGraph.createChart("Luggage overview", "Month",
+                "Amount", 590, 340, Color.WHITE));
 
         graphJPanel.revalidate();
 
