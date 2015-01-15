@@ -49,10 +49,10 @@ public class Graph extends ApplicationFrame {
         
         for (int i = 0 ; i < dateRange.length ; i ++) {
             
-            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName1)-1);
-            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName2)-1);
-            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName3)-1);
-            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName4)-1);
+            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName1));
+            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName2));
+            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName3));
+            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth, listName4));
         }
         
         for (int i = 0; i < dateRange.length; i++) {
@@ -73,10 +73,10 @@ public class Graph extends ApplicationFrame {
         
         for (int i = 0 ; i < dateRange.length ; i ++) {
             
-            list1.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName1)-1);
-            list2.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName2)-1);
-            list3.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName3)-1);
-            list4.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName4)-1);
+            list1.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName1));
+            list2.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName2));
+            list3.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName3));
+            list4.add(luggageMgr.FindNumberOfStatusByDay(i, i + beginMonth, listName4));
         }
         
         for (int i = 0; i < dateRange.length; i++) {
