@@ -7,7 +7,7 @@ import static main.FYSApp.NO_VALUE;
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class User {
-
+    
     private String userName = NO_VALUE;
     private String pass = NO_VALUE;
     private String role = NO_VALUE;
@@ -17,12 +17,12 @@ public class User {
     private String email = NO_VALUE;
     private String airport = NO_VALUE;
 
-    public User() {
-
+    public User(){
+        
     }
-
+    
     /**
-     *
+     * 
      * @param userName
      * @param pass
      * @param role
@@ -30,20 +30,20 @@ public class User {
      * @param middleName
      * @param lastName
      * @param email
-     * @param airport
+     * @param airport 
      */
-    public User(String userName, String pass, String role,
-            String firstName, String middleName, String lastName,
+    public User(String userName, String pass, String role, 
+            String firstName, String middleName, String lastName, 
             String email, String airport) {
-
-        this.userName = userName;
-        this.pass = pass;
-        this.role = role;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.email = email;
-        this.airport = airport;
+        
+        this.userName       = userName;
+        this.pass           = pass;
+        this.role           = role;
+        this.firstName      = firstName;
+        this.middleName     = middleName;
+        this.lastName       = lastName;
+        this.email          = email;
+        this.airport        = airport;
     }
 
     public String getUserName() {

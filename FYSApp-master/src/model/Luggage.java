@@ -42,7 +42,7 @@ public class Luggage {
             String material, String otherDetails, String status, String color,
             String weightClass, String whenFound, String foundAt,
             String departureFrom) {
-
+        
         this.brand = brand;
         this.lableCode = lableCode;
         this.material = material;
@@ -63,7 +63,7 @@ public class Luggage {
      */
     @Override
     public boolean equals(Object b) {
-
+        
         int nbrOfEqual = 0;
         boolean equals = false;
 
@@ -81,6 +81,7 @@ public class Luggage {
         }
 
 //       
+        
         if (this.lableCode == null ? a.getLableCode() == null : this.lableCode
                 .equals(a.getLableCode())) {
             nbrOfEqual++;
