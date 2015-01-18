@@ -65,16 +65,28 @@ public class MatchingLuggage extends JPanel {
 
     /**
      * Creates new form Match
+     *
+     * @description constructor
      */
     public MatchingLuggage() {
         initComponents();
         setLoggedInAs();
     }
 
+    /**
+     *
+     * @param lostOrFound String containing lost or found status
+     * @descriptoin set status to lost or found
+     */
     public static void setLostOrFound(String lostOrFound) {
         MatchingLuggage.lostOrFound = lostOrFound;
     }
 
+    /**
+     *
+     * @param luggage set of luggage info
+     * @description set all the luggage fields
+     */
     public static void setTextLuggage(Luggage luggage) {
         brand = luggage.getBrand();
         lableCode = luggage.getLableCode();
@@ -88,8 +100,12 @@ public class MatchingLuggage extends JPanel {
 
     }
 
-    //Bij Lost koffers nodig
-
+    //incase of lost also client info is needed
+    /**
+     *
+     * @param client set of client info
+     * @description set all the client fields
+     */
     public static void setTextClient(Client client) {
         firstName = client.getFirstName();
         middleName = client.getMiddleName();
@@ -106,7 +122,8 @@ public class MatchingLuggage extends JPanel {
     /**
      * Creates new form RegisterSolvesLuggage
      *
-     * @param id
+     * @param id int id
+     * @descripton updates the selected id
      */
     public static void setUpdate(int id) {
         updateMode = id;
@@ -117,19 +134,25 @@ public class MatchingLuggage extends JPanel {
     /**
      * Matched luggage
      *
-     * @param resultSet
+     * @param resultSet result set of data needed
+     * @description get possible matches
      */
     public static void getMatchingLuggage(ResultSet resultSet) {
         MatchingLuggage.rs = resultSet;
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MatchingLuggage.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }
 
     /**
-     * Creates new form ML
+     *
+     * @param rs resultset with info to show
+     * @throws ClassNotFoundException
+     * @throws SQLException * Creates new form ML
+     * @description updates table
      */
     private static void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
@@ -161,7 +184,10 @@ public class MatchingLuggage extends JPanel {
 
         matchingLuggageTable.repaint();
     }
-    
+
+    /**
+     * @description shows currently logged in user
+     */
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
@@ -308,12 +334,17 @@ public class MatchingLuggage extends JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(1024, 600));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     *
+     * @param evt
+     * @description register the luggage set
+     *
+     */
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         //  Create solved luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, color,
-                otherDetails, lostOrFound, material, weightClass, whenFound, foundAt,
-                departureFrom);
+                otherDetails, lostOrFound, material, weightClass, whenFound,
+                foundAt, departureFrom);
 
         // Create solved client item with user input
         Client client = new Client(firstName, middleName, lastName, phoneNumber,
@@ -330,23 +361,32 @@ public class MatchingLuggage extends JPanel {
             try {
                 Frame.getInstance().showPanel(new LostLuggageOverview());
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MatchingLuggage.class.getName()).log(
+                        Level.SEVERE, null, ex);
             }
         }
         JOptionPane.showMessageDialog(null, "Information is saved");
     }//GEN-LAST:event_registerJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description logs the user out of the system
+     */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description match with selected row
+     */
     private void matchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchJButtonActionPerformed
 
         if (matchingLuggageTable.getSelectedRow() >= 0) {
             int row = matchingLuggageTable.getSelectedRow();
             int col = 0;
-            int id = Integer.parseInt((String) matchingLuggageTable.getModel().getValueAt(row, col));
+            int id = Integer.parseInt((String) matchingLuggageTable.getModel().getValueAt(row, col)); // row cant be split into new line
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
             Client client = FYSApp.getClientManager().getSelectedClient(id);
             Frame.getInstance().showPanel(new RegisterSolvesLuggage());
@@ -361,7 +401,11 @@ public class MatchingLuggage extends JPanel {
         }
 
     }//GEN-LAST:event_matchJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description back to previous screen
+     */
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
         if (lostOrFound.equalsIgnoreCase("found")) {
             Frame.getInstance().showPanel(new FoundLuggageOverview());
@@ -369,7 +413,8 @@ public class MatchingLuggage extends JPanel {
             try {
                 Frame.getInstance().showPanel(new LostLuggageOverview());
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(MatchingLuggage.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MatchingLuggage.class.getName()).log(
+                        Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_backJButton2ActionPerformed

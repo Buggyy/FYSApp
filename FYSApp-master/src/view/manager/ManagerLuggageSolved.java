@@ -35,6 +35,12 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     ResultSetMetaData rsmetadata = null;
     public int columns = 0;
 
+    /**
+     *
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @description consturctor
+     */
     public ManagerLuggageSolved() throws ClassNotFoundException, SQLException {
         initComponents();
         getSolvedLuggage();
@@ -42,18 +48,31 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     }
 
     /**
-     * Creates new form AdminSolvedLuggage
+     *
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @description Creates new form AdminSolvedLuggage
      */
-    private void getSolvedLuggage() throws ClassNotFoundException, SQLException {
+    private void getSolvedLuggage() throws ClassNotFoundException,
+            SQLException {
         rs = FYSApp.getTableManager().getManagerSolvedOverview();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }
 
-    public void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+    /**
+     *
+     * @param rs Resultset with the data from the database
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     * @description get data from database and update the table
+     */
+    public void updateTable(ResultSet rs) throws ClassNotFoundException,
+            SQLException {
 
         rsmetadata = rs.getMetaData();
 
@@ -275,38 +294,67 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 1050, 670));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     * @param evt
+     * @description exit app
+     */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description switch to graph overview screen
+     */
     private void statisticsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statisticsJButtonActionPerformed
         Frame.getInstance().showPanel(new GraphOverview());
     }//GEN-LAST:event_statisticsJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description switch to lost screen
+     */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
         try {
-            // TODO add your handling code here:
             Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description switch to found screen
+     */
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
         Frame.getInstance().showPanel(new ManagerLuggageFound());
     }//GEN-LAST:event_foundJButtonActionPerformed
 
+    /**
+     *
+     * @param evt
+     * @description switch to auctioned screen
+     */
     private void auctionedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_auctionedJButtonActionPerformed
         try {
             Frame.getInstance().showPanel(new ManagerLuggageAuctioned());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(
+                    Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_auctionedJButtonActionPerformed
 
+    /**
+     *
+     * @param evt
+     * @description reset searchfield
+     */
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
@@ -315,6 +363,11 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
+    /**
+     *
+     * @param evt
+     * @description search when key is pressed
+     */
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
@@ -337,7 +390,8 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
                     }
                 }
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ManagerLuggageSolved.class.getName()).log(
+                        Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
@@ -345,7 +399,11 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
     private void searchJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyTyped
 
     }//GEN-LAST:event_searchJTextFieldKeyTyped
-
+    /**
+     *
+     * @param evt
+     * @description Update table based on search query
+     */
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
         try {
             input = searchJTextField.getText();
@@ -365,21 +423,31 @@ public class ManagerLuggageSolved extends javax.swing.JPanel {
             }
 
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageSolved.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_searchJButton1ActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description switch to solved screen
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Frame.getInstance().showPanel(new ManagerLuggageSolved());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(
+                    Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerLuggageLost.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * @description show currently logged in user
+     */
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
