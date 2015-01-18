@@ -5,15 +5,13 @@
  */
 package view.employee;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import main.FYSApp;
 import main.Frame;
 import model.Luggage;
 import model.Client;
-import view.admin.AdminLuggageFound;
+
 
 /**
  *
@@ -24,10 +22,12 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
     private static int updateMode = 0;
     private static int luggageid;
     private static int clientid;
-    
+
     /**
      * Creates new form RegisterSolvesLuggage
-     * @param luggage
+     *
+     * @param luggage set of luggage info
+     * @description set all the luggage fields
      */
     public static void setTextLuggage(Luggage luggage) {
         txt_brand.setText(luggage.getBrand());
@@ -37,7 +37,13 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         cmb_color.setSelectedItem(luggage.getColor());
         cmb_departureFrom.setSelectedItem(luggage.getDepartureFrom());
         cmb_weightClass.setSelectedItem(luggage.getWeightClass());
-       }
+    }
+
+    /**
+     *
+     * @param client set of client info
+     * @description set all the client fields of the lost luggage fields
+     */
     public static void setTextClient(Client client) {
         txt_firstName.setText(client.getFirstName());
         txt_middleName.setText(client.getMiddleName());
@@ -48,19 +54,21 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         txt_address.setText(client.getAddress());
         txt_city.setText(client.getCity());
         txt_state.setText(client.getState());
-        txt_zipCode.setText(client.getZipCode());  
+        txt_zipCode.setText(client.getZipCode());
     }
-        
+
     /**
      * Creates new form RegisterSolvesLuggage
-     * @param id
+     *
+     * @param id an id is needed
+     * @descripton updates the selected id
      */
     public static void setUpdate(int id) {
         updateMode = id;
         luggageid = id;
         clientid = id;
     }
-    
+
     /**
      * Creates new form RegisterSolvesLuggage
      */
@@ -478,38 +486,43 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_submitMouseClicked
 
+    /**
+     *
+     * @param evt
+     * @description all data of the filled in fields will be saved into the
+     * database and will receive the status 'solved'
+     */
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
 
-         //  store user input in variables
-        String brand            = txt_brand.getText();
-        
+        //  store user input in variables
+        String brand = txt_brand.getText();
+
         String color
                 = String.valueOf(cmb_color.getSelectedItem());
         String weightClass
                 = String.valueOf(cmb_weightClass.getSelectedItem());
         String foundAt
                 = String.valueOf(cmb_foundAt.getSelectedItem());
-        
-        String lableCode        = txt_lableCode.getText();
-        String material         = txt_material.getText();
-        String whenFound        = txt_whenFound.getText();
-        String otherDetails     = txt_otherDetails.getText();
-        String status           = "Solved";
-        
-        String departureFrom    = 
-                String.valueOf(cmb_departureFrom.getSelectedItem()); 
-        
-        String firstName         = txt_firstName.getText();
-        String middleName        = txt_middleName.getText();
-        String lastName          = txt_lastName.getText();
-        String phoneNumber       = txt_phoneNumber.getText();
-        String email             = txt_email.getText();
-        String country           = txt_country.getText();
-        String address           = txt_address.getText();
-        String city              = txt_city.getText();
-        String state             = txt_state.getText();
-        String zipCode           = txt_zipCode.getText();
-        
+
+        String lableCode = txt_lableCode.getText();
+        String material = txt_material.getText();
+        String whenFound = txt_whenFound.getText();
+        String otherDetails = txt_otherDetails.getText();
+        String status = "Solved";
+
+        String departureFrom
+                = String.valueOf(cmb_departureFrom.getSelectedItem());
+
+        String firstName = txt_firstName.getText();
+        String middleName = txt_middleName.getText();
+        String lastName = txt_lastName.getText();
+        String phoneNumber = txt_phoneNumber.getText();
+        String email = txt_email.getText();
+        String country = txt_country.getText();
+        String address = txt_address.getText();
+        String city = txt_city.getText();
+        String state = txt_state.getText();
+        String zipCode = txt_zipCode.getText();
 
         //  Create solved luggage item with user input
         Luggage luggage = new Luggage(brand, lableCode, color,
@@ -519,7 +532,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         // Create solved client item with user input
         Client client = new Client(firstName, middleName, lastName, phoneNumber,
                 email, country, address, city, state, zipCode);
-        
+
         //Custom button text
         Object[] options = {"Yes",
             "No"};
@@ -536,62 +549,86 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
             FYSApp.getClientManager().updateClient(client, clientid);
             Frame.getInstance().showPanel(new FoundLuggageOverview());
             JOptionPane.showMessageDialog(null, "Information is saved");
-        } 
+        }
     }//GEN-LAST:event_btn_submitActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description will return the user to the 'Found Luggage Overview'
+     */
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        Frame.getInstance().showPanel(new MatchingLuggage());
-    }//GEN-LAST:event_backJButtonActionPerformed
 
+        Object[] options = {"Yes",
+            "No"};
+        int n = JOptionPane.showOptionDialog(null,
+                "Are you sure you want to go back? If you go back you will be returned to the Overview!",
+                "Warning",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                null);
+        if (n == JOptionPane.YES_OPTION) {
+            Frame.getInstance().showPanel(new FoundLuggageOverview());
+            JOptionPane.showMessageDialog(null, "You've now been redirected, please try again!");
+        }
+    }//GEN-LAST:event_backJButtonActionPerformed
+    /**
+     *
+     * @param evt
+     * @description logs the user out of the system
+     */
     private void logoutJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButton1ActionPerformed
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButton1ActionPerformed
 
     private void txt_firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_firstNameActionPerformed
 
     private void txt_middleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middleNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_middleNameActionPerformed
 
     private void txt_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastNameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_lastNameActionPerformed
 
     private void txt_phoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phoneNumberActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_phoneNumberActionPerformed
 
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void txt_countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_countryActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_countryActionPerformed
 
     private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_addressActionPerformed
 
     private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_cityActionPerformed
 
     private void txt_stateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stateActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_stateActionPerformed
 
     private void txt_zipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipCodeActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_zipCodeActionPerformed
 
     private void cmb_departureFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureFromActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_departureFromActionPerformed
 
+    }//GEN-LAST:event_cmb_departureFromActionPerformed
+    /**
+     * @description shows currently logged in user
+     */
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);

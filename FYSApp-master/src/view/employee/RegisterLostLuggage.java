@@ -23,7 +23,6 @@ public class RegisterLostLuggage extends JPanel {
     private static int updateMode = 0;
     private static int luggageid;
 
-    //private Client client;
     /**
      * Creates new form RegisterLostLuggage
      */
@@ -31,7 +30,7 @@ public class RegisterLostLuggage extends JPanel {
 
         initComponents();
         setLoggedInAs();
-        //  These items should be stored in an array
+
         cmb_color.addItem("other..");
         cmb_color.addItem("red");
         cmb_color.addItem("blue");
@@ -56,6 +55,12 @@ public class RegisterLostLuggage extends JPanel {
         setAirports();
     }
 
+    /**
+     * Creates new form RegisterSolvesLuggage
+     *
+     * @param id an id is needed
+     * @descripton updates the selected id
+     */
     public static void setUpdate(int id) {
         updateMode = id;
         luggageid = id;
@@ -588,7 +593,11 @@ public class RegisterLostLuggage extends JPanel {
         jLabel1.setText("jLabel1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1020, 640));
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     *
+     * @param evt
+     * @description back to previous screen 'Lost Luggage Overview'
+     */
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         try {
             Frame.getInstance().showPanel(new LostLuggageOverview());
@@ -596,22 +605,24 @@ public class RegisterLostLuggage extends JPanel {
             Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_backJButtonActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description logs the user out of the system
+     */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_brandActionPerformed
 
     private void cmb_departureFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_departureFromActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cmb_departureFromActionPerformed
 
     private void txt_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_materialActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_materialActionPerformed
 
     private void txt_lableCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_lableCodeFocusGained
@@ -623,7 +634,6 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_lableCodeFocusLost
 
     private void txt_lableCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lableCodeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_lableCodeActionPerformed
 
     private void txt_lableCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lableCodeKeyPressed
@@ -631,15 +641,12 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_lableCodeKeyPressed
 
     private void cmb_weightClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_weightClassActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cmb_weightClassActionPerformed
 
     private void cmb_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_colorActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cmb_colorActionPerformed
 
     private void txt_countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_countryActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_countryActionPerformed
 
     private void txt_middleNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_middleNameKeyPressed
@@ -647,7 +654,6 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_middleNameKeyPressed
 
     private void txt_middleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_middleNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_middleNameActionPerformed
 
     private void txt_middleNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_middleNameFocusLost
@@ -663,7 +669,6 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_zipCodeKeyPressed
 
     private void txt_zipCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_zipCodeActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_zipCodeActionPerformed
 
     private void txt_zipCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_zipCodeFocusLost
@@ -675,36 +680,34 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_zipCodeFocusGained
 
     private void txt_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cityActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_cityActionPerformed
 
     private void txt_stateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_stateActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_stateActionPerformed
 
     private void txt_lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lastNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_lastNameActionPerformed
 
     private void txt_firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firstNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_firstNameActionPerformed
 
     private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_addressActionPerformed
-
+    /**
+     *
+     * @param evt
+     * @description You can only insert digits in this field.
+     */
     private void txt_phoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_phoneNumberKeyTyped
         char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
-            //  A sound.. lol
+            // An error sound
             getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_txt_phoneNumberKeyTyped
 
     private void txt_phoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_phoneNumberActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_phoneNumberActionPerformed
 
     private void txt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyPressed
@@ -712,7 +715,6 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_txt_emailKeyPressed
 
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
-        //
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void txt_emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusLost
@@ -722,7 +724,12 @@ public class RegisterLostLuggage extends JPanel {
     private void txt_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusGained
 
     }//GEN-LAST:event_txt_emailFocusGained
-
+    /**
+     *
+     * @param evt
+     * @description all data of the filled in fields will be saved into the
+     * database and will receive the status 'Lost'
+     */
     private void btn_submit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit1ActionPerformed
 
         //  Create client
@@ -739,10 +746,6 @@ public class RegisterLostLuggage extends JPanel {
         String state = txt_state.getText();
         String zipCode = txt_zipCode.getText();
 
-        //        if (areAllNotEmpty(firstName, middleName, lastName, phone, email,
-        //                country, address, city, state, zipCode)) {
-        //            JOptionPane.showMessageDialog(null, "No data entered");
-        //        }
         //  Calling client constructor from the client class
         Client newClient = new Client(firstName, middleName, lastName, phone,
                 email, country, address, city, state, zipCode);
@@ -793,7 +796,7 @@ public class RegisterLostLuggage extends JPanel {
                 } else {
                     //  Show user succes message
                     JOptionPane.showMessageDialog(null, "Information is saved");
-                        //  If this is not the case, then we call the addLuggage Query +
+                    //  If this is not the case, then we call the addLuggage Query +
                     //  the add client luggage
                     FYSApp.getClientManager().addClient(newClient);
                     int id = FYSApp.getClientManager().getClientid();
@@ -808,12 +811,24 @@ public class RegisterLostLuggage extends JPanel {
 
 
     }//GEN-LAST:event_btn_submit1ActionPerformed
-
+    /**
+     *
+     * @param lug
+     * @return list containing luggage
+     * @description makes an arraylist filled with lost luggage and returns the
+     * arraylist
+     */
     private boolean checkIfExists(Luggage lug) {
         ArrayList<Luggage> list = FYSApp.getLuggageManager().getLostLuggage();
         return list.contains(lug);
     }
 
+    /**
+     *
+     * @param evt
+     * @description all fields will be made empty and the comboboxes will show
+     * their first option in their list
+     */
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
         //clear all the fields
         txt_brand.setText("");
@@ -836,9 +851,13 @@ public class RegisterLostLuggage extends JPanel {
     }//GEN-LAST:event_btn_clearActionPerformed
 
     private void checkPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPDFActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_checkPDFActionPerformed
-
+    /**
+     * Creates new form RegisterLostLuggage
+     *
+     * @param luggage client
+     * @description set all the luggage and client fields
+     */
     public static void setText(Luggage luggage, Client client) {
         txt_brand.setText(luggage.getBrand());
         cmb_color.setSelectedItem(luggage.getColor());
@@ -860,6 +879,9 @@ public class RegisterLostLuggage extends JPanel {
         txt_zipCode.setText(client.getZipCode());
     }
 
+    /**
+     * @description set all the airports in an arraylist
+     */
     public static void setAirports() {
         ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
         for (String fgt1 : fgt) {
@@ -867,11 +889,14 @@ public class RegisterLostLuggage extends JPanel {
         }
     }
 
+    /**
+     * @description shows currently logged in user
+     */
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btn_clear;

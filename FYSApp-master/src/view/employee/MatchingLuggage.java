@@ -66,7 +66,7 @@ public class MatchingLuggage extends JPanel {
     /**
      * Creates new form Match
      *
-     * @description constructor
+     * @description Constructor
      */
     public MatchingLuggage() {
         initComponents();
@@ -100,11 +100,10 @@ public class MatchingLuggage extends JPanel {
 
     }
 
-    //incase of lost also client info is needed
     /**
      *
      * @param client set of client info
-     * @description set all the client fields
+     * @description set all the client fields of the lost luggage fields
      */
     public static void setTextClient(Client client) {
         firstName = client.getFirstName();
@@ -120,9 +119,9 @@ public class MatchingLuggage extends JPanel {
     }
 
     /**
-     * Creates new form RegisterSolvesLuggage
+     * Creates new form MatchingLuggage
      *
-     * @param id int id
+     * @param id an id is needed
      * @descripton updates the selected id
      */
     public static void setUpdate(int id) {
@@ -152,9 +151,10 @@ public class MatchingLuggage extends JPanel {
      * @param rs resultset with info to show
      * @throws ClassNotFoundException
      * @throws SQLException * Creates new form ML
-     * @description updates table
+     * @description updates matchingLuggageTable
      */
-    private static void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
+    private static void updateTable(ResultSet rs)
+            throws ClassNotFoundException, SQLException {
 
         rsmetadata = rs.getMetaData();
 
@@ -338,7 +338,6 @@ public class MatchingLuggage extends JPanel {
      *
      * @param evt
      * @description register the luggage set
-     *
      */
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         //  Create solved luggage item with user input
@@ -350,8 +349,6 @@ public class MatchingLuggage extends JPanel {
         Client client = new Client(firstName, middleName, lastName, phoneNumber,
                 email, country, address, city, state, zipCode);
 
-//        FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
-//        FYSApp.getClientManager().updateClient(client, clientid);
         FYSApp.getClientManager().addClient(client);
         int id = FYSApp.getClientManager().getClientid();
         FYSApp.getLuggageManager().addLostLuggage(luggage, id);
@@ -379,14 +376,15 @@ public class MatchingLuggage extends JPanel {
     /**
      *
      * @param evt
-     * @description match with selected row
+     * @description the data of the selected row will be send to the
+     * RegisterSolvesLuggage, you can't select more than 1 line
      */
     private void matchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matchJButtonActionPerformed
 
         if (matchingLuggageTable.getSelectedRow() >= 0) {
             int row = matchingLuggageTable.getSelectedRow();
             int col = 0;
-            int id = Integer.parseInt((String) matchingLuggageTable.getModel().getValueAt(row, col)); // row cant be split into new line
+            int id = Integer.parseInt((String) matchingLuggageTable.getModel().getValueAt(row, col));
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
             Client client = FYSApp.getClientManager().getSelectedClient(id);
             Frame.getInstance().showPanel(new RegisterSolvesLuggage());
@@ -404,7 +402,8 @@ public class MatchingLuggage extends JPanel {
     /**
      *
      * @param evt
-     * @description back to previous screen
+     * @description back to previous screen dependent on which screen you came
+     *              from
      */
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
         if (lostOrFound.equalsIgnoreCase("found")) {
