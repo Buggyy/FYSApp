@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
+import static main.FYSApp.ZERO;
 import main.Frame;
 import model.Luggage;
 
@@ -73,8 +74,8 @@ public class AdminLuggageLost extends JPanel {
             dtm.addRow(data_rows);
         }
 
-        lostLuggageTable.setModel(dtm);
-        lostLuggageTable.repaint();
+        tbl_lostLuggage.setModel(dtm);
+        tbl_lostLuggage.repaint();
     }
 
     /**
@@ -87,20 +88,20 @@ public class AdminLuggageLost extends JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        searchJButton = new javax.swing.JButton();
-        logoutJButton = new javax.swing.JButton();
-        deleteJButton = new javax.swing.JButton();
-        foundJButton = new javax.swing.JButton();
-        editJButton = new javax.swing.JButton();
+        btn_search = new javax.swing.JButton();
+        btn_logout = new javax.swing.JButton();
+        btn_deleteRow = new javax.swing.JButton();
+        btn_foundLuggage = new javax.swing.JButton();
+        btn_editRow = new javax.swing.JButton();
         searchJTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_lostLuggageOverviewTitle = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lostLuggageTable = new javax.swing.JTable();
-        jLWarning = new javax.swing.JLabel();
-        lostJButton = new javax.swing.JButton();
-        overviewJButton = new javax.swing.JButton();
-        loggedInAs = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        tbl_lostLuggage = new javax.swing.JTable();
+        lbl_warning = new javax.swing.JLabel();
+        btn_lostLuggage = new javax.swing.JButton();
+        btn_userOverview = new javax.swing.JButton();
+        lbl_loggedInAs2 = new javax.swing.JLabel();
+        lbl_loggedInAs1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -115,50 +116,50 @@ public class AdminLuggageLost extends JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        searchJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
-        searchJButton.setText("SEARCH");
-        searchJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search-icon.png"))); // NOI18N
+        btn_search.setText("SEARCH");
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchJButtonActionPerformed(evt);
+                btn_searchActionPerformed(evt);
             }
         });
-        jPanel1.add(searchJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 110, 40));
+        jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 110, 40));
 
-        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
-        logoutJButton.setText("Logout");
-        logoutJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
+        btn_logout.setText("Logout");
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutJButtonActionPerformed(evt);
+                btn_logoutActionPerformed(evt);
             }
         });
-        jPanel1.add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
+        jPanel1.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
 
-        deleteJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
-        deleteJButton.setText("DELETE");
-        deleteJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_deleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/delete-icon.png"))); // NOI18N
+        btn_deleteRow.setText("DELETE");
+        btn_deleteRow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteJButtonActionPerformed(evt);
+                btn_deleteRowActionPerformed(evt);
             }
         });
-        jPanel1.add(deleteJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, 40));
+        jPanel1.add(btn_deleteRow, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, 40));
 
-        foundJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
-        foundJButton.setText("Found Luggage");
-        foundJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_foundLuggage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found-luggage-icon.png"))); // NOI18N
+        btn_foundLuggage.setText("Found Luggage");
+        btn_foundLuggage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                foundJButtonActionPerformed(evt);
+                btn_foundLuggageActionPerformed(evt);
             }
         });
-        jPanel1.add(foundJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 40));
+        jPanel1.add(btn_foundLuggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 40));
 
-        editJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
-        editJButton.setText("EDIT");
-        editJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_editRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
+        btn_editRow.setText("EDIT");
+        btn_editRow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editJButtonActionPerformed(evt);
+                btn_editRowActionPerformed(evt);
             }
         });
-        jPanel1.add(editJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 90, 40));
+        jPanel1.add(btn_editRow, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 90, 40));
 
         searchJTextField.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         searchJTextField.setText("Enter keywords");
@@ -179,15 +180,15 @@ public class AdminLuggageLost extends JPanel {
         });
         jPanel1.add(searchJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 150, -1));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
-        jLabel2.setText("   Lost Luggage Overview");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 360, 33));
+        lbl_lostLuggageOverviewTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        lbl_lostLuggageOverviewTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_lostLuggageOverviewTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
+        lbl_lostLuggageOverviewTitle.setText("   Lost Luggage Overview");
+        jPanel1.add(lbl_lostLuggageOverviewTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 290, 33));
 
-        lostLuggageTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lostLuggageTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        lostLuggageTable.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_lostLuggage.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_lostLuggage.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        tbl_lostLuggage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -221,40 +222,40 @@ public class AdminLuggageLost extends JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(lostLuggageTable);
+        jScrollPane2.setViewportView(tbl_lostLuggage);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 710, 340));
 
-        jLWarning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLWarning.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 30));
+        lbl_warning.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbl_warning.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(lbl_warning, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 410, 30));
 
-        lostJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
-        lostJButton.setText("Lost Luggage");
-        lostJButton.setEnabled(false);
-        lostJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_lostLuggage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lost-luggage-icon.png"))); // NOI18N
+        btn_lostLuggage.setText("Lost Luggage");
+        btn_lostLuggage.setEnabled(false);
+        btn_lostLuggage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lostJButtonActionPerformed(evt);
+                btn_lostLuggageActionPerformed(evt);
             }
         });
-        jPanel1.add(lostJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 40));
+        jPanel1.add(btn_lostLuggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 140, 40));
 
-        overviewJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
-        overviewJButton.setText("User Overview");
-        overviewJButton.addActionListener(new java.awt.event.ActionListener() {
+        btn_userOverview.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/users-icon.png"))); // NOI18N
+        btn_userOverview.setText("User Overview");
+        btn_userOverview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                overviewJButtonActionPerformed(evt);
+                btn_userOverviewActionPerformed(evt);
             }
         });
-        jPanel1.add(overviewJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, 40));
+        jPanel1.add(btn_userOverview, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, 40));
 
-        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
-        loggedInAs.setText("jLabel2");
-        jPanel1.add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        lbl_loggedInAs2.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_loggedInAs2.setText("[username]");
+        jPanel1.add(lbl_loggedInAs2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Currently logged in as: ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_loggedInAs1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_loggedInAs1.setText("Currently logged in as: ");
+        jPanel1.add(lbl_loggedInAs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -266,7 +267,7 @@ public class AdminLuggageLost extends JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
         try {
             input = searchJTextField.getText();
             rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
@@ -274,14 +275,14 @@ public class AdminLuggageLost extends JPanel {
                 rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
                 if (input == null) {
-                    lostLuggageTable.repaint();
+                    tbl_lostLuggage.repaint();
                 }
                 if (!rs.next()) {
-                    jLWarning.setText("No matches found!");
+                    lbl_warning.setText("No matches found!");
                     getLostLuggage();
                     updateTable(rs);
                 } else {
-                    jLWarning.setText("");
+                    lbl_warning.setText("");
                     rs.beforeFirst();
                     updateTable(rs);
                 }
@@ -289,20 +290,23 @@ public class AdminLuggageLost extends JPanel {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_searchJButtonActionPerformed
+    }//GEN-LAST:event_btn_searchActionPerformed
 
-    private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.shutdown();
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+          //  Logout and stop the application
         FYSApp.logout();
-    }//GEN-LAST:event_logoutJButtonActionPerformed
+        Frame.shutdown();
+    }//GEN-LAST:event_btn_logoutActionPerformed
 
-    private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
-        if (lostLuggageTable.getSelectedRow() >= 0) {
-            int row = lostLuggageTable.getSelectedRow();
-            int col = 0;
-            int id = Integer.parseInt((String) lostLuggageTable.getValueAt(row, col));
+    private void btn_deleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteRowActionPerformed
+        //  if there is an actual row selected
+        if (tbl_lostLuggage.getSelectedRow() >= 0) {
 
-            //Custom button text
+            int row = tbl_lostLuggage.getSelectedRow();
+            int col = (int) ZERO;
+            int id = Integer.parseInt((String) tbl_lostLuggage.getValueAt(row, col));
+
+            // Give user second opinion with OptionPane
             Object[] options = {"Yes",
                 "No"};
             int n = JOptionPane.showOptionDialog(null,
@@ -314,26 +318,28 @@ public class AdminLuggageLost extends JPanel {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
+                //  if user clicked yes, row will be deleted
                 FYSApp.getQueryManager().delete(id);
                 try {
+                    //  Go back to previous screen
                     Frame.getInstance().showPanel(new AdminLuggageLost());
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(AdminLuggageLost.class.getName())
+                            .log(Level.SEVERE, null, ex);
                 }
             } else {
+                //  if user clicked no, no actions will be performed
                 try {
+                    //  stay on current screen
                     Frame.getInstance().showPanel(new AdminLuggageLost());
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(AdminLuggageLost.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException | SQLException ex) {
+                    Logger.getLogger(AdminLuggageLost.class.getName())
+                            .log(Level.SEVERE, null, ex);
                 }
             }
 
         } else {
-            //custom title, warning icon
+            // If user didn't select a row before clicking edit button
             JOptionPane.showMessageDialog(null,
                     "Please select a row before editing!",
                     "Error",
@@ -341,24 +347,19 @@ public class AdminLuggageLost extends JPanel {
 
         }
 
-    }//GEN-LAST:event_deleteJButtonActionPerformed
+    }//GEN-LAST:event_btn_deleteRowActionPerformed
 
-    private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
+    private void btn_foundLuggageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_foundLuggageActionPerformed
         Frame.getInstance().showPanel(new AdminLuggageFound());
-    }//GEN-LAST:event_foundJButtonActionPerformed
+    }//GEN-LAST:event_btn_foundLuggageActionPerformed
 
-    private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
-//        if (lostLuggageTable.getSelectedRow() >= 0) {
-//            // Code to edit lost luggage
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Please select a row before editing!");
-//        }
+    private void btn_editRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editRowActionPerformed
 
-        //  If there is no row selected to edit
-        if (lostLuggageTable.getSelectedRow() >= 0) {
-            int row = lostLuggageTable.getSelectedRow();
+        //  
+        if (tbl_lostLuggage.getSelectedRow() >= 0) {
+            int row = tbl_lostLuggage.getSelectedRow();
             int col = 0;
-            int id = Integer.parseInt((String) lostLuggageTable.getModel().getValueAt(row, col));
+            int id = Integer.parseInt((String) tbl_lostLuggage.getModel().getValueAt(row, col));
 
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
             Frame.getInstance().showPanel(new EditLuggage());
@@ -367,18 +368,20 @@ public class AdminLuggageLost extends JPanel {
             EditLuggage.setStatus("Lost");
             EditLuggage.setText(luggage);
 
-        } else {
+        } else { //  If there is no row selected to edit
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
         }
 
 
-    }//GEN-LAST:event_editJButtonActionPerformed
+    }//GEN-LAST:event_btn_editRowActionPerformed
 
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
 
     }//GEN-LAST:event_searchJTextFieldActionPerformed
 
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+
+        //  Check if the user pressed the enter button
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 input = searchJTextField.getText();
@@ -387,14 +390,15 @@ public class AdminLuggageLost extends JPanel {
                     rs = FYSApp.getSearchManager().searchTableLuggageLost(input);
 
                     if (input == null) {
-                        lostLuggageTable.repaint();
+                        tbl_lostLuggage.repaint();
                     }
                     if (!rs.next()) {
-                        jLWarning.setText("No matches found!");
+                        // if column values from this record do not match
+                        lbl_warning.setText("No matches found!");
                         getLostLuggage();
                         updateTable(rs);
                     } else {
-                        jLWarning.setText("");
+                        lbl_warning.setText("");
                         rs.beforeFirst();
                         updateTable(rs);
                     }
@@ -409,43 +413,44 @@ public class AdminLuggageLost extends JPanel {
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
-    private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
+    private void btn_lostLuggageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lostLuggageActionPerformed
         try {
             Frame.getInstance().showPanel(new AdminLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminLuggageFound.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_lostJButtonActionPerformed
+    }//GEN-LAST:event_btn_lostLuggageActionPerformed
 
-    private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
+    private void btn_userOverviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_userOverviewActionPerformed
         try {
             Frame.getInstance().showPanel(new AdminUsers());
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(AdminUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_overviewJButtonActionPerformed
+    }//GEN-LAST:event_btn_userOverviewActionPerformed
 
     private void setLoggedInAs() {
+        //  Store return value from method in a variable
         String userName = FYSApp.getUserManager().getUserName();
-        loggedInAs.setText(userName);
+        lbl_loggedInAs2.setText(userName);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton deleteJButton;
-    private javax.swing.JButton editJButton;
-    private javax.swing.JButton foundJButton;
-    private javax.swing.JLabel jLWarning;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btn_deleteRow;
+    private javax.swing.JButton btn_editRow;
+    private javax.swing.JButton btn_foundLuggage;
+    private javax.swing.JButton btn_logout;
+    private javax.swing.JButton btn_lostLuggage;
+    private javax.swing.JButton btn_search;
+    private javax.swing.JButton btn_userOverview;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel loggedInAs;
-    private javax.swing.JButton logoutJButton;
-    private javax.swing.JButton lostJButton;
-    private javax.swing.JTable lostLuggageTable;
-    private javax.swing.JButton overviewJButton;
-    private javax.swing.JButton searchJButton;
+    private javax.swing.JLabel lbl_loggedInAs1;
+    private javax.swing.JLabel lbl_loggedInAs2;
+    private javax.swing.JLabel lbl_lostLuggageOverviewTitle;
+    private javax.swing.JLabel lbl_warning;
     private javax.swing.JTextField searchJTextField;
+    private javax.swing.JTable tbl_lostLuggage;
     // End of variables declaration//GEN-END:variables
 }

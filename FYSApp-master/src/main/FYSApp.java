@@ -89,12 +89,13 @@ public final class FYSApp {
         return airportsList;
     }
 
-    public void setAirports() {
+    public static void setAirports() {
         ArrayList<String> airports = FYSApp.getQueryManager().getAirports();
         for (int i = 0; i < airports.size(); i++) {
             airportsList.add(airports.get(i));
         }
     }
+    
 
 //Start de mainwindow. en include 
     public void startup() {
