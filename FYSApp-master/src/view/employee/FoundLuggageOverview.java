@@ -34,7 +34,7 @@ public class FoundLuggageOverview extends JPanel {
     private static final int UPDATE_MODE_FALSE = 0;
 
     /**
-     * Basic Constructor
+     * Blablabla
      */
     public FoundLuggageOverview() {
         initComponents();
@@ -43,24 +43,21 @@ public class FoundLuggageOverview extends JPanel {
     }
 
     /**
-     * Method that gets the found luggage, then updates the table by calling the
-     * updateTable() method.
+     * Blablabla
      */
     private void getFoundLuggage() {
         rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(FoundLuggageOverview.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     /**
      * Creates new form FoundLuggageOverview
      */
-    private void updateTable(ResultSet rs) throws ClassNotFoundException,
-            SQLException {
+    private void updateTable(ResultSet rs) throws ClassNotFoundException, SQLException {
 
         rsmetadata = rs.getMetaData();
 
@@ -151,6 +148,11 @@ public class FoundLuggageOverview extends JPanel {
         searchJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searchJTextFieldMouseClicked(evt);
+            }
+        });
+        searchJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchJTextFieldActionPerformed(evt);
             }
         });
         searchJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -255,11 +257,6 @@ public class FoundLuggageOverview extends JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     *
-     * @param evt actionlistener that shuts down the Frame and calls the FYSApp
-     * frame.
-     */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
         FYSApp.logout();
@@ -267,8 +264,7 @@ public class FoundLuggageOverview extends JPanel {
 
     /**
      *
-     * @param evt actionlistener for searching specific data in the
-     * foundLuggageJTable
+     * @param evt
      */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
@@ -291,34 +287,27 @@ public class FoundLuggageOverview extends JPanel {
                 }
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(FoundLuggageOverview.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_searchJButtonActionPerformed
 
-    /**
-     *
-     * @param evt actionlistener that directs to the RegisterFoundLuggage screen
-     */
+    private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
+
+    }//GEN-LAST:event_searchJTextFieldActionPerformed
+
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         Frame.getInstance().showPanel(new RegisterFoundLuggage());
         RegisterFoundLuggage.setUpdate(UPDATE_MODE_FALSE);
 
     }//GEN-LAST:event_registerJButtonActionPerformed
 
-    /**
-     *
-     * @param evt actionlistener that directs to the RegisterFoundLuggage screen
-     * with the selected data
-     */
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
 
         if (foundLuggageTable.getSelectedRow() >= 0) {
             int row = foundLuggageTable.getSelectedRow();
             int col = 0;
-            int id = Integer.parseInt((String) foundLuggageTable.getModel()
-                    .getValueAt(row, col));
+            int id = Integer.parseInt((String) foundLuggageTable.getModel().getValueAt(row, col));
             Luggage luggage = FYSApp.getLuggageManager().getSelectedLuggage(id);
             Frame.getInstance().showPanel(new RegisterFoundLuggage());
             RegisterFoundLuggage.setUpdate(id);
@@ -331,33 +320,18 @@ public class FoundLuggageOverview extends JPanel {
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
-    /**
-     *
-     * @param evt actionlistener that directs to the RegisterFoundLuggage screen
-     */
     private void lostJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButton1ActionPerformed
         try {
             Frame.getInstance().showPanel(new LostLuggageOverview());
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(FoundLuggageOverview.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lostJButton1ActionPerformed
 
-    /**
-     *
-     * @param evt mouselistener that sets the searchTextField to an empty field
-     */
     private void searchJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchJTextFieldMouseClicked
         searchJTextField.setText("");
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
-    /**
-     *
-     * @param evt actionlistener that gets the content typed in by the user from
-     * the searchJTextField, then searches the content in the database and
-     * updates the table with its content.
-     */
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -379,15 +353,11 @@ public class FoundLuggageOverview extends JPanel {
                 }
 
             } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(FoundLuggageOverview.class.getName())
-                        .log(Level.SEVERE, null, ex);
+                Logger.getLogger(FoundLuggageOverview.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
-    /**
-     * Sets textfield userName to the current logged in user
-     */
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
