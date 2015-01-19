@@ -1,6 +1,6 @@
 package view.manager;
 
-import QueryManager.DatabaseManager;
+import Connectivity.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -75,13 +75,13 @@ public class ManagerLuggageAuctioned extends JPanel {
 
         DefaultTableModel dtm = new DefaultTableModel();
 
-        Vector columns_name = new Vector();
+        Vector columnsName = new Vector();
         Vector data_rows = new Vector();
 
         for (int i = 1; i < columns; i++) {
-            columns_name.addElement(rsmetadata.getColumnName(i));
+            columnsName.addElement(rsmetadata.getColumnName(i));
         }
-        dtm.setColumnIdentifiers(columns_name);
+        dtm.setColumnIdentifiers(columnsName);
 
         while (rs.next()) {
 

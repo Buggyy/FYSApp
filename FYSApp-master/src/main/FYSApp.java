@@ -1,7 +1,13 @@
 package main;
 
+import Connectivity.UserManager;
+import Connectivity.DatabaseManager;
+import Connectivity.SearchManager;
+import Connectivity.TableManager;
+import Connectivity.ClientManager;
+import Connectivity.LuggageManager;
+import Connectivity.QueryManager;
 import ExterneLibraries.PDFGenerator;
-import QueryManager.*;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;

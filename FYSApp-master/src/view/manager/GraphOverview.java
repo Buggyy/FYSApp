@@ -229,17 +229,17 @@ public class GraphOverview extends javax.swing.JPanel {
 
         graphJPanel.revalidate();
 
-        examGraph.setSeriesThickness(0, 2);
-        examGraph.setSeriesThickness(1, 2);
-        examGraph.setSeriesThickness(2, 2);
-        examGraph.setSeriesThickness(3, 2);
+//        examGraph.setSeriesThickness(0, 2);
+//        examGraph.setSeriesThickness(1, 2);
+//        examGraph.setSeriesThickness(2, 2);
+//        examGraph.setSeriesThickness(3, 2);
+//
+//        examGraph.setSeriesColor(0, Color.GREEN);
+//        examGraph.setSeriesColor(1, Color.RED);
+//        examGraph.setSeriesColor(2, Color.BLACK);
+//        examGraph.setSeriesColor(3, Color.YELLOW);
 
-        examGraph.setSeriesColor(0, Color.GREEN);
-        examGraph.setSeriesColor(1, Color.RED);
-        examGraph.setSeriesColor(2, Color.BLACK);
-        examGraph.setSeriesColor(3, Color.YELLOW);
-
-        examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
+//        examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
 
 
     }//GEN-LAST:event_jMonthChooser1PropertyChange

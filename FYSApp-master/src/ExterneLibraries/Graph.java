@@ -1,6 +1,6 @@
 package externelibraries;
 
-import QueryManager.LuggageManager;
+import Connectivity.LuggageManager;
 import java.awt.Dimension;
 import java.awt.Paint;
 import java.util.ArrayList;

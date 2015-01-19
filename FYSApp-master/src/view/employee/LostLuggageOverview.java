@@ -1,6 +1,6 @@
 package view.employee;
 
-import QueryManager.DatabaseManager;
+import Connectivity.DatabaseManager;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.*;

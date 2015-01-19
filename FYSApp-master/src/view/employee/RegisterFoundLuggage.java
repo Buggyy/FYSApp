@@ -372,7 +372,7 @@ public class RegisterFoundLuggage extends JPanel {
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        //clear all the fields
+        // clear all the fields
         txt_brand.setText("");
         cmb_color.setSelectedIndex(0);
         cmb_weightClass.setSelectedIndex(0);
@@ -411,6 +411,7 @@ public class RegisterFoundLuggage extends JPanel {
         String otherDetails = txt_otherDetails.getText();
         String status = "Found";
         String departureFrom = "";
+        
         //  store airport where employee is working at
         // String airport
 
