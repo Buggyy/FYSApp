@@ -23,21 +23,18 @@ public class QueryManager {
     }
 
     public ArrayList<String> getAirports() {
-        // Method die zorgt dat er een arraylist komt met alle airports erin.
-
         List<String> airports = new ArrayList<>();
 
         try {
-            // Query aanmaken, daarna connection maken.
-            // Daarna bereid ie de query voor, haalt de airports
-            // uit de database en returnt het.
             dbManager.openConnection();
+            
             String sql = "SELECT airportname FROM airport";
+            //  Prepare the sql statement
             pst = dbManager.getConnection().prepareStatement(sql);
+            //  execute and store resultset
             ResultSet rs = pst.executeQuery();
 
-            // While loop die zorgt dat alle airports uit de database 
-            // worden gehaald.
+            //  Store all records in ArrayList
             while (rs.next()) {
                 airports.add(rs.getString("airportname"));
             }

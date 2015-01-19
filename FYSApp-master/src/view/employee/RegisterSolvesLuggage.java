@@ -561,7 +561,8 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         Object[] options = {"Yes",
             "No"};
         int n = JOptionPane.showOptionDialog(null,
-                "Are you sure you want to go back? If you go back you will be returned to the Overview!",
+                "Are you sure you want to go back? If you go back "
+                        + "you will be returned to the Overview!",
                 "Warning",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,

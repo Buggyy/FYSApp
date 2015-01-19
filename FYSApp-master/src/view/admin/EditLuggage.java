@@ -73,7 +73,6 @@ public class EditLuggage extends javax.swing.JPanel {
         cmb_weightClass.setSelectedItem(luggage.getWeightClass());
         cmb_foundAt.setSelectedItem(luggage.getFoundAt());
         txt_whenFound.setText(luggage.getWhenFound());
-
     }
 
     /**
@@ -103,9 +102,9 @@ public class EditLuggage extends javax.swing.JPanel {
         cmb_foundAt = new javax.swing.JComboBox();
         txt_material = new javax.swing.JTextField();
         txt_lableCode = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_loggedInAs1 = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
-        loggedInAs = new javax.swing.JLabel();
+        lbl_loggedInAs2 = new javax.swing.JLabel();
         lbl_brand1 = new javax.swing.JLabel();
         lbl_brand2 = new javax.swing.JLabel();
         txt_whenFound = new javax.swing.JTextField();
@@ -225,9 +224,9 @@ public class EditLuggage extends javax.swing.JPanel {
         });
         add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 160, -1));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Currently logged in as: ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbl_loggedInAs1.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_loggedInAs1.setText("Currently logged in as: ");
+        add(lbl_loggedInAs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
@@ -238,9 +237,9 @@ public class EditLuggage extends javax.swing.JPanel {
         });
         add(logoutJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(917, 20, -1, 30));
 
-        loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
-        loggedInAs.setText("jLabel2");
-        add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        lbl_loggedInAs2.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_loggedInAs2.setText("[username]");
+        add(lbl_loggedInAs2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         lbl_brand1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_brand1.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,19 +294,21 @@ public class EditLuggage extends javax.swing.JPanel {
                 otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
 
-        //  COMMENT
+        //  Call method to update the luggage, give luggage object and
+        //  current luggageid
         FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
 
         try {
-            //  COMMENT
-
+            //  If the status was lost and user submits, you get redirected to
+            //  the AdminLuggageLost panel
             if (status.equalsIgnoreCase("lost")) {
                 Frame.getInstance().showPanel(new AdminLuggageLost());
             } else {
                 Frame.getInstance().showPanel(new AdminLuggageFound());
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EditLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditLuggage.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
@@ -319,7 +320,8 @@ public class EditLuggage extends javax.swing.JPanel {
                 Frame.getInstance().showPanel(new AdminLuggageFound());
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EditLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditLuggage.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_cancelActionPerformed
 
@@ -348,8 +350,8 @@ public class EditLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_lableCodeActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        Frame.shutdown();
         FYSApp.logout();
+        Frame.shutdown();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void txt_whenFoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_whenFoundActionPerformed
@@ -361,16 +363,17 @@ public class EditLuggage extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_departureFromActionPerformed
 
     private void setLoggedInAs() {
+        //  Call getter from userManager class and store in variable
         String userName = FYSApp.getUserManager().getUserName();
-        loggedInAs.setText(userName);
+        lbl_loggedInAs2.setText(userName);
     }
 
     public static void setAirports() {
-        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
-        cmb_foundAt.addItem("");
-        for (String fgt1 : fgt) {
-            cmb_foundAt.addItem(fgt1);
-            cmb_departureFrom.addItem(fgt1);
+        ArrayList<String> airtportlist = FYSApp.getQueryManager().getAirports();
+        cmb_foundAt.addItem("other..");
+        for (String airport : airtportlist) {
+            cmb_foundAt.addItem(airport);
+            cmb_departureFrom.addItem(airport);
         }
     }
 
@@ -380,7 +383,6 @@ public class EditLuggage extends javax.swing.JPanel {
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_foundAt;
     private static javax.swing.JComboBox cmb_weightClass;
-    private javax.swing.JLabel jLabel1;
     private static javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_brand;
@@ -390,10 +392,11 @@ public class EditLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_departureFrom;
     private javax.swing.JLabel lbl_editLuggageTitle;
     private javax.swing.JLabel lbl_lableCode;
+    private javax.swing.JLabel lbl_loggedInAs1;
+    private javax.swing.JLabel lbl_loggedInAs2;
     private javax.swing.JLabel lbl_material;
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
-    private javax.swing.JLabel loggedInAs;
     private javax.swing.JButton logoutJButton;
     private javax.swing.JButton submitJButton;
     private static javax.swing.JTextField txt_brand;
