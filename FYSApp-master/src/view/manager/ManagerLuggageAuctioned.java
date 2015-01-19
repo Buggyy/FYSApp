@@ -22,13 +22,13 @@ import main.Frame;
 public class ManagerLuggageAuctioned extends JPanel {
 
     // Always declare first..!
-    DatabaseManager dbmanager;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
-    public String input;
-    ResultSetMetaData rsmetadata = null;
-    public int columns = 0;
+    private DatabaseManager dbmanager;
+    private Connection conn = null;
+    private ResultSet rs = null;
+    private PreparedStatement pst = null;
+    private String input;
+    private ResultSetMetaData rsmetadata = null;
+    private int columns = 0;
 
     /**
      *
@@ -38,6 +38,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      */
     public ManagerLuggageAuctioned() throws ClassNotFoundException,
             SQLException {
+
         initComponents();
         getAuctionedLuggage();
         setLoggedInAs();
@@ -51,7 +52,9 @@ public class ManagerLuggageAuctioned extends JPanel {
      */
     private void getAuctionedLuggage() throws ClassNotFoundException,
             SQLException {
+
         rs = FYSApp.getTableManager().getManagerAuctionedOverview();
+
         try {
             updateTable(rs);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -76,21 +79,23 @@ public class ManagerLuggageAuctioned extends JPanel {
         DefaultTableModel dtm = new DefaultTableModel();
 
         Vector columnsName = new Vector();
-        Vector data_rows = new Vector();
+        Vector dataRows = new Vector();
 
         for (int i = 1; i < columns; i++) {
             columnsName.addElement(rsmetadata.getColumnName(i));
         }
+
         dtm.setColumnIdentifiers(columnsName);
 
         while (rs.next()) {
 
-            data_rows = new Vector();
+            dataRows = new Vector();
 
             for (int j = 1; j < columns; j++) {
-                data_rows.addElement(rs.getString(j));
+                dataRows.addElement(rs.getString(j));
             }
-            dtm.addRow(data_rows);
+
+            dtm.addRow(dataRows);
         }
 
         auctionedJTable.setModel(dtm);
@@ -289,6 +294,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * @description exit app
      */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
@@ -319,6 +325,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * @description switch to lost screen
      */
     private void lostJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lostJButtonActionPerformed
+
         try {
             Frame.getInstance().showPanel(new ManagerLuggageLost());
         } catch (ClassNotFoundException | SQLException ex) {
@@ -330,13 +337,16 @@ public class ManagerLuggageAuctioned extends JPanel {
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchJTextFieldActionPerformed
+
     /**
      *
      * @param evt
      * @description Update table based on search query
      */
     private void searchJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButton1ActionPerformed
+
         try {
+
             input = searchJTextField.getText();
             rs = FYSApp.getSearchManager().searchTableAuctioned(input);
 
@@ -344,10 +354,12 @@ public class ManagerLuggageAuctioned extends JPanel {
                 auctionedJTable.repaint();
             }
             if (!rs.next()) {
+
                 jLWarning.setText("No matches found!");
                 getAuctionedLuggage();
                 updateTable(rs);
             } else {
+
                 jLWarning.setText("");
                 rs.beforeFirst();
                 updateTable(rs);
@@ -378,8 +390,11 @@ public class ManagerLuggageAuctioned extends JPanel {
      * @description search when key is pressed
      */
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
             try {
+
                 input = searchJTextField.getText();
                 rs = FYSApp.getSearchManager().searchTableAuctioned(input);
 
@@ -387,10 +402,12 @@ public class ManagerLuggageAuctioned extends JPanel {
                     auctionedJTable.repaint();
                 }
                 if (!rs.next()) {
+
                     jLWarning.setText("No matches found!");
                     getAuctionedLuggage();
                     updateTable(rs);
                 } else {
+
                     jLWarning.setText("");
                     rs.beforeFirst();
                     updateTable(rs);
@@ -408,6 +425,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * @description switch to solved screen
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         try {
             Frame.getInstance().showPanel(new ManagerLuggageSolved());
         } catch (ClassNotFoundException ex) {
@@ -422,6 +440,7 @@ public class ManagerLuggageAuctioned extends JPanel {
      * @descriptoin show currently logged in user
      */
     private void setLoggedInAs() {
+
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
     }

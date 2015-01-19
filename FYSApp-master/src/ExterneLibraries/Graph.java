@@ -11,11 +11,10 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
 
 /**
  *
- * @author team 1
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class Graph extends ApplicationFrame {
 
@@ -23,6 +22,7 @@ public class Graph extends ApplicationFrame {
     private JFreeChart chart;
 
     public Graph(String windowTitle) {
+
         super(windowTitle);
         this.dataset = new DefaultCategoryDataset();
     }
@@ -55,7 +55,7 @@ public class Graph extends ApplicationFrame {
             this.dataset.addValue(list4.get(i), listName4, dateRange[i]);
         }
     }
-    
+
     public void addSeriesDays(String dateType, int beginMonth,
             String[] dateRange, int[] array1, int[] array2, int[] array3,
             int[] array4, String listName1, String listName2, String listName3,
@@ -84,7 +84,6 @@ public class Graph extends ApplicationFrame {
         }
     }
 
-
     /**
      * Creates a chart.
      *
@@ -105,58 +104,5 @@ public class Graph extends ApplicationFrame {
         setContentPane(chartPanel);
         pack();
         return chartPanel;
-
-// See http://www.java2s.com/Code/Java/Chart/JFreeChartLineChartDemo1.htm
-        // See http://www.java2s.com/Code/Java/Chart/CatalogChart.htm
-        // See http://www.jfree.org/jfreechart/api/javadoc/index.html?overview-summary.html
-        // TODO 2: create chart (this can be a line chart or a stacked bar chart)
-        // hier komt de code van opdracht 6
-    }
-
-    /**
-     * Changes thickness of series line
-     *
-     * @param seriesIndex index of series
-     * @param thickness thickness of line
-     */
-    public void setSeriesThickness(int seriesIndex, int thickness) {
-        // See http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/renderer/category/CategoryItemRenderer.html
-        // TODO 3: minor changes: change thickness of series
-        // hint a: use chart.getPlot() to get the CategoryPlot.
-        // hint b: then use plot.getRenderer to get the CategoryItemRenderer
-        // hint c: then use the correct method of the renderer
-
-        // hier komt de code van opdracht 7
-    }
-
-    /**
-     * Changes color of series
-     *
-     * @param seriesIndex index of series
-     * @param color the chosen color
-     */
-    public void setSeriesColor(int seriesIndex, Paint color) {
-        // See http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/renderer/category/CategoryItemRenderer.html
-        // TODO 4: minor changes: change color of series
-        // hint a: use chart.getPlot() to get the CategoryPlot.
-        // hint b: then use plot.getRenderer to get the CategoryItemRenderer
-        // hint c: then use the correct method of the renderer
-
-        // hier komt de code van opdracht 8
-    }
-
-    /**
-     * Changes colors of the plot
-     *
-     * @param bgColor the wanted background color
-     * @param gridlineColor the color if the horizontal grid lines
-     */
-    public void setGraphBackgroundColors(Paint bgColor, Paint gridlineColor) {
-        // See http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/plot/CategoryPlot.html
-        // TODO 5: minor changes: change background color of the plot
-        // hint a: use chart.getPlot() to get the CategoryPlot.
-        // hint b: then use the correct methods of the plot
-
-        // hier komt de code van opdracht 9
     }
 }

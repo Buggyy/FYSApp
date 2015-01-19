@@ -11,7 +11,7 @@ import main.Frame;
 
 /**
  *
- * @author Daniel Stern IS 106
+ * @author Team 1 IS106 ZoekJeKoffer
  */
 public class GraphOverview extends javax.swing.JPanel {
 
@@ -19,9 +19,9 @@ public class GraphOverview extends javax.swing.JPanel {
      * Creates new form GraphOverview
      */
     public GraphOverview() {
+
         initComponents();
         setLoggedInAs();
-
     }
 
     /**
@@ -153,6 +153,7 @@ public class GraphOverview extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
+
         Frame.shutdown();
         FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
@@ -228,20 +229,6 @@ public class GraphOverview extends javax.swing.JPanel {
                 "Amount", 590, 340, Color.WHITE));
 
         graphJPanel.revalidate();
-
-//        examGraph.setSeriesThickness(0, 2);
-//        examGraph.setSeriesThickness(1, 2);
-//        examGraph.setSeriesThickness(2, 2);
-//        examGraph.setSeriesThickness(3, 2);
-//
-//        examGraph.setSeriesColor(0, Color.GREEN);
-//        examGraph.setSeriesColor(1, Color.RED);
-//        examGraph.setSeriesColor(2, Color.BLACK);
-//        examGraph.setSeriesColor(3, Color.YELLOW);
-
-//        examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
-
-
     }//GEN-LAST:event_jMonthChooser1PropertyChange
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -272,21 +259,10 @@ public class GraphOverview extends javax.swing.JPanel {
                 "Amount", 590, 340, Color.WHITE));
 
         graphJPanel.revalidate();
-
-        examGraph.setSeriesThickness(0, 2);
-        examGraph.setSeriesThickness(1, 2);
-        examGraph.setSeriesThickness(2, 2);
-        examGraph.setSeriesThickness(3, 2);
-
-        examGraph.setSeriesColor(0, Color.GREEN);
-        examGraph.setSeriesColor(1, Color.RED);
-        examGraph.setSeriesColor(2, Color.BLACK);
-        examGraph.setSeriesColor(3, Color.YELLOW);
-
-        examGraph.setGraphBackgroundColors(Color.WHITE, Color.WHITE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-private void setLoggedInAs() {
+    private void setLoggedInAs() {
+
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
     }
