@@ -346,7 +346,7 @@ public class LuggageManager {
 
     }
 
-   /**
+    /**
      *
      * @param monthNumber the month you want the data of
      * @param status the status you want to count
@@ -354,38 +354,43 @@ public class LuggageManager {
      */
     public int FindNumberOfStatusByMonth(int monthNumber, String status) {
 
-        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where "
-                + "luggage.status='" + status + "' AND  month"
-                + "(luggage.lastupdated)=" + monthNumber + ";";
-
-        return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
-    }
-
-    /**
-     *
-     * @param dayNumber the day number you want the data of
-     * @param monthNumber the month you want the data of
-     * @param status the status you want to count
-     * @return
-     */
-    public int FindNumberOfStatusByDay(int dayNumber, int monthNumber,
-            String status) {
-
-        String getSelectedLuggage = "SELECT * from zoekjekoffer.luggage where "
-                + "luggage.status='" + status + "' AND day(luggage.lastupdated)"
-                + "=" + dayNumber + " AND month(luggage.lastupdated) = "
-                + monthNumber + ";";
-
-        return ExecuteQueryAndReturnNumberOfElements(getSelectedLuggage);
-    }
-
-    public int getTotalStatusByDay(int dayNumber, int monthNumber, String status) {
-
         ResultSet rs = null;
-        
         int totalStatus = 0;
 
         try {
+
+            dbManager.openConnection();
+
+            String sql = "SELECT COUNT(*) from zoekjekoffer.luggage "
+                    + "WHERE luggage.status = '" + status + "' "
+                    + "AND month(luggage.lastupdated) = " + monthNumber + ";";
+
+            pst = dbManager.getConnection().prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            if (rs.next()) {
+
+                totalStatus = rs.getInt("COUNT(*)");
+
+                dbManager.closeConnection();
+                return totalStatus;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LuggageManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        dbManager.closeConnection();
+        return totalStatus;
+    }
+
+    public int FindNumberOfStatusByDay(int dayNumber, int monthNumber, 
+            String status) {
+
+        ResultSet rs = null;
+        int totalStatus = 0;
+
+        try {
+            
             dbManager.openConnection();
 
             String sql = "SELECT COUNT(*) from zoekjekoffer.luggage WHERE "
@@ -411,12 +416,16 @@ public class LuggageManager {
         return totalStatus;
     }
 
-
+    /**
+     * 
+     * @param query
+     * @return 
+     */
     private ArrayList<Luggage> ExecuteQueryAndPutResultsInArrayList(String query) {
-        
+
         ArrayList<Luggage> luggages = new ArrayList<>();
         ResultSet rs = null;
-        
+
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection()

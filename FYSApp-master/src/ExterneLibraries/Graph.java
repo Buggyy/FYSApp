@@ -27,24 +27,20 @@ public class Graph extends ApplicationFrame {
         this.dataset = new DefaultCategoryDataset();
     }
 
-    public void addSeriesMonths(String dateType, int beginMonth,
-            String[] dateRange, ArrayList<Integer> list1,
-            ArrayList<Integer> list2, ArrayList<Integer> list3,
-            ArrayList<Integer> list4, String listName1, String listName2,
-            String listName3, String listName4) {
+    public void addSeriesMonths(String dateType,String[] dateRange, 
+            ArrayList<Integer> list1, ArrayList<Integer> list2, 
+            ArrayList<Integer> list3, ArrayList<Integer> list4, 
+            String listName1, String listName2,String listName3, 
+            String listName4) {
 
         LuggageManager luggageMgr = FYSApp.getLuggageManager();
 
         for (int i = 0; i < dateRange.length; i++) {
 
-            list1.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName1) - 1);
-            list2.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName2) - 1);
-            list3.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName3) - 1);
-            list4.add(luggageMgr.FindNumberOfStatusByMonth(i + beginMonth,
-                    listName4) - 1);
+            list1.add(luggageMgr.FindNumberOfStatusByMonth(i, listName1));
+            list2.add(luggageMgr.FindNumberOfStatusByMonth(i, listName2));
+            list3.add(luggageMgr.FindNumberOfStatusByMonth(i, listName3));
+            list4.add(luggageMgr.FindNumberOfStatusByMonth(i, listName4));
         }
 
         for (int i = 0; i < dateRange.length; i++) {
@@ -65,13 +61,13 @@ public class Graph extends ApplicationFrame {
 
         for (int i = 1; i < array1.length; i++) {
 
-            array1[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
+            array1[i] = luggageMgr.FindNumberOfStatusByDay(i, 1 + beginMonth,
                     listName1) + (array1[i - 1]);
-            array2[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
+            array2[i] = luggageMgr.FindNumberOfStatusByDay(i, 1 + beginMonth,
                     listName2) + (array2[i - 1]);
-            array3[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
+            array3[i] = luggageMgr.FindNumberOfStatusByDay(i, 1 + beginMonth,
                     listName3) + (array3[i - 1]);
-            array4[i] = luggageMgr.getTotalStatusByDay(i, 1 + beginMonth,
+            array4[i] = luggageMgr.FindNumberOfStatusByDay(i, 1 + beginMonth,
                     listName4) + (array4[i - 1]);
         }
 

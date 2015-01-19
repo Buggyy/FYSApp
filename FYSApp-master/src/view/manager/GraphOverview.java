@@ -211,6 +211,7 @@ public class GraphOverview extends javax.swing.JPanel {
         int[] nbrOfLostByMonth = new int[31];
         int[] nbrOfSolvedByMonth = new int[31];
         int[] nbrOfAuctionedByMonth = new int[31];
+        
         String listName1 = "Found";
         String listName2 = "Lost";
         String listName3 = "Solved";
@@ -241,14 +242,14 @@ public class GraphOverview extends javax.swing.JPanel {
         ArrayList<Integer> nbrOfLostByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfSolvedByMonth = new ArrayList<>();
         ArrayList<Integer> nbrOfAuctionedByMonth = new ArrayList<>();
+        
         String listName1 = "Found";
         String listName2 = "Lost";
         String listName3 = "Solved";
-        String listName4 = "Auctioned";
-        int beginMonth = 0;
+        String listName4 = "Auctioned";;
         String dateType = "month";
 
-        examGraph.addSeriesMonths(dateType, beginMonth, months,
+        examGraph.addSeriesMonths(dateType, months,
                 nbrOfFoundByMonth, nbrOfLostByMonth, nbrOfSolvedByMonth,
                 nbrOfAuctionedByMonth, listName1, listName2, listName3,
                 listName4);
