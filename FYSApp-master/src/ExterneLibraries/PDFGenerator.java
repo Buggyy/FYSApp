@@ -11,17 +11,10 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import Connectivity.QueryManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.FYSApp;
-import main.Frame;
 import model.Client;
 import model.Luggage;
 
@@ -32,13 +25,8 @@ import model.Luggage;
  */
 public class PDFGenerator {
 
-    PDDocument document;
-    PDPageContentStream contentStream;
-    ResultSet rs = null;
-    ResultSetMetaData rsmetadata = null;
-    public int columns = 0;
-    Vector columns_name = new Vector();
-    Vector rows_name = new Vector();
+    private PDDocument document;
+    private PDPageContentStream contentStream;
 
     /**
      * Constructor
@@ -62,7 +50,7 @@ public class PDFGenerator {
      * @param client an array of client info regarding lost luggage
      * @description creates a pdf file
      */
-    public void getReceiptPDF(Luggage luggage, Client client) {
+    public void createPDF(Luggage luggage, Client client) {
 
         // create object for pdf generator
         PDFGenerator pdf = new PDFGenerator();

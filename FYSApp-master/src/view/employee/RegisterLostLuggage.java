@@ -771,7 +771,7 @@ public class RegisterLostLuggage extends JPanel {
                 departureFrom);
 
         if (checkPDF.isSelected()) {
-            FYSApp.getInstance().getPDFGenerator().getReceiptPDF(luggage, newClient);
+            FYSApp.getInstance().getPDFGenerator().createPDF(luggage, newClient);
         }
         if (updateMode > 1) {
             FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);

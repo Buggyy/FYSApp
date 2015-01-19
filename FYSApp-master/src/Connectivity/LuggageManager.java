@@ -383,6 +383,13 @@ public class LuggageManager {
         return totalStatus;
     }
 
+    /**
+     * @description counts all the found luggage for a status on each day
+     * @param dayNumber
+     * @param monthNumber
+     * @param status
+     * @return 
+     */
     public int FindNumberOfStatusByDay(int dayNumber, int monthNumber, 
             String status) {
 
