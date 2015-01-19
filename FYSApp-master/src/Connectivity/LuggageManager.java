@@ -347,7 +347,8 @@ public class LuggageManager {
     }
 
     /**
-     *
+     * @description counts all the luggage for a status for a month
+     * 
      * @param monthNumber the month you want the data of
      * @param status the status you want to count
      * @return amount of defined status by month
@@ -385,6 +386,7 @@ public class LuggageManager {
 
     /**
      * @description counts all the found luggage for a status on each day
+     * 
      * @param dayNumber
      * @param monthNumber
      * @param status
