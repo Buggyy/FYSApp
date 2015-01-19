@@ -7,8 +7,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import main.FYSApp;
-import static main.FYSApp.ZERO;
-import static main.FYSApp.*;
 import main.Frame;
 import model.User;
 
@@ -20,8 +18,8 @@ import model.User;
  */
 public class AdminRegisterUser extends JPanel {
 
-    private static int updateMode = (int) ZERO;
-    private static int userId = (int) ZERO;
+    private static int updateMode = 0;
+    private static int userId = 0;
 
     /**
      * Creates new form UserOverview
@@ -34,7 +32,6 @@ public class AdminRegisterUser extends JPanel {
         roleJComboBox.addItem("manager");
         roleJComboBox.addItem("admin");
 
-        //  method to fill airport combobox
         setAirports();
         setLoggedInAs();
     }
@@ -255,14 +252,14 @@ public class AdminRegisterUser extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
-        //  Logout and stop the application
-        FYSApp.logout();
         Frame.shutdown();
+        FYSApp.logout();
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
-        // Store user input in variables
+        // Zorgt dat de method addUser wordt aangeroepen en zo een
+        // nieuwe gebruiker wordt toegevoegd aan de database.
         String userName = userNameJTextField.getText();
         String pass = passJTextField.getText();
         String role = String.valueOf(roleJComboBox.getSelectedItem());
@@ -272,7 +269,6 @@ public class AdminRegisterUser extends JPanel {
         String email = emailJTextField.getText();
         String airport = String.valueOf(airportJComboBox.getSelectedItem());
 
-        //  Make sure some important fields are not empty
         if (userName.equalsIgnoreCase("") || pass.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(null,
                     "Username and Password should be filled.",
@@ -280,11 +276,9 @@ public class AdminRegisterUser extends JPanel {
                     JOptionPane.ERROR_MESSAGE);
             Frame.getInstance().showPanel(new AdminRegisterUser());
         } else {
-            // Create a new user object from the variables above
-            User user = new User(userName, pass, role, firstName, middleName,
-                    lastName, email, airport);
 
-            //  If the row is selected and user clicked on edit
+            User user = new User(userName, pass, role, firstName, middleName, lastName, email, airport);
+
             if (updateMode > 1) {
                 FYSApp.getUserManager().updateUser(user, userId);
             } else {
@@ -299,7 +293,7 @@ public class AdminRegisterUser extends JPanel {
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
-        // Clear all the fields
+        //clear all the fields
         userNameJTextField.setText("");
         passJTextField.setText("");
         roleJComboBox.setSelectedIndex(0);
@@ -353,8 +347,8 @@ public class AdminRegisterUser extends JPanel {
         }
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    //  Edit method
     public static void setText(User user) {
-        //  Fill in the edit screen with current record variables
         userNameJTextField.setText(user.getUserName());
         passJTextField.setText(user.getPass());
         firstNameJTextField.setText(user.getFirstName());
@@ -370,7 +364,6 @@ public class AdminRegisterUser extends JPanel {
         AdminRegisterUser.userId = userId;
     }
 
-    //  Populate combobox with airports
     public void setAirports() {
         ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
         for (String fgt1 : fgt) {

@@ -18,37 +18,32 @@ import main.Frame;
 import model.Luggage;
 
 /**
- *
+ * 
  * @author Team 1 IS106 ZoekJeKoffer
  */
 public class AdminLuggageFound extends JPanel {
 
     // Variables declared first here, before using them further in this file.
     DatabaseManager dbmanager;
-
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    ResultSetMetaData rsmetadata = null;
-
     public String input;
+    ResultSetMetaData rsmetadata = null;
     public int columns = 0;
 
     /**
      * Basic Constructor
      */
     public AdminLuggageFound() {
-        //  Load components of the GUI
         initComponents();
-
-        //  Call methods to use in GUI
         getFoundLuggage();
         setLoggedInAs();
     }
 
     /**
-     * Method that gets the found luggage, then updates the table by calling the
-     * updateTable() method.
+     * Method that gets the found luggage, then updates the table by calling
+     * the updateTable() method.
      */
     private void getFoundLuggage() {
         rs = FYSApp.getTableManager().getEmployeeFoundLuggage();
@@ -71,7 +66,6 @@ public class AdminLuggageFound extends JPanel {
 
         columns = rsmetadata.getColumnCount();
 
-        //  Create new empty table model
         DefaultTableModel dtm = new DefaultTableModel();
 
         Vector columns_name = new Vector();
@@ -82,7 +76,7 @@ public class AdminLuggageFound extends JPanel {
         }
         dtm.setColumnIdentifiers(columns_name);
 
-        while (rs.next()) { // Get column values from this record
+        while (rs.next()) {
 
             data_rows = new Vector();
 
@@ -281,19 +275,16 @@ public class AdminLuggageFound extends JPanel {
     private void searchJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJTextFieldActionPerformed
 
     }//GEN-LAST:event_searchJTextFieldActionPerformed
-    
     /**
      *
-     * @param evt actionlistener for searching specific data in the
-     * foundLuggageJTable
+     * @param evt actionlistener for searching specific data
+     * in the foundLuggageJTable
      */
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
         try {
-            //  Put searchfield data in variable
             input = searchJTextField.getText();
             rs = FYSApp.getSearchManager().searchTableLuggageFound(input);
 
-            //  If there is nothing entered, show everything back
             if (input == null) {
                 foundLuggageJTable.repaint();
             }
@@ -314,9 +305,9 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     /**
-     *
-     * @param evt actionlistener that shuts down the Frame and calls the FYSApp
-     * frame.
+     * 
+     * @param evt actionlistener that shuts down the Frame and calls the 
+     * FYSApp frame.
      */
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         Frame.shutdown();
@@ -335,9 +326,9 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_lostJButtonActionPerformed
 
     /**
-     *
-     * @param evt actionlistener that gets the row thats selected, then shows
-     * the EditLuggage panel and fills it with the selected content.
+     * 
+     * @param evt actionlistener that gets the row thats selected, then 
+ shows the EditLuggage panel and fills it with the selected content.
      */
     private void editJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editJButtonActionPerformed
         //  If there is no row selected to edit
@@ -350,20 +341,18 @@ public class AdminLuggageFound extends JPanel {
             Frame.getInstance().showPanel(new EditLuggage());
 
             EditLuggage.setLuggageId(id);
-            
             EditLuggage.setStatus("Found");
-            //  Call method to fill GUI components
             EditLuggage.setText(luggage);
-
+            
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row before editing!");
         }
     }//GEN-LAST:event_editJButtonActionPerformed
 
     /**
-     *
-     * @param evt actionlistener that selects a row from the jTable, then
-     * deletes the content from the database.
+     * 
+     * @param evt actionlistener that selects a row from the jTable, 
+     * then deletes the content from the database.
      */
     private void deleteJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJButtonActionPerformed
 
@@ -372,7 +361,7 @@ public class AdminLuggageFound extends JPanel {
             int col = 0;
             int id = Integer.parseInt((String) foundLuggageJTable.getValueAt(row, col));
 
-             // Give user second opinion with OptionPane
+            //Custom button text
             Object[] options = {"Yes",
                 "No"};
             int n = JOptionPane.showOptionDialog(null,
@@ -384,15 +373,14 @@ public class AdminLuggageFound extends JPanel {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
-                //  Delete selected row
                 FYSApp.getQueryManager().delete(id);
                 Frame.getInstance().showPanel(new AdminLuggageFound());
             } else {
                 Frame.getInstance().showPanel(new AdminLuggageFound());
             }
-
+            
         } else {
-            // If user didn't select a row before clicking edit button
+            //custom title, warning icon
             JOptionPane.showMessageDialog(null,
                     "Please select a row before editing!",
                     "Error",
@@ -417,7 +405,7 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldMouseClicked
 
     /**
-     *
+     * 
      * @param evt actionlistener that shows the AdminUsers panel.
      */
     private void overviewJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overviewJButtonActionPerformed
@@ -430,7 +418,7 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_overviewJButtonActionPerformed
 
     /**
-     *
+     * 
      * @param evt actionlistener that shows the AdminLuggageFound panel.
      */
     private void foundJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foundJButtonActionPerformed
@@ -438,10 +426,10 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_foundJButtonActionPerformed
 
     /**
-     *
-     * @param evt actionlistener that gets the content typed in by the user from
-     * the searchJTextField, then searches the content in the database and
-     * updates the table with its content.
+     * 
+     * @param evt actionlistener that gets the content typed in by the user
+     * from the searchJTextField, then searches the content in the database
+     * and updates the table with its content.
      */
     private void searchJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchJTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -469,7 +457,6 @@ public class AdminLuggageFound extends JPanel {
     }//GEN-LAST:event_searchJTextFieldKeyPressed
 
     private void setLoggedInAs() {
-        //  Store return value from method in a variable
         String userName = FYSApp.getUserManager().getUserName();
         loggedInAs.setText(userName);
     }

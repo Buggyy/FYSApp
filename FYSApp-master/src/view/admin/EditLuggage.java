@@ -63,7 +63,6 @@ public class EditLuggage extends javax.swing.JPanel {
     }
 
     public static void setText(Luggage luggage) {
-        //  Fill GUI components with data from luggage object
         txt_brand.setText(luggage.getBrand());
         txt_lableCode.setText(luggage.getLableCode());
         txt_material.setText(luggage.getMaterial());
@@ -85,7 +84,7 @@ public class EditLuggage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_editLuggageTitle = new javax.swing.JLabel();
+        lbl_leftTitle = new javax.swing.JLabel();
         lbl_brand = new javax.swing.JLabel();
         lbl_color = new javax.swing.JLabel();
         lbl_weightClass = new javax.swing.JLabel();
@@ -96,7 +95,7 @@ public class EditLuggage extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         txt_otherDetails = new javax.swing.JTextArea();
         submitJButton = new javax.swing.JButton();
-        btn_cancel = new javax.swing.JButton();
+        clearJButton = new javax.swing.JButton();
         txt_brand = new javax.swing.JTextField();
         cmb_color = new javax.swing.JComboBox();
         cmb_weightClass = new javax.swing.JComboBox();
@@ -114,16 +113,16 @@ public class EditLuggage extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_editLuggageTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        lbl_editLuggageTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_editLuggageTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
-        lbl_editLuggageTitle.setText("   Edit Luggage");
-        add(lbl_editLuggageTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 360, 30));
+        lbl_leftTitle.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        lbl_leftTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_leftTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/edit-icon.png"))); // NOI18N
+        lbl_leftTitle.setText("   Edit Luggage");
+        add(lbl_leftTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 360, 30));
 
         lbl_brand.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_brand.setForeground(new java.awt.Color(255, 255, 255));
         lbl_brand.setText("When found:");
-        add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, -1));
+        add(lbl_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
 
         lbl_color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_color.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,14 +152,14 @@ public class EditLuggage extends javax.swing.JPanel {
         lbl_otherDetails.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lbl_otherDetails.setForeground(new java.awt.Color(255, 255, 255));
         lbl_otherDetails.setText("Other details:");
-        add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        add(lbl_otherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
 
         txt_otherDetails.setColumns(20);
         txt_otherDetails.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txt_otherDetails.setRows(5);
         jScrollPane4.setViewportView(txt_otherDetails);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, 340, 60));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 340, 60));
 
         submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/check-icon.png"))); // NOI18N
         submitJButton.setText("SUBMIT");
@@ -169,16 +168,16 @@ public class EditLuggage extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 130, 30));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 130, 30));
 
-        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
-        btn_cancel.setText("CANCEL");
-        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+        clearJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-icon.png"))); // NOI18N
+        clearJButton.setText("CANCEL");
+        clearJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelActionPerformed(evt);
+                clearJButtonActionPerformed(evt);
             }
         });
-        add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, 130, 30));
+        add(clearJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 130, 30));
 
         txt_brand.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         txt_brand.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +256,7 @@ public class EditLuggage extends javax.swing.JPanel {
                 txt_whenFoundActionPerformed(evt);
             }
         });
-        add(txt_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 160, -1));
+        add(txt_whenFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 160, -1));
 
         cmb_departureFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,17 +310,19 @@ public class EditLuggage extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
-    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+    private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
         try {
             if (status.equalsIgnoreCase("lost")) {
                 Frame.getInstance().showPanel(new AdminLuggageLost());
             } else {
                 Frame.getInstance().showPanel(new AdminLuggageFound());
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditLuggage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(EditLuggage.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_cancelActionPerformed
+    }//GEN-LAST:event_clearJButtonActionPerformed
 
     private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
         // TODO add your handling code here:
@@ -375,7 +376,7 @@ public class EditLuggage extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton clearJButton;
     private static javax.swing.JComboBox cmb_color;
     private static javax.swing.JComboBox cmb_departureFrom;
     private static javax.swing.JComboBox cmb_foundAt;
@@ -388,8 +389,8 @@ public class EditLuggage extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_brand2;
     private javax.swing.JLabel lbl_color;
     private javax.swing.JLabel lbl_departureFrom;
-    private javax.swing.JLabel lbl_editLuggageTitle;
     private javax.swing.JLabel lbl_lableCode;
+    private javax.swing.JLabel lbl_leftTitle;
     private javax.swing.JLabel lbl_material;
     private javax.swing.JLabel lbl_otherDetails;
     private javax.swing.JLabel lbl_weightClass;
