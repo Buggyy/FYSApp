@@ -248,7 +248,7 @@ public class AdminRegisterUser extends JPanel {
         jLabel1.setMaximumSize(new java.awt.Dimension(1024, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(1024, 600));
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 600));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
@@ -365,15 +365,14 @@ public class AdminRegisterUser extends JPanel {
     }
 
     public void setAirports() {
-        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
-        for (String fgt1 : fgt) {
-            airportJComboBox.addItem(fgt1);
+        ArrayList<String> airPorts = FYSApp.getQueryManager().getAirports();
+        for (String airPortsBox : airPorts) {
+            airportJComboBox.addItem(airPortsBox);
         }
     }
 
     private void setLoggedInAs() {
         String userName = FYSApp.getUserManager().getUserName();
-        System.out.println(userName);
         loggedInAs.setText(userName);
     }
 

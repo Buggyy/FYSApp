@@ -8,8 +8,6 @@ package Connectivity;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -35,7 +33,7 @@ public class LuggageManager {
     public void addFoundLuggage(Luggage luggage) {
         String sql = "INSERT INTO luggage (brand,lablecode,color,material"
                 + ",otherdetails, weightclass, status, created, departurefrom,"
-                + " whenfound,foundat) "
+                + " whenfound,foundat)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             dbManager.openConnection();
@@ -62,44 +60,7 @@ public class LuggageManager {
         dbManager.closeConnection();
     }
 
-//    /**
-//     * @description fasfsa
-//     * @param luggage
-//     * @param id
-//     */
-//    public void updateFoundLuggage(Luggage luggage, int id) {
-//        String updateLuggage = "UPDATE luggage SET brand=?, lableCode=?,"
-//                + " color=?, material=?, otherDetails=?, weightClass=?,"
-//                + "status=?, created=?, departureFrom=?, lastupdated=? WHERE luggageid=?";
-//        try {
-//            dbManager.openConnection();
-//            pst = dbManager.getConnection().prepareStatement(updateLuggage);
-//            pst.setString(1, luggage.getBrand());
-//            pst.setString(2, luggage.getLableCode());
-//            pst.setString(3, luggage.getColor());
-//            pst.setString(4, luggage.getMaterial());
-//            pst.setString(5, luggage.getOtherDetails());
-//            pst.setString(6, luggage.getWeightClass());
-//            pst.setString(7, "Found");
-//            pst.setString(8, FYSApp.getDate());
-//            pst.setString(9, luggage.getDepartureFrom());
-//            // + Airport where user is working at
-//            pst.setString(10, FYSApp.getDateTime());
-//            pst.setInt(11, id);
-//            Calendar cal = Calendar.getInstance();
-//            
-//            
-//
-//            pst.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null,
-//                    "Could not complete task, please contact your Administrator!",
-//                    "Error",
-//                    JOptionPane.ERROR_MESSAGE);
-//        }
-//        dbManager.closeConnection();
-//    }
+
     /**
      * @description Add a LOST luggage item
      * @param luggage

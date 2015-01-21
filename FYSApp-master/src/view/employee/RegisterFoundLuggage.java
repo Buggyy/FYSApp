@@ -411,13 +411,12 @@ public class RegisterFoundLuggage extends JPanel {
         String otherDetails = txt_otherDetails.getText();
         String status = "Found";
         String departureFrom = "";
-        
+
         //  store airport where employee is working at
         // String airport
-
         //  Create lost luggage item with user input
-        Luggage luggage = new Luggage(brand, lableCode, color,
-                otherDetails, status, material, weightClass, whenFound, foundAt,
+        Luggage luggage = new Luggage(brand, lableCode, material,
+                otherDetails, status, color, weightClass, whenFound, foundAt,
                 departureFrom);
 
         if (updateMode > 1) {
@@ -433,7 +432,8 @@ public class RegisterFoundLuggage extends JPanel {
                     Frame.getInstance().showPanel(new MatchingLuggage());
                     MatchingLuggage.getMatchingLuggage(rs);
                     MatchingLuggage.setLostOrFound(status);
-                    
+                    MatchingLuggage.setTextLuggage(luggage);
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Information is saved");
                     FYSApp.getLuggageManager().addFoundLuggage(luggage);

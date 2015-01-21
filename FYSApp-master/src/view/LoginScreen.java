@@ -4,7 +4,6 @@ import Connectivity.DatabaseManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.nio.channels.SelectionKey;
 import java.sql.*;
 import main.FYSApp;
 import static main.FYSApp.shutdown;

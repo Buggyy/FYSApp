@@ -9,13 +9,9 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
 import main.FYSApp;
-import static main.FYSApp.WARNING_MUST_SELECT_SOMETHING;
 import main.Frame;
-import static main.Frame.*;
 import model.Client;
 import model.Luggage;
-import view.LoginScreen;
-import view.admin.AdminLuggageLost;
 
 /**
  *

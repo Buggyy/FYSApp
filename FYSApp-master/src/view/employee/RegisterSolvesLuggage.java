@@ -5,13 +5,11 @@
  */
 package view.employee;
 
-
 import javax.swing.JOptionPane;
 import main.FYSApp;
 import main.Frame;
 import model.Luggage;
 import model.Client;
-
 
 /**
  *
@@ -19,7 +17,6 @@ import model.Client;
  */
 public class RegisterSolvesLuggage extends javax.swing.JPanel {
 
-    private static int updateMode = 0;
     private static int luggageid;
     private static int clientid;
 
@@ -64,7 +61,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
      * @descripton updates the selected id
      */
     public static void setUpdate(int id) {
-        updateMode = id;
         luggageid = id;
         clientid = id;
     }
@@ -75,6 +71,30 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
     public RegisterSolvesLuggage() {
         initComponents();
         setLoggedInAs();
+        lbl_foundAt.setVisible(false);
+        cmb_foundAt.setVisible(false);
+
+//  These items should be stored in an array
+        cmb_color.addItem("other..");
+        cmb_color.addItem("red");
+        cmb_color.addItem("blue");
+        cmb_color.addItem("cyan");
+        cmb_color.addItem("yellow");
+        cmb_color.addItem("pink");
+        cmb_color.addItem("magenta");
+        cmb_color.addItem("green");
+        cmb_color.addItem("black");
+        cmb_color.addItem("white");
+        cmb_color.addItem("orange");
+        cmb_color.addItem("grey");
+        cmb_color.addItem("brown");
+
+        cmb_weightClass.addItem("other..");
+        cmb_weightClass.addItem("0kg - 5kg");
+        cmb_weightClass.addItem("5kg - 10kg");
+        cmb_weightClass.addItem("10kg - 15kg");
+        cmb_weightClass.addItem("15kg - 20kg");
+        cmb_weightClass.addItem("20kg+");
     }
 
     /**
@@ -193,7 +213,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         });
         add(txt_lableCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 160, 20));
 
-        cmb_foundAt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_foundAt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_foundAtActionPerformed(evt);
@@ -201,7 +220,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         });
         add(cmb_foundAt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 160, -1));
 
-        cmb_weightClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_weightClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_weightClassActionPerformed(evt);
@@ -424,7 +442,6 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
         lbl_otherDetails1.setText("Other details:");
         add(lbl_otherDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, -1));
 
-        cmb_departureFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_departureFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_departureFromActionPerformed(evt);
@@ -545,7 +562,7 @@ public class RegisterSolvesLuggage extends javax.swing.JPanel {
                 options,
                 null);
         if (n == JOptionPane.YES_OPTION) {
-            FYSApp.getLuggageManager().updateSolvedLuggage(luggage, luggageid);
+            FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
             FYSApp.getClientManager().updateClient(client, clientid);
             Frame.getInstance().showPanel(new FoundLuggageOverview());
             JOptionPane.showMessageDialog(null, "Information is saved");

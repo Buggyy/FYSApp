@@ -79,15 +79,6 @@ public class Luggage {
         if (this.color == null ? a.getColor() == null : this.color.equals(a.getColor())) {
             nbrOfEqual++;
         }
-
-//        if (this.weightClass == null ? a.getWeightClass() == null : this.weightClass.equals(a.getWeightClass())) {
-//            nbrOfEqual++;
-//        }
-        
-        /*
-         if(this.foundAt == null ? a.getFoundAt() == null : this.foundAt.equals(a.getFoundAt()))
-         nbrOfEqual++;
-         */
         
         if (this.lableCode == null ? a.getLableCode() == null : this.lableCode.equals(a.getLableCode())) {
             nbrOfEqual++;

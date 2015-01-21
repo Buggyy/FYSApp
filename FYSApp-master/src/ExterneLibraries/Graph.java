@@ -27,10 +27,24 @@ public class Graph extends ApplicationFrame {
         this.dataset = new DefaultCategoryDataset();
     }
 
-    public void addSeriesMonths(String dateType,String[] dateRange, 
-            ArrayList<Integer> list1, ArrayList<Integer> list2, 
-            ArrayList<Integer> list3, ArrayList<Integer> list4, 
-            String listName1, String listName2,String listName3, 
+    /**
+     * @description adds series for each month to the graph
+     *     
+* @param dateType
+     * @param dateRange
+     * @param list1
+     * @param list2
+     * @param list3
+     * @param list4
+     * @param listName1
+     * @param listName2
+     * @param listName3
+     * @param listName4
+     */
+    public void addSeriesMonths(String dateType, String[] dateRange,
+            ArrayList<Integer> list1, ArrayList<Integer> list2,
+            ArrayList<Integer> list3, ArrayList<Integer> list4,
+            String listName1, String listName2, String listName3,
             String listName4) {
 
         LuggageManager luggageMgr = FYSApp.getLuggageManager();
@@ -52,6 +66,21 @@ public class Graph extends ApplicationFrame {
         }
     }
 
+    /**
+     * @description adds series for each day of a month to the graph
+     *     
+* @param dateType
+     * @param beginMonth
+     * @param dateRange
+     * @param array1
+     * @param array2
+     * @param array3
+     * @param array4
+     * @param listName1
+     * @param listName2
+     * @param listName3
+     * @param listName4
+     */
     public void addSeriesDays(String dateType, int beginMonth,
             String[] dateRange, int[] array1, int[] array2, int[] array3,
             int[] array4, String listName1, String listName2, String listName3,
@@ -82,8 +111,8 @@ public class Graph extends ApplicationFrame {
 
     /**
      * Creates a chart.
-     *
-     * @param title Title of the Chart
+     *     
+* @param title Title of the Chart
      * @param xAxisString Title of the x Axis
      * @param yAxisString Title of the y Axis
      * @param width width of the graph

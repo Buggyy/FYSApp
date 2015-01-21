@@ -33,12 +33,8 @@ public class MatchingLuggage extends JPanel {
     Connection conn = null;
     private static ResultSet rs = null;
     PreparedStatement pst = null;
-    private String input;
     private static ResultSetMetaData rsmetadata;
     private static int columns = 0;
-    private static final int UPDATE_MODE_FALSE = 0;
-    private int WHICH_STATUS = 0;
-    private boolean lost;
     private static String brand;
     private static String lableCode;
     private static String material;
@@ -58,7 +54,6 @@ public class MatchingLuggage extends JPanel {
     private static String zipCode;
     private static String whenFound;
     private static String foundAt;
-    private static int updateMode = 0;
     private static int luggageid;
     private static int clientid;
     private static String lostOrFound = "";
@@ -125,7 +120,6 @@ public class MatchingLuggage extends JPanel {
      * @descripton updates the selected id
      */
     public static void setUpdate(int id) {
-        updateMode = id;
         luggageid = id;
         clientid = id;
     }
@@ -337,25 +331,26 @@ public class MatchingLuggage extends JPanel {
     /**
      *
      * @param evt
-     * @description register the luggage set
+     * @description register the luggage set if match not in the list
      */
     private void registerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerJButtonActionPerformed
         //  Create solved luggage item with user input
-        Luggage luggage = new Luggage(brand, lableCode, color,
-                otherDetails, lostOrFound, material, weightClass, whenFound,
-                foundAt, departureFrom);
+        Luggage luggage = new Luggage(brand, lableCode, material,
+                otherDetails, lostOrFound, color, weightClass, whenFound, foundAt,
+                departureFrom);
 
         // Create solved client item with user input
         Client client = new Client(firstName, middleName, lastName, phoneNumber,
                 email, country, address, city, state, zipCode);
 
-        FYSApp.getClientManager().addClient(client);
-        int id = FYSApp.getClientManager().getClientid();
-        FYSApp.getLuggageManager().addLostLuggage(luggage, id);
-        if (lostOrFound.equalsIgnoreCase("found")) {
+        if (lostOrFound.equalsIgnoreCase("Found")) {
+            FYSApp.getLuggageManager().addFoundLuggage(luggage);
             Frame.getInstance().showPanel(new FoundLuggageOverview());
         } else {
             try {
+                FYSApp.getClientManager().addClient(client);
+                int id = FYSApp.getClientManager().getClientid();
+                FYSApp.getLuggageManager().addLostLuggage(luggage, id);
                 Frame.getInstance().showPanel(new LostLuggageOverview());
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(MatchingLuggage.class.getName()).log(
@@ -403,10 +398,10 @@ public class MatchingLuggage extends JPanel {
      *
      * @param evt
      * @description back to previous screen dependent on which screen you came
-     *              from
+     * from
      */
     private void backJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton2ActionPerformed
-        if (lostOrFound.equalsIgnoreCase("found")) {
+        if (lostOrFound.equalsIgnoreCase("Found")) {
             Frame.getInstance().showPanel(new FoundLuggageOverview());
         } else {
             try {

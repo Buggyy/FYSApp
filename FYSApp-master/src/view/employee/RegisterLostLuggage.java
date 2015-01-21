@@ -771,10 +771,15 @@ public class RegisterLostLuggage extends JPanel {
                 departureFrom);
 
         if (checkPDF.isSelected()) {
-            FYSApp.getInstance().getPDFGenerator().getReceiptPDF(luggage, newClient);
-        }
+            FYSApp.getInstance().getPDFGenerator().createPDF(luggage, newClient);
+        }  
         if (updateMode > 1) {
             FYSApp.getLuggageManager().updateLuggage(luggage, luggageid);
+            try {
+                Frame.getInstance().showPanel(new LostLuggageOverview());
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(RegisterLostLuggage.class.getName()).log(Level.SEVERE, null, ex);
+            }
             try {
                 Frame.getInstance().showPanel(new LostLuggageOverview());
             } catch (ClassNotFoundException | SQLException ex) {

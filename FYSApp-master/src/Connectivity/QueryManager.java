@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Luggage;
-import main.FYSApp;
 
 /**
  * @author Team 1 IS106 ZoekJeKoffer
