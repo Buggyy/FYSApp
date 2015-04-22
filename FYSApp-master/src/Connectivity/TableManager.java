@@ -15,7 +15,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Team 1 IS106 ZoekJeKoffer
+ * @author Rafael
  */
 public class TableManager {
 

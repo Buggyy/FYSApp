@@ -883,9 +883,9 @@ public class RegisterLostLuggage extends JPanel {
      * @description set all the airports in an arraylist
      */
     public static void setAirports() {
-        ArrayList<String> airportlist = FYSApp.getQueryManager().getAirports();
-        for (String airport : airportlist) {
-            cmb_departureFrom.addItem(airport);
+        ArrayList<String> fgt = FYSApp.getQueryManager().getAirports();
+        for (String fgt1 : fgt) {
+            cmb_departureFrom.addItem(fgt1);
         }
     }
 

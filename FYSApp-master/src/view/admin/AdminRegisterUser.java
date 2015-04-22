@@ -27,7 +27,6 @@ public class AdminRegisterUser extends JPanel {
      * Creates new form UserOverview
      */
     public AdminRegisterUser() {
-        //  initialize components to GUI
         initComponents();
 
         // Add roles to the combobox.

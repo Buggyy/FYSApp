@@ -16,7 +16,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Team 1 IS106 ZoekJeKoffer
+ * @author Rafael
  */
 public class ClientManager {
     private DatabaseManager dbManager = new DatabaseManager();

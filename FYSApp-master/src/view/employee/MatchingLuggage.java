@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import main.FYSApp;
-import static main.FYSApp.ZERO;
 import main.Frame;
 import model.Client;
 import model.Luggage;
@@ -32,25 +31,36 @@ public class MatchingLuggage extends JPanel {
     // Always declare first..!
     DatabaseManager dbmanager = new DatabaseManager();
     Connection conn = null;
-    
     private static ResultSet rs = null;
-    private PreparedStatement pst = null;
+    PreparedStatement pst = null;
+    private String input;
     private static ResultSetMetaData rsmetadata;
-    
-    private static int columns = (int) ZERO;
-    private static final int UPDATE_MODE_FALSE = (int) ZERO;
-    
-    private int WHICH_STATUS = (int) ZERO;
+    private static int columns = 0;
+    private static final int UPDATE_MODE_FALSE = 0;
+    private int WHICH_STATUS = 0;
     private boolean lost;
-    
-    private static String brand, lableCode, material, otherDetails, color, 
-            departureFrom, weightClass, firstName, middleName, lastName, 
-            phoneNumber, email, country, address, city, state, zipCode, 
-            whenFound, foundAt, input;
-    
-    private static int updateMode = (int) ZERO;
-    private static int luggageid, clientid;
-    
+    private static String brand;
+    private static String lableCode;
+    private static String material;
+    private static String otherDetails;
+    private static String color;
+    private static String departureFrom;
+    private static String weightClass;
+    private static String firstName;
+    private static String middleName;
+    private static String lastName;
+    private static String phoneNumber;
+    private static String email;
+    private static String country;
+    private static String address;
+    private static String city;
+    private static String state;
+    private static String zipCode;
+    private static String whenFound;
+    private static String foundAt;
+    private static int updateMode = 0;
+    private static int luggageid;
+    private static int clientid;
     private static String lostOrFound = "";
 
     /**
@@ -87,6 +97,7 @@ public class MatchingLuggage extends JPanel {
         weightClass = luggage.getWeightClass();
         whenFound = luggage.getWhenFound();
         foundAt = luggage.getFoundAt();
+
     }
 
     /**

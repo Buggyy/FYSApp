@@ -17,7 +17,7 @@ import view.LoginScreen;
 
 /**
  *
- * @author Team 1 IS106 ZoekJeKoffer
+ * @author Rafael
  */
 public class UserManager {
 
@@ -51,6 +51,7 @@ public class UserManager {
             dbManager.closeConnection();
 
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null,
                     "Could not complete task, please contact your Administrator!",
                     "Error",
@@ -60,9 +61,8 @@ public class UserManager {
     }
 
     public void deleteUser(String userName) {
-        String sql = "DELETE from user WHERE userid=?";
-        
         try {
+            String sql = "DELETE from user WHERE userid=?";
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
             pst.setString(1, userName);
@@ -82,7 +82,6 @@ public class UserManager {
         User user = new User();
         ResultSet rs = null;
         String sql = "SELECT * FROM user WHERE username=?";
-        
         try {
             dbManager.openConnection();
             pst = dbManager.getConnection().prepareStatement(sql);
@@ -99,15 +98,14 @@ public class UserManager {
                 user.setLastName(rs.getString("lastname"));
                 user.setEmail(rs.getString("email"));
                 user.setAirport(rs.getString("airportname"));
+
             }
-            
             return user;
 
         } catch (SQLException ex) {
             Logger.getLogger(LoginScreen.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
-        
         dbManager.closeConnection();
         return user;
 
@@ -148,7 +146,6 @@ public class UserManager {
     public boolean userExists(String userName) {
         ResultSet rs = null;
         boolean userExists = false;
-        
         try {
             String sql = "SELECT EXISTS(SELECT * FROM user WHERE username=?)";
             dbManager.openConnection();
