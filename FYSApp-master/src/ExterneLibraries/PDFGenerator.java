@@ -6,24 +6,20 @@
 package ExterneLibraries;
 
 import java.io.IOException;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import Connectivity.QueryManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import main.FYSApp;
-import main.Frame;
 import model.Client;
 import model.Luggage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 /**
  *
@@ -85,16 +81,12 @@ public class PDFGenerator {
      */
     public void generatePDFReceipt(Luggage a, Client b) {
         try {
-            // start of pdf
             this.contentStream.beginText();
-
             this.contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
             this.contentStream.moveTextPositionByAmount(30, 750);
             this.contentStream.drawString("Insurance Receipt - Corendon");
-
             this.contentStream.setFont(PDType1Font.HELVETICA, 12);
             this.contentStream.moveTextPositionByAmount(0, -50);
-            // Add client data to receipt
             this.contentStream.drawString("Firstname: " + b.getFirstName());
             this.contentStream.moveTextPositionByAmount(0, -10);
             this.contentStream.drawString("Lastname: " + b.getLastName());
@@ -115,8 +107,6 @@ public class PDFGenerator {
             this.contentStream.moveTextPositionByAmount(0, -30);
             this.contentStream.drawString("Client Signature: ");
             this.contentStream.moveTextPositionByAmount(170, 110);
-
-            // Add lost luggage data to receipt
             this.contentStream.drawString("Departure from: "
                     + a.getDepartureFrom());
             this.contentStream.moveTextPositionByAmount(0, -10);
@@ -126,7 +116,6 @@ public class PDFGenerator {
             this.contentStream.moveTextPositionByAmount(0, -10);
             this.contentStream.drawString("Color: " + a.getColor());
             this.contentStream.moveTextPositionByAmount(0, -10);
-
             if (a.getMaterial() != null && !a.getMaterial().isEmpty()) {
                 this.contentStream.drawString("Material: " + a.getMaterial());
                 this.contentStream.moveTextPositionByAmount(0, -10);
@@ -134,7 +123,6 @@ public class PDFGenerator {
             this.contentStream.drawString("Weight class: "
                     + a.getWeightClass());
             this.contentStream.moveTextPositionByAmount(0, -10);
-
             if (a.getOtherDetails() != null && !a.getOtherDetails().isEmpty()) {
                 this.contentStream.drawString("Other details: "
                         + a.getOtherDetails());
@@ -142,12 +130,9 @@ public class PDFGenerator {
             }
             this.contentStream.moveTextPositionByAmount(0, -40);
             this.contentStream.drawString("Corendon Signature: ");
-
-            // end of pdf
             this.contentStream.endText();
         } catch (IOException ex) {
-            Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE,
-                    null, ex);
+            Logger.getLogger(PDFGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

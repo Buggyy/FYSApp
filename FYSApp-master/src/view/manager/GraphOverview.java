@@ -40,11 +40,11 @@ public class GraphOverview extends javax.swing.JPanel {
         statisticsJButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
         graphJPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         loggedInAs = new javax.swing.JLabel();
+        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(1024, 600));
@@ -119,13 +119,6 @@ public class GraphOverview extends javax.swing.JPanel {
         jLabel2.setText("   Graph Luggage Overview");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 310, 33));
 
-        jMonthChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jMonthChooser1PropertyChange(evt);
-            }
-        });
-        add(jMonthChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 100, 40));
-
         graphJPanel.setMaximumSize(new java.awt.Dimension(590, 340));
         graphJPanel.setMinimumSize(new java.awt.Dimension(590, 340));
         graphJPanel.setPreferredSize(new java.awt.Dimension(590, 340));
@@ -146,6 +139,7 @@ public class GraphOverview extends javax.swing.JPanel {
         loggedInAs.setForeground(new java.awt.Color(255, 255, 255));
         loggedInAs.setText("jLabel2");
         add(loggedInAs, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        add(jMonthChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 190, 150, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Corendon-background.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
